@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/models/event.dart';
+import 'package:frontend/widgets/filter_dialog.dart';
+import 'package:frontend/widgets/search_bar.dart';
 
 class ShowEventsPage extends StatefulWidget {
   const ShowEventsPage({super.key});
@@ -11,32 +13,44 @@ class ShowEventsPage extends StatefulWidget {
 
 class _ShowEventsPageState extends State<ShowEventsPage> {
   List<Event> _filteredEvents = [];
+  String _searchQuery = '';
 
   @override
   void initState() {
     super.initState();
-    _filteredEvents = MockEvents().getEvents();
+    _updateFilteredEvents();
   }
 
-  void _filterEvents(String query) {
+  void _updateFilteredEvents() {
     setState(() {
-      _filteredEvents = MockEvents()
-          .getEvents()
-          .where((event) =>
-              event.title.toLowerCase().contains(query.toLowerCase()))
-          .toList();
+      _filteredEvents = MockEvents().getEvents().where((event) {
+        return event.title.toLowerCase().contains(_searchQuery.toLowerCase());
+      }).toList();
     });
+  }
+
+  void _onSearchChanged(String query) {
+    _searchQuery = query;
+    _updateFilteredEvents();
+  }
+
+  void _showFilterDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return const FilterDialog();
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SearchBar(
-              onChanged: _filterEvents,
-            )),
+        EventsSearchBar(
+          onChanged: _onSearchChanged,
+          onFilterTap: _showFilterDialog,
+        ),
         Expanded(
           child: ListView.builder(
             itemCount: _filteredEvents.length,
