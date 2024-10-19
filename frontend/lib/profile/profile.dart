@@ -94,9 +94,10 @@ class ProfileWidget extends StatelessWidget {
                       icon: Icons.people_alt,
                       title: 'Activity Preferences',
                       onTap: () {
-                         Navigator.of(context).push(
+                        Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const UpdatePreferencesWidget(),
+                            builder: (context) =>
+                                const UpdatePreferencesWidget(),
                           ),
                         );
                       }, // Changed to do nothing
@@ -153,7 +154,9 @@ class ProfileWidget extends StatelessWidget {
 
   // Helper method to build list tiles
   Widget _buildListTile(BuildContext context,
-      {required IconData icon, required String title, required VoidCallback onTap}) {
+      {required IconData icon,
+      required String title,
+      required VoidCallback onTap}) {
     return Column(
       children: [
         ListTile(
@@ -161,7 +164,9 @@ class ProfileWidget extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.secondary,
             child: Icon(
               icon,
-              color: Theme.of(context).colorScheme.onSecondary, // Changed to onSecondary for better contrast
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSecondary, // Changed to onSecondary for better contrast
               size: 20,
             ),
           ),

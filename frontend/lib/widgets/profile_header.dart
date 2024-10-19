@@ -34,12 +34,6 @@ class ProfileHeader extends StatelessWidget {
                     color: Colors.grey[600],
                   ),
                 ),
-                const SizedBox(width: 4.0),
-                const Icon(
-                  Icons.arrow_drop_down,
-                  size: 16.0,
-                  color: Colors.grey,
-                ),
               ],
             ),
           ],
