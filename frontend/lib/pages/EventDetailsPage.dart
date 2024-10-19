@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/models/user.dart';
+import 'package:intl/intl.dart';
 
 class EventDetailsPage extends StatefulWidget {
   final Event eventDetails;
@@ -13,8 +14,9 @@ class EventDetailsPage extends StatefulWidget {
 }
 
 class _EventDetailsPageState extends State<EventDetailsPage> {
-   bool isUserRegistered() {
-    return widget.eventDetails.registeredUsers.contains(MockEvents().currentUser);
+  bool isUserRegistered() {
+    return widget.eventDetails.registeredUsers
+        .contains(MockEvents().currentUser);
   }
 
   void toggleRegistration() {
@@ -86,10 +88,12 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                         ),
                         Row(
                           children: [
-                            const Icon(Icons.calendar_month, color: Colors.black),
+                            const Icon(Icons.calendar_month,
+                                color: Colors.black),
                             const SizedBox(width: 8),
                             Text(
-                              widget.eventDetails.date,
+                              DateFormat('EEEE, MMM d')
+                                  .format(widget.eventDetails.date),
                               style: const TextStyle(fontSize: 16),
                             ),
                           ],

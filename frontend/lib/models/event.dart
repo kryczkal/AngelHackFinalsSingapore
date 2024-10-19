@@ -3,7 +3,7 @@ import 'package:frontend/models/user.dart';
 
 class Event {
   final String title;
-  final String date;
+  final DateTime date;
   final String imageUrl;
   final String backgroundColor;
   final String localization;
