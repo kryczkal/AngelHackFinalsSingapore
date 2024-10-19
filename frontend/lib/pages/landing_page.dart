@@ -5,6 +5,7 @@ import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/upcoming_events_card.dart';
 import 'package:frontend/widgets/your_events_card.dart';
 import 'package:frontend/widgets/events_header.dart';
+import 'package:frontend/widgets/ignore_padding_widget.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -13,47 +14,55 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.black),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.notifications, color: Colors.black),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const UpcomingEventsCard(),
-                const SizedBox(width: 16),
-                const YourEventsCard(),
-              ],
-            ),
-            const SizedBox(height: 24),
-            const EventsHeader(),
-            const SizedBox(height: 16),
-            SizedBox(
-              height: 250,
-              child: PageView.builder(
-                controller: PageController(viewportFraction: 0.8),
-                itemCount: MockEvents().events.length,
-                itemBuilder: (context, index) {
-                  return _buildEventCard(MockEvents().events[index]);
-                },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 37),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  UpcomingEventsCard(),
+                  SizedBox(width: 16),
+                  YourEventsCard(),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 24),
+              const EventsHeader(title: 'Events on\nThis month'),
+              const SizedBox(height: 16),
+              IgnorePaddingWidget(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  child: PageView.builder(
+                    controller: PageController(viewportFraction: 0.80),
+                    itemCount: MockEvents().events.length,
+                    itemBuilder: (context, index) {
+                      return _buildEventCard(MockEvents().events[index]);
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const EventsHeader(title: 'Events\nAround you'),
+              IgnorePaddingWidget(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  child: PageView.builder(
+                    controller: PageController(viewportFraction: 0.80),
+                    itemCount: MockEvents().events.length,
+                    itemBuilder: (context, index) {
+                      return _buildEventCard(MockEvents().events[index]);
+                    },
+                  ),
+                ),
+              ),
+              // CustomBottomNavigationBar(),
+            ],
+          ),
         ),
       ),
     );

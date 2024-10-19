@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class EventsHeader extends StatelessWidget {
-  const EventsHeader({Key? key}) : super(key: key);
+  final String title;
+  const EventsHeader({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          'Events on\nThis month',
-          style: TextStyle(
+        Text(
+          title,
+          style: const TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),

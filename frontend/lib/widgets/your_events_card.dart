@@ -11,42 +11,45 @@ class YourEventsCard extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Your\n',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
+            child: Column(
+              children: [
+                RichText(
+                  text: const TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'Your\n',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: 'Events ',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
+                        ),
+                      ),
+                      WidgetSpan(
+                        child: Icon(
+                          Icons.push_pin,
+                          color: Colors.orange,
+                          size: 18,
+                        ),
+                      ),
+                    ],
                   ),
-                  TextSpan(
-                    text: 'Events ',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.black,
-                    ),
-                  ),
-                  WidgetSpan(
-                    child: Icon(
-                      Icons.push_pin,
-                      color: Colors.orange,
-                      size: 18,
-                    ),
-                  ),
-                  WidgetSpan(
-                    child: Container(
-                      height: 2,
-                      width: 85,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-              textAlign: TextAlign.left,
+                  textAlign: TextAlign.left,
+                ),
+                const SizedBox(height: 2),
+                Container(
+                  height: 2,
+                  width: 85,
+                  color: Colors.black,
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 16),
