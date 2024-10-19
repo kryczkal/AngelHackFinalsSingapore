@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
+import 'package:intl/intl.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/models/user.dart';
 import 'package:intl/intl.dart';
