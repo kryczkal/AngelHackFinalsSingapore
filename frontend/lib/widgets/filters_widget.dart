@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../models/event_categories.dart';
 
 class FiltersWidget extends StatefulWidget {
-  final EventCategory selectedCategory;
+  final EventCategory? selectedCategory;
   final DateTimeRange? selectedDateRange;
-  final Function(EventCategory, DateTimeRange?) onFilterChanged;
+  final Function(EventCategory?, DateTimeRange?) onFilterChanged;
 
   const FiltersWidget({
     Key? key,
-    required this.selectedCategory,
-    required this.selectedDateRange,
+    this.selectedCategory,
+    this.selectedDateRange,
     required this.onFilterChanged,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class FiltersWidget extends StatefulWidget {
 }
 
 class _FiltersWidgetState extends State<FiltersWidget> {
-  late EventCategory _selectedCategory;
+  EventCategory? _selectedCategory;
   DateTimeRange? _selectedDateRange;
 
   @override
@@ -40,7 +40,18 @@ class _FiltersWidgetState extends State<FiltersWidget> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -56,7 +67,21 @@ class _FiltersWidgetState extends State<FiltersWidget> {
                   controller.openView();
                 },
                 leading: const Icon(Icons.search),
-                trailing: const [Icon(Icons.expand_more)],
+                trailing: [
+                  if (_selectedCategory != null)
+                    IconButton(
+                      icon: const Icon(Icons.clear),
+                      onPressed: () {
+                        setState(() {
+                          _selectedCategory = null;
+                        });
+                      },
+                    ),
+                  const Icon(Icons.expand_more),
+                ],
+                hintText: _selectedCategory != null
+                    ? _formatCategoryName(_selectedCategory!)
+                    : 'Select Category',
               );
             },
             suggestionsBuilder:
@@ -71,9 +96,10 @@ class _FiltersWidgetState extends State<FiltersWidget> {
                           setState(() {
                             _selectedCategory = category;
                           });
-                          controller.closeView(category.toString());
+                          controller.closeView(_formatCategoryName(category));
                         },
-                      ));
+                      ))
+                  .toList();
             },
           ),
           const SizedBox(height: 16),
@@ -83,7 +109,21 @@ class _FiltersWidgetState extends State<FiltersWidget> {
             title: Text(_selectedDateRange == null
                 ? 'Select Date Range'
                 : '${_selectedDateRange!.start.toString().split(' ')[0]} - ${_selectedDateRange!.end.toString().split(' ')[0]}'),
-            trailing: const Icon(Icons.calendar_today),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (_selectedDateRange != null)
+                  IconButton(
+                    icon: const Icon(Icons.clear),
+                    onPressed: () {
+                      setState(() {
+                        _selectedDateRange = null;
+                      });
+                    },
+                  ),
+                const Icon(Icons.calendar_today),
+              ],
+            ),
             onTap: () async {
               DateTimeRange? picked = await showDateRangePicker(
                 context: context,

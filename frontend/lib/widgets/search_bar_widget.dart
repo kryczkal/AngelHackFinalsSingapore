@@ -94,10 +94,10 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                 selectedDateRange: _selectedDateRange,
                 onFilterChanged: (category, dateRange) {
                   setState(() {
-                    _selectedCategory = category;
+                    if (category != null) _selectedCategory = category;
                     _selectedDateRange = dateRange;
                   });
-                  _applyFilter(category, dateRange);
+                  _applyFilter(category ?? EventCategory.all, dateRange);
                 },
               ),
             ),

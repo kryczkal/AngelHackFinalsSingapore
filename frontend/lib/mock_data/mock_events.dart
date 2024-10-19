@@ -3,6 +3,8 @@ import 'package:frontend/models/event.dart';
 import 'package:frontend/models/lyf_hotels.dart';
 import 'package:frontend/models/user.dart';
 
+import '../models/event_categories.dart';
+
 class MockEvents {
   static final MockEvents _instance = MockEvents._internal();
 
@@ -27,6 +29,7 @@ class MockEvents {
           lastName: 'Done',
         ),
         registeredUsers: [],
+        category: EventCategory.health,
         badges: [EventBadge(name: 'Yoga lover')]),
     Event(
         title: 'Community Cooking Class',
@@ -41,6 +44,7 @@ class MockEvents {
           firstName: 'Michael',
           lastName: 'Brown',
         ),
+        category: EventCategory.food,
         registeredUsers: [],
         badges: [EventBadge(name: 'Cooking Enthusiast')]),
     Event(
@@ -57,6 +61,7 @@ class MockEvents {
           lastName: 'Davis',
         ),
         registeredUsers: [],
+        category: EventCategory.networking,
         badges: [EventBadge(name: 'Movie Buff')]),
     Event(
         title: 'Art & Craft Workshop',
@@ -72,6 +77,7 @@ class MockEvents {
           lastName: 'Wilson',
         ),
         registeredUsers: [],
+        category: EventCategory.art,
         badges: [EventBadge(name: 'Crafty Creator')]),
     Event(
         title: 'Social Run at the Park',
@@ -87,6 +93,7 @@ class MockEvents {
           lastName: 'Martinez',
         ),
         registeredUsers: [],
+        category: EventCategory.sports,
         badges: [EventBadge(name: 'Running Enthusiast')]),
   ];
 
@@ -105,6 +112,7 @@ class MockEvents {
           lastName: 'Done',
         ),
         registeredUsers: [],
+        category: EventCategory.health,
         badges: [EventBadge(name: 'Yoga lover')]),
   ];
 
@@ -124,6 +132,7 @@ class MockEvents {
         ),
         isHotelOrganized: true,
         registeredUsers: [],
+        category: EventCategory.alcohol,
         badges: [EventBadge(name: 'Wine Connoisseur')]),
     Event(
         title: 'Hotel Mixer: Meet & Greet',
@@ -140,6 +149,7 @@ class MockEvents {
         ),
         isHotelOrganized: true,
         registeredUsers: [],
+        category: EventCategory.networking,
         badges: [EventBadge(name: 'Social Butterfly')]),
     Event(
         title: 'Poolside BBQ Party',
@@ -156,6 +166,7 @@ class MockEvents {
         ),
         isHotelOrganized: true,
         registeredUsers: [],
+        category: EventCategory.food,
         badges: [EventBadge(name: 'BBQ Lover')]),
   ];
 
