@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/models/event.dart';
 
 class YourEventsCard extends StatelessWidget {
   const YourEventsCard({Key? key}) : super(key: key);
@@ -69,10 +70,20 @@ class YourEventsCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                ...MockEvents().getMyEvents().map((event) {
-                  return CircleAvatar(
-                    radius: 16,
-                    backgroundImage: AssetImage(event.imageUrl),
+                ...MockEvents()
+                    .getMyEvents()
+                    .sublist(0, 3)
+                    .asMap()
+                    .entries
+                    .map((entry) {
+                  int index = entry.key;
+                  Event event = entry.value;
+                  return Transform.translate(
+                    offset: Offset(-index * 6.5, 0),
+                    child: CircleAvatar(
+                      radius: 16,
+                      backgroundImage: AssetImage(event.imageUrl),
+                    ),
                   );
                 }).toList(),
               ],

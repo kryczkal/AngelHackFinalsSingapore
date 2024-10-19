@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/widgets/event_card.dart';
+import 'package:frontend/widgets/profile_header.dart';
 import 'package:frontend/widgets/upcoming_events_card.dart';
 import 'package:frontend/widgets/your_events_card.dart';
 import 'package:frontend/widgets/events_header.dart';
@@ -20,6 +21,8 @@ class LandingPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 37),
+              const ProfileHeader(hasNotification: true),
               const SizedBox(height: 37),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

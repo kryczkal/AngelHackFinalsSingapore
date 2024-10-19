@@ -9,8 +9,6 @@ class MockEvents {
   factory MockEvents() => _instance;
   MockEvents._internal();
 
-  User currentUser = User(firstName: 'Lukasz', lastName: 'Kryczka');
-
   List<Event> events = [
     Event(
         title: 'Yoga event',
@@ -99,6 +97,48 @@ class MockEvents {
         ),
         registeredUsers: [],
         badges: [EventBadge(name: 'Yoga lover')]),
+    Event(
+        title: 'Community Cooking Class',
+        date: DateTime(2021, 10, 24),
+        imageUrl: 'images/events/cooking.jpeg',
+        backgroundColor: '#42a5f5',
+        localization: 'Lyf Funan, kitchen',
+        description:
+            'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
+        organizer: User(
+          firstName: 'Michael',
+          lastName: 'Brown',
+        ),
+        registeredUsers: [],
+        badges: [EventBadge(name: 'Cooking Enthusiast')]),
+    Event(
+        title: 'Community Cooking Class',
+        date: DateTime(2021, 10, 24),
+        imageUrl: 'images/events/cooking.jpeg',
+        backgroundColor: '#42a5f5',
+        localization: 'Lyf Funan, kitchen',
+        description:
+            'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
+        organizer: User(
+          firstName: 'Michael',
+          lastName: 'Brown',
+        ),
+        registeredUsers: [],
+        badges: [EventBadge(name: 'Cooking Enthusiast')]),
+    Event(
+        title: 'Community Cooking Class',
+        date: DateTime(2021, 10, 24),
+        imageUrl: 'images/events/cooking.jpeg',
+        backgroundColor: '#42a5f5',
+        localization: 'Lyf Funan, kitchen',
+        description:
+            'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
+        organizer: User(
+          firstName: 'Michael',
+          lastName: 'Brown',
+        ),
+        registeredUsers: [],
+        badges: [EventBadge(name: 'Cooking Enthusiast')]),
   ];
 
   List<Event> getEvents() {
