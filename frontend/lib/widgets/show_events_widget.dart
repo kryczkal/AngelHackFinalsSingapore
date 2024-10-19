@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/widgets/event_card.dart';
-import 'package:frontend/widgets/filter_dialog.dart';
 import 'package:frontend/widgets/search_bar_widget.dart';
 
 class ShowEventsWidget extends StatefulWidget {
@@ -34,15 +33,6 @@ class _ShowEventsWidgetState extends State<ShowEventsWidget> {
   void _onSearchChanged(String query) {
     _searchQuery = query;
     _updateFilteredEvents();
-  }
-
-  void _showFilterDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return const FilterDialog();
-      },
-    );
   }
 
   @override
