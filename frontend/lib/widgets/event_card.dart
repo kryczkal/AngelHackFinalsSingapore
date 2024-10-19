@@ -22,6 +22,24 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  Widget _getRoundedText(BuildContext context, String text) {
+    return Flexible(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          text,
+          style: const TextStyle(color: Colors.black),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,6 +62,13 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            Icon(
+              widget.event.isHotelOrganized
+                  ? Icons.hotel // Hotel icon
+                  : Icons.person, // Person icon
+              color: Colors.white,
+              size: 24,
+            ),
             Text(
               widget.event.title,
               style: const TextStyle(
@@ -57,41 +82,13 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
               offset: const Offset(-4, 0),
               child: SizedBox(
                 height: 30,
-                child: Row(
+                child: Wrap(
+                  spacing: 8,
                   children: [
-                    Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          DateFormat('EEEE, MMM d').format(widget.event.date),
-                          style: const TextStyle(color: Colors.black),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          widget.event.localization,
-                          style: const TextStyle(color: Colors.black),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
-                      ),
-                    ),
+                    _getRoundedText(context,
+                        DateFormat('EEEE, MMM d').format(widget.event.date)),
+                    _getRoundedText(context, widget.event.localization),
+                    _getRoundedText(context, widget.event.hotel.name),
                   ],
                 ),
               ),

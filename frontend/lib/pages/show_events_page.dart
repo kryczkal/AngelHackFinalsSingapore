@@ -61,9 +61,12 @@ class _ShowEventsPageState extends State<ShowEventsPage> {
             child: ListView.builder(
               itemCount: _filteredEvents.length,
               itemBuilder: (context, index) {
-                return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    child: EventCard(event: _filteredEvents[index]));
+                return SizedBox(
+                  height: 250,
+                  child: Container(
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      child: EventCard(event: _filteredEvents[index])),
+                );
               },
             ),
           ),
