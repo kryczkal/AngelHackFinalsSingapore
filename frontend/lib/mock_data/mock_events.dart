@@ -1,5 +1,5 @@
-import 'package:frontend/models/EventBadge.dart';
 import 'package:frontend/models/event.dart';
+import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/lyf_hotels.dart';
 import 'package:frontend/models/user.dart';
 
@@ -11,8 +11,6 @@ class MockEvents {
   factory MockEvents() => _instance;
 
   MockEvents._internal();
-
-  User currentUser = User(firstName: 'Lukasz', lastName: 'Kryczka');
 
   List<Event> events = [
     Event(
@@ -114,6 +112,54 @@ class MockEvents {
         registeredUsers: [],
         category: EventCategory.health,
         badges: [EventBadge(name: 'Yoga lover')]),
+    Event(
+        title: 'Community Cooking Class',
+        date: DateTime(2021, 10, 24),
+        imageUrl: 'images/events/cooking.jpeg',
+        backgroundColor: '#42a5f5',
+        localization: 'Lyf Funan, kitchen',
+        description:
+            'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
+        organizer: User(
+          firstName: 'Michael',
+          lastName: 'Brown',
+        ),
+        registeredUsers: [],
+        hotel: LyfHotels.Funan,
+        category: EventCategory.food,
+        badges: [EventBadge(name: 'Cooking Enthusiast')]),
+    Event(
+        title: 'Community Cooking Class',
+        date: DateTime(2021, 10, 24),
+        imageUrl: 'images/events/cooking.jpeg',
+        backgroundColor: '#42a5f5',
+        localization: 'Lyf Funan, kitchen',
+        description:
+            'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
+        organizer: User(
+          firstName: 'Michael',
+          lastName: 'Brown',
+        ),
+        registeredUsers: [],
+        hotel: LyfHotels.Funan,
+        category: EventCategory.food,
+        badges: [EventBadge(name: 'Cooking Enthusiast')]),
+    Event(
+        title: 'Community Cooking Class',
+        date: DateTime(2021, 10, 24),
+        imageUrl: 'images/events/cooking.jpeg',
+        backgroundColor: '#42a5f5',
+        localization: 'Lyf Funan, kitchen',
+        description:
+            'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
+        organizer: User(
+          firstName: 'Michael',
+          lastName: 'Brown',
+        ),
+        registeredUsers: [],
+        hotel: LyfHotels.Funan,
+        category: EventCategory.food,
+        badges: [EventBadge(name: 'Cooking Enthusiast')]),
   ];
 
   List<Event> hotelEvents = [

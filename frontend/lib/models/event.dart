@@ -1,4 +1,4 @@
-import 'package:frontend/models/EventBadge.dart';
+import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/event_categories.dart';
 import 'package:frontend/models/lyf_hotels.dart';
 import 'package:frontend/models/user.dart';

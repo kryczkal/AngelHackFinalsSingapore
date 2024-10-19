@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/all_events_page.dart';
+import 'package:frontend/pages/landing_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme customColorScheme = ColorScheme(
+    const ColorScheme customColorScheme = ColorScheme(
       brightness: Brightness.light,
-      primary: Color(0xFF86c144),
+      primary: Color(0xFF66BB6A),
+      // Replace with a constant color value Colors.green[400]
       onPrimary: Color(0xFF272727),
       secondary: Color(0xFF426a20),
       onSecondary: Color(0xFFFFFFFF),
@@ -52,10 +53,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           primarySwatch: Colors.blue,
         ),
-        home: Scaffold(
-            appBar: AppBar(
-              title: const Text('Events'),
-            ),
-            body: const AllEventsPage()));
+        home: const LandingPage());
   }
 }

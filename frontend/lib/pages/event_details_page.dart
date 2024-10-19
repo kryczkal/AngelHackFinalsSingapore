@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/mock_data/mock_user.dart';
 import 'package:frontend/models/event.dart';
 import 'package:intl/intl.dart';
 
@@ -14,16 +14,15 @@ class EventDetailsPage extends StatefulWidget {
 
 class _EventDetailsPageState extends State<EventDetailsPage> {
   bool isUserRegistered() {
-    return widget.eventDetails.registeredUsers
-        .contains(MockEvents().currentUser);
+    return widget.eventDetails.registeredUsers.contains(MockUser().currentUser);
   }
 
   void toggleRegistration() {
     setState(() {
       if (isUserRegistered()) {
-        widget.eventDetails.registeredUsers.remove(MockEvents().currentUser);
+        widget.eventDetails.registeredUsers.remove(MockUser().currentUser);
       } else {
-        widget.eventDetails.registeredUsers.add(MockEvents().currentUser);
+        widget.eventDetails.registeredUsers.add(MockUser().currentUser);
       }
     });
   }
@@ -40,12 +39,10 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                 // Event Image
                 Container(
                   height: 420,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(
-                        'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                      ),
+                      image: AssetImage(widget.eventDetails.imageUrl),
                     ),
                   ),
                 ),
