@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/widgets/event_card.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -16,8 +17,6 @@ class LandingPage extends StatelessWidget {
           icon: const Icon(Icons.menu, color: Colors.black),
           onPressed: () {},
         ),
-        centerTitle: true,
-        title: const Icon(Icons.search, color: Colors.black),
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications, color: Colors.black),
@@ -204,72 +203,7 @@ class LandingPage extends StatelessWidget {
   Widget _buildEventCard(Event event) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color:
-              Color(int.parse(event.backgroundColor.replaceFirst('#', '0xff'))),
-          borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(
-            image: AssetImage(event.imageUrl),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.4),
-              BlendMode.darken,
-            ),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                event.title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Transform.translate(
-                offset: const Offset(-4, 0),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        event.date,
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        event.date,
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+      child: EventCard(event: event),
     );
   }
 }
