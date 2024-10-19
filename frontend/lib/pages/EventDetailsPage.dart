@@ -5,7 +5,7 @@ class EventDetailsPage extends StatefulWidget {
   final Event eventDetails; // Event name passed via constructor
 
   // Constructor to accept the event name as input
-  EventDetailsPage({required this.eventDetails});
+  const EventDetailsPage({super.key, required this.eventDetails});
 
   @override
   _EventDetailsPageState createState() => _EventDetailsPageState();

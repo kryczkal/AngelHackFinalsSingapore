@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 // import 'edit_profile_model.dart';
 
 class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({Key? key}) : super(key: key);
+  const EditProfileWidget({super.key});
 
   @override
   State<EditProfileWidget> createState() => _EditProfileWidgetState();
@@ -64,7 +64,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: colorScheme.background,
+        backgroundColor: colorScheme.surface,
         appBar: AppBar(
           backgroundColor: colorScheme.secondary,
           automaticallyImplyLeading: false,
@@ -108,12 +108,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
         ),
         body: SafeArea(
           child: SingleChildScrollView(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 24),
-                Text(
+                const SizedBox(height: 24),
+                const Text(
                   'Edit Profile',
                   style: TextStyle(
                     fontFamily: 'Inter',
@@ -121,12 +121,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 // Full Name Field
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Full Name',
                       style: TextStyle(
                         fontFamily: 'Inter',
@@ -134,13 +134,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    SizedBox(height: 4),
+                    const SizedBox(height: 4),
                     TextFormField(
                       controller: fullNameController,
                       focusNode: fullNameFocusNode,
                       onChanged: (_) {}, // change it in future TODO:
                       autofocus: false,
-                      autofillHints: [AutofillHints.name],
+                      autofillHints: const [AutofillHints.name],
                       textCapitalization: TextCapitalization.words,
                       textInputAction: TextInputAction.next,
                       decoration: InputDecoration(
@@ -175,7 +175,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         filled: true,
                         fillColor: colorScheme.surface,
                       ),
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -189,12 +189,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     ),
                   ],
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 // Reset Password Section
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Reset Password',
                       style: TextStyle(
                         fontFamily: 'Inter',
@@ -202,16 +202,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       'Receive a link via email to reset your password.',
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 14,
-                        color: colorScheme.onBackground.withOpacity(0.7),
+                        color: colorScheme.onSurface.withOpacity(0.7),
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     SizedBox(
                       width: double.infinity,
                       height: 50,
@@ -237,12 +237,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     ),
                   ],
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 // Delete Account Section
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Delete Account',
                       style: TextStyle(
                         fontFamily: 'Inter',
@@ -250,16 +250,16 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Text(
                       'The data from your account will be deleted.',
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 14,
-                        color: colorScheme.onBackground.withOpacity(0.7),
+                        color: colorScheme.onSurface.withOpacity(0.7),
                       ),
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     SizedBox(
                       width: double.infinity,
                       height: 50,
@@ -285,7 +285,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     ),
                   ],
                 ),
-                SizedBox(height: 48),
+                const SizedBox(height: 48),
                 // Hidden Email Field (if needed)
                 // If you want to display the email, you can replace this with a Text widget
                 TextFormField(
@@ -299,7 +299,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                     labelStyle: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 16,
-                      color: colorScheme.onBackground.withOpacity(0.6),
+                      color: colorScheme.onSurface.withOpacity(0.6),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -319,7 +319,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   style: TextStyle(
                     fontFamily: 'Inter',
                     fontSize: 16,
-                    color: colorScheme.onBackground,
+                    color: colorScheme.onSurface,
                   ),
                   validator: (value) {
                     // Add your validation logic if needed

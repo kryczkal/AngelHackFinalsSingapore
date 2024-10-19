@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UpdatePreferencesWidget extends StatefulWidget {
-  const UpdatePreferencesWidget({Key? key}) : super(key: key);
+  const UpdatePreferencesWidget({super.key});
 
   @override
   State<UpdatePreferencesWidget> createState() =>
@@ -16,12 +16,12 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
     // Use colors from the custom color scheme
     final primaryColor = Theme.of(context).colorScheme.primary;
     final infoColor = Theme.of(context).colorScheme.secondary;
-    final backgroundColor = Theme.of(context).colorScheme.background;
+    final backgroundColor = Theme.of(context).colorScheme.surface;
     final accent1 = Theme.of(context).colorScheme.tertiary;
     final accent2 = Theme.of(context).colorScheme.secondary;
     final accent3 = Theme.of(context).colorScheme.primary;
     final accent4 = Theme.of(context).colorScheme.error;
-    final primaryText = Theme.of(context).colorScheme.onBackground;
+    final primaryText = Theme.of(context).colorScheme.onSurface;
 
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -34,18 +34,18 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
           title: Row(
             children: [
               IconButton(
-                icon: Icon(Icons.arrow_back, color: Colors.white),
+                icon: const Icon(Icons.arrow_back, color: Colors.white),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
               ),
-              Spacer(),
+              const Spacer(),
               TextButton(
                 onPressed: () {
                   // Implement save functionality here
                   print('Save button pressed');
                 },
-                child: Text(
+                child: const Text(
                   'Save',
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
@@ -58,7 +58,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,12 +70,12 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Theme.of(context).colorScheme.onPrimary,
                       backgroundColor: primaryColor,
-                      minimumSize: Size(double.infinity, 50),
+                      minimumSize: const Size(double.infinity, 50),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(25),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Add Preferences',
                       style: TextStyle(
                         fontFamily: 'Inter',
@@ -83,7 +83,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Material(
                     color: Colors.transparent,
                     elevation: 2,
@@ -96,7 +96,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                         color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -109,7 +109,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                               color: primaryText,
                             ),
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           ListView(
                             padding: EdgeInsets.zero,
                             primary: false,
@@ -125,7 +125,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                                   print('Delete Swimming');
                                 },
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               PreferenceItem(
                                 icon: Icons.terrain,
                                 iconColor: primaryColor,
@@ -136,7 +136,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                                   print('Delete Climbing');
                                 },
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               PreferenceItem(
                                 icon: Icons.sports_soccer,
                                 iconColor: primaryColor,
@@ -147,7 +147,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                                   print('Delete Soccer');
                                 },
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               PreferenceItem(
                                 icon: Icons.self_improvement,
                                 iconColor: primaryColor,
@@ -183,14 +183,14 @@ class PreferenceItem extends StatelessWidget {
   final VoidCallback onDelete;
 
   const PreferenceItem({
-    Key? key,
+    super.key,
     required this.icon,
     required this.iconColor,
     required this.backgroundColor,
     required this.title,
     required this.subtitle,
     required this.onDelete,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -212,13 +212,13 @@ class PreferenceItem extends StatelessWidget {
                 size: 24,
               ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Inter',
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -237,7 +237,7 @@ class PreferenceItem extends StatelessWidget {
           ],
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.delete_outline,
             color: Colors.orange,
             size: 24,

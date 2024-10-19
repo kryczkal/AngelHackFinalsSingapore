@@ -5,7 +5,7 @@ import 'package:frontend/profile/update_preferences.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
 class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({Key? key}) : super(key: key);
+  const ProfileWidget({super.key});
 
   // Placeholder for company information
   final String companyName = 'Your Company';
@@ -22,7 +22,7 @@ class ProfileWidget extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
-          title: Text('Profile'),
+          title: const Text('Profile'),
           centerTitle: true,
         ),
         body: SafeArea(

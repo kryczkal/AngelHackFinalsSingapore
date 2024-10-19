@@ -5,7 +5,7 @@ import 'package:frontend/pages/EventDetailsPage.dart';
 
 // Define the main entry point of the app
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 // The root widget of the application
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Define a custom color scheme
-    final ColorScheme customColorScheme = ColorScheme(
+    const ColorScheme customColorScheme = ColorScheme(
       brightness: Brightness.light,
       primary: Color(0xFF86c144),
       onPrimary: Color(0xFF272727), // Assuming black text on primary color
@@ -24,9 +24,7 @@ class MyApp extends StatelessWidget {
       tertiary: Color(0xFFd5eeba),
       onTertiary: Color(0xFF272727), // Assuming black text on tertiary color
       error: Color(0xFFff5963),
-      onError: Color(0xFFFFFFFF), // Assuming white text on error color
-      background: Color(0xFFFFFFFF),
-      onBackground: Color(0xFF272727),
+      onError: Color(0xFFFFFFFF),
       surface: Color(0xFFf2f2f2),
       onSurface: Color(0xFF272727),
     );
