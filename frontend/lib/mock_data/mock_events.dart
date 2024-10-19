@@ -8,6 +8,8 @@ class MockEvents {
   static final MockEvents _instance = MockEvents._internal();
   factory MockEvents() => _instance;
   MockEvents._internal();
+
+  User currentUser = User(firstName: 'Lukasz', lastName: 'Kryczka');
   
   List<Event> events = [
     Event(
