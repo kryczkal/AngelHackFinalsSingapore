@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/models/event.dart';
+import 'package:frontend/models/user.dart';
 
 class EventDetailsPage extends StatefulWidget {
   final Event eventDetails; // Event name passed via constructor
@@ -13,6 +15,21 @@ class EventDetailsPage extends StatefulWidget {
 
 // The state class for EventDetailsPage
 class _EventDetailsPageState extends State<EventDetailsPage> {
+   bool isUserRegistered() {
+    return widget.eventDetails.registeredUsers.contains(MockEvents().currentUser);
+  }
+
+  // Handle registration/unregistration
+  void toggleRegistration() {
+    setState(() {
+      if (isUserRegistered()) {
+        widget.eventDetails.registeredUsers.remove(MockEvents().currentUser);
+      } else {
+        widget.eventDetails.registeredUsers.add(MockEvents().currentUser);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,12 +59,6 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                         icon: const Icon(Icons.arrow_back, color: Colors.white),
                         onPressed: () {
                           Navigator.pop(context);
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.more_vert, color: Colors.white),
-                        onPressed: () {
-                          // Open options or modal bottom sheet
                         },
                       ),
                     ],
@@ -81,14 +92,6 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.favorite_border_rounded),
-                        color: Colors.grey,
-                        iconSize: 32,
-                        onPressed: () {
-                          // Handle favorite toggle
-                        },
                       ),
                     ],
                   ),
@@ -211,9 +214,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       floatingActionButton: Container(
         padding: const EdgeInsets.all(16),
         child: ElevatedButton(
-          onPressed: () {
-            // Handle registration
-          },
+          onPressed: toggleRegistration, 
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
@@ -223,9 +224,9 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
             ),
             elevation: 4,
           ),
-          child: const Text(
-            'REGISTER',
-            style: TextStyle(
+          child: Text(
+            isUserRegistered() ? 'UNREGISTER' : 'REGISTER',
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
