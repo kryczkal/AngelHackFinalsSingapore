@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/profile/profile.dart'; // Import the ProfileWidget
+import 'package:frontend/pages/EventDetailsPage.dart';
 
+// Define the main entry point of the app
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
+// The root widget of the application
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -28,12 +31,14 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Meal Details',
+      debugShowCheckedModeBanner: false, // Remove the debug banner
       theme: ThemeData(
         colorScheme: customColorScheme,
         useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: EventDetailsPage(eventName: 'Yoga session'), // Set the home page to MealDetailsPage
     );
   }
 }
