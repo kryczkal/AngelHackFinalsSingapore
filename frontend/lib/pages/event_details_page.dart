@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_user.dart';
+import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/pages/user_profile.dart';
+import 'package:intl/intl.dart';
 import 'package:frontend/models/event.dart';
 import 'package:intl/intl.dart';
 
@@ -82,6 +85,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                             color: Colors.grey[600],
                           ),
                         ),
+                        const SizedBox(height: 6),
                         Row(
                           children: [
                             const Icon(Icons.calendar_month,
@@ -106,6 +110,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                             color: Colors.grey[600],
                           ),
                         ),
+                        const SizedBox(height: 6),
                         Row(
                           children: [
                             const Icon(Icons.location_on, color: Colors.black),
@@ -131,19 +136,34 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                             color: Colors.grey[600],
                           ),
                         ),
-                        Row(
-                          children: [
-                            const Icon(Icons.person, color: Colors.black),
-                            const SizedBox(width: 8),
-                            Text(
-                              '${widget.eventDetails.organizer.firstName} ${widget.eventDetails.organizer.lastName}',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
+                        const SizedBox(height: 6),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UserProfile(
+                                      user: widget.eventDetails.organizer),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 12, // Adjust the size as needed
+                                  backgroundImage: AssetImage(
+                                      widget.eventDetails.organizer.profilePic),
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  '${widget.eventDetails.organizer.firstName} ${widget.eventDetails.organizer.lastName}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            )),
 
                         const SizedBox(height: 24),
 
@@ -161,7 +181,10 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                           spacing: 8,
                           runSpacing: 8,
                           children: widget.eventDetails.badges
-                              .map((badge) => _buildBadgeTag(badge.name))
+                              .map((badge) => BuildBadgeTag(
+                                  badge.name,
+                                  Theme.of(context).primaryColorLight,
+                                  Theme.of(context).primaryColorDark))
                               .toList(),
                         ),
 
@@ -242,22 +265,22 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       ),
     );
   }
+}
 
-  Widget _buildBadgeTag(String badge) {
-    return Container(
-      decoration: BoxDecoration(
-        color: const Color(0xFFFFECAA),
-        borderRadius: BorderRadius.circular(8),
+Widget BuildBadgeTag(String badge, Color color1, Color color2) {
+  return Container(
+    decoration: BoxDecoration(
+      color: color1,
+      borderRadius: BorderRadius.circular(25),
+    ),
+    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+    child: Text(
+      badge,
+      style: TextStyle(
+        color: color2,
+        fontWeight: FontWeight.w600,
+        fontSize: 16,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      child: Text(
-        badge,
-        style: const TextStyle(
-          color: Color(0xFF81681E),
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }

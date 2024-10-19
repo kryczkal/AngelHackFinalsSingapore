@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/pages/user_profile.dart';
+import 'package:frontend/profile/profile.dart';
+import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/pages/landing_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
