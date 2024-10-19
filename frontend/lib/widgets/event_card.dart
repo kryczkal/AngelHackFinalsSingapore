@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/EventDetailsPage.dart';
+import 'package:frontend/pages/event_details_page.dart';
 import 'package:intl/intl.dart';
 import 'package:frontend/models/event.dart';
 
@@ -15,7 +15,7 @@ class EventCard extends StatefulWidget {
 class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector( 
+    return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
@@ -27,8 +27,8 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: Color(
-              int.parse(widget.event.backgroundColor.replaceFirst('#', '0xff'))),
+          color: Color(int.parse(
+              widget.event.backgroundColor.replaceFirst('#', '0xff'))),
           borderRadius: BorderRadius.circular(16),
           image: DecorationImage(
             image: AssetImage(widget.event.imageUrl),
