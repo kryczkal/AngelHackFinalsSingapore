@@ -42,12 +42,10 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                 // Event Image
                 Container(
                   height: 420,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: NetworkImage(
-                        'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-                      ),
+                      image: AssetImage(widget.eventDetails.imageUrl),
                     ),
                   ),
                 ),
