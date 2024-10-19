@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/profile/profile.dart'; // Import the ProfileWidget
+import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/pages/EventDetailsPage.dart';
 
 // Define the main entry point of the app
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: EventDetailsPage(eventName: 'Yoga session'), // Set the home page to MealDetailsPage
+      home: EventDetailsPage(eventDetails: MockEvents().events[0]), // Set the home page to MealDetailsPage
     );
   }
 }

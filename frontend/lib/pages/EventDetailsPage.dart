@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/models/event.dart';
 
 class EventDetailsPage extends StatefulWidget {
-  final String eventName; // Event name passed via constructor
+  final Event eventDetails; // Event name passed via constructor
 
   // Constructor to accept the event name as input
-  EventDetailsPage({required this.eventName});
+  EventDetailsPage({required this.eventDetails});
 
   @override
   _EventDetailsPageState createState() => _EventDetailsPageState();
@@ -74,7 +75,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     children: [
                       Expanded(
                         child: Text(
-                          widget.eventName,
+                          widget.eventDetails.title,
                           style: const TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.bold,
@@ -103,13 +104,13 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       color: Colors.grey[600],
                     ),
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.calendar_month, color: Colors.black),
-                      SizedBox(width: 8),
+                      const Icon(Icons.calendar_month, color: Colors.black),
+                      const SizedBox(width: 8),
                       Text(
-                        '20.10.2024 12:00 pm',
-                        style: TextStyle(fontSize: 16),
+                        widget.eventDetails.date,
+                        style: const TextStyle(fontSize: 16),
                       ),
                     ],
                   ),
@@ -125,13 +126,13 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       color: Colors.grey[600],
                     ),
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.location_on, color: Colors.black),
-                      SizedBox(width: 8),
+                      const Icon(Icons.location_on, color: Colors.black),
+                      const SizedBox(width: 8),
                       Text(
-                        'Lyf Funan, commonspace',
-                        style: TextStyle(
+                        widget.eventDetails.localization,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
@@ -150,13 +151,13 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       color: Colors.grey[600],
                     ),
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.person, color: Colors.black),
-                      SizedBox(width: 8),
+                      const Icon(Icons.person, color: Colors.black),
+                      const SizedBox(width: 8),
                       Text(
-                        'Imie Nazwisko',
-                        style: TextStyle(
+                        '${widget.eventDetails.organizer.firstName} ${widget.eventDetails.organizer.lastName}',
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
@@ -179,12 +180,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: [
-                      _buildBadgeTag('Badge 1'),
-                      _buildBadgeTag('Badge 2'),
-                      _buildBadgeTag('Badge 3'),
-                      _buildBadgeTag('Badge 4'),
-                    ],
+                    children: widget.eventDetails.badges.map((badge) => _buildBadgeTag(badge.name)).toList(),
                   ),
 
                   const SizedBox(height: 24),
@@ -199,9 +195,9 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  const Text(
-                    '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ''',
-                    style: TextStyle(fontSize: 16),
+                  Text(
+                    widget.eventDetails.description,
+                    style: const TextStyle(fontSize: 16),
                   ),
 
                    const SizedBox(height: 80),
