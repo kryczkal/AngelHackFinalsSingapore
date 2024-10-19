@@ -20,7 +20,7 @@ class ProfileHeader extends StatelessWidget {
             Text(
               'Hi, ${MockUser().currentUser.firstName}',
               style: const TextStyle(
-                fontSize: 19.0,
+                fontSize: 32.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -30,7 +30,7 @@ class ProfileHeader extends StatelessWidget {
                 Text(
                   MockUser().currentLocation,
                   style: TextStyle(
-                    fontSize: 14.5,
+                    fontSize: 17.5,
                     color: Colors.grey[600],
                   ),
                 ),

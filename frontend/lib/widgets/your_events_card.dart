@@ -20,7 +20,7 @@ class YourEventsCard extends StatelessWidget {
                       TextSpan(
                         text: 'Your\n',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 22,
                           fontWeight: FontWeight.w900,
                           color: Colors.black,
                         ),
@@ -28,7 +28,7 @@ class YourEventsCard extends StatelessWidget {
                       TextSpan(
                         text: 'Events ',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 22,
                           fontWeight: FontWeight.w900,
                           color: Colors.black,
                         ),
@@ -37,7 +37,7 @@ class YourEventsCard extends StatelessWidget {
                         child: Icon(
                           Icons.push_pin,
                           color: Colors.orange,
-                          size: 18,
+                          size: 22,
                         ),
                       ),
                     ],

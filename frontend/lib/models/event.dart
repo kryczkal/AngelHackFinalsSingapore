@@ -1,4 +1,4 @@
-import 'package:frontend/models/EventBadge.dart';
+import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/user.dart';
 
 class Event {

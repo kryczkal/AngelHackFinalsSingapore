@@ -12,7 +12,7 @@ class EventsHeader extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-            fontSize: 22,
+            fontSize: 19,
             fontWeight: FontWeight.bold,
           ),
         ),
