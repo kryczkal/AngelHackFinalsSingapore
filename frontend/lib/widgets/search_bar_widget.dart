@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class EventsSearchBar extends StatefulWidget {
+class SearchBarWidget extends StatefulWidget {
   final Function(String) onSearchChanged;
   final Function(Map<String, dynamic>) onFilterChanged;
 
-  const EventsSearchBar({
+  const SearchBarWidget({
     Key? key,
     required this.onSearchChanged,
     required this.onFilterChanged,
   }) : super(key: key);
 
   @override
-  _EventsSearchBarState createState() => _EventsSearchBarState();
+  _SearchBarWidgetState createState() => _SearchBarWidgetState();
 }
 
-class _EventsSearchBarState extends State<EventsSearchBar>
+class _SearchBarWidgetState extends State<SearchBarWidget>
     with SingleTickerProviderStateMixin {
   final TextEditingController _controller = TextEditingController();
   late AnimationController _animationController;

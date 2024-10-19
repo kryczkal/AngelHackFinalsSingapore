@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/show_events_page.dart';
+import 'package:frontend/pages/all_events_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -56,6 +56,6 @@ class MyApp extends StatelessWidget {
             appBar: AppBar(
               title: const Text('Events'),
             ),
-            body: ShowEventsPage()));
+            body: const AllEventsPage()));
   }
 }

@@ -114,7 +114,7 @@ class MockEvents {
         date: DateTime(2021, 11, 10),
         imageUrl: 'assets/wine_tasting.jpg',
         backgroundColor: '#d32f2f',
-        localization: 'Lyf Funan Wine Lounge',
+        localization: 'Wine Lounge',
         hotel: LyfHotels.Funan,
         description:
             'Join us for an exclusive wine tasting event hosted by Lyf Funan. Sample a curated selection of wines from around the world.',
@@ -130,7 +130,7 @@ class MockEvents {
         date: DateTime(2021, 11, 15),
         imageUrl: 'assets/hotel_mixer.jpg',
         backgroundColor: '#5d4037',
-        localization: 'Lyf Funan Lobby',
+        localization: 'Lobby',
         hotel: LyfHotels.Funan,
         description:
             'Come mingle with other hotel guests and meet the friendly hotel staff. Drinks and snacks are on us!',
@@ -146,7 +146,7 @@ class MockEvents {
         date: DateTime(2021, 11, 20),
         imageUrl: 'assets/pool_bbq.jpg',
         backgroundColor: '#f57c00',
-        localization: 'Lyf Funan Poolside',
+        localization: 'Poolside',
         hotel: LyfHotels.Funan,
         description:
             'Enjoy a BBQ by the pool, hosted by Lyf Funan. Come for the food, stay for the vibes!',
