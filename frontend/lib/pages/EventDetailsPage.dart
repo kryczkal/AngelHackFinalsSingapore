@@ -1,61 +1,62 @@
 import 'package:flutter/material.dart';
 
 class EventDetailsPage extends StatefulWidget {
-  final String eventName; // Meal name passed via constructor
+  final String eventName; // Event name passed via constructor
 
-  // Constructor to accept the meal name as input
+  // Constructor to accept the event name as input
   EventDetailsPage({required this.eventName});
 
   @override
   _EventDetailsPageState createState() => _EventDetailsPageState();
 }
 
-// The state class for MealDetailsPage
+// The state class for EventDetailsPage
 class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          // Meal Image
-          Stack(
-            children: [
-              Container(
-                height: 450,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      body: SingleChildScrollView( // Make the entire page scrollable
+        child: Column(
+          children: [
+            // Event Image
+            Stack(
+              children: [
+                Container(
+                  height: 450,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(
+                        'https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+                      ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 54, left: 24, right: 24),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.more_vert, color: Colors.white),
-                      onPressed: () {
-                        // Open options or modal bottom sheet
-                      },
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 54, left: 24, right: 24),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back, color: Colors.white),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.more_vert, color: Colors.white),
+                        onPressed: () {
+                          // Open options or modal bottom sheet
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
 
-          Expanded(
-            child: Container(
+            // Event Details
+            Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -67,7 +68,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // event name and like button
+                  // Event name and like button
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -91,6 +92,17 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     ],
                   ),
 
+                  const SizedBox(height: 24),
+
+                  // Date
+                  Text(
+                    'Event Date',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey[600],
+                    ),
+                  ),
                   const Row(
                     children: [
                       Icon(Icons.calendar_month, color: Colors.black),
@@ -98,6 +110,31 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       Text(
                         '20.10.2024 12:00 pm',
                         style: TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(height: 24),
+
+                  // event Localization
+                  Text(
+                    'Event Localization',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  const Row(
+                    children: [
+                      Icon(Icons.location_on, color: Colors.black),
+                      SizedBox(width: 8),
+                      Text(
+                        'Lyf Funan, commonspace',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ],
                   ),
@@ -129,6 +166,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
 
                   const SizedBox(height: 24),
 
+                  // Badges Section
                   Text(
                     'Badges',
                     style: TextStyle(
@@ -148,16 +186,34 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       _buildBadgeTag('Badge 4'),
                     ],
                   ),
+
+                  const SizedBox(height: 24),
+
+                  // Description
+                  Text(
+                    'Event Description',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey[600],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ''',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildBadgeTag(String allergen) {
+  // Helper method to build badge tags
+  Widget _buildBadgeTag(String badge) {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFFFECAA),
@@ -165,7 +221,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       child: Text(
-        allergen,
+        badge,
         style: const TextStyle(
           color: Color(0xFF81681E),
           fontWeight: FontWeight.w600,
