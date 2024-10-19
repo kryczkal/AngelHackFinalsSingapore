@@ -5,7 +5,7 @@ class MockUser {
   factory MockUser() => _instance;
   MockUser._internal();
 
-  User currentUser = User(firstName: 'Łukasz', lastName: 'Kryczka');
+  User currentUser = User(firstName: 'Łukasz', lastName: 'Kryczka', age: 20, userBadges: []);
   String currentLocation = 'Singapore';
   String profileImagePath = 'images/profile/profile.jpg';
 }

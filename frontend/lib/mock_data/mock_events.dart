@@ -11,13 +11,6 @@ class MockEvents {
 
   MockEvents._internal();
 
-  User currentUser = User(
-    firstName: 'Lukasz',
-    lastName: 'Kryczka',
-    age: 20,
-    userBadges: [EventBadge(name: 'Early Adopter')],
-  );
-
   List<Event> events = [
     Event(
       title: 'Yoga event',

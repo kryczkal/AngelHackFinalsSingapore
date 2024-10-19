@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/user.dart';
-import 'package:frontend/pages/EventDetailsPage.dart';
+import 'package:frontend/pages/event_details_page.dart';
 
 class UserProfile extends StatefulWidget {
   final User user;
