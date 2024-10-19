@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/event.dart';
 import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/models/event.dart';
 import 'package:frontend/widgets/event_card.dart';
 
 class LandingPage extends StatelessWidget {
@@ -203,7 +203,10 @@ class LandingPage extends StatelessWidget {
   Widget _buildEventCard(Event event) {
     return Padding(
       padding: const EdgeInsets.only(right: 16.0),
-      child: EventCard(event: event),
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 16),
+        child: EventCard(event: event),
+      ),
     );
   }
 }

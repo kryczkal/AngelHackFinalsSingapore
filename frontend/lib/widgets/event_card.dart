@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:frontend/models/event.dart';
+import 'package:intl/intl.dart';
 
 class EventCard extends StatefulWidget {
   final Event event;
@@ -25,7 +25,6 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
         color: Color(
             int.parse(widget.event.backgroundColor.replaceFirst('#', '0xff'))),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/models/event.dart';
+import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/filter_dialog.dart';
 import 'package:frontend/widgets/search_bar.dart';
 
@@ -45,33 +46,29 @@ class _ShowEventsPageState extends State<ShowEventsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        EventsSearchBar(
-          onChanged: _onSearchChanged,
-          onFilterTap: _showFilterDialog,
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: _filteredEvents.length,
-            itemBuilder: (context, index) {
-              return Card(
-                margin: const EdgeInsets.symmetric(
-                  vertical: 8,
-                  horizontal: 16,
-                ),
-                child: ListTile(
-                  title: Text(_filteredEvents[index].title),
-                  onTap: () {
-                    // Handle event tap
-                    print('Tapped on: ${_filteredEvents[index].title}');
-                  },
-                ),
-              );
-            },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: EventsSearchBar(
+              onSearchChanged: _onSearchChanged,
+              onFilterChanged: (_) => {},
+            ),
           ),
-        ),
-      ],
+          Expanded(
+            child: ListView.builder(
+              itemCount: _filteredEvents.length,
+              itemBuilder: (context, index) {
+                return Container(
+                    margin: const EdgeInsets.symmetric(vertical: 8),
+                    child: EventCard(event: _filteredEvents[index]));
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
