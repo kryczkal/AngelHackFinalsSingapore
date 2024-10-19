@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_events.dart';
-import 'package:frontend/pages/EventDetailsPage.dart';
-import 'package:frontend/pages/landing_page.dart';
-import 'package:frontend/profile/profile.dart';
+import 'package:frontend/pages/show_events_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -55,7 +52,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: LandingPage(),
+      home: ShowEventsPage(),
     );
   }
 }
