@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/profile/profile.dart'; // Import the ProfileWidget
+import 'package:frontend/profile/profile.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/pages/EventDetailsPage.dart';
+import 'package:frontend/pages/landing_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-// Define the main entry point of the app
 void main() {
   runApp(MyApp());
 }
 
-// The root widget of the application
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Define a custom color scheme
     final ColorScheme customColorScheme = ColorScheme(
       brightness: Brightness.light,
       primary: Color(0xFF86c144),
-      onPrimary: Color(0xFF272727), // Assuming black text on primary color
+      onPrimary: Color(0xFF272727),
       secondary: Color(0xFF426a20),
-      onSecondary: Color(0xFFFFFFFF), // Assuming white text on secondary color
+      onSecondary: Color(0xFFFFFFFF),
       tertiary: Color(0xFFd5eeba),
-      onTertiary: Color(0xFF272727), // Assuming black text on tertiary color
+      onTertiary: Color(0xFF272727),
       error: Color(0xFFff5963),
-      onError: Color(0xFFFFFFFF), // Assuming white text on error color
+      onError: Color(0xFFFFFFFF),
       background: Color(0xFFFFFFFF),
       onBackground: Color(0xFF272727),
       surface: Color(0xFFf2f2f2),
@@ -33,57 +32,30 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Meal Details',
-      debugShowCheckedModeBanner: false, // Remove the debug banner
       theme: ThemeData(
         colorScheme: customColorScheme,
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a purple toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
+        ),
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: EventDetailsPage(eventDetails: MockEvents().events[0]), // Set the home page to MealDetailsPage
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '0',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 20), // Add some spacing
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const ProfileWidget(),
-                  ),
-                );
-              },
-              child: const Text('Go to Profile'),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      home: LandingPage(),
     );
   }
 }
