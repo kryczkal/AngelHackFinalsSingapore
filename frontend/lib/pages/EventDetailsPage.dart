@@ -15,8 +15,9 @@ class EventDetailsPage extends StatefulWidget {
 
 // The state class for EventDetailsPage
 class _EventDetailsPageState extends State<EventDetailsPage> {
-   bool isUserRegistered() {
-    return widget.eventDetails.registeredUsers.contains(MockEvents().currentUser);
+  bool isUserRegistered() {
+    return widget.eventDetails.registeredUsers
+        .contains(MockEvents().currentUser);
   }
 
   // Handle registration/unregistration
@@ -33,7 +34,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView( // Make the entire page scrollable
+      body: SingleChildScrollView(
+        // Make the entire page scrollable
         child: Column(
           children: [
             // Event Image
@@ -112,7 +114,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       const Icon(Icons.calendar_month, color: Colors.black),
                       const SizedBox(width: 8),
                       Text(
-                        widget.eventDetails.date,
+                        widget.eventDetails.date.toString(),
                         style: const TextStyle(fontSize: 16),
                       ),
                     ],
@@ -183,7 +185,9 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,
-                    children: widget.eventDetails.badges.map((badge) => _buildBadgeTag(badge.name)).toList(),
+                    children: widget.eventDetails.badges
+                        .map((badge) => _buildBadgeTag(badge.name))
+                        .toList(),
                   ),
 
                   const SizedBox(height: 24),
@@ -203,7 +207,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     style: const TextStyle(fontSize: 16),
                   ),
 
-                   const SizedBox(height: 80),
+                  const SizedBox(height: 80),
                 ],
               ),
             ),
@@ -214,7 +218,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       floatingActionButton: Container(
         padding: const EdgeInsets.all(16),
         child: ElevatedButton(
-          onPressed: toggleRegistration, 
+          onPressed: toggleRegistration,
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.red,
             foregroundColor: Colors.white,
