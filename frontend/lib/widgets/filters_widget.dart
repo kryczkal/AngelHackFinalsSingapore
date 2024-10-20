@@ -29,13 +29,6 @@ class _FiltersWidgetState extends State<FiltersWidget> {
     _selectedDateRange = widget.selectedDateRange;
   }
 
-  String _formatCategoryName(EventCategory category) {
-    return category.name
-        .split(RegExp('(?=[A-Z])'))
-        .map((word) => word.capitalize())
-        .join(' ');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,23 +73,23 @@ class _FiltersWidgetState extends State<FiltersWidget> {
                   const Icon(Icons.expand_more),
                 ],
                 hintText: _selectedCategory != null
-                    ? _formatCategoryName(_selectedCategory!)
+                    ? formatCategoryName(_selectedCategory!)
                     : 'Select Category',
               );
             },
             suggestionsBuilder:
                 (BuildContext context, SearchController controller) {
               return EventCategory.values
-                  .where((category) => _formatCategoryName(category)
+                  .where((category) => formatCategoryName(category)
                       .toLowerCase()
                       .contains(controller.text.toLowerCase()))
                   .map((category) => ListTile(
-                        title: Text(_formatCategoryName(category)),
+                        title: Text(formatCategoryName(category)),
                         onTap: () {
                           setState(() {
                             _selectedCategory = category;
                           });
-                          controller.closeView(_formatCategoryName(category));
+                          controller.closeView(formatCategoryName(category));
                         },
                       ))
                   .toList();
@@ -148,6 +141,13 @@ class _FiltersWidgetState extends State<FiltersWidget> {
       ),
     );
   }
+}
+
+String formatCategoryName(EventCategory category) {
+    return category.name
+        .split(RegExp('(?=[A-Z])'))
+        .map((word) => word.capitalize())
+        .join(' ');
 }
 
 extension StringExtension on String {
