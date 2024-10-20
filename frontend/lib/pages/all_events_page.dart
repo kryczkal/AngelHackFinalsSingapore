@@ -61,6 +61,7 @@ class _AllEventsPageState extends State<AllEventsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           PageView(
