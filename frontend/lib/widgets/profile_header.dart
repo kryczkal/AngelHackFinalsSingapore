@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_user.dart';
+import 'package:frontend/pages/user_profile.dart';
 import 'package:frontend/profile/profile.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -48,7 +49,7 @@ class ProfileHeader extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const ProfileWidget(),
+                    builder: (context) => UserProfile(user: MockUser().currentUser),
                   ),
                 );
               },

@@ -26,7 +26,8 @@ class MockEvents {
         firstName: 'Paul',
         lastName: 'Done',
         age: 30, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        userBadges: [EventBadge(name: 'Example Badge')], 
+        preferences: {EventCategory.artificialIntelligence}// Empty list of badges
       ),
       registeredUsers: [],
       category: EventCategory.health,
