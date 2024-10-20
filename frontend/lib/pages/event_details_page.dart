@@ -75,6 +75,45 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                         ),
 
                         const SizedBox(height: 24),
+                        // Organizer
+                        Text(
+                          'Organizer',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[600],
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => UserProfile(
+                                      user: widget.eventDetails.organizer),
+                                ),
+                              );
+                            },
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 12, // Adjust the size as needed
+                                  backgroundImage: AssetImage(
+                                      widget.eventDetails.organizer.profilePic),
+                                ),
+                                const SizedBox(width: 10),
+                                Text(
+                                  '${widget.eventDetails.organizer.firstName} ${widget.eventDetails.organizer.lastName}',
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            )),
+
+                        const SizedBox(height: 24),
 
                         // Date
                         Text(
@@ -127,46 +166,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
 
                         const SizedBox(height: 24),
 
-                        // Organizer
-                        Text(
-                          'Organizer',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey[600],
-                          ),
-                        ),
-                        const SizedBox(height: 6),
-                        GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => UserProfile(
-                                      user: widget.eventDetails.organizer),
-                                ),
-                              );
-                            },
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 12, // Adjust the size as needed
-                                  backgroundImage: AssetImage(
-                                      widget.eventDetails.organizer.profilePic),
-                                ),
-                                const SizedBox(width: 10),
-                                Text(
-                                  '${widget.eventDetails.organizer.firstName} ${widget.eventDetails.organizer.lastName}',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            )),
-
-                        const SizedBox(height: 24),
-
+                        
                         // Badges Section
                         Text(
                           'Badges',

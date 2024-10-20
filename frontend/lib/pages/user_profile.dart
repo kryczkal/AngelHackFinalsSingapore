@@ -4,6 +4,7 @@ import 'package:frontend/mock_data/mock_user.dart';
 import 'package:frontend/models/event_categories.dart';
 import 'package:frontend/models/user.dart';
 import 'package:frontend/pages/event_details_page.dart';
+import 'package:frontend/profile/profile.dart';
 import 'package:frontend/widgets/categories_wrap_widget.dart';
 import 'package:frontend/widgets/filters_widget.dart';
 
@@ -42,9 +43,16 @@ class _UserProfileState extends State<UserProfile> {
           },
         ),
         actions: [
+          if (widget.user == MockUser().currentUser ) 
           IconButton(
             icon: const Icon(Icons.settings, color: Colors.black),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileWidget(),
+                  ),
+                );
+            },
           ),
         ],
       ),
