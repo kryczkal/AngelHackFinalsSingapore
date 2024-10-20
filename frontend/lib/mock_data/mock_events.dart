@@ -145,7 +145,7 @@ class MockEvents {
     return events;
   }
 
-  List<Event> getMyEvents() {
-    return myEvents;
+  List<Event> getMyEvents(User currentUser) {
+    return events.where((event) => event.registeredUsers.contains(currentUser)).toList();
   }
 }

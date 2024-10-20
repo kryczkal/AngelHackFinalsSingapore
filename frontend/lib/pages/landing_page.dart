@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/pages/upcoming_events_page.dart';
+import 'package:frontend/pages/your_events_page.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/profile_header.dart';
 import 'package:frontend/widgets/upcoming_events_card.dart';
@@ -24,12 +26,28 @@ class LandingPage extends StatelessWidget {
               const SizedBox(height: 37),
               const ProfileHeader(hasNotification: true),
               const SizedBox(height: 37),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  UpcomingEventsCard(),
-                  SizedBox(width: 16),
-                  YourEventsCard(),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UpcomingEventsPage()),
+                      );
+                    },
+                    child: const UpcomingEventsCard(),
+                  ),
+                  const SizedBox(width: 16),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => YourEventsPage()),
+                      );
+                    },
+                    child: const YourEventsCard(),
+                  ),
                 ],
               ),
               const SizedBox(height: 24),

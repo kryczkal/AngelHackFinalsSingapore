@@ -117,7 +117,7 @@ class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
                             children: [
                               PreferenceItem(
                                 icon: Icons.pool,
-                                iconColor: Theme.of(context).colorScheme.onPrimary,
+                                iconColor: primaryColor,
                                 backgroundColor: accent1,
                                 title: 'Swimming',
                                 subtitle: 'Water-based exercise',

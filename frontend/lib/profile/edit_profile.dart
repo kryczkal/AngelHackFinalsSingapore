@@ -288,44 +288,44 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 SizedBox(height: 48),
                 // Hidden Email Field (if needed)
                 // If you want to display the email, you can replace this with a Text widget
-                TextFormField(
-                  controller: emailController,
-                  focusNode: emailFocusNode,
-                  autofocus: false,
-                  textCapitalization: TextCapitalization.none,
-                  readOnly: true,
-                  decoration: InputDecoration(
-                    labelText: 'Email Address',
-                    labelStyle: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 16,
-                      color: colorScheme.onBackground.withOpacity(0.6),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: colorScheme.surface,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: colorScheme.primary,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontSize: 16,
-                    color: colorScheme.onBackground,
-                  ),
-                  validator: (value) {
-                    // Add your validation logic if needed
-                    return null;
-                  },
-                ),
+                // TextFormField(
+                //   controller: emailController,
+                //   focusNode: emailFocusNode,
+                //   autofocus: false,
+                //   textCapitalization: TextCapitalization.none,
+                //   readOnly: true,
+                //   decoration: InputDecoration(
+                //     labelText: 'Email Address',
+                //     labelStyle: TextStyle(
+                //       fontFamily: 'Inter',
+                //       fontSize: 16,
+                //       color: colorScheme.onBackground.withOpacity(0.6),
+                //     ),
+                //     enabledBorder: OutlineInputBorder(
+                //       borderSide: BorderSide(
+                //         color: colorScheme.surface,
+                //         width: 1,
+                //       ),
+                //       borderRadius: BorderRadius.circular(8),
+                //     ),
+                //     focusedBorder: OutlineInputBorder(
+                //       borderSide: BorderSide(
+                //         color: colorScheme.primary,
+                //         width: 1,
+                //       ),
+                //       borderRadius: BorderRadius.circular(8),
+                //     ),
+                //   ),
+                //   style: TextStyle(
+                //     fontFamily: 'Inter',
+                //     fontSize: 16,
+                //     color: colorScheme.onBackground,
+                //   ),
+                //   validator: (value) {
+                //     // Add your validation logic if needed
+                //     return null;
+                //   },
+                // ),
               ],
             ),
           ),

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     const ColorScheme customColorScheme = ColorScheme(
       brightness: Brightness.light,
       primary:  Color(0xFF66BB6A), // Replace with a constant color value Colors.green[400]
-      onPrimary: Color(0xFF272727),
+      onPrimary: Color(0xFFFFFFFF),
       secondary: Color(0xFF426a20),
       onSecondary: Color(0xFFFFFFFF),
       tertiary: Color(0xFFd5eeba),

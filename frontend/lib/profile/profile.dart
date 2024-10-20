@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/mock_data/mock_user.dart';
 import 'package:frontend/profile/edit_profile.dart';
 import 'package:frontend/profile/update_preferences.dart';
+
 // import 'package:share_plus/share_plus.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
@@ -32,46 +34,11 @@ class ProfileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Greeting Section
-                const SizedBox(height: 24),
-                Text(
-                  'Hello,',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'User Name', // Replace with actual user name
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
+                
 
-                const SizedBox(height: 24),
-                // Thank You Container
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                  padding: const EdgeInsets.all(18),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Thank you for supporting us!',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(height: 6),
-                      Text(
-                        'As a local business, we thank you for supporting us and hope you enjoy.',
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
+                // const SizedBox(height: 24),
+                // // Thank You Container
+              
 
                 const SizedBox(height: 12),
                 // Profile Options
@@ -156,25 +123,31 @@ class ProfileWidget extends StatelessWidget {
       {required IconData icon, required String title, required VoidCallback onTap}) {
     return Column(
       children: [
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Theme.of(context).colorScheme.secondary,
-            child: Icon(
-              icon,
-              color: Theme.of(context).colorScheme.onSecondary, // Changed to onSecondary for better contrast
-              size: 20,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0), // Padding before the divider
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: Icon(
+                icon,
+                color: Theme.of(context).colorScheme.onPrimary, // Changed to onPrimary for better contrast
+                size: 20,
+              ),
             ),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            onTap: onTap,
           ),
-          title: Text(
-            title,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          onTap: onTap,
         ),
-        const Divider(
-          thickness: 1,
-          height: 1,
-          color: Colors.grey,
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 4.0), // Padding after the divider
+          child: Divider(
+            thickness: 1,
+            height: 1,
+            color: Colors.grey,
+          ),
         ),
       ],
     );
