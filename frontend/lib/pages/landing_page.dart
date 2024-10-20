@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/models/event.dart';
 import 'package:frontend/pages/upcoming_events_page.dart';
 import 'package:frontend/pages/your_events_page.dart';
 import 'package:frontend/widgets/event_card.dart';
