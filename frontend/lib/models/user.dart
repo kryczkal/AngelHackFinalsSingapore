@@ -8,12 +8,13 @@ class User {
   final int age;
   final String profilePic = 'assets/default_profile_pic.png';
   List<EventBadge> userBadges;
-  Set<EventCategory> preferences = {};
+  Set<EventCategory> preferences;
 
   User({
     required this.firstName,
     required this.lastName,
     required this.age,
-    required this.userBadges
-  });
+    required this.userBadges,
+    Set<EventCategory>? preferences,  // Optional named parameter
+  }) : preferences = preferences ?? {};  // If null, assign an empty set
 }

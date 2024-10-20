@@ -24,7 +24,7 @@ class _UserProfileState extends State<UserProfile> {
                     .toList();
     if (badgesBlocks.isEmpty)
     {
-      badgesBlocks.add(Text('None'));
+      badgesBlocks.add(const Text('None'));
     }
     return badgesBlocks;
   }
