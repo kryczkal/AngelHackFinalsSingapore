@@ -5,8 +5,9 @@ import 'package:intl/intl.dart';
 
 class EventCard extends StatefulWidget {
   final Event event;
+  final bool less; // Add the optional parameter
 
-  const EventCard({Key? key, required this.event}) : super(key: key);
+  const EventCard({Key? key, required this.event, this.less = false}) : super(key: key);
 
   @override
   _EventCardState createState() => _EventCardState();
@@ -43,7 +44,7 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
         );
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
+        //margin: const EdgeInsets.symmetric(vertical: 16), //TODO: idk maybe leave it like this
         decoration: BoxDecoration(
           color: Color(int.parse(
               widget.event.backgroundColor.replaceFirst('#', '0xff'))),
@@ -65,13 +66,15 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
             crossAxisAlignment: WrapCrossAlignment.start,
             alignment: WrapAlignment.end,
             children: [
-              Icon(
-                widget.event.isHotelOrganized
-                    ? Icons.hotel // Hotel icon
-                    : Icons.person, // Person icon
-                color: Colors.white,
-                size: 24,
-              ),
+              if (!widget.less) ...[
+                Icon(
+                  widget.event.isHotelOrganized
+                      ? Icons.hotel // Hotel icon
+                      : Icons.person, // Person icon
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ],
               Text(
                 widget.event.title,
                 style: const TextStyle(
@@ -90,16 +93,18 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
                   ]),
                 ),
               ),
-              Transform.translate(
-                offset: const Offset(-4, 0),
-                child: SizedBox(
-                  height: 30,
-                  child: Wrap(spacing: 8, children: [
-                    _getRoundedText(context, widget.event.hotel.name),
-                    _getRoundedText(context, widget.event.localization),
-                  ]),
+              if (!widget.less) ...[
+                Transform.translate(
+                  offset: const Offset(-4, 0),
+                  child: SizedBox(
+                    height: 30,
+                    child: Wrap(spacing: 8, children: [
+                      _getRoundedText(context, widget.event.hotel.name),
+                      _getRoundedText(context, widget.event.localization),
+                    ]),
+                  ),
                 ),
-              ),
+              ],
             ],
           ),
         ),

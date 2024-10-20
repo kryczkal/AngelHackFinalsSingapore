@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/pages/upcoming_events_page.dart';
-import 'package:frontend/pages/your_events_page.dart';
+import 'package:frontend/pages/joined_events_page.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/events_header.dart';
 import 'package:frontend/widgets/ignore_padding_widget.dart';
 import 'package:frontend/widgets/profile_header.dart';
-import 'package:frontend/widgets/upcoming_events_card.dart';
+import 'package:frontend/widgets/joined_events_card.dart';
 import 'package:frontend/widgets/your_events_card.dart';
 
 class LandingPage extends StatelessWidget {
@@ -37,25 +37,35 @@ class LandingPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => UpcomingEventsPage()),
-                      );
-                    },
-                    child: const UpcomingEventsCard(),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
+                            );
+                          },
+                          child: SizedBox(
+                            height: 176, // Set your desired height here
+                            child: const JoinedEventsCard(),
+                          ),
+                        ),
                       ),
-                  const SizedBox(width: 16),
-                      GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => YourEventsPage()),
-                      );
-                    },
-                    child: const YourEventsCard(),
-                  ),
+                      const SizedBox(width: 64), // Separator
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
+                            );
+                          },
+                          child: SizedBox(
+                            height: 176, // Set your desired height here
+                            child: const YourEventsCard(),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 24),

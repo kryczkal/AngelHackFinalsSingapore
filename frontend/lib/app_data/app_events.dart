@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/lyf_hotels.dart';
@@ -5,7 +6,7 @@ import 'package:frontend/models/user.dart';
 
 import '../models/event_categories.dart';
 
-class AppEventsSingleton {
+class AppEventsSingleton extends ChangeNotifier {
   static final AppEventsSingleton _instance = AppEventsSingleton._internal();
 
   factory AppEventsSingleton() => _instance;
@@ -264,4 +265,15 @@ class AppEventsSingleton {
   List<Event> getHotelEvents() {
     return hotelEvents;
   }
+
+  void toggleUserRegistration(Event event, User user) {
+    if (event.registeredUsers.contains(user)) {
+      event.registeredUsers.remove(user);
+    } else {
+      event.registeredUsers.add(user);
+    }
+    notifyListeners();
+  }
+
+  // Add methods to modify events and call notifyListeners() as needed
 }

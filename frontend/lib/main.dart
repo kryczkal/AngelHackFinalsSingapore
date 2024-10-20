@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_user.dart';
+import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/pages/landing_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:provider/provider.dart';
 void main() {
-  runApp(const MyApp());
+   runApp(
+    ChangeNotifierProvider(
+      create: (context) => AppEventsSingleton(),
+      child: const MyApp(),
+    ),
+  );
+  //runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
