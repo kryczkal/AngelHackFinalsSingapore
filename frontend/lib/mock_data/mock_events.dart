@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/lyf_hotels.dart';
@@ -5,7 +6,7 @@ import 'package:frontend/models/user.dart';
 
 import '../models/event_categories.dart';
 
-class MockEvents {
+class MockEvents extends ChangeNotifier {
   static final MockEvents _instance = MockEvents._internal();
 
   factory MockEvents() => _instance;
@@ -263,4 +264,15 @@ class MockEvents {
   List<Event> getHotelEvents() {
     return hotelEvents;
   }
+
+  void toggleUserRegistration(Event event, User user) {
+    if (event.registeredUsers.contains(user)) {
+      event.registeredUsers.remove(user);
+    } else {
+      event.registeredUsers.add(user);
+    }
+    notifyListeners();
+  }
+
+  // Add methods to modify events and call notifyListeners() as needed
 }

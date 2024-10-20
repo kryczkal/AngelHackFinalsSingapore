@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/mock_data/mock_user.dart';
-import 'package:frontend/pages/your_events_page.dart';
+import 'package:frontend/pages/joined_events_page.dart';
 
 class YourEventsCard extends StatelessWidget {
   const YourEventsCard({super.key});
@@ -16,7 +16,7 @@ class YourEventsCard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const YourEventsPage()),
+                MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
               );
             },
             child: Align(

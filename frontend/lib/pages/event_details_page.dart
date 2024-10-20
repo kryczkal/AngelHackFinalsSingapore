@@ -5,6 +5,7 @@ import 'package:frontend/pages/user_profile.dart';
 import 'package:intl/intl.dart';
 import 'package:frontend/models/event.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class EventDetailsPage extends StatefulWidget {
   final Event eventDetails;
@@ -21,13 +22,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   }
 
   void toggleRegistration() {
-    setState(() {
-      if (isUserRegistered()) {
-        widget.eventDetails.registeredUsers.remove(MockUser().currentUser);
-      } else {
-        widget.eventDetails.registeredUsers.add(MockUser().currentUser);
-      }
-    });
+    Provider.of<MockEvents>(context, listen: false)
+        .toggleUserRegistration(widget.eventDetails, MockUser().currentUser);
   }
 
   @override
@@ -243,24 +239,28 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         padding: const EdgeInsets.all(16),
-        child: ElevatedButton(
-          onPressed: toggleRegistration,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            elevation: 4,
-          ),
-          child: Text(
-            isUserRegistered() ? 'UNREGISTER' : 'REGISTER',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+        child: Consumer<MockEvents>(
+          builder: (context, mockEvents, child) {
+            return ElevatedButton(
+              onPressed: toggleRegistration,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                elevation: 4,
+              ),
+              child: Text(
+                isUserRegistered() ? 'UNREGISTER' : 'REGISTER',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          },
         ),
       ),
     );

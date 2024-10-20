@@ -5,9 +5,17 @@ import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/pages/landing_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'package:provider/provider.dart';
 void main() {
-  runApp(const MyApp());
+   runApp(
+    ChangeNotifierProvider(
+      create: (context) => MockEvents(),
+      child: const MyApp(),
+    ),
+  );
+  //runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

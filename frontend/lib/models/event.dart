@@ -31,4 +31,6 @@ class Event {
     required this.category,
     this.isHotelOrganized = false,
   });
+
+  DateTime? get dateTime => null;
 }
