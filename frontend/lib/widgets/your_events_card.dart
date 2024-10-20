@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/models/event.dart';
 
+import '../mock_data/mock_user.dart';
+
 class YourEventsCard extends StatelessWidget {
   const YourEventsCard({Key? key}) : super(key: key);
 
@@ -71,8 +73,7 @@ class YourEventsCard extends StatelessWidget {
             child: Row(
               children: [
                 ...MockEvents()
-                    .getMyEvents()
-                    .sublist(0, 3)
+                    .getMyEvents(MockUser().currentUser)
                     .asMap()
                     .entries
                     .map((entry) {
