@@ -59,9 +59,11 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
+          child: Wrap(
+            spacing: 8,
+            direction: Axis.vertical,
+            crossAxisAlignment: WrapCrossAlignment.start,
+            alignment: WrapAlignment.end,
             children: [
               Icon(
                 widget.event.isHotelOrganized
@@ -78,7 +80,6 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
               Transform.translate(
                 offset: const Offset(-4, 0),
                 child: SizedBox(
@@ -86,8 +87,16 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
                   child: Wrap(spacing: 8, children: [
                     _getRoundedText(context,
                         DateFormat('EEEE, MMM d').format(widget.event.date)),
-                    _getRoundedText(context, widget.event.localization),
+                  ]),
+                ),
+              ),
+              Transform.translate(
+                offset: const Offset(-4, 0),
+                child: SizedBox(
+                  height: 30,
+                  child: Wrap(spacing: 8, children: [
                     _getRoundedText(context, widget.event.hotel.name),
+                    _getRoundedText(context, widget.event.localization),
                   ]),
                 ),
               ),

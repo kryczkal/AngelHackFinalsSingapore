@@ -2,6 +2,7 @@ import 'package:frontend/models/event.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/lyf_hotels.dart';
 import 'package:frontend/models/user.dart';
+
 import '../models/event_categories.dart';
 
 class MockEvents {
@@ -115,7 +116,7 @@ class MockEvents {
       date: DateTime(2021, 10, 22),
       imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#4caf50',
-      localization: 'Lyf Funan, commonspace',
+      localization: 'commonspace',
       hotel: LyfHotels.Funan,
       description:
           'Hey everyone! Looking for a fun way to unwind and meet new friends? Join me at Lyf Funan Singapore Hotel for a refreshing yoga class! Whether you’re a seasoned yogi or just starting out, all levels are welcome!',
@@ -134,7 +135,7 @@ class MockEvents {
       date: DateTime(2021, 10, 24),
       imageUrl: 'images/events/cooking.jpeg',
       backgroundColor: '#42a5f5',
-      localization: 'Lyf Funan, kitchen',
+      localization: 'kitchen',
       description:
           'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
       organizer: User(
@@ -153,7 +154,7 @@ class MockEvents {
       date: DateTime(2021, 10, 24),
       imageUrl: 'images/events/cooking.jpeg',
       backgroundColor: '#42a5f5',
-      localization: 'Lyf Funan, kitchen',
+      localization: 'kitchen',
       description:
           'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
       organizer: User(
@@ -172,7 +173,7 @@ class MockEvents {
       date: DateTime(2021, 10, 24),
       imageUrl: 'images/events/cooking.jpeg',
       backgroundColor: '#42a5f5',
-      localization: 'Lyf Funan, kitchen',
+      localization: 'kitchen',
       description:
           'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
       organizer: User(
