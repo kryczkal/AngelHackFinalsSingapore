@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 
-import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/widgets/event_card.dart';
 
 class JoinedEventsPage extends StatelessWidget {
@@ -14,9 +14,9 @@ class JoinedEventsPage extends StatelessWidget {
         title: const Text('Your Events'),
       ),
       body: ListView.builder(
-        itemCount: MockEvents().getMyEvents(AppUserSingleton().currentUser).length,
+        itemCount: AppEventsSingleton().getMyEvents(AppUserSingleton().currentUser).length,
         itemBuilder: (context, index) {
-          final event = MockEvents().getMyEvents(AppUserSingleton().currentUser)[index];
+          final event = AppEventsSingleton().getMyEvents(AppUserSingleton().currentUser)[index];
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: EventCard(event: event),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:provider/provider.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+
 
 import 'package:frontend/models/event.dart';
 import 'package:frontend/widgets/event_card.dart';
@@ -11,9 +12,9 @@ class JoinedEventsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<MockEvents>(
-      builder: (context, mockEvents, child) {
-        final List<Event> myEvents = mockEvents.getMyEvents(AppUserSingleton().currentUser);
+    return Consumer<AppEventsSingleton>(
+      builder: (context, appEvents, child) {
+        final List<Event> myEvents = appEvents.getMyEvents(AppUserSingleton().currentUser);
         final Event? firstEvent = myEvents.isNotEmpty ? myEvents.first : null;
 
         return Container(

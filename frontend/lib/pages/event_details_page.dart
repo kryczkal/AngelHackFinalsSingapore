@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 
 import 'package:frontend/app_data/app_user.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+
 import 'package:frontend/pages/user_profile.dart';
 import 'package:intl/intl.dart';
 import 'package:frontend/models/event.dart';
@@ -242,8 +242,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         padding: const EdgeInsets.all(16),
-        child: Consumer<MockEvents>(
-          builder: (context, mockEvents, child) {
+        child: Consumer<AppEventsSingleton>(
+          builder: (context, appEvents, child) {
             return ElevatedButton(
               onPressed: toggleRegistration,
               style: ElevatedButton.styleFrom(
