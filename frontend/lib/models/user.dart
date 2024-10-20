@@ -8,7 +8,7 @@ class User {
   final int age;
   final String profilePic = 'assets/default_profile_pic.png';
   List<EventBadge> userBadges;
-  List<EventCategory> preferences = [];
+  Set<EventCategory> preferences = {};
 
   User({
     required this.firstName,

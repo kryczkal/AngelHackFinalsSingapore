@@ -1,3 +1,4 @@
+import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/user.dart';
 
 class MockUser {
@@ -5,7 +6,7 @@ class MockUser {
   factory MockUser() => _instance;
   MockUser._internal();
 
-  User currentUser = User(firstName: 'Łukasz', lastName: 'Kryczka', age: 20, userBadges: []);
+  User currentUser = User(firstName: 'Łukasz', lastName: 'Kryczka', age: 20, userBadges: [EventBadge(name: 'Lukasz badge')]);
   String currentLocation = 'Singapore';
   String profileImagePath = 'images/profile/profile.jpg';
 }

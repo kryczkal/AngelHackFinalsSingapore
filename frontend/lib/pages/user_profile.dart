@@ -1,7 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/mock_data/mock_user.dart';
+import 'package:frontend/models/event_categories.dart';
 import 'package:frontend/models/user.dart';
 import 'package:frontend/pages/event_details_page.dart';
+import 'package:frontend/widgets/categories_wrap_widget.dart';
 import 'package:frontend/widgets/filters_widget.dart';
 
 class UserProfile extends StatefulWidget {
@@ -98,7 +101,7 @@ class _UserProfileState extends State<UserProfile> {
                 spacing: 8,
                 runSpacing: 8,
                 children: widget.user.userBadges
-                    .map((badge) => _buildTab(text: badge.name, isSelected: true, isMainUser: widget.user == MockUser().currentUser))
+                    .map((badge) => _buildTab(badge.name, isSelected: true))
                     .toList(),
               ),
 
@@ -111,14 +114,7 @@ class _UserProfileState extends State<UserProfile> {
                 ),
               ),
               const SizedBox(height: 8),
-
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: widget.user.preferences
-                    .map((category) => _buildTab(text: formatCategoryName(category), isSelected: true, isMainUser: widget.user == MockUser().currentUser))
-                    .toList(),
-              ),
+              CategoriesWrapWidget(user: widget.user),
               const SizedBox(height: 20),
             ],
           ),
@@ -126,18 +122,11 @@ class _UserProfileState extends State<UserProfile> {
       ),
     );
   }
+  
+}
 
-  // Helper method to build each tab
-  Widget _buildTab({required String text, required bool isSelected, required bool isMainUser}) {
-  return GestureDetector(
-    onTap: () {
-      if (isMainUser) {
-        setState(() {
-          isSelected = !isSelected; 
-        });
-      }
-    },
-    child: Container(
+Widget _buildTab(String text, {required bool isSelected}) {
+    return Container(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
       decoration: BoxDecoration(
         color: isSelected ? Colors.black : Colors.white,
@@ -153,7 +142,8 @@ class _UserProfileState extends State<UserProfile> {
           fontSize: 14.0,
         ),
       ),
-    ),
-  );
-}
-}
+    );
+  }
+
+
+
