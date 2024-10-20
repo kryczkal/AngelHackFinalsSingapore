@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/models/event_categories.dart';
-import 'package:frontend/widgets/event_card.dart';
+import 'package:frontend/widgets/events_vertical_list_widget.dart';
 import 'package:frontend/widgets/search_bar_widget.dart';
 
 class ShowEventsWidget extends StatefulWidget {
@@ -66,17 +66,7 @@ class _ShowEventsWidgetState extends State<ShowEventsWidget> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: _filteredEvents.length,
-              itemBuilder: (context, index) {
-                return SizedBox(
-                  height: 250,
-                  child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 8),
-                      child: EventCard(event: _filteredEvents[index])),
-                );
-              },
-            ),
+            child: EventsVerticalListWidget(events: _filteredEvents),
           ),
         ],
       ),

@@ -5,12 +5,12 @@ import 'package:frontend/models/user.dart';
 
 import '../models/event_categories.dart';
 
-class MockEvents {
-  static final MockEvents _instance = MockEvents._internal();
+class AppEventsSingleton {
+  static final AppEventsSingleton _instance = AppEventsSingleton._internal();
 
-  factory MockEvents() => _instance;
+  factory AppEventsSingleton() => _instance;
 
-  MockEvents._internal();
+  AppEventsSingleton._internal();
 
   List<Event> events = [
     Event(

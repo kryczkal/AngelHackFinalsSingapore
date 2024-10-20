@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_user.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/pages/user_profile.dart';
-import 'package:frontend/profile/profile.dart';
 
 class ProfileHeader extends StatelessWidget {
   final bool hasNotification;
@@ -19,7 +18,7 @@ class ProfileHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Hi, ${MockUser().currentUser.firstName}',
+              'Hi, ${AppUserSingleton().currentUser.firstName}',
               style: const TextStyle(
                 fontSize: 32.0,
                 fontWeight: FontWeight.bold,
@@ -29,7 +28,7 @@ class ProfileHeader extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  MockUser().currentLocation,
+                  AppUserSingleton().currentLocation,
                   style: TextStyle(
                     fontSize: 17.5,
                     color: Colors.grey[600],
@@ -44,12 +43,14 @@ class ProfileHeader extends StatelessWidget {
             IconButton(
               icon: CircleAvatar(
                 radius: 20.0,
-                backgroundImage: AssetImage(MockUser().profileImagePath),
+                backgroundImage:
+                    AssetImage(AppUserSingleton().profileImagePath),
               ),
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => UserProfile(user: MockUser().currentUser),
+                    builder: (context) =>
+                        UserProfile(user: AppUserSingleton().currentUser),
                   ),
                 );
               },

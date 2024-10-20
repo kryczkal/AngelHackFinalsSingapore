@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/app_data/app_events.dart';
 
 class UpcomingEventsCard extends StatelessWidget {
   const UpcomingEventsCard({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class UpcomingEventsCard extends StatelessWidget {
                 radius: 24,
                 backgroundColor: Colors.white,
                 child: Text(
-                  '${MockEvents().myEvents.length}+',
+                  '${AppEventsSingleton().myEvents.length}+',
                   style: TextStyle(
                     color: Colors.green[400],
                     fontSize: 19,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_user.dart';
-import 'package:frontend/mock_data/mock_events.dart';
-import 'package:frontend/pages/user_profile.dart';
-import 'package:intl/intl.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event.dart';
+import 'package:frontend/pages/user_profile.dart';
 import 'package:intl/intl.dart';
 
 class EventDetailsPage extends StatefulWidget {
@@ -17,15 +15,17 @@ class EventDetailsPage extends StatefulWidget {
 
 class _EventDetailsPageState extends State<EventDetailsPage> {
   bool isUserRegistered() {
-    return widget.eventDetails.registeredUsers.contains(MockUser().currentUser);
+    return widget.eventDetails.registeredUsers
+        .contains(AppUserSingleton().currentUser);
   }
 
   void toggleRegistration() {
     setState(() {
       if (isUserRegistered()) {
-        widget.eventDetails.registeredUsers.remove(MockUser().currentUser);
+        widget.eventDetails.registeredUsers
+            .remove(AppUserSingleton().currentUser);
       } else {
-        widget.eventDetails.registeredUsers.add(MockUser().currentUser);
+        widget.eventDetails.registeredUsers.add(AppUserSingleton().currentUser);
       }
     });
   }
@@ -52,7 +52,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
 
                 // Event Details Container
                 Transform.translate(
-                  offset: Offset(0, -40), // Move up by 40 pixels
+                  offset: const Offset(0, -40),
                   child: Container(
                     decoration: const BoxDecoration(
                       color: Colors.white, // Light pink background color

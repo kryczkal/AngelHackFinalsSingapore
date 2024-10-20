@@ -1,6 +1,6 @@
 // First, create a new StatefulWidget
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_user.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_categories.dart';
 import 'package:frontend/models/user.dart';
 
@@ -22,19 +22,17 @@ class _CategoriesWrapWidgetState extends State<CategoriesWrapWidget> {
             category: category, isSelected: true, user: widget.user))
         .toList();
 
-    if (widget.user != MockUser().currentUser && categories.isEmpty)
-    {
+    if (widget.user != AppUserSingleton().currentUser && categories.isEmpty) {
       categories.add(const Text('None'));
     }
 
-    if (widget.user != MockUser().currentUser) {
+    if (widget.user != AppUserSingleton().currentUser) {
       return categories;
     }
 
-    if (!showAddButton)
-    {
+    if (!showAddButton) {
       for (EventCategory category in EventCategory.values) {
-        if (!MockUser().currentUser.preferences.contains(category)) {
+        if (!AppUserSingleton().currentUser.preferences.contains(category)) {
           categories.add(_buildPreferenceTab(
               category: category, isSelected: false, user: widget.user));
         }
@@ -105,7 +103,7 @@ class _CategoriesWrapWidgetState extends State<CategoriesWrapWidget> {
       required User user}) {
     return StatefulBuilder(builder: (context, setState) {
       return GestureDetector(
-        onTap: user == MockUser().currentUser
+        onTap: user == AppUserSingleton().currentUser
             ? () {
                 setState(() {
                   isSelected = !isSelected;

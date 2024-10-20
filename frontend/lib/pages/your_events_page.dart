@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_user.dart';
-import 'package:frontend/models/event.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/app_data/app_events.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/widgets/event_card.dart';
 
 class YourEventsPage extends StatelessWidget {
@@ -14,13 +13,17 @@ class YourEventsPage extends StatelessWidget {
         title: const Text('Your Events'),
       ),
       body: ListView.builder(
-        itemCount: MockEvents().getMyEvents(MockUser().currentUser).length,
+        itemCount: AppEventsSingleton()
+            .getMyEvents(AppUserSingleton().currentUser)
+            .length,
         itemBuilder: (context, index) {
-          final event = MockEvents().getMyEvents(MockUser().currentUser)[index];
+          final event = AppEventsSingleton()
+              .getMyEvents(AppUserSingleton().currentUser)[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: EventCard(event: event),
-        );
+          );
         },
       ),
     );

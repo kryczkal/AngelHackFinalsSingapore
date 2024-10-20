@@ -1,12 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_user.dart';
-import 'package:frontend/models/event_categories.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/user.dart';
-import 'package:frontend/pages/event_details_page.dart';
 import 'package:frontend/profile/profile.dart';
 import 'package:frontend/widgets/categories_wrap_widget.dart';
-import 'package:frontend/widgets/filters_widget.dart';
 
 class UserProfile extends StatefulWidget {
   final User user;
@@ -18,17 +14,16 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  List<Widget> getBadges()
-  {
+  List<Widget> getBadges() {
     List<Widget> badgesBlocks = widget.user.userBadges
-                    .map((badge) => _buildTab(badge.name, isSelected: true))
-                    .toList();
-    if (badgesBlocks.isEmpty)
-    {
+        .map((badge) => _buildTab(badge.name, isSelected: true))
+        .toList();
+    if (badgesBlocks.isEmpty) {
       badgesBlocks.add(const Text('None'));
     }
     return badgesBlocks;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,17 +38,17 @@ class _UserProfileState extends State<UserProfile> {
           },
         ),
         actions: [
-          if (widget.user == MockUser().currentUser ) 
-          IconButton(
-            icon: const Icon(Icons.settings, color: Colors.black),
-            onPressed: () {
-              Navigator.of(context).push(
+          if (widget.user == AppUserSingleton().currentUser)
+            IconButton(
+              icon: const Icon(Icons.settings, color: Colors.black),
+              onPressed: () {
+                Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const ProfileWidget(),
                   ),
                 );
-            },
-          ),
+              },
+            ),
         ],
       ),
       body: Padding(
@@ -89,7 +84,7 @@ class _UserProfileState extends State<UserProfile> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    '${widget.user.firstName} ${widget.user.lastName}, ${widget.user.age}', 
+                    '${widget.user.firstName} ${widget.user.lastName}, ${widget.user.age}',
                     style: const TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
@@ -139,28 +134,24 @@ class _UserProfileState extends State<UserProfile> {
       ),
     );
   }
-  
 }
 
 Widget _buildTab(String text, {required bool isSelected}) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-      decoration: BoxDecoration(
-        color: isSelected ? Colors.black : Colors.white,
-        borderRadius: BorderRadius.circular(30.0),
-        border: Border.all(
-          color: isSelected ? Colors.black : Colors.grey,
-        ),
+  return Container(
+    padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+    decoration: BoxDecoration(
+      color: isSelected ? Colors.black : Colors.white,
+      borderRadius: BorderRadius.circular(30.0),
+      border: Border.all(
+        color: isSelected ? Colors.black : Colors.grey,
       ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: isSelected ? Colors.white : Colors.black,
-          fontSize: 14.0,
-        ),
+    ),
+    child: Text(
+      text,
+      style: TextStyle(
+        color: isSelected ? Colors.white : Colors.black,
+        fontSize: 14.0,
       ),
-    );
-  }
-
-
-
+    ),
+  );
+}

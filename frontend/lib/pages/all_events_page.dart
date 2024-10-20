@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_events.dart';
 import 'package:frontend/widgets/show_events_widget.dart';
+
+import '../app_data/app_events.dart';
 
 class AllEventsPage extends StatefulWidget {
   const AllEventsPage({Key? key}) : super(key: key);
@@ -41,14 +42,13 @@ class _AllEventsPageState extends State<AllEventsPage>
       setState(() {
         _showHint = true;
       });
-      Future.delayed(const Duration(seconds: 5), () {
-        if (mounted) {
-          setState(() {
-            _showHint = false;
-          });
-        }
-      });
     }
+  }
+
+  void _hideHint() {
+    setState(() {
+      _showHint = false;
+    });
   }
 
   @override
@@ -62,51 +62,56 @@ class _AllEventsPageState extends State<AllEventsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          PageView(
-            controller: _pageController,
-            children: [
-              ShowEventsWidget(eventsLoader: () => MockEvents().getEvents()),
-              ShowEventsWidget(
-                  eventsLoader: () => MockEvents().getHotelEvents()),
-            ],
-          ),
-          if (_showHint)
-            Center(
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'Swipe left for',
-                      style: TextStyle(color: Colors.white, fontSize: 32),
-                    ),
-                    const SizedBox(height: 12),
-                    const Text(
-                      'hotel events',
-                      style: TextStyle(color: Colors.white, fontSize: 32),
-                    ),
-                    const SizedBox(height: 12),
-                    SlideTransition(
-                      position: _slideAnimation,
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 64,
+      body: GestureDetector(
+        onTap: _hideHint,
+        child: Stack(
+          children: [
+            PageView(
+              controller: _pageController,
+              onPageChanged: (_) => _hideHint(),
+              children: [
+                ShowEventsWidget(
+                    eventsLoader: () => AppEventsSingleton().getEvents()),
+                ShowEventsWidget(
+                    eventsLoader: () => AppEventsSingleton().getHotelEvents()),
+              ],
+            ),
+            if (_showHint)
+              Center(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.7),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(
+                        'Swipe left for',
+                        style: TextStyle(color: Colors.white, fontSize: 32),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 12),
+                      const Text(
+                        'hotel events',
+                        style: TextStyle(color: Colors.white, fontSize: 32),
+                      ),
+                      const SizedBox(height: 12),
+                      SlideTransition(
+                        position: _slideAnimation,
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                          size: 64,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }

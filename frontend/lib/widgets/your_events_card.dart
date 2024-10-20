@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/app_data/app_events.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event.dart';
-import 'package:frontend/mock_data/mock_user.dart';
-import 'package:frontend/pages/your_events_page.dart';
 
 class YourEventsCard extends StatelessWidget {
   const YourEventsCard({super.key});
@@ -14,10 +13,7 @@ class YourEventsCard extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const YourEventsPage()),
-              );
+              // TODO: Navigate to YourEventsPage
             },
             child: Align(
               alignment: Alignment.centerLeft,
@@ -80,8 +76,8 @@ class YourEventsCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                ...MockEvents()
-                    .getMyEvents(MockUser().currentUser)
+                ...AppEventsSingleton()
+                    .getMyEvents(AppUserSingleton().currentUser)
                     .asMap()
                     .entries
                     .map((entry) {

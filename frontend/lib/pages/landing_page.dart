@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_events.dart';
+import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/pages/upcoming_events_page.dart';
 import 'package:frontend/pages/your_events_page.dart';
 import 'package:frontend/widgets/event_card.dart';
+import 'package:frontend/widgets/events_header.dart';
+import 'package:frontend/widgets/ignore_padding_widget.dart';
 import 'package:frontend/widgets/profile_header.dart';
 import 'package:frontend/widgets/upcoming_events_card.dart';
 import 'package:frontend/widgets/your_events_card.dart';
-import 'package:frontend/widgets/events_header.dart';
-import 'package:frontend/widgets/ignore_padding_widget.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -67,9 +67,10 @@ class LandingPage extends StatelessWidget {
                       height: 250,
                       child: PageView.builder(
                         controller: PageController(viewportFraction: 0.80),
-                        itemCount: MockEvents().events.length,
+                        itemCount: AppEventsSingleton().events.length,
                         itemBuilder: (context, index) {
-                          return _buildEventCard(MockEvents().events[index]);
+                          return _buildEventCard(
+                              AppEventsSingleton().events[index]);
                         },
                       ),
                     ),
@@ -82,9 +83,10 @@ class LandingPage extends StatelessWidget {
                       height: 250,
                       child: PageView.builder(
                         controller: PageController(viewportFraction: 0.80),
-                        itemCount: MockEvents().events.length,
+                        itemCount: AppEventsSingleton().events.length,
                         itemBuilder: (context, index) {
-                          return _buildEventCard(MockEvents().events[index]);
+                          return _buildEventCard(
+                              AppEventsSingleton().events[index]);
                         },
                       ),
                     ),

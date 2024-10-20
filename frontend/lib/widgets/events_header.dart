@@ -18,11 +18,25 @@ class EventsHeader extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        GestureDetector(
+        InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const AllEventsPage()),
+            Navigator.of(context).push(
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    const AllEventsPage(),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  const begin = Offset(1.0, 0.0);
+                  const end = Offset.zero;
+                  const curve = Curves.easeInOut;
+                  var tween = Tween(begin: begin, end: end)
+                      .chain(CurveTween(curve: curve));
+                  var offsetAnimation = animation.drive(tween);
+                  return SlideTransition(
+                      position: offsetAnimation, child: child);
+                },
+                transitionDuration: const Duration(milliseconds: 1000),
+              ),
             );
           },
           child: RotatedBox(

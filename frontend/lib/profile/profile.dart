@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/mock_data/mock_user.dart';
 import 'package:frontend/profile/edit_profile.dart';
 import 'package:frontend/profile/update_preferences.dart';
 
@@ -34,11 +33,9 @@ class ProfileWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Greeting Section
-                
 
                 // const SizedBox(height: 24),
                 // // Thank You Container
-              
 
                 const SizedBox(height: 12),
                 // Profile Options
@@ -127,13 +124,16 @@ class ProfileWidget extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0), // Padding before the divider
+          padding: const EdgeInsets.symmetric(
+              vertical: 4.0), // Padding before the divider
           child: ListTile(
             leading: CircleAvatar(
               backgroundColor: Theme.of(context).colorScheme.primary,
               child: Icon(
                 icon,
-                color: Theme.of(context).colorScheme.onPrimary, // Changed to onPrimary for better contrast
+                color: Theme.of(context)
+                    .colorScheme
+                    .onPrimary, // Changed to onPrimary for better contrast
                 size: 20,
               ),
             ),
@@ -145,7 +145,8 @@ class ProfileWidget extends StatelessWidget {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 4.0), // Padding after the divider
+          padding:
+              EdgeInsets.symmetric(vertical: 4.0), // Padding after the divider
           child: Divider(
             thickness: 1,
             height: 1,
