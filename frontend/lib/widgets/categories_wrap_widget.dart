@@ -22,6 +22,11 @@ class _CategoriesWrapWidgetState extends State<CategoriesWrapWidget> {
             category: category, isSelected: true, user: widget.user))
         .toList();
 
+    if (widget.user != MockUser().currentUser && categories.isEmpty)
+    {
+      categories.add(const Text('None'));
+    }
+
     if (widget.user != MockUser().currentUser) {
       return categories;
     }

@@ -17,6 +17,17 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  List<Widget> getBadges()
+  {
+    List<Widget> badgesBlocks = widget.user.userBadges
+                    .map((badge) => _buildTab(badge.name, isSelected: true))
+                    .toList();
+    if (badgesBlocks.isEmpty)
+    {
+      badgesBlocks.add(Text('None'));
+    }
+    return badgesBlocks;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,9 +111,7 @@ class _UserProfileState extends State<UserProfile> {
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: widget.user.userBadges
-                    .map((badge) => _buildTab(badge.name, isSelected: true))
-                    .toList(),
+                children: getBadges(),
               ),
 
               const SizedBox(height: 30),
