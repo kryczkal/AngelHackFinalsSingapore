@@ -69,9 +69,10 @@ class _UserProfileState extends State<UserProfile> {
                       shape: BoxShape.circle,
                     ),
                   ),
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 50.0,
-                    backgroundImage: AssetImage('assets/profile_picture.png'),
+                    backgroundImage:
+                        AssetImage(AppUserSingleton().profileImagePath),
                   ),
                 ],
               ),

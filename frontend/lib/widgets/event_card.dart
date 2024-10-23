@@ -17,19 +17,17 @@ class EventCard extends StatefulWidget {
 class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
   @override
   Widget _getRoundedText(BuildContext context, String text) {
-    return Flexible(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.black),
-          overflow: TextOverflow.ellipsis,
-          maxLines: 1,
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Text(
+        text,
+        style: const TextStyle(color: Colors.black),
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
       ),
     );
   }

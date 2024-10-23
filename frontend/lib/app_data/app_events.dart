@@ -55,7 +55,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Movie Night Under the Stars',
       date: DateTime(2021, 10, 25),
-      imageUrl: 'assets/movie_night.jpg',
+      imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#7e57c2',
       localization: 'rooftop',
       hotel: LyfHotels.Funan,
@@ -74,7 +74,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Art & Craft Workshop',
       date: DateTime(2021, 10, 26),
-      imageUrl: 'assets/art_craft.jpg',
+      imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#ef5350',
       localization: 'craft room',
       hotel: LyfHotels.Funan,
@@ -93,7 +93,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Social Run at the Park',
       date: DateTime(2021, 10, 27),
-      imageUrl: 'assets/social_run.jpg',
+      imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#26c6da',
       localization: 'Nearby park',
       hotel: LyfHotels.Funan,

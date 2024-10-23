@@ -48,22 +48,24 @@ class UserPage extends StatelessWidget {
                             );
                           },
                           child: SizedBox(
-                            height: 176, // Set your desired height here
+                            height: 176,
                             child: const JoinedEventsCard(),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 64), // Separator
+                      const SizedBox(width: 32), // Separator
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const CreateEventScreen()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CreateEventScreen()),
                             );
                           },
                           child: SizedBox(
-                            height: 176, // Set your desired height here
+                            height: 176,
                             child: const YourEventsCard(),
                           ),
                         ),
