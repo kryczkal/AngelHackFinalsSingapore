@@ -38,8 +38,8 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Colors.deepPurple.shade400,
-            Colors.deepPurple.shade800,
+            Colors.green.shade400,
+            Colors.green.shade800,
           ],
         ),
         borderRadius: BorderRadius.circular(16),
@@ -47,6 +47,15 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const Text(
+            'Manager Dashboard',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -97,7 +106,6 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Total Events Column
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -119,7 +127,6 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                   ),
                 ],
               ),
-              // CPV Column
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -141,18 +148,18 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                   ),
                 ],
               ),
-              // Overall Score Column
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'Overall Score',
+                    'Score: ${currentData.averageScore.toStringAsFixed(1)}',
                     style: TextStyle(
                       color: Colors.white.withOpacity(0.8),
                       fontSize: 14,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 10),
                   Row(
                     children: List.generate(5, (index) {
                       final starValue = index + 1;
@@ -172,6 +179,7 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                       );
                     }),
                   ),
+                  const SizedBox(height: 8),
                 ],
               ),
             ],

@@ -44,7 +44,7 @@ class AppManagerSingleton {
     ReportTimeline.week: ReportData(
       cpv: 0.5,
       totalEvents: 12,
-      averageScore: 4.5,
+      averageScore: 3.1,
       cardData: _cardData,
     ),
     ReportTimeline.month: ReportData(
@@ -56,7 +56,7 @@ class AppManagerSingleton {
     ReportTimeline.sixMonths: ReportData(
       cpv: 0.7,
       totalEvents: 120,
-      averageScore: 4.8,
+      averageScore: 1.2,
       cardData: _cardData,
     ),
   };
