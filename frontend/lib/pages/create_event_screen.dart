@@ -75,18 +75,20 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     });
   }
 
-  void _selectLocation(String location) {
+  Future<void> _selectLocation(String location) async {
     setState(() {
       _selectedLocation = location;
+      
       _locationController.text = location;
       _showLocationSuggestions = false;
       _locationFocusNode.unfocus();
     });
     
+    print(location);
     // Update the text selection to the end
-    _locationController.selection = TextSelection.fromPosition(
-      TextPosition(offset: _locationController.text.length),
-    );
+    // _locationController.selection = TextSelection.fromPosition(
+    //   TextPosition(offset: _locationController.text.length),
+    // );
   }
 
   Future<void> _selectDate(BuildContext context) async {
@@ -308,6 +310,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                   ),
                 ),
                 const SizedBox(height: 8.0),
+
                 Column(
                   children: [
                     TextFormField(
@@ -319,7 +322,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                         ),
                         filled: true,
                         fillColor: Colors.white,
-                        hintText: 'Select or type location',
+                        // hintText: 'Select or type location',
                         suffixIcon: Icon(
                           Icons.location_on,
                           color: Colors.grey[600],
