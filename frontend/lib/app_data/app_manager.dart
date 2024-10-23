@@ -12,7 +12,7 @@ class AppManagerSingleton {
 
   AppManagerSingleton._internal();
 
-  static final List<DashboardCardData> _cardData = [
+  static final List<DashboardCardData> _cardDataWeek = [
     DashboardCardData(
       title: 'Total Students',
       mainValue: '12.543',
@@ -40,24 +40,80 @@ class AppManagerSingleton {
     ),
   ];
 
+  static final List<DashboardCardData> _cardDataMon = [
+    DashboardCardData(
+      title: 'Total Students',
+      mainValue: '25.345',
+      subtitle: '60% Increase than last month',
+      graphFactory: () => const SimpleBarChart(
+          color: Colors.green, pattern: BarChartPattern.increasing),
+    ),
+    DashboardCardData(
+      title: 'Total Income',
+      mainValue: '\$30.789',
+      subtitle: '70% Increase than last month',
+      graphFactory: () => const SimpleBarChart(
+          color: Colors.green, pattern: BarChartPattern.random),
+    ),
+    DashboardCardData(
+      title: 'Total Working Hours',
+      mainValue: '120h 15m',
+      subtitle: '50% Increase than last month',
+      graphFactory: () => const LineChartWidget(
+        color: Colors.green,
+        pattern: LineChartPattern.volatile,
+        height: 80,
+        width: 100,
+      ),
+    ),
+  ];
+
+  static final List<DashboardCardData> _cardDataHalfYear = [
+    DashboardCardData(
+      title: 'Total Students',
+      mainValue: '150.234',
+      subtitle: '30% Increase in 6 Months',
+      graphFactory: () => const SimpleBarChart(
+          color: Colors.green, pattern: BarChartPattern.random),
+    ),
+    DashboardCardData(
+      title: 'Total Income',
+      mainValue: '\$120.654',
+      subtitle: '40% Increase in 6 Months',
+      graphFactory: () => const SimpleBarChart(
+          color: Colors.green, pattern: BarChartPattern.normal),
+    ),
+    DashboardCardData(
+      title: 'Total Working Hours',
+      mainValue: '650h 20m',
+      subtitle: '35% Increase in 6 Months',
+      graphFactory: () => const LineChartWidget(
+        color: Colors.green,
+        pattern: LineChartPattern.downward,
+        height: 80,
+        width: 100,
+      ),
+    ),
+  ];
+
   static final Map<ReportTimeline, ReportData> _reportData = {
     ReportTimeline.week: ReportData(
       cpv: 0.5,
       totalEvents: 12,
       averageScore: 3.1,
-      cardData: _cardData,
+      cardData: _cardDataWeek,
     ),
     ReportTimeline.month: ReportData(
       cpv: 0.6,
       totalEvents: 42,
       averageScore: 4.7,
-      cardData: _cardData,
+      cardData: _cardDataMon,
     ),
     ReportTimeline.sixMonths: ReportData(
       cpv: 0.7,
       totalEvents: 120,
       averageScore: 1.2,
-      cardData: _cardData,
+      cardData: _cardDataHalfYear,
     ),
   };
 
