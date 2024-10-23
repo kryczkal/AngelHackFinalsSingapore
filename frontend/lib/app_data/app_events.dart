@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/event.dart';
 import 'package:frontend/models/event_badge.dart';
-import 'package:frontend/models/lyf_hotels.dart';
-import 'package:frontend/models/user.dart';
+import 'package:frontend/models/event_data.dart';
+import 'package:frontend/models/lyf_hotels_enum.dart';
+import 'package:frontend/models/user_data.dart';
 
-import '../models/event_categories.dart';
+import '../models/event_categories_enum.dart';
 
 class AppEventsSingleton extends ChangeNotifier {
   static final AppEventsSingleton _instance = AppEventsSingleton._internal();

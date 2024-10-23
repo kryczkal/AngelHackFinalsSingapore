@@ -1,8 +1,8 @@
 // First, create a new StatefulWidget
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
-import 'package:frontend/models/event_categories.dart';
-import 'package:frontend/models/user.dart';
+import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/user_data.dart';
 
 class CategoriesWrapWidget extends StatefulWidget {
   final User user;

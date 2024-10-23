@@ -1,4 +1,4 @@
-import 'package:frontend/models/user.dart';
+import 'package:frontend/models/user_data.dart';
 
 class AppUserSingleton {
   static final AppUserSingleton _instance = AppUserSingleton._internal();

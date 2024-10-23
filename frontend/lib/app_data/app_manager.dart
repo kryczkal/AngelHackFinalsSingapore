@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/dashboard_card_data.dart';
+import 'package:frontend/models/report_data.dart';
+import 'package:frontend/models/report_timeline_enum.dart';
 import 'package:frontend/widgets/bar_chart_widget.dart';
 import 'package:frontend/widgets/line_chart_widget.dart';
 
@@ -38,7 +40,28 @@ class AppManagerSingleton {
     ),
   ];
 
-  List<DashboardCardData> get cardData {
-    return _cardData;
+  static final Map<ReportTimeline, ReportData> _reportData = {
+    ReportTimeline.week: ReportData(
+      cpv: 0.5,
+      totalEvents: 12,
+      averageScore: 4.5,
+      cardData: _cardData,
+    ),
+    ReportTimeline.month: ReportData(
+      cpv: 0.6,
+      totalEvents: 42,
+      averageScore: 4.7,
+      cardData: _cardData,
+    ),
+    ReportTimeline.sixMonths: ReportData(
+      cpv: 0.7,
+      totalEvents: 120,
+      averageScore: 4.8,
+      cardData: _cardData,
+    ),
+  };
+
+  Map<ReportTimeline, ReportData> get reportData {
+    return _reportData;
   }
 }

@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_manager.dart';
+import 'package:frontend/models/report_data.dart';
+import 'package:frontend/models/report_timeline_enum.dart';
 import 'package:frontend/widgets/dashboard_card_widget.dart';
 import 'package:frontend/widgets/manager_header_widget.dart';
 import 'package:frontend/widgets/profile_header.dart';
 
-class ManagerDashboardPage extends StatelessWidget {
+class ManagerDashboardPage extends StatefulWidget {
   const ManagerDashboardPage({super.key});
+
+  @override
+  State<ManagerDashboardPage> createState() => _ManagerDashboardPageState();
+}
+
+class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
+  final Map<ReportTimeline, ReportData> _reportData =
+      AppManagerSingleton().reportData;
+  ReportTimeline _selectedTimeline = ReportTimeline.week;
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +30,19 @@ class ManagerDashboardPage extends StatelessWidget {
               const SizedBox(height: 21),
               const ProfileHeader(hasNotification: true),
               const SizedBox(height: 16),
-              const ManagerHeaderWidget(),
+              ManagerHeaderWidget(
+                  reportData: _reportData,
+                  onTimelineChanged: (timeline) {
+                    setState(() {
+                      _selectedTimeline = timeline;
+                    });
+                  },
+                  startingTimeline: ReportTimeline.week),
               const SizedBox(height: 16),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    children: AppManagerSingleton()
+                    children: _reportData[_selectedTimeline]!
                         .cardData
                         .map((data) => Container(
                             margin: const EdgeInsets.only(bottom: 16),

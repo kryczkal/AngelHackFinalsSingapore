@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
-import 'package:frontend/models/event.dart';
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/joined_events_page.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/events_header.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
-import 'package:frontend/models/user.dart';
+import 'package:frontend/models/user_data.dart';
 import 'package:frontend/profile/profile.dart';
 import 'package:frontend/widgets/categories_wrap_widget.dart';
 

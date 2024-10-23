@@ -1,29 +1,17 @@
 import 'package:flutter/material.dart';
-
-enum ReportTimeline {
-  week(label: '1 week', period: '7d'),
-  month(label: '1 month', period: '30d'),
-  sixMonths(label: '6 months', period: '180d');
-
-  final String label;
-  final String period;
-
-  const ReportTimeline({
-    required this.label,
-    required this.period,
-  });
-}
+import 'package:frontend/models/report_data.dart';
+import 'package:frontend/models/report_timeline_enum.dart';
 
 class ManagerHeaderWidget extends StatefulWidget {
-  final double rating;
-  final int totalEvents;
-  final double cpv;
+  final Map<ReportTimeline, ReportData> reportData;
+  final void Function(ReportTimeline) onTimelineChanged;
+  final ReportTimeline startingTimeline;
 
   const ManagerHeaderWidget({
     super.key,
-    this.rating = 5.0,
-    this.totalEvents = 0,
-    this.cpv = 0.0,
+    required this.reportData,
+    required this.onTimelineChanged,
+    required this.startingTimeline,
   });
 
   @override
@@ -31,10 +19,18 @@ class ManagerHeaderWidget extends StatefulWidget {
 }
 
 class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
-  ReportTimeline _selectedTimeline = ReportTimeline.week;
+  late ReportTimeline _selectedTimeline;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedTimeline = widget.startingTimeline;
+  }
 
   @override
   Widget build(BuildContext context) {
+    final currentData = widget.reportData[_selectedTimeline]!;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -92,6 +88,7 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
               onChanged: (value) {
                 setState(() {
                   _selectedTimeline = ReportTimeline.values[value.toInt()];
+                  widget.onTimelineChanged(_selectedTimeline);
                 });
               },
             ),
@@ -113,7 +110,7 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    widget.totalEvents.toString(),
+                    currentData.totalEvents.toString(),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -135,7 +132,7 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    widget.cpv.toStringAsFixed(2),
+                    currentData.cpv.toStringAsFixed(2),
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
@@ -159,9 +156,9 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                   Row(
                     children: List.generate(5, (index) {
                       final starValue = index + 1;
-                      final isPartial =
-                          widget.rating > index && widget.rating < starValue;
-                      final isFilled = widget.rating >= starValue;
+                      final isPartial = currentData.averageScore > index &&
+                          currentData.averageScore < starValue;
+                      final isFilled = currentData.averageScore >= starValue;
 
                       return Icon(
                         Icons.star,
@@ -169,7 +166,8 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
                         color: isFilled
                             ? Colors.amber
                             : isPartial
-                                ? Colors.amber.withOpacity(widget.rating % 1)
+                                ? Colors.amber
+                                    .withOpacity(currentData.averageScore % 1)
                                 : Colors.white24,
                       );
                     }),

@@ -1,5 +1,5 @@
 import 'package:frontend/models/event_badge.dart';
-import 'package:frontend/models/event_categories.dart';
+import 'package:frontend/models/event_categories_enum.dart';
 
 class User {
   final String firstName;

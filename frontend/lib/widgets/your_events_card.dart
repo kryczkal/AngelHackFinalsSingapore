@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
-import 'package:frontend/models/event.dart';
-
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/joined_events_page.dart';
 
 class YourEventsCard extends StatelessWidget {
@@ -17,7 +16,8 @@ class YourEventsCard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
+                MaterialPageRoute(
+                    builder: (context) => const JoinedEventsPage()),
               );
             },
             child: Align(

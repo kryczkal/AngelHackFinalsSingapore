@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
-import 'package:provider/provider.dart';
-
-
-import 'package:frontend/models/event.dart';
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/event_card.dart';
+import 'package:provider/provider.dart';
 
 class JoinedEventsCard extends StatelessWidget {
   const JoinedEventsCard({Key? key}) : super(key: key);
@@ -14,7 +12,8 @@ class JoinedEventsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<AppEventsSingleton>(
       builder: (context, appEvents, child) {
-        final List<Event> myEvents = appEvents.getMyEvents(AppUserSingleton().currentUser);
+        final List<Event> myEvents =
+            appEvents.getMyEvents(AppUserSingleton().currentUser);
         final Event? firstEvent = myEvents.isNotEmpty ? myEvents.first : null;
 
         return Container(
@@ -30,7 +29,9 @@ class JoinedEventsCard extends StatelessWidget {
               ),
             ],
           ),
-          child: firstEvent != null ? _buildJoinedEventContent(firstEvent, myEvents.length) : _buildNoEventsContent(),
+          child: firstEvent != null
+              ? _buildJoinedEventContent(firstEvent, myEvents.length)
+              : _buildNoEventsContent(),
         );
       },
     );
@@ -57,11 +58,12 @@ class JoinedEventsCard extends StatelessWidget {
                 ),
               ],
             ),
-         
           ],
         ),
         const SizedBox(height: 8),
-        EventCard(event: event, less: true), // Using EventCard as in the original code
+        EventCard(
+            event: event,
+            less: true), // Using EventCard as in the original code
       ],
     );
   }

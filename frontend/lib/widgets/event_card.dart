@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/event.dart';
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/event_details_page.dart';
 import 'package:intl/intl.dart';
 
@@ -7,7 +7,8 @@ class EventCard extends StatefulWidget {
   final Event event;
   final bool less; // Add the optional parameter
 
-  const EventCard({Key? key, required this.event, this.less = false}) : super(key: key);
+  const EventCard({Key? key, required this.event, this.less = false})
+      : super(key: key);
 
   @override
   _EventCardState createState() => _EventCardState();

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
-
 import 'package:frontend/app_data/app_user.dart';
-
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/user_profile.dart';
-import 'package:intl/intl.dart';
-import 'package:frontend/models/event.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -26,7 +23,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
 
   void toggleRegistration() {
     Provider.of<AppEventsSingleton>(context, listen: false)
-        .toggleUserRegistration(widget.eventDetails, AppUserSingleton().currentUser);
+        .toggleUserRegistration(
+            widget.eventDetails, AppUserSingleton().currentUser);
   }
 
   @override
@@ -165,7 +163,6 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
 
                         const SizedBox(height: 24),
 
-                        
                         // Badges Section
                         Text(
                           'Badges',
@@ -249,7 +246,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
                 foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),

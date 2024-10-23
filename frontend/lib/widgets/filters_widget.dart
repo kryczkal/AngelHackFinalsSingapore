@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/event_categories.dart';
+import '../models/event_categories_enum.dart';
 
 class FiltersWidget extends StatefulWidget {
   final EventCategory? selectedCategory;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/event_categories.dart';
+import '../models/event_categories_enum.dart';
 import 'filters_widget.dart';
 
 class SearchBarWidget extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/event.dart';
+import 'package:frontend/models/event_data.dart';
 
 import 'event_card.dart';
 

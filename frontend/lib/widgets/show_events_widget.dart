@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/event.dart';
-import 'package:frontend/models/event_categories.dart';
+import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events_vertical_list_widget.dart';
 import 'package:frontend/widgets/search_bar_widget.dart';
 
