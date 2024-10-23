@@ -18,6 +18,6 @@ class User {
     required this.lastName,
     required this.age,
     required this.userBadges,
-    this.preferences = const <EventCategory>{},
-  });
+    Set<EventCategory>? preferences,
+  }) : preferences = preferences ?? <EventCategory>{};
 }
