@@ -7,11 +7,12 @@ class User {
   final String firstName;
   final String lastName;
   final int age;
-  final String profilePic = 'assets/default_profile_pic.png';
   final LyfHotels hotel = LyfHotels.Funan;
+  final String profilePic = 'images/profile/default_profile_pic.png';
   List<EventBadge> userBadges;
   Set<EventCategory> preferences;
   List<Event> createdEvents = [];
+  List<Event> registeredEvents = [];
 
   User({
     required this.firstName,

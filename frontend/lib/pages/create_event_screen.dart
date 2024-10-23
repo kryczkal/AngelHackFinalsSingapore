@@ -25,9 +25,12 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
   EventBadge? _selectedBadge;
   EventCategory? _selectedCategory;
 
+  
+
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
+ 
   final FocusNode _locationFocusNode = FocusNode();
   bool _showLocationSuggestions = false;
 
@@ -234,6 +237,7 @@ class CreateEventButton extends StatelessWidget {
 
             // update data
             AppUserSingleton().currentUser.createdEvents.add(newEvent);
+            AppUserSingleton().currentUser.registeredEvents.add(newEvent);
             AppEventsSingleton().events.add(newEvent);
           }
         },

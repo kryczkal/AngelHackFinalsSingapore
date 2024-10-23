@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/user_data.dart';
 
-class AppUserSingleton {
+class AppUserSingleton extends ChangeNotifier {
   static final AppUserSingleton _instance = AppUserSingleton._internal();
 
   factory AppUserSingleton() => _instance;

@@ -55,7 +55,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Movie Night Under the Stars',
       date: DateTime(2021, 10, 25),
-      imageUrl: 'assets/movie_night.jpg',
+      imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#7e57c2',
       localization: 'rooftop',
       hotel: LyfHotels.Funan,
@@ -74,7 +74,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Art & Craft Workshop',
       date: DateTime(2021, 10, 26),
-      imageUrl: 'assets/art_craft.jpg',
+      imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#ef5350',
       localization: 'craft room',
       hotel: LyfHotels.Funan,
@@ -93,7 +93,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Social Run at the Park',
       date: DateTime(2021, 10, 27),
-      imageUrl: 'assets/social_run.jpg',
+      imageUrl: 'images/events/yoga.jpg',
       backgroundColor: '#26c6da',
       localization: 'Nearby park',
       hotel: LyfHotels.Funan,
@@ -258,9 +258,7 @@ class AppEventsSingleton extends ChangeNotifier {
   }
 
   List<Event> getMyEvents(User currentUser) {
-    return events
-        .where((event) => event.registeredUsers.contains(currentUser))
-        .toList();
+    return currentUser.registeredEvents;
   }
 
   List<Event> getHotelEvents() {
@@ -269,9 +267,11 @@ class AppEventsSingleton extends ChangeNotifier {
 
   void toggleUserRegistration(Event event, User user) {
     if (event.registeredUsers.contains(user)) {
+      user.registeredEvents.remove(event);
       event.registeredUsers.remove(user);
     } else {
       event.registeredUsers.add(user);
+      user.registeredEvents.add(event);
     }
     notifyListeners();
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/joined_events_page.dart';
+import 'package:frontend/pages/joined_created_events_page.dart';
 import 'package:frontend/pages/create_event_screen.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/events_header.dart';
@@ -48,22 +48,24 @@ class UserPage extends StatelessWidget {
                             );
                           },
                           child: SizedBox(
-                            height: 176, // Set your desired height here
+                            height: 176,
                             child: const JoinedEventsCard(),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 64), // Separator
+                      const SizedBox(width: 32), // Separator
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const CreateEventScreen()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const CreateEventScreen()),
                             );
                           },
                           child: SizedBox(
-                            height: 176, // Set your desired height here
+                            height: 176,
                             child: const YourEventsCard(),
                           ),
                         ),
