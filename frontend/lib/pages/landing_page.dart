@@ -3,6 +3,7 @@ import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event.dart';
 import 'package:frontend/pages/upcoming_events_page.dart';
 import 'package:frontend/pages/joined_events_page.dart';
+import 'package:frontend/pages/create_event_screen.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/events_header.dart';
 import 'package:frontend/widgets/ignore_padding_widget.dart';
@@ -57,7 +58,7 @@ class LandingPage extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
+                              MaterialPageRoute(builder: (context) => const CreateEventScreen()),
                             );
                           },
                           child: SizedBox(
