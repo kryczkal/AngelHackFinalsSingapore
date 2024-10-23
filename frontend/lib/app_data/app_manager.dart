@@ -34,11 +34,20 @@ class AppManagerSingleton {
       graphFactory: () => const LineChartWidget(
         color: Colors.green,
         pattern: LineChartPattern.upward,
-        height: 80,
+        height: 60,
         width: 100,
       ),
     ),
   ];
+
+  /*
+  * TODO:
+  * - best performing events (table of sorted events (all types) with search)
+  * - hour picking analysis (bar chart)
+  * - day picking analysis (bar chart)
+  * - rating in time (full chart - fl_chart)
+  * - most frequently used places (bar chart / pie chart)
+  * */
 
   static final List<DashboardCardData> _cardDataMon = [
     DashboardCardData(
@@ -62,7 +71,7 @@ class AppManagerSingleton {
       graphFactory: () => const LineChartWidget(
         color: Colors.green,
         pattern: LineChartPattern.volatile,
-        height: 80,
+        height: 60,
         width: 100,
       ),
     ),
@@ -90,7 +99,7 @@ class AppManagerSingleton {
       graphFactory: () => const LineChartWidget(
         color: Colors.green,
         pattern: LineChartPattern.downward,
-        height: 80,
+        height: 60,
         width: 100,
       ),
     ),
