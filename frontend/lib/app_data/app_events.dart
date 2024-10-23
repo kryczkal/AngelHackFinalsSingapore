@@ -194,7 +194,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Exclusive Wine Tasting',
       date: DateTime(2021, 11, 10),
-      imageUrl: 'assets/wine_tasting.jpg',
+      imageUrl: 'images/events/cooking.jpeg',
       backgroundColor: '#d32f2f',
       localization: 'Wine Lounge',
       hotel: LyfHotels.Funan,
@@ -214,7 +214,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Hotel Mixer: Meet & Greet',
       date: DateTime(2021, 11, 15),
-      imageUrl: 'assets/hotel_mixer.jpg',
+      imageUrl: 'images/events/cooking.jpeg',
       backgroundColor: '#5d4037',
       localization: 'Lobby',
       hotel: LyfHotels.Funan,
@@ -234,7 +234,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'Poolside BBQ Party',
       date: DateTime(2021, 11, 20),
-      imageUrl: 'assets/pool_bbq.jpg',
+      imageUrl: 'images/events/cooking.jpeg',
       backgroundColor: '#f57c00',
       localization: 'Poolside',
       hotel: LyfHotels.Funan,
