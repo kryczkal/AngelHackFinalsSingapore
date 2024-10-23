@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/event_categories.dart';
 
@@ -15,6 +14,6 @@ class User {
     required this.lastName,
     required this.age,
     required this.userBadges,
-    Set<EventCategory>? preferences,  // Optional named parameter
-  }) : preferences = preferences ?? {};  // If null, assign an empty set
+    this.preferences = const <EventCategory>{},
+  });
 }

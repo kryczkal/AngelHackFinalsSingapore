@@ -4,10 +4,11 @@ class DashboardCardData {
   final String title;
   final String mainValue;
   final String subtitle;
-  final String graphType; // Can be 'bar', 'line', or 'wave' for different graph styles
+  final String
+      graphType; // Can be 'bar', 'line', or 'wave' for different graph styles
   final List<String> graphColors;
 
-  DashboardCardData({
+  const DashboardCardData({
     required this.title,
     required this.mainValue,
     required this.subtitle,

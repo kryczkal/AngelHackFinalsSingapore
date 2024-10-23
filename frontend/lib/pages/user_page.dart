@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event.dart';
-import 'package:frontend/pages/upcoming_events_page.dart';
 import 'package:frontend/pages/joined_events_page.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/events_header.dart';
 import 'package:frontend/widgets/ignore_padding_widget.dart';
-import 'package:frontend/widgets/profile_header.dart';
 import 'package:frontend/widgets/joined_events_card.dart';
+import 'package:frontend/widgets/profile_header.dart';
 import 'package:frontend/widgets/your_events_card.dart';
 
-class LandingPage extends StatelessWidget {
-  const LandingPage({Key? key}) : super(key: key);
+class UserPage extends StatelessWidget {
+  const UserPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,9 @@ class LandingPage extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const JoinedEventsPage()),
                             );
                           },
                           child: SizedBox(
@@ -57,7 +58,9 @@ class LandingPage extends StatelessWidget {
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => const JoinedEventsPage()),
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const JoinedEventsPage()),
                             );
                           },
                           child: SizedBox(

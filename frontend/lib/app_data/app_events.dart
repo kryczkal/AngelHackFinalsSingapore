@@ -24,12 +24,11 @@ class AppEventsSingleton extends ChangeNotifier {
       description:
           'Hey everyone! Looking for a fun way to unwind and meet new friends? Join me at Lyf Funan Singapore Hotel for a refreshing yoga class! Whether you’re a seasoned yogi or just starting out, all levels are welcome!',
       organizer: User(
-        firstName: 'Paul',
-        lastName: 'Done',
-        age: 30, // Set age for organizer
-        userBadges: [EventBadge(name: 'Example Badge')], 
-        preferences: {EventCategory.artificialIntelligence}// Empty list of badges
-      ),
+          firstName: 'Paul',
+          lastName: 'Done',
+          age: 30,
+          userBadges: [EventBadge(name: 'Example Badge')],
+          preferences: {EventCategory.artificialIntelligence}),
       registeredUsers: [],
       category: EventCategory.health,
       badges: [EventBadge(name: 'Yoga lover')],
@@ -46,8 +45,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Michael',
         lastName: 'Brown',
-        age: 28, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 28,
+        userBadges: [],
       ),
       category: EventCategory.food,
       registeredUsers: [],
@@ -65,8 +64,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Sophia',
         lastName: 'Davis',
-        age: 26, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 26,
+        userBadges: [],
       ),
       registeredUsers: [],
       category: EventCategory.networking,
@@ -84,8 +83,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'James',
         lastName: 'Wilson',
-        age: 32, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 32,
+        userBadges: [],
       ),
       registeredUsers: [],
       category: EventCategory.art,
@@ -103,8 +102,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Olivia',
         lastName: 'Martinez',
-        age: 27, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 27,
+        userBadges: [],
       ),
       registeredUsers: [],
       category: EventCategory.sports,
@@ -125,8 +124,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Paul',
         lastName: 'Done',
-        age: 30, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 30,
+        userBadges: [],
       ),
       registeredUsers: [],
       category: EventCategory.health,
@@ -143,8 +142,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Michael',
         lastName: 'Brown',
-        age: 28, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 28,
+        userBadges: [],
       ),
       registeredUsers: [],
       hotel: LyfHotels.Funan,
@@ -162,8 +161,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Michael',
         lastName: 'Brown',
-        age: 28, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 28,
+        userBadges: [],
       ),
       registeredUsers: [],
       hotel: LyfHotels.Funan,
@@ -181,8 +180,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Michael',
         lastName: 'Brown',
-        age: 28, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 28,
+        userBadges: [],
       ),
       registeredUsers: [],
       hotel: LyfHotels.Funan,
@@ -204,8 +203,8 @@ class AppEventsSingleton extends ChangeNotifier {
       organizer: User(
         firstName: 'Hotel',
         lastName: 'Staff',
-        age: 35, // Set age for organizer
-        userBadges: [], // Empty list of badges
+        age: 35,
+        userBadges: [],
       ),
       isHotelOrganized: true,
       registeredUsers: [],
@@ -259,7 +258,9 @@ class AppEventsSingleton extends ChangeNotifier {
   }
 
   List<Event> getMyEvents(User currentUser) {
-    return events.where((event) => event.registeredUsers.contains(currentUser)).toList();
+    return events
+        .where((event) => event.registeredUsers.contains(currentUser))
+        .toList();
   }
 
   List<Event> getHotelEvents() {
@@ -274,6 +275,4 @@ class AppEventsSingleton extends ChangeNotifier {
     }
     notifyListeners();
   }
-
-  // Add methods to modify events and call notifyListeners() as needed
 }

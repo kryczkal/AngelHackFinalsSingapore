@@ -1,43 +1,13 @@
-// customwidgete.dart
 import 'package:flutter/material.dart';
-import 'package:frontend/widgets/dashboard_card_data.dart';
+import 'package:frontend/models/dashboard_card_data.dart';
 
-class CustomDashboardWidget extends StatelessWidget {
-  final List<DashboardCardData> cardData = [
-    DashboardCardData(
-      title: 'Total Students',
-      mainValue: '12.543',
-      subtitle: '80% Increase than before',
-      graphType: 'bar',
-      graphColors: ['#E0E5FF', '#8676F7'],
-    ),
-    DashboardCardData(
-      title: 'Total Income',
-      mainValue: '\$10.123',
-      subtitle: '80% Increase in 20 Days',
-      graphType: 'line',
-      graphColors: ['#FFD6E0', '#E890F7'],
-    ),
-    DashboardCardData(
-      title: 'Total Working Hours',
-      mainValue: '32h 42m',
-      subtitle: '80% Increase than before',
-      graphType: 'wave',
-      graphColors: ['#B3E5FF', '#4A90E2'],
-    ),
-  ];
+class DashboardCardWidget extends StatelessWidget {
+  final DashboardCardData data;
+
+  const DashboardCardWidget({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        children: cardData.map((data) => buildCard(data)).toList(),
-      ),
-    );
-  }
-
-  Widget buildCard(DashboardCardData data) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
@@ -143,7 +113,9 @@ class CustomDashboardWidget extends StatelessWidget {
       height: 24,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: colors.map((color) => Color(int.parse(color.replaceAll('#', '0xff')))).toList(),
+          colors: colors
+              .map((color) => Color(int.parse(color.replaceAll('#', '0xff'))))
+              .toList(),
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
@@ -158,7 +130,9 @@ class CustomDashboardWidget extends StatelessWidget {
       height: 24,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: colors.map((color) => Color(int.parse(color.replaceAll('#', '0xff')))).toList(),
+          colors: colors
+              .map((color) => Color(int.parse(color.replaceAll('#', '0xff'))))
+              .toList(),
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
