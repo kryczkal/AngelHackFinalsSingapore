@@ -23,6 +23,7 @@ enum EventCategory {
   science,
   environment,
   politics,
+  business,
 }
 
 /* map of icons for each category */

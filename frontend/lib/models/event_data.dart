@@ -12,6 +12,8 @@ class Event {
   final LyfHotels hotel;
   final String description;
   final bool isHotelOrganized;
+  final bool isPrivate;
+  final String password;
   final User organizer;
   final EventCategory category;
   List<User> registeredUsers;
@@ -29,8 +31,9 @@ class Event {
     required this.registeredUsers,
     required this.badges,
     required this.category,
-    this.isHotelOrganized = false,
-  });
+    this.isPrivate = false,
+    this.password = '',
+  }) : isHotelOrganized = organizer.isManager;
 
   DateTime? get dateTime => null;
 }

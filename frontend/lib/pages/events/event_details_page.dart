@@ -7,6 +7,7 @@ import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+
 class EventDetailsPage extends StatefulWidget {
   final Event eventDetails;
 

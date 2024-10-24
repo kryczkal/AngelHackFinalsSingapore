@@ -9,32 +9,111 @@ class AppUserSingleton extends ChangeNotifier {
 
   factory AppUserSingleton() => _instance;
 
-  AppUserSingleton._internal();
+  late User _currentUser;
 
-  User _currentUser = User(
+  AppUserSingleton._internal() {
+    // Initialize the current user immediately
+    _currentUser = users[0];
+  }
+
+  final List<User> users = [
+    User(
       firstName: 'Łukasz',
       lastName: 'Kryczka',
       age: 20,
+      location: 'Singapore',
+      profilePic: 'images/profile/lukasz_kryczka.jpg',
       userBadges: [EventBadge(name: 'Yoga Lover')],
-      isManager: true);
-  static const String _currentLocation = 'Singapore';
-  static const String _profileImagePath = 'images/profile/profile.jpg';
+      isManager: true),
+    // Add more users here
+    User(
+      firstName: 'Piotr',
+      lastName: 'Tyrakowski',
+      age: 35,
+      location: 'Singapore',
+      profilePic: 'images/profile/piotr_tyrakowski.jpg',
+      userBadges: [EventBadge(name: 'Tech Enthusiast')],
+      isManager: false),
 
-  set currentUser(User user) {
-    _currentUser = user;
-    notifyListeners();
-  }
+    User(
+      firstName: 'Anna',
+      lastName: 'Smith',
+      age: 25,
+      location: 'New York',
+      profilePic: 'images/profile/anna_smith.jpg',
+      userBadges: [EventBadge(name: 'Tech Enthusiast')],
+      isManager: false),
+    User(
+      firstName: 'John',
+      lastName: 'Doe',
+      age: 30,
+      location: 'London',
+      profilePic: 'images/profile/john_doe.jpg',
+      userBadges: [EventBadge(name: 'Music Lover')],
+      isManager: false),
+
+      User(
+        firstName: 'Paul',
+        lastName: 'Done',
+        age: 30,
+        location: 'Singapore',
+        profilePic: 'images/profile/default_profile_pic.png',
+        userBadges: [EventBadge(name: 'Example Badge')],
+        preferences: {EventCategory.artificialIntelligence},
+        isManager: true,
+    ),
+    User(
+        firstName: 'Michael',
+        lastName: 'Brown',
+        age: 28,
+        location: 'Singapore',
+        profilePic: 'images/profile/profile.jpg',
+        userBadges: [],
+    ),
+
+    User(
+        firstName: 'Sophia',
+        lastName: 'Davis',
+        age: 26,
+        location: 'Singapore',
+        profilePic: 'images/profile/profile.jpg',
+        userBadges: [],
+      ),
+    User(
+        firstName: 'James',
+        lastName: 'Wilson',
+        age: 32,
+        location: 'Singapore',
+        profilePic: 'images/profile/profile.jpg',
+        userBadges: [],
+      ),
+    
+     User(
+        firstName: 'Olivia',
+        lastName: 'Martinez',
+        age: 27,
+        location: 'Singapore',
+        profilePic: 'images/profile/profile.jpg',
+        userBadges: [],
+      ),
+  ];
+
+  
 
   User get currentUser {
     return _currentUser;
   }
 
+  User getUserByFirstNameAndLastName(String firstName, String lastName) {
+    return users.firstWhere((user) => user.firstName == firstName && user.lastName == lastName);
+  }
+
   String get currentLocation {
-    return _currentLocation;
+    return _currentUser.location;
   }
 
   String get profileImagePath {
-    return _profileImagePath;
+    return _currentUser.profilePic;
   }
 
   List<Event> getMyCreatedEvents() {
