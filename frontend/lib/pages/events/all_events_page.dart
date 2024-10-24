@@ -198,31 +198,24 @@ class _AllEventsPageState extends State<AllEventsPage>
               children: [
                 Expanded(
                   child: PageView(
+                    scrollBehavior: ScrollBehaviorWebExtended().copyWith(scrollbars: false),
                     controller: _pageController,
-                    onPageChanged: (_) => _hideHint(),
+                    onPageChanged: (_) {
+                      _hideHint();
+                      setState(() {
+                        _isHotelEvents = !_isHotelEvents;
+                      });
+                    },
                     children: [
                       ShowEventsWidget(
-                           eventsLoader: () => AppEventsSingleton().getPublicPeopleEvents()),
+                        eventsLoader: () => AppEventsSingleton().getPublicPeopleEvents(),
+                      ),
                       ShowEventsWidget(
-                          eventsLoader: () => AppEventsSingleton().getHotelEvents()),
+                        eventsLoader: () => AppEventsSingleton().getHotelEvents(),
+                      ),
                     ],
                   ),
                 ),
-            PageView(
-              scrollBehavior:
-                  ScrollBehaviorWebExtended().copyWith(scrollbars: false),
-              controller: _pageController,
-              onPageChanged: (_) {
-                _hideHint();
-                setState(() {
-                  _isHotelEvents = !_isHotelEvents;
-                });
-              },
-              children: [
-                ShowEventsWidget(
-                    eventsLoader: () => AppEventsSingleton().getHotelEvents()),
-                ShowEventsWidget(
-                    eventsLoader: () => AppEventsSingleton().getEvents()),
               ],
             ),
             if (_showHint)
