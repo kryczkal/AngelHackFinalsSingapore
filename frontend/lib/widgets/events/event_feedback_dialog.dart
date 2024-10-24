@@ -4,8 +4,13 @@ import 'package:frontend/models/review.dart';
 
 class EventFeedbackDialog extends StatefulWidget {
   final Event event;
+  final VoidCallback onClose;
 
-  const EventFeedbackDialog({super.key, required this.event});
+  const EventFeedbackDialog({
+    super.key, 
+    required this.event,
+    required this.onClose,
+  });
 
   @override
   EventFeedbackDialogState createState() => EventFeedbackDialogState();
@@ -18,13 +23,16 @@ class EventFeedbackDialogState extends State<EventFeedbackDialog> {
   void _submitFeedback() {
     final review = Review(
       rating: _rating,
-      comments:
-          _commentsController.text.isEmpty ? null : _commentsController.text,
+      comments: _commentsController.text.isEmpty ? null : _commentsController.text,
       event: widget.event,
     );
 
     // TODO: Place to handle the review
-    Navigator.of(context).pop(review);
+    widget.onClose();
+  }
+
+  void _closeDialog() {
+    widget.onClose();
   }
 
   @override
@@ -91,7 +99,7 @@ class EventFeedbackDialogState extends State<EventFeedbackDialog> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                hintText: 'Optional feedback...',
+                hintText: 'Place for your feedback!',
               ),
             ),
             const SizedBox(height: 16),
@@ -99,11 +107,9 @@ class EventFeedbackDialogState extends State<EventFeedbackDialog> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
+                  onPressed: _closeDialog,
                   child: const Text(
-                    "I didn't attend",
+                    "Cancel",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 14,
