@@ -86,14 +86,9 @@ class _AllEventsPageState extends State<AllEventsPage>
       setState(() {
         _errorMessage = 'Event does not exists';
       });
-<<<<<<< HEAD
+
       Future.delayed(const Duration(seconds: 3), () {
         if (mounted) {
-=======
-      
-      Future.delayed(const Duration(seconds: 3), () {
-        if (mounted) {  
->>>>>>> 7caba88 (delete useless commants)
           setState(() {
             _errorMessage = null;
           });
@@ -166,12 +161,8 @@ class _AllEventsPageState extends State<AllEventsPage>
                         backgroundColor: Colors.green,
                         foregroundColor: Colors.white,
                         elevation: 0,
-<<<<<<< HEAD
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 20),
-=======
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
->>>>>>> 7caba88 (delete useless commants)
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
