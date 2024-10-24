@@ -13,7 +13,7 @@ class AppPage extends StatelessWidget {
 
     return Scaffold(
       body: PageView(
-        scrollBehavior: AppScrollBehaviorWebExtended(),
+        scrollBehavior: ScrollBehaviorWebExtended(),
         children: isManager
             ? const [
                 UserPage(),

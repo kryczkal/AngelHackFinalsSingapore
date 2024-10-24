@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_suggestion_data.dart';
+import 'package:frontend/widgets/misc/app_scroll_behavior_web_extended.dart';
 
 class EventSuggestionCard extends StatefulWidget {
   final List<EventSuggestionData> suggestions;
@@ -145,6 +146,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32),
                     child: PageView.builder(
+                      scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: _pageController,
                       onPageChanged: _handlePageChange,
                       itemCount: widget.suggestions.length,

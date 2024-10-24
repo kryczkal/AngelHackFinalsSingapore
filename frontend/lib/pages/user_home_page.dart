@@ -86,7 +86,7 @@ class UserPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       height: 250,
                       child: PageView.builder(
-                        scrollBehavior: AppScrollBehaviorWebExtended(),
+                        scrollBehavior: ScrollBehaviorWebExtended(),
                         controller: PageController(viewportFraction: 0.80),
                         itemCount: AppEventsSingleton().events.length,
                         itemBuilder: (context, index) {
@@ -103,7 +103,7 @@ class UserPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       height: 250,
                       child: PageView.builder(
-                        scrollBehavior: AppScrollBehaviorWebExtended(),
+                        scrollBehavior: ScrollBehaviorWebExtended(),
                         controller: PageController(viewportFraction: 0.80),
                         itemCount: AppEventsSingleton().events.length,
                         itemBuilder: (context, index) {

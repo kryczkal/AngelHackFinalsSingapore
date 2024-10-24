@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
         title: 'LyfTogether',
-        scrollBehavior: AppScrollBehaviorWebExtended(),
+        scrollBehavior: ScrollBehaviorWebExtended(),
         theme: ThemeData(
           colorScheme: customColorScheme,
           textTheme: GoogleFonts.poppinsTextTheme(
