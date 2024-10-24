@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/pages/manager_dashboard_page.dart';
-import 'package:frontend/pages/user_page.dart';
+import 'package:frontend/pages/user_home_page.dart';
 
 class AppPage extends StatelessWidget {
   const AppPage({super.key});

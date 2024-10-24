@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../models/event_categories_enum.dart';
+import '../../models/event_categories_enum.dart';
 
-class FiltersWidget extends StatefulWidget {
+class EventFilterWidget extends StatefulWidget {
   final EventCategory? selectedCategory;
   final DateTimeRange? selectedDateRange;
   final Function(EventCategory?, DateTimeRange?) onFilterChanged;
 
-  const FiltersWidget({
+  const EventFilterWidget({
     Key? key,
     this.selectedCategory,
     this.selectedDateRange,
@@ -15,10 +15,10 @@ class FiltersWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _FiltersWidgetState createState() => _FiltersWidgetState();
+  _EventFilterWidgetState createState() => _EventFilterWidgetState();
 }
 
-class _FiltersWidgetState extends State<FiltersWidget>
+class _EventFilterWidgetState extends State<EventFilterWidget>
     with SingleTickerProviderStateMixin {
   EventCategory? _selectedCategory;
   DateTimeRange? _selectedDateRange;

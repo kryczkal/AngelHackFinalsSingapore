@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class UpdatePreferencesWidget extends StatefulWidget {
-  const UpdatePreferencesWidget({super.key});
+class UserUpdatePreferencesPage extends StatefulWidget {
+  const UserUpdatePreferencesPage({super.key});
 
   @override
-  State<UpdatePreferencesWidget> createState() =>
-      _UpdatePreferencesWidgetState();
+  State<UserUpdatePreferencesPage> createState() =>
+      _UserUpdatePreferencesPageState();
 }
 
-class _UpdatePreferencesWidgetState extends State<UpdatePreferencesWidget> {
+class _UserUpdatePreferencesPageState extends State<UserUpdatePreferencesPage> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

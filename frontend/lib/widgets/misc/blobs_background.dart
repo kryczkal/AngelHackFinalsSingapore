@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/widgets/blob.dart';
+import 'package:frontend/widgets/misc/blob.dart';
 
 class BlobsBackground extends StatelessWidget {
   const BlobsBackground({super.key});

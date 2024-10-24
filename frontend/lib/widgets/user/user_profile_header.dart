@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
-import 'package:frontend/pages/user_profile.dart';
+import 'package:frontend/pages/profile/user_profile_brief_page.dart';
 
 class ProfileHeader extends StatelessWidget {
   final bool hasNotification;
@@ -50,7 +50,7 @@ class ProfileHeader extends StatelessWidget {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) =>
-                        UserProfile(user: AppUserSingleton().currentUser),
+                        UserProfileBrief(user: AppUserSingleton().currentUser),
                   ),
                 );
               },

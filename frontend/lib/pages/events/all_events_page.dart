@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/widgets/show_events_widget.dart';
+import 'package:frontend/pages/events/show_events_widget.dart';
 
-import '../app_data/app_events.dart';
+import '../../app_data/app_events.dart';
 
 class AllEventsPage extends StatefulWidget {
   const AllEventsPage({Key? key}) : super(key: key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/event_details_page.dart';
+import 'package:frontend/pages/events/event_details_page.dart';
 import 'package:intl/intl.dart';
 
 class EventCard extends StatefulWidget {

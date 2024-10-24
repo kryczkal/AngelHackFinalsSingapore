@@ -1,22 +1,13 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-// import 'package:google_fonts/google_fonts.dart';
-// // Removed FlutterFlow-specific imports
-// // Import your own auth and backend utilities if needed
 
-// // Assuming you have an EditProfileModel or similar, otherwise you can remove it
-// import 'edit_profile_model.dart';
-
-class EditProfileWidget extends StatefulWidget {
-  const EditProfileWidget({super.key});
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({super.key});
 
   @override
-  State<EditProfileWidget> createState() => _EditProfileWidgetState();
+  State<EditProfilePage> createState() => _EditProfilePageState();
 }
 
-class _EditProfileWidgetState extends State<EditProfileWidget> {
-  // Removed FlutterFlow model
+class _EditProfilePageState extends State<EditProfilePage> {
   late TextEditingController fullNameController;
   late FocusNode fullNameFocusNode;
 
@@ -30,15 +21,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   @override
   void initState() {
     super.initState();
-    // Initialize controllers with current user data
     fullNameController = TextEditingController(text: currentUserDisplayName);
     fullNameFocusNode = FocusNode();
 
     emailController = TextEditingController(text: currentUserEmail);
     emailFocusNode = FocusNode();
-
-    // Log screen view event if needed
-    // logFirebaseEvent('screen_view', parameters: {'screen_name': 'EditProfile'});
   }
 
   @override
@@ -51,9 +38,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
   }
 
   get currentUserDisplayName => null;
-  
+
   get currentUserEmail => null;
-  
+
   get currentUserReference => null;
 
   @override
@@ -86,8 +73,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
           actions: [
             TextButton(
               onPressed: () async {
-                // Save action logic
-                // Example:
                 await currentUserReference!.update({
                   'displayName': fullNameController.text,
                 });
@@ -122,7 +107,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                // Full Name Field
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -183,14 +167,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       minLines: 1,
                       cursorColor: colorScheme.primary,
                       validator: (value) {
-                        // Add your validation logic if needed
                         return null;
                       },
                     ),
                   ],
                 ),
                 const SizedBox(height: 24),
-                // Reset Password Section
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -216,9 +198,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () async {
-                         
-                        },
+                        onPressed: () async {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colorScheme.primary,
                           shape: RoundedRectangleBorder(
@@ -264,9 +244,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                      onPressed: () {
-                         
-                        },
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: colorScheme.error.withOpacity(0.2),
                           shape: RoundedRectangleBorder(
@@ -286,46 +264,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   ],
                 ),
                 const SizedBox(height: 48),
-                // Hidden Email Field (if needed)
-                // If you want to display the email, you can replace this with a Text widget
-                // TextFormField(
-                //   controller: emailController,
-                //   focusNode: emailFocusNode,
-                //   autofocus: false,
-                //   textCapitalization: TextCapitalization.none,
-                //   readOnly: true,
-                //   decoration: InputDecoration(
-                //     labelText: 'Email Address',
-                //     labelStyle: TextStyle(
-                //       fontFamily: 'Inter',
-                //       fontSize: 16,
-                //       color: colorScheme.onBackground.withOpacity(0.6),
-                //     ),
-                //     enabledBorder: OutlineInputBorder(
-                //       borderSide: BorderSide(
-                //         color: colorScheme.surface,
-                //         width: 1,
-                //       ),
-                //       borderRadius: BorderRadius.circular(8),
-                //     ),
-                //     focusedBorder: OutlineInputBorder(
-                //       borderSide: BorderSide(
-                //         color: colorScheme.primary,
-                //         width: 1,
-                //       ),
-                //       borderRadius: BorderRadius.circular(8),
-                //     ),
-                //   ),
-                //   style: TextStyle(
-                //     fontFamily: 'Inter',
-                //     fontSize: 16,
-                //     color: colorScheme.onBackground,
-                //   ),
-                //   validator: (value) {
-                //     // Add your validation logic if needed
-                //     return null;
-                //   },
-                // ),
               ],
             ),
           ),
@@ -333,7 +271,4 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
       ),
     );
   }
-}
-
-class EasyDebounce {
 }

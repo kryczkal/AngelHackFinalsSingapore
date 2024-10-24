@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../pages/all_events_page.dart';
+import '../../pages/events/all_events_page.dart';
 
 class EventsHeader extends StatelessWidget {
   final String title;

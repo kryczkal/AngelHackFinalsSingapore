@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/profile/edit_profile.dart';
-import 'package:frontend/profile/update_preferences.dart';
+import 'package:frontend/pages/profile/user_profile_edit_page.dart';
+import 'package:frontend/pages/events/user_update_preferences_page.dart';
 
 // import 'package:share_plus/share_plus.dart';
 // import 'package:url_launcher/url_launcher.dart';
 
-class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({super.key});
+class UserProfileMenu extends StatelessWidget {
+  const UserProfileMenu({super.key});
 
   // Placeholder for company information
   final String companyName = 'Your Company';
@@ -48,7 +48,7 @@ class ProfileWidget extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const EditProfileWidget(),
+                            builder: (context) => const EditProfilePage(),
                           ),
                         );
                       }, // Changed to do nothing
@@ -61,7 +61,7 @@ class ProfileWidget extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) =>
-                                const UpdatePreferencesWidget(),
+                                const UserUpdatePreferencesPage(),
                           ),
                         );
                       }, // Changed to do nothing

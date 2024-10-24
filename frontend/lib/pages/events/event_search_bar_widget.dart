@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../models/event_categories_enum.dart';
-import 'filters_widget.dart';
+import '../../models/event_categories_enum.dart';
+import '../../widgets/events/event_filter_widget.dart';
 
-class SearchBarWidget extends StatefulWidget {
+class EventSearchBarWidget extends StatefulWidget {
   final Function(String) onSearchChanged;
   final Function(Map<String, dynamic>) onFilterChanged;
 
-  const SearchBarWidget({
+  const EventSearchBarWidget({
     super.key,
     required this.onSearchChanged,
     required this.onFilterChanged,
   });
 
   @override
-  _SearchBarWidgetState createState() => _SearchBarWidgetState();
+  _EventSearchBarWidgetState createState() => _EventSearchBarWidgetState();
 }
 
-class _SearchBarWidgetState extends State<SearchBarWidget>
+class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
     with SingleTickerProviderStateMixin {
   final TextEditingController _searchController = TextEditingController();
   bool _isFilterExpanded = false;
@@ -121,7 +121,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget>
                           physics: const NeverScrollableScrollPhysics(),
                           child: Opacity(
                             opacity: _animation.value,
-                            child: FiltersWidget(
+                            child: EventFilterWidget(
                               selectedCategory: _selectedCategory,
                               selectedDateRange: _selectedDateRange,
                               onFilterChanged: (category, dateRange) {

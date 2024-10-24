@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/joined_created_events_page.dart';
-import 'package:frontend/pages/create_event/create_event_screen.dart';
-import 'package:frontend/widgets/event_card.dart';
-import 'package:frontend/widgets/events_header.dart';
-import 'package:frontend/widgets/ignore_padding_widget.dart';
-import 'package:frontend/widgets/joined_events_card.dart';
-import 'package:frontend/widgets/profile_header.dart';
-import 'package:frontend/widgets/your_events_card.dart';
+import 'package:frontend/pages/events/joined_created_events_page.dart';
+import 'package:frontend/pages/events/create_event_page.dart';
+import 'package:frontend/widgets/events/event_card.dart';
+import 'package:frontend/widgets/events/events_header.dart';
+import 'package:frontend/widgets/misc/ignore_padding_widget.dart';
+import 'package:frontend/widgets/events/joined_events_card.dart';
+import 'package:frontend/widgets/user/user_profile_header.dart';
+import 'package:frontend/widgets/events/your_events_card.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class UserPage extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      const CreateEventScreen()),
+                                      const CreateEventPage()),
                             );
                           },
                           child: Column(

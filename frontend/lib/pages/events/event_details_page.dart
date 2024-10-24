@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/user_profile.dart';
+import 'package:frontend/pages/profile/user_profile_brief_page.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -87,7 +87,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => UserProfile(
+                                  builder: (context) => UserProfileBrief(
                                       user: widget.eventDetails.organizer),
                                 ),
                               );

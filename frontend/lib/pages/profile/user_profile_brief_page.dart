@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/user_data.dart';
-import 'package:frontend/profile/profile.dart';
-import 'package:frontend/widgets/categories_wrap_widget.dart';
+import 'package:frontend/pages/profile/user_profile_menu_page.dart';
+import 'package:frontend/widgets/user/user_preferences_wrap_widget.dart';
 
-class UserProfile extends StatefulWidget {
+class UserProfileBrief extends StatefulWidget {
   final User user;
 
-  const UserProfile({Key? key, required this.user}) : super(key: key);
+  const UserProfileBrief({Key? key, required this.user}) : super(key: key);
 
   @override
-  _UserProfileState createState() => _UserProfileState();
+  _UserProfileBriefState createState() => _UserProfileBriefState();
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _UserProfileBriefState extends State<UserProfileBrief> {
   List<Widget> getBadges() {
     List<Widget> badgesBlocks = widget.user.userBadges
         .map((badge) => _buildTab(badge.name, isSelected: true))
@@ -44,7 +44,7 @@ class _UserProfileState extends State<UserProfile> {
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const ProfileWidget(),
+                    builder: (context) => const UserProfileMenu(),
                   ),
                 );
               },
@@ -127,7 +127,7 @@ class _UserProfileState extends State<UserProfile> {
                 ),
               ),
               const SizedBox(height: 8),
-              CategoriesWrapWidget(user: widget.user),
+              UserPreferencesWrapWidget(user: widget.user),
               const SizedBox(height: 20),
             ],
           ),

@@ -6,22 +6,22 @@ import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/create_event/create_event_button.dart';
-import 'package:frontend/pages/create_event/event_badge_field.dart';
-import 'package:frontend/pages/create_event/event_category_field.dart';
-import 'package:frontend/pages/create_event/event_date_field.dart';
-import 'package:frontend/pages/create_event/event_location_field.dart';
-import 'package:frontend/pages/create_event/event_time_field.dart';
+import 'package:frontend/widgets/events/creation_form/create_event_button.dart';
+import 'package:frontend/widgets/events/creation_form/event_badge_field.dart';
+import 'package:frontend/widgets/events/creation_form/event_category_field.dart';
+import 'package:frontend/widgets/events/creation_form/event_date_field.dart';
+import 'package:frontend/widgets/events/creation_form/event_location_field.dart';
+import 'package:frontend/widgets/events/creation_form/event_time_field.dart';
 import 'package:intl/intl.dart';
 
-class CreateEventScreen extends StatefulWidget {
-  const CreateEventScreen({Key? key}) : super(key: key);
+class CreateEventPage extends StatefulWidget {
+  const CreateEventPage({Key? key}) : super(key: key);
 
   @override
-  State<CreateEventScreen> createState() => _CreateEventScreenState();
+  State<CreateEventPage> createState() => _CreateEventPageState();
 }
 
-class _CreateEventScreenState extends State<CreateEventScreen> {
+class _CreateEventPageState extends State<CreateEventPage> {
   final _formKey = GlobalKey<FormState>();
   DateTime? _selectedDate;
   TimeOfDay? _selectedTime;

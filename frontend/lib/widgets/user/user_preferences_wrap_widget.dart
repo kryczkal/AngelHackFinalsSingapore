@@ -4,16 +4,18 @@ import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/user_data.dart';
 
-class CategoriesWrapWidget extends StatefulWidget {
+class UserPreferencesWrapWidget extends StatefulWidget {
   final User user;
 
-  const CategoriesWrapWidget({Key? key, required this.user}) : super(key: key);
+  const UserPreferencesWrapWidget({Key? key, required this.user})
+      : super(key: key);
 
   @override
-  _CategoriesWrapWidgetState createState() => _CategoriesWrapWidgetState();
+  _UserPreferencesWrapWidgetState createState() =>
+      _UserPreferencesWrapWidgetState();
 }
 
-class _CategoriesWrapWidgetState extends State<CategoriesWrapWidget> {
+class _UserPreferencesWrapWidgetState extends State<UserPreferencesWrapWidget> {
   bool showAddButton = true;
 
   List<Widget> getCategoriesBlocks() {

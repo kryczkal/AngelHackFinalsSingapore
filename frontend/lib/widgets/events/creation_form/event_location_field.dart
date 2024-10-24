@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/create_event/create_event_screen.dart';
-import 'package:frontend/pages/create_event/event_location_field.dart';
+import 'package:frontend/pages/events/create_event_page.dart';
+import 'package:frontend/widgets/events/creation_form/event_location_field.dart';
 
 class EventLocationField extends StatefulWidget {
   final TextEditingController locationController;

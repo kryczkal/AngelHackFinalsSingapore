@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 
-import 'package:frontend/widgets/event_card.dart';
+import 'package:frontend/widgets/events/event_card.dart';
 
 class JoinedEventsPage extends StatelessWidget {
   const JoinedEventsPage({Key? key}) : super(key: key);
