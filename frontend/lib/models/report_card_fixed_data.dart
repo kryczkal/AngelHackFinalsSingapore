@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/pages/manager/manager_category_ranking_page.dart';
 import 'package:frontend/pages/misc/blank_page.dart';
 import 'package:frontend/widgets/manager/charts/bar_chart_widget.dart';
 import 'package:frontend/widgets/manager/charts/line_chart_widget.dart';
@@ -42,7 +43,8 @@ class ReportCardFixedData {
             width: 100,
             height: 80,
             child: TablePreview(data: TablePreviewData.fromVariant(1))),
-        pageFactory: () => const BlankPage(),
+        pageFactory: () =>
+            ManagerCategoryRankingPage(categoryRatings: categoryRatingTable),
       ),
       DashboardCardData(
           title: "Time allocation analysis",
