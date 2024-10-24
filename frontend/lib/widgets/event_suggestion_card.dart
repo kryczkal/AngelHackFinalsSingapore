@@ -33,95 +33,164 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
 
   void _handlePageChange(int index) {
     setState(() {
-      if (index < 0) {
-        currentIndex = widget.suggestions.length - 1;
-        _pageController.jumpToPage(currentIndex);
-      } else if (index >= widget.suggestions.length) {
-        currentIndex = 0;
-        _pageController.jumpToPage(currentIndex);
-      } else {
-        currentIndex = index;
-      }
+      currentIndex = index;
     });
+  }
+
+  void _nextPage() {
+    if (currentIndex == widget.suggestions.length - 1) {
+      _pageController.animateToPage(
+        0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      _pageController.nextPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
+  }
+
+  void _previousPage() {
+    if (currentIndex == 0) {
+      _pageController.animateToPage(
+        widget.suggestions.length - 1,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    } else {
+      _pageController.previousPage(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 310,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            Color(0xFF66BB6A),
-            Color(0xFF43A047),
+            Color(0xFF2196F3),
+            Color(0xFF1565C0),
           ],
         ),
       ),
-      child: PageView.builder(
-        controller: _pageController,
-        onPageChanged: _handlePageChange,
-        itemCount: widget.suggestions.length,
-        itemBuilder: (context, index) {
-          final suggestion = widget.suggestions[index];
-          return _buildSuggestionCard(suggestion);
-        },
-      ),
-    );
-  }
-
-  Widget _buildSuggestionCard(EventSuggestionData suggestion) {
-    return Card(
-      color: Colors.transparent,
-      elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  suggestion.category.name.toUpperCase(),
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.2,
+            const Text(
+              'Best Events to Organize',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Expanded(
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Positioned.fill(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 2),
+                          width: 28,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.2),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: const Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            onPressed: _previousPage,
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 2),
+                          width: 28,
+                          height: 28,
+                          decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.2),
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            padding: EdgeInsets.zero,
+                            icon: const Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                            onPressed: _nextPage,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: PageView.builder(
+                      controller: _pageController,
+                      onPageChanged: _handlePageChange,
+                      itemCount: widget.suggestions.length,
+                      itemBuilder: (context, index) {
+                        final suggestion = widget.suggestions[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          child: _buildSuggestionContent(index + 1, suggestion),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                widget.suggestions.length,
+                (index) => Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: currentIndex == index
+                        ? Colors.white
+                        : Colors.white.withOpacity(0.5),
                   ),
                 ),
               ),
             ),
-            const Spacer(),
-            Text(
-              suggestion.description,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white.withOpacity(0.9),
-                fontSize: 16,
-                height: 1.5,
-              ),
-            ),
-            const Spacer(),
+            const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: const Color(0xFF4CAF50),
+                  foregroundColor: const Color(0xFF2196F3),
                   backgroundColor: Colors.white,
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () => widget.onAddEvent(suggestion),
+                onPressed: () =>
+                    widget.onAddEvent(widget.suggestions[currentIndex]),
                 child: const Text(
                   'Show More',
                   style: TextStyle(
@@ -134,6 +203,46 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildSuggestionContent(int index, EventSuggestionData suggestion) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "$index. ${suggestion.category.name.toUpperCase()} event",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 200),
+                child: SingleChildScrollView(
+                  child: Text(
+                    suggestion.description,
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.9),
+                      fontSize: 12,
+                      height: 1.5,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

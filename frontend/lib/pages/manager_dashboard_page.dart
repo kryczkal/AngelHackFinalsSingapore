@@ -32,19 +32,19 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
               const SizedBox(height: 21),
               const ProfileHeader(hasNotification: true),
               const SizedBox(height: 16),
-              ManagerHeaderWidget(
-                  reportData: _reportData,
-                  onTimelineChanged: (timeline) {
-                    setState(() {
-                      _selectedTimeline = timeline;
-                    });
-                  },
-                  startingTimeline: ReportTimeline.week),
-              const SizedBox(height: 16),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      ManagerHeaderWidget(
+                          reportData: _reportData,
+                          onTimelineChanged: (timeline) {
+                            setState(() {
+                              _selectedTimeline = timeline;
+                            });
+                          },
+                          startingTimeline: ReportTimeline.week),
+                      const SizedBox(height: 16),
                       EventSuggestionCard(
                           suggestions:
                               _reportData[_selectedTimeline]!.suggestionData,

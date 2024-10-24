@@ -67,15 +67,18 @@ class AppManagerSingleton {
   static final List<EventSuggestionData> _suggestions = [
     EventSuggestionData(
         category: EventCategory.art,
-        description: "Description",
+        description:
+            "This is an example description for a sports event. It provides a detailed overview of the event, limited to 200 characters for clarity and completeness, ensuring all key points are covered.",
         arguments: {"arg1": "desc1", "arg2": "desc2"}),
     EventSuggestionData(
         category: EventCategory.sports,
-        description: "Description",
+        description:
+            "This is an example description for a sports event. It provides a detailed overview of the event, limited to 200 characters for clarity and completeness, ensuring all key points are covered.",
         arguments: {"arg1": "desc1", "arg2": "desc2"}),
     EventSuggestionData(
         category: EventCategory.networking,
-        description: "Description",
+        description:
+            "This is an example description for a sports event. It provides a detailed overview of the event, limited to 200 characters for clarity and completeness, ensuring all key points are covered.",
         arguments: {"arg1": "desc1", "arg2": "desc2"}),
   ];
 
