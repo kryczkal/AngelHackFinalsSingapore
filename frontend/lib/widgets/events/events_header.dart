@@ -14,7 +14,9 @@ class EventsHeader extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-            fontSize: 19,
+            fontSize: 21,
+            height: 1.2,
+            letterSpacing: -0.3,
             fontWeight: FontWeight.bold,
           ),
         ),
