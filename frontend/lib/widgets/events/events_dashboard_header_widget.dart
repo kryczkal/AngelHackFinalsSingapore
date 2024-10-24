@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/events/create_event_page.dart';
+import 'package:frontend/pages/events/event_create_page.dart';
 import 'package:frontend/pages/events/joined_events_page.dart';
 import 'package:frontend/widgets/events/joined_events_card.dart';
 import 'package:frontend/widgets/events/your_events_card.dart';

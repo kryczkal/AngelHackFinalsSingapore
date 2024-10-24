@@ -3,7 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/events/create_event_page.dart';
+import 'package:frontend/models/event_template.dart';
+import 'package:frontend/pages/events/event_create_page.dart';
+import 'package:frontend/pages/events/event_template_page.dart';
 import 'package:frontend/pages/events/joined_events_page.dart';
 import 'package:provider/provider.dart';
 
@@ -135,7 +137,7 @@ class YourEventsCard extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const CreateEventPage()),
+                            builder: (context) => EventTemplatePage()),
                       );
                     },
                     icon: const Icon(

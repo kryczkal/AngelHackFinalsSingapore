@@ -49,26 +49,31 @@ class _CreateEventPageState extends State<CreateEventPage> {
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
   final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
 
   final FocusNode _locationFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    _selectedDate = widget.initialDate;
-    _selectedTime = widget.initialTime;
-    _selectedLocation = widget.initialLocation ?? '';
+
     _eventTitle = widget.initialEventTitle ?? '';
     _eventDescription = widget.initialEventDescription ?? '';
+    _selectedLocation = widget.initialLocation ?? '';
+    _selectedDate = widget.initialDate;
+    _selectedTime = widget.initialTime;
     _selectedBadge = widget.initialBadge;
     _selectedCategory = widget.initialCategory;
 
+    _titleController.text = _eventTitle;
+    _descriptionController.text = _eventDescription;
+    _locationController.text = _selectedLocation;
     _dateController.text = _selectedDate != null
         ? DateFormat('yyyy-MM-dd').format(_selectedDate!)
         : '';
     _timeController.text =
         _selectedTime != null ? _selectedTime!.format(context) : '';
-    _locationController.text = _selectedLocation;
   }
 
   @override
@@ -76,6 +81,8 @@ class _CreateEventPageState extends State<CreateEventPage> {
     _dateController.dispose();
     _timeController.dispose();
     _locationController.dispose();
+    _titleController.dispose();
+    _descriptionController.dispose();
     _locationFocusNode.dispose();
     super.dispose();
   }
@@ -92,17 +99,6 @@ class _CreateEventPageState extends State<CreateEventPage> {
         ),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
-      floatingActionButton: CreateEventButton(
-        formKey: _formKey,
-        selectedDate: _selectedDate,
-        selectedTime: _selectedTime,
-        selectedLocation: _selectedLocation,
-        eventTitle: _eventTitle,
-        eventDescription: _eventDescription,
-        selectedBadge: _selectedBadge,
-        selectedCategory: _selectedCategory,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: SingleChildScrollViewWebExtended(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -111,9 +107,17 @@ class _CreateEventPageState extends State<CreateEventPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  'Event title',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[600],
+                  ),
+                ),
                 TextFormField(
+                  controller: _titleController,
                   decoration: InputDecoration(
-                    labelText: 'Event title',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -169,16 +173,24 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   },
                 ),
                 const SizedBox(height: 16.0),
+                Text(
+                  'Event description',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey[600],
+                  ),
+                ),
                 TextFormField(
+                  controller: _descriptionController,
                   decoration: InputDecoration(
-                    labelText: 'Event description',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     filled: true,
                     fillColor: Colors.white,
                   ),
-                  maxLines: 3,
+                  maxLines: 6,
                   onChanged: (value) {
                     _eventDescription = value;
                   },
@@ -189,7 +201,17 @@ class _CreateEventPageState extends State<CreateEventPage> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 70.0),
+                const SizedBox(height: 24.0),
+                CreateEventButton(
+                  formKey: _formKey,
+                  selectedDate: _selectedDate,
+                  selectedTime: _selectedTime,
+                  selectedLocation: _selectedLocation,
+                  eventTitle: _eventTitle,
+                  eventDescription: _eventDescription,
+                  selectedBadge: _selectedBadge,
+                  selectedCategory: _selectedCategory,
+                ),
               ],
             ),
           ),

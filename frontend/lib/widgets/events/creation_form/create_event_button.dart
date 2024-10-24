@@ -82,6 +82,7 @@ class CreateEventButton extends StatelessWidget {
             AppUserSingleton().addCreatedEvent(newEvent);
 
             Navigator.pop(context);
+            Navigator.pop(context);
           }
         },
         backgroundColor: Colors.green,
