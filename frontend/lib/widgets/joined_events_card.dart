@@ -6,14 +6,14 @@ import 'package:frontend/widgets/event_card.dart';
 import 'package:provider/provider.dart';
 
 class JoinedEventsCard extends StatelessWidget {
-  const JoinedEventsCard({Key? key}) : super(key: key);
+  const JoinedEventsCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AppEventsSingleton>(
-      builder: (context, appEvents, child) {
+    return Consumer2<AppEventsSingleton, AppUserSingleton>(
+      builder: (context, appEvents, appUser, child) {
         final List<Event> myEvents =
-            appEvents.getMyEvents(AppUserSingleton().currentUser);
+            appEvents.getMyRegisteredEvents(appUser.currentUser);
         final Event? firstEvent = myEvents.isNotEmpty ? myEvents.first : null;
 
         return Container(

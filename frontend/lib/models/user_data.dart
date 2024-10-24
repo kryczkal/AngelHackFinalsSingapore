@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';

@@ -257,12 +257,21 @@ class AppEventsSingleton extends ChangeNotifier {
     return events;
   }
 
-  List<Event> getMyEvents(User currentUser) {
+  List<Event> getMyRegisteredEvents(User currentUser) {
     return currentUser.registeredEvents;
+  }
+
+  List<Event> getMyCreatedEvents(User currentUser) {
+    return currentUser.createdEvents;
   }
 
   List<Event> getHotelEvents() {
     return hotelEvents;
+  }
+
+  void addEvent(Event event) {
+    events.add(event);
+    notifyListeners();
   }
 
   void toggleUserRegistration(Event event, User user) {

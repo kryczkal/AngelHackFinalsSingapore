@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/models/user_data.dart';
 
 class AppUserSingleton extends ChangeNotifier {
@@ -9,7 +10,7 @@ class AppUserSingleton extends ChangeNotifier {
 
   AppUserSingleton._internal();
 
-  final User _currentUser = User(
+  User _currentUser = User(
       firstName: 'Łukasz',
       lastName: 'Kryczka',
       age: 20,
@@ -28,5 +29,18 @@ class AppUserSingleton extends ChangeNotifier {
 
   String get profileImagePath {
     return _profileImagePath;
+  }
+
+  List<Event> getMyCreatedEvents() {
+    return _currentUser.createdEvents;
+  }
+
+  List<Event> getMyRegisteredEvents() {
+    return _currentUser.registeredEvents;
+  }
+
+  void addCreatedEvent(Event event) {
+    _currentUser.createdEvents.add(event);
+    notifyListeners();
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/joined_created_events_page.dart';
-import 'package:frontend/pages/create_event_screen.dart';
+import 'package:frontend/pages/create_event/create_event_screen.dart';
 import 'package:frontend/widgets/event_card.dart';
 import 'package:frontend/widgets/events_header.dart';
 import 'package:frontend/widgets/ignore_padding_widget.dart';
@@ -47,13 +47,13 @@ class UserPage extends StatelessWidget {
                                       const JoinedEventsPage()),
                             );
                           },
-                          child: SizedBox(
+                          child: const SizedBox(
                             height: 176,
-                            child: const JoinedEventsCard(),
+                            child: JoinedEventsCard(),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 32), // Separator
+                      const SizedBox(width: 24),
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
@@ -64,9 +64,14 @@ class UserPage extends StatelessWidget {
                                       const CreateEventScreen()),
                             );
                           },
-                          child: SizedBox(
-                            height: 176,
-                            child: const YourEventsCard(),
+                          child: Column(
+                            children: [
+                              SizedBox(height: 46),
+                              SizedBox(
+                                height: 176,
+                                child: YourEventsCard(),
+                              ),
+                            ],
                           ),
                         ),
                       ),

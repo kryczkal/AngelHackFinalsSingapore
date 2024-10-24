@@ -18,9 +18,10 @@ class JoinedEventsPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final event = AppUserSingleton().currentUser.registeredEvents[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: EventCard(event: event),
-        );
+          );
         },
       ),
     );
@@ -39,9 +40,10 @@ class CreatedEventsPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final event = AppUserSingleton().currentUser.createdEvents[index];
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: EventCard(event: event),
-        );
+          );
         },
       ),
     );
