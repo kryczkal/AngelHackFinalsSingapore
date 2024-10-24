@@ -111,9 +111,9 @@ class _UserPreferencesWrapWidgetState extends State<UserPreferencesWrapWidget> {
                   isSelected = !isSelected;
 
                   if (user.preferences.contains(category)) {
-                    user.preferences.remove(category);
+                    AppUserSingleton().removePreferredCategory(category);
                   } else {
-                    user.preferences.add(category);
+                    AppUserSingleton().addPreferredCategory(category);
                   }
                 });
               }

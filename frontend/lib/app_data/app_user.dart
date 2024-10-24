@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/models/user_data.dart';
 
@@ -18,6 +19,11 @@ class AppUserSingleton extends ChangeNotifier {
       isManager: true);
   static const String _currentLocation = 'Singapore';
   static const String _profileImagePath = 'images/profile/profile.jpg';
+
+  set currentUser(User user) {
+    _currentUser = user;
+    notifyListeners();
+  }
 
   User get currentUser {
     return _currentUser;
@@ -41,6 +47,16 @@ class AppUserSingleton extends ChangeNotifier {
 
   void addCreatedEvent(Event event) {
     _currentUser.createdEvents.add(event);
+    notifyListeners();
+  }
+
+  void addPreferredCategory(EventCategory category) {
+    _currentUser.preferences.add(category);
+    notifyListeners();
+  }
+
+  void removePreferredCategory(EventCategory category) {
+    _currentUser.preferences.remove(category);
     notifyListeners();
   }
 }

@@ -12,7 +12,7 @@ class User {
   final String profilePic = 'images/profile/default_profile_pic.png';
   final bool isManager;
   List<EventBadge> userBadges;
-  Set<EventCategory> preferences;
+  Set<EventCategory> preferences = {};
   List<Event> createdEvents = [];
   List<Event> registeredEvents = [];
 
@@ -22,6 +22,6 @@ class User {
     required this.age,
     required this.userBadges,
     this.isManager = false,
-    this.preferences = const {},
-  });
+    Set<EventCategory>? preferences,
+  }) : preferences = preferences ?? {};
 }
