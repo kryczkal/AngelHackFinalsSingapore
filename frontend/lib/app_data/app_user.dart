@@ -57,7 +57,7 @@ class AppUserSingleton extends ChangeNotifier {
         lastName: 'Done',
         age: 30,
         location: 'Singapore',
-        profilePic: 'images/profile/default_profile_pic.png',
+        profilePic: 'images/profile/paul_done.png',
         userBadges: [EventBadge(name: 'Example Badge')],
         preferences: {EventCategory.artificialIntelligence},
         isManager: true,
@@ -67,7 +67,7 @@ class AppUserSingleton extends ChangeNotifier {
         lastName: 'Brown',
         age: 28,
         location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
+        profilePic: 'images/profile/michael_brown.jpg',
         userBadges: [],
     ),
 
@@ -76,7 +76,7 @@ class AppUserSingleton extends ChangeNotifier {
         lastName: 'Davis',
         age: 26,
         location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
+        profilePic: 'images/profile/sophia_davis.jpg',
         userBadges: [],
       ),
     User(
@@ -93,7 +93,7 @@ class AppUserSingleton extends ChangeNotifier {
         lastName: 'Martinez',
         age: 27,
         location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
+        profilePic: 'images/profile/olivia_martinez.jpg',
         userBadges: [],
       ),
   ];

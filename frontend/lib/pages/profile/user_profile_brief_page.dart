@@ -66,7 +66,7 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
                   CircleAvatar(
                     radius: 50.0,
                     backgroundImage:
-                        AssetImage(AppUserSingleton().profileImagePath),
+                        AssetImage(widget.user.profilePic),
                   ),
                 ],
               ),

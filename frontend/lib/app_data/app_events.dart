@@ -5,8 +5,8 @@ import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/models/user_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/app_data/app_user.dart';
+import 'package:collection/collection.dart'; // Add this import
 
-import '../models/event_categories_enum.dart';
 
 class AppEventsSingleton extends ChangeNotifier {
   static final AppEventsSingleton _instance = AppEventsSingleton._internal();
@@ -296,9 +296,13 @@ class AppEventsSingleton extends ChangeNotifier {
     return events.where((event) => event.isHotelOrganized && !event.isPrivate).toList();
   }
 
-  List<Event> getPrivatePeopleEvents(User user) {
-    return events.where((event) => event.isPrivate && event.organizer != user).toList();
+
+  Event? getPrivatePeopleEvent(String code) {
+    return events.firstWhereOrNull(
+      (event) => event.isPrivate && event.password == code
+    );
   }
+
 
   void addEvent(Event event) {
     events.add(event);

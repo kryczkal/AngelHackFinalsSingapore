@@ -66,34 +66,27 @@ class _AllEventsPageState extends State<AllEventsPage>
 
   void _checkPrivateEvent() {
     final code = _codeController.text.trim();
-    try {
-      final event = AppEventsSingleton().getEvents().firstWhere(
-            (event) => event.isPrivate && event.password == code,
-            orElse: () => throw Exception('Event not found'),
-          );
+    final event = AppEventsSingleton().getPrivatePeopleEvent(code);
 
+    if (event != null) {
       setState(() {
         _errorMessage = null;
       });
+    
 
-      Navigator.push(
+     Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => EventDetailsPage(eventDetails: event),
         ),
       );
-    } catch (e) {
+    } else {
       setState(() {
         _errorMessage = 'Event does not exists';
       });
-<<<<<<< HEAD
-      Future.delayed(const Duration(seconds: 3), () {
-        if (mounted) {
-=======
-      
+
       Future.delayed(const Duration(seconds: 3), () {
         if (mounted) {  
->>>>>>> 7caba88 (delete useless commants)
           setState(() {
             _errorMessage = null;
           });
@@ -101,6 +94,7 @@ class _AllEventsPageState extends State<AllEventsPage>
       });
     }
   }
+
 
   @override
   void dispose() {
@@ -166,12 +160,8 @@ class _AllEventsPageState extends State<AllEventsPage>
                         backgroundColor: Colors.green,
                         foregroundColor: Colors.white,
                         elevation: 0,
-<<<<<<< HEAD
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20, vertical: 20),
-=======
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20), 
->>>>>>> 7caba88 (delete useless commants)
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),

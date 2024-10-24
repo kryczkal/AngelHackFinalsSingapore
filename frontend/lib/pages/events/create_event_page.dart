@@ -10,6 +10,7 @@ import 'package:frontend/widgets/events/creation_form/event_date_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_location_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_time_field.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
+import 'package:intl/intl.dart';
 
 
 class CreateEventPage extends StatefulWidget {
