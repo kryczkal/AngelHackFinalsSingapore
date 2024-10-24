@@ -59,7 +59,7 @@ class PieChartPreviewPainter extends CustomPainter {
 
     final center = Offset(size.width / 2, size.height / 2);
     final radius = size.width / 2;
-    const startAngle = -pi / 2; // Start from top (12 o'clock position)
+    const startAngle = -pi / 2;
 
     double currentAngle = startAngle;
     for (int i = 0; i < data.values.length; i++) {

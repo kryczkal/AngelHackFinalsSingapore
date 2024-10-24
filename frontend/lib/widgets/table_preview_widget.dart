@@ -35,7 +35,7 @@ class TablePreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: const Size(double.infinity, 60),
+      size: const Size(double.infinity, double.infinity),
       painter: TablePreviewPainter(data: data, color: color),
     );
   }
@@ -44,19 +44,30 @@ class TablePreview extends StatelessWidget {
 class TablePreviewPainter extends CustomPainter {
   final TablePreviewData data;
   final Color color;
+  final double rowPadding = 8.0;
+  final double rowHeight = 10.0;
 
   TablePreviewPainter({required this.data, this.color = Colors.green});
 
   @override
   void paint(Canvas canvas, Size size) {
+    if (data.sizes.isEmpty) return;
+
     final paint = Paint()
-      ..color = Colors.green.withOpacity(0.2)
+      ..color = color.withOpacity(0.2)
       ..style = PaintingStyle.fill;
 
+    final totalRowsHeight = (data.sizes.length * rowHeight) +
+        ((data.sizes.length - 1) * rowPadding);
+
+    final startY = (size.height - totalRowsHeight) / 2;
+
     for (int i = 0; i < data.sizes.length; i++) {
+      final yPosition = startY + (i * (rowHeight + rowPadding));
+
       canvas.drawRRect(
         RRect.fromRectAndRadius(
-          Rect.fromLTWH(0, i * 15.0, size.width * data.sizes[i], 10),
+          Rect.fromLTWH(0, yPosition, size.width * data.sizes[i], rowHeight),
           const Radius.circular(4),
         ),
         paint,

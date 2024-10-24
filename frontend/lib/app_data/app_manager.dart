@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:frontend/models/dashboard_card_data.dart';
+import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/report_card_fixed_data.dart';
 import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
-import 'package:frontend/widgets/bar_chart_widget.dart';
-import 'package:frontend/widgets/line_chart_widget.dart';
 
 class AppManagerSingleton {
   static final AppManagerSingleton _instance = AppManagerSingleton._internal();
@@ -12,65 +10,77 @@ class AppManagerSingleton {
 
   AppManagerSingleton._internal();
 
-  static final List<DashboardCardData> _cardDataWeek = [
-    DashboardCardData(
-      title: 'Total Students',
-      mainValue: '12.543',
-      subtitle: '80% Increase than before',
-      graphFactory: () => const SimpleBarChart(
-          color: Colors.green, pattern: BarChartPattern.random),
-    ),
-    DashboardCardData(
-      title: 'Total Income',
-      mainValue: '\$10.123',
-      subtitle: '80% Increase in 20 Days',
-      graphFactory: () => const SimpleBarChart(
-          color: Colors.green, pattern: BarChartPattern.decreasing),
-    ),
-    DashboardCardData(
-      title: 'Total Working Hours',
-      mainValue: '32h 42m',
-      subtitle: '80% Increase than before',
-      graphFactory: () => const LineChartWidget(
-        color: Colors.green,
-        pattern: LineChartPattern.upward,
-        height: 60,
-        width: 100,
-      ),
-    ),
-  ];
+  static final ReportCardFixedData _reportCardFixedDataWeek =
+      ReportCardFixedData(
+          categoryRatingTable: [
+        (4.5, EventCategory.food),
+        (3.2, EventCategory.sports),
+        (4.3, EventCategory.artificialIntelligence),
+        (2.1, EventCategory.music),
+        (1.7, EventCategory.art),
+      ],
+          ratingSubtitle: "Food is new favorite!",
+          timeAllocationMainValue: "12:00",
+          timeAllocationSubTitle: "Most frequent day: Sunday",
+          bestPlaceMainValue: "Kitchen area",
+          bestPlaceSubTitle: "Food events strikes!",
+          averageInterestMainValue: "Score: 3.1",
+          averageInterestSubTitle: "Interest went slightly down");
 
-  /*
-  * TODO:
-  * - best performing events (table of sorted events (all types) with search)
-  * - hour picking analysis (bar chart)
-  * - day picking analysis (bar chart)
-  * - rating in time (full chart - fl_chart)
-  * - most frequently used places (bar chart / pie chart)
-  * */
+  static final ReportCardFixedData _reportCardFixedDataMon =
+      ReportCardFixedData(
+    categoryRatingTable: [
+      (4.1, EventCategory.food),
+      (4.7, EventCategory.sports),
+      (4.5, EventCategory.artificialIntelligence),
+      (2.5, EventCategory.music),
+      (1.9, EventCategory.art),
+    ],
+    ratingSubtitle: "Sports is new favorite!",
+    timeAllocationMainValue: "18:00",
+    timeAllocationSubTitle: "Most frequent day: Saturday",
+    bestPlaceMainValue: "Gym",
+    bestPlaceSubTitle: "Sports events strikes!",
+    averageInterestMainValue: "Score: 4.7",
+    averageInterestSubTitle: "Interest went up",
+  );
 
-  static final List<DashboardCardData> _cardDataMon = [];
-
-  static final List<DashboardCardData> _cardDataHalfYear = [];
+  static final ReportCardFixedData _reportCardFixedDataHalfYear =
+      ReportCardFixedData(
+    categoryRatingTable: [
+      (4.9, EventCategory.artificialIntelligence),
+      (4.2, EventCategory.food),
+      (3.2, EventCategory.sports),
+      (2.1, EventCategory.music),
+      (1.7, EventCategory.art),
+    ],
+    ratingSubtitle: "AI is new favourite!",
+    timeAllocationMainValue: "20:00",
+    timeAllocationSubTitle: "Most frequent day: Friday",
+    bestPlaceMainValue: "Meeting room",
+    bestPlaceSubTitle: "AI events strikes!",
+    averageInterestMainValue: "Score: 4.4",
+    averageInterestSubTitle: "Interest went up",
+  );
 
   static final Map<ReportTimeline, ReportData> _reportData = {
     ReportTimeline.week: ReportData(
-      cpv: 0.5,
-      totalEvents: 12,
+      cpv: 0.3,
+      totalEvents: 312,
       averageScore: 3.1,
-      cardData: _cardDataWeek,
+      cardData: _reportCardFixedDataWeek.convertToCardData(),
     ),
     ReportTimeline.month: ReportData(
-      cpv: 0.6,
-      totalEvents: 42,
+      cpv: 0.9,
+      totalEvents: 1525,
       averageScore: 4.7,
-      cardData: _cardDataMon,
+      cardData: _reportCardFixedDataMon.convertToCardData(),
     ),
     ReportTimeline.sixMonths: ReportData(
       cpv: 0.7,
-      totalEvents: 120,
-      averageScore: 1.2,
-      cardData: _cardDataHalfYear,
+      totalEvents: 9821,
+      averageScore: 4.4,
+      cardData: _reportCardFixedDataHalfYear.convertToCardData(),
     ),
   };
 

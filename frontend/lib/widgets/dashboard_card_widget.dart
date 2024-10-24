@@ -70,7 +70,8 @@ class DashboardCardWidget extends StatelessWidget {
             Wrap(
               spacing: 16,
               direction: Axis.vertical,
-              alignment: WrapAlignment.end,
+              alignment: WrapAlignment.spaceBetween,
+              crossAxisAlignment: WrapCrossAlignment.end,
               children: [
                 Icon(
                   Icons.more_horiz,
