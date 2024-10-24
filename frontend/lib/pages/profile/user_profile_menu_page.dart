@@ -13,7 +13,9 @@ class UserProfileMenu extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: const MinimumAppBar(),
+        appBar: const MinimumAppBar(
+          title: Text("Profile Menu"),
+        ),
         body: SafeArea(
           child: SingleChildScrollViewWebExtended(
             padding: const EdgeInsets.all(24.0),

@@ -18,7 +18,6 @@ class _AllEventsPageState extends State<AllEventsPage>
   static int _enterCount = 0;
   bool _showHint = false;
   late AnimationController _animationController;
-  // late Animation<Offset> _slideAnimation;
   late Animation<double> _fadeAnimation;
   final TextEditingController _codeController = TextEditingController();
   String? _errorMessage;
@@ -76,7 +75,7 @@ class _AllEventsPageState extends State<AllEventsPage>
       setState(() {
         _errorMessage = null;
       });
-      
+
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -87,9 +86,8 @@ class _AllEventsPageState extends State<AllEventsPage>
       setState(() {
         _errorMessage = 'Event does not exists';
       });
-      // Add timer to clear error message after 5 seconds
       Future.delayed(const Duration(seconds: 3), () {
-        if (mounted) {  // Check if widget is still mounted
+        if (mounted) {
           setState(() {
             _errorMessage = null;
           });
@@ -97,7 +95,7 @@ class _AllEventsPageState extends State<AllEventsPage>
       });
     }
   }
- 
+
   @override
   void dispose() {
     _pageController.dispose();
@@ -110,8 +108,8 @@ class _AllEventsPageState extends State<AllEventsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+      appBar: MinimumAppBar(
+        title: Text(_isHotelEvents ? 'Lyf Hotel Events' : 'Community Events'),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -132,7 +130,8 @@ class _AllEventsPageState extends State<AllEventsPage>
                     ),
                   ],
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -148,7 +147,8 @@ class _AllEventsPageState extends State<AllEventsPage>
                           ),
                           errorText: _errorMessage,
                           border: InputBorder.none,
-                          contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 8),
                         ),
                         style: const TextStyle(fontSize: 14),
                       ),
@@ -160,7 +160,8 @@ class _AllEventsPageState extends State<AllEventsPage>
                         backgroundColor: Colors.green,
                         foregroundColor: Colors.white,
                         elevation: 0,
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20), // Increased vertical padding
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -170,12 +171,8 @@ class _AllEventsPageState extends State<AllEventsPage>
                   ],
                 ),
               ),
-              // please add here some empty space with width 100
-               
             ),
-            SizedBox(width: 16),
-
-            
+          const SizedBox(width: 16),
           FloatingActionButton(
             onPressed: () {
               setState(() {
@@ -198,7 +195,8 @@ class _AllEventsPageState extends State<AllEventsPage>
               children: [
                 Expanded(
                   child: PageView(
-                    scrollBehavior: ScrollBehaviorWebExtended().copyWith(scrollbars: false),
+                    scrollBehavior:
+                        ScrollBehaviorWebExtended().copyWith(scrollbars: false),
                     controller: _pageController,
                     onPageChanged: (_) {
                       _hideHint();
@@ -208,10 +206,12 @@ class _AllEventsPageState extends State<AllEventsPage>
                     },
                     children: [
                       ShowEventsWidget(
-                        eventsLoader: () => AppEventsSingleton().getPublicPeopleEvents(),
+                        eventsLoader: () =>
+                            AppEventsSingleton().getPublicPeopleEvents(),
                       ),
                       ShowEventsWidget(
-                        eventsLoader: () => AppEventsSingleton().getHotelEvents(),
+                        eventsLoader: () =>
+                            AppEventsSingleton().getHotelEvents(),
                       ),
                     ],
                   ),
