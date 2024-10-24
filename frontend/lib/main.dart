@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/pages/app_page.dart';
+import 'package:frontend/widgets/misc/adaptive_phone_mockup.dart';
+import 'package:frontend/widgets/misc/app_scroll_behavior_web_extended.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +38,8 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-        title: 'Meal Details',
+        title: 'LyfTogether',
+        scrollBehavior: AppScrollBehaviorWebExtended(),
         theme: ThemeData(
           colorScheme: customColorScheme,
           textTheme: GoogleFonts.poppinsTextTheme(
@@ -43,6 +48,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           primarySwatch: Colors.blue,
         ),
-        home: const AppPage());
+        home: AdaptivePhoneMockup(childWidget: AppPage()));
   }
 }

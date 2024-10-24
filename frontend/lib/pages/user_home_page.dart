@@ -5,6 +5,7 @@ import 'package:frontend/pages/events/joined_created_events_page.dart';
 import 'package:frontend/pages/events/create_event_page.dart';
 import 'package:frontend/widgets/events/event_card.dart';
 import 'package:frontend/widgets/events/events_header.dart';
+import 'package:frontend/widgets/misc/app_scroll_behavior_web_extended.dart';
 import 'package:frontend/widgets/misc/ignore_padding_widget.dart';
 import 'package:frontend/widgets/events/joined_events_card.dart';
 import 'package:frontend/widgets/user/user_profile_header.dart';
@@ -85,6 +86,7 @@ class UserPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       height: 250,
                       child: PageView.builder(
+                        scrollBehavior: AppScrollBehaviorWebExtended(),
                         controller: PageController(viewportFraction: 0.80),
                         itemCount: AppEventsSingleton().events.length,
                         itemBuilder: (context, index) {
@@ -101,6 +103,7 @@ class UserPage extends StatelessWidget {
                       width: MediaQuery.of(context).size.width,
                       height: 250,
                       child: PageView.builder(
+                        scrollBehavior: AppScrollBehaviorWebExtended(),
                         controller: PageController(viewportFraction: 0.80),
                         itemCount: AppEventsSingleton().events.length,
                         itemBuilder: (context, index) {
