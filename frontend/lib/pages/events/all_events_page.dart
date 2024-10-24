@@ -208,11 +208,11 @@ class _AllEventsPageState extends State<AllEventsPage>
                     children: [
                       ShowEventsWidget(
                         eventsLoader: () =>
-                            AppEventsSingleton().getPublicPeopleEvents(),
+                            AppEventsSingleton().getHotelEvents(),
                       ),
                       ShowEventsWidget(
                         eventsLoader: () =>
-                            AppEventsSingleton().getHotelEvents(),
+                            AppEventsSingleton().getPublicPeopleEvents(),
                       ),
                     ],
                   ),
