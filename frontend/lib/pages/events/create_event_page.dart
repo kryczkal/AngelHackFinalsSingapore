@@ -1,11 +1,8 @@
 // create_event_screen.dart
 import 'package:flutter/material.dart';
-import 'package:frontend/app_data/app_badges.dart';
-import 'package:frontend/app_data/app_events.dart';
-import 'package:frontend/app_data/app_user.dart';
+
 import 'package:frontend/models/event_badge.dart';
 import 'package:frontend/models/event_categories_enum.dart';
-import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events/creation_form/create_event_button.dart';
 import 'package:frontend/widgets/events/creation_form/event_badge_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_category_field.dart';
@@ -13,7 +10,7 @@ import 'package:frontend/widgets/events/creation_form/event_date_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_location_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_time_field.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
-import 'package:intl/intl.dart';
+
 
 class CreateEventPage extends StatefulWidget {
   final DateTime? initialDate;

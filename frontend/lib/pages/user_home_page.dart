@@ -80,7 +80,7 @@ class UserPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                // CustomBottomNavigationBar(),
+                
               ],
             ),
           ),
