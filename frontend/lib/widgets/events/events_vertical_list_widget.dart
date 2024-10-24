@@ -12,14 +12,14 @@ class EventsVerticalListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScrollConfiguration(
-      behavior: ScrollBehaviorWebExtended(),
+      behavior: ScrollBehaviorWebExtended().copyWith(scrollbars: false),
       child: ListView.builder(
         itemCount: events.length,
         itemBuilder: (context, index) {
           return SizedBox(
             height: 250,
             child: Container(
-                margin: const EdgeInsets.symmetric(vertical: 4),
+                margin: const EdgeInsets.symmetric(vertical: 8),
                 child: EventCard(event: events[index])),
           );
         },

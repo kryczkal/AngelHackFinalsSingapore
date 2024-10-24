@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:frontend/models/time_analysis_data.dart';
 import 'package:frontend/widgets/manager/heat_map.dart';
+import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 
 class ManagerTimeAnalysisPage extends StatefulWidget {
   final TimeAnalysisData data;
@@ -49,15 +50,18 @@ class _ManagerTimeAnalysisPageState extends State<ManagerTimeAnalysisPage> {
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(20),
-        children: [
-          _buildPeakTimeCards(stats),
-          const SizedBox(height: 24),
-          _buildWeeklyPatternsCard(stats),
-          const SizedBox(height: 24),
-          _buildHeatmapCard(context),
-        ],
+      body: ScrollConfiguration(
+        behavior: ScrollBehaviorWebExtended().copyWith(scrollbars: false),
+        child: ListView(
+          padding: const EdgeInsets.all(20),
+          children: [
+            _buildPeakTimeCards(stats),
+            const SizedBox(height: 24),
+            _buildWeeklyPatternsCard(stats),
+            const SizedBox(height: 24),
+            _buildHeatmapCard(context),
+          ],
+        ),
       ),
     );
   }
