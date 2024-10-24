@@ -84,7 +84,7 @@ class _EventLocationFieldState extends State<EventLocationField> {
               Icons.location_on,
               color: Colors.grey[600],
             ),
-            hintText: 'Select event location',
+            labelText: 'Select event location',
           ),
           onChanged: (value) {
             setState(() {
