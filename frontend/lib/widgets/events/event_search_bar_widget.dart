@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 import '../../models/event_categories_enum.dart';
-import '../../widgets/events/event_filter_widget.dart';
+import 'event_filter_widget.dart';
 
 class EventSearchBarWidget extends StatefulWidget {
   final Function(String) onSearchChanged;
@@ -31,7 +32,7 @@ class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 150),
     );
     _animation = CurvedAnimation(
       parent: _animationController,
@@ -115,9 +116,8 @@ class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
                   child: Column(
                     children: [
                       SizedBox(
-                        height: _animation.value *
-                            250, // Adjust this value as needed
-                        child: SingleChildScrollView(
+                        height: _animation.value * 250,
+                        child: SingleChildScrollViewWebExtended(
                           physics: const NeverScrollableScrollPhysics(),
                           child: Opacity(
                             opacity: _animation.value,
@@ -126,8 +126,9 @@ class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
                               selectedDateRange: _selectedDateRange,
                               onFilterChanged: (category, dateRange) {
                                 setState(() {
-                                  if (category != null)
+                                  if (category != null) {
                                     _selectedCategory = category;
+                                  }
                                   _selectedDateRange = dateRange;
                                 });
                                 _applyFilter(
@@ -140,13 +141,13 @@ class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
                       GestureDetector(
                         onTap: _toggleFilter,
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: 8),
+                          padding: const EdgeInsets.symmetric(vertical: 8),
                           child: AnimatedRotation(
                             turns: _animation.value * 0.5,
                             duration: const Duration(milliseconds: 300),
                             child: const Icon(
                               Icons.keyboard_arrow_down,
-                              size: 30,
+                              size: 20,
                             ),
                           ),
                         ),

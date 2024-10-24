@@ -24,7 +24,8 @@ class JoinedEventsCard extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
-                blurRadius: 4,
+                spreadRadius: 1.2,
+                blurRadius: 3,
                 offset: const Offset(0, 2),
               ),
             ],
@@ -44,26 +45,22 @@ class JoinedEventsCard extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                Icon(Icons.calendar_today, color: Colors.green[600]),
-                const SizedBox(width: 8),
-                Text(
-                  'Joined \nEvents',
-                  style: TextStyle(
-                    color: Colors.green[800],
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            Icon(Icons.calendar_today, color: Colors.green[600]),
+            const SizedBox(width: 8),
+            Text(
+              'Joined \nEvents',
+              style: TextStyle(
+                color: Colors.green[800],
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
         const SizedBox(height: 8),
-        EventCard(
-            event: event,
-            less: true), // Using EventCard as in the original code
+        Expanded(
+            child: Center(
+                child: EventCard(event: event, type: EventCardType.lessInfo))),
       ],
     );
   }
@@ -82,29 +79,6 @@ class JoinedEventsCard extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        // const SizedBox(height: 8),
-        // Text(
-        //   'Discover exciting events happening near you!',
-        //   textAlign: TextAlign.center,
-        //   style: TextStyle(
-        //     color: Colors.grey[600],
-        //     fontSize: 14,
-        //   ),
-        // ),
-        // const SizedBox(height: 16),
-        // ElevatedButton.icon(
-        //   onPressed: () {
-        //     // Add your browse events logic here
-        //   },
-        //   icon: const Icon(Icons.add_circle_outline),
-        //   label: const Text('Browse Events'),
-        //   style: ElevatedButton.styleFrom(
-        //     backgroundColor: Colors.green[500],
-        //     shape: RoundedRectangleBorder(
-        //       borderRadius: BorderRadius.circular(20),
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

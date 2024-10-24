@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events/events_vertical_list_widget.dart';
-import 'package:frontend/pages/events/event_search_bar_widget.dart';
+import 'package:frontend/widgets/events/event_search_bar_widget.dart';
 
 class ShowEventsWidget extends StatefulWidget {
   final List<Event> Function() eventsLoader;

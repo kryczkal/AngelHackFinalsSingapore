@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/profile/user_profile_edit_page.dart';
 import 'package:frontend/pages/events/user_update_preferences_page.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 // import 'package:share_plus/share_plus.dart';
 // import 'package:url_launcher/url_launcher.dart';
@@ -27,7 +28,7 @@ class UserProfileMenu extends StatelessWidget {
           centerTitle: true,
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
+          child: SingleChildScrollViewWebExtended(
             padding: const EdgeInsets.all(24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

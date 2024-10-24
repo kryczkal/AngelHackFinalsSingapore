@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 class UserUpdatePreferencesPage extends StatefulWidget {
   const UserUpdatePreferencesPage({super.key});
@@ -59,7 +60,7 @@ class _UserUpdatePreferencesPageState extends State<UserUpdatePreferencesPage> {
           top: true,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
-            child: SingleChildScrollView(
+            child: SingleChildScrollViewWebExtended(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

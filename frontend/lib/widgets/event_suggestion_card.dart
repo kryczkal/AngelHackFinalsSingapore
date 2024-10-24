@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_suggestion_data.dart';
-import 'package:frontend/widgets/misc/app_scroll_behavior_web_extended.dart';
+import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 class EventSuggestionCard extends StatefulWidget {
   final List<EventSuggestionData> suggestions;
@@ -229,7 +230,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
               ),
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 200),
-                child: SingleChildScrollView(
+                child: SingleChildScrollViewWebExtended(
                   child: Text(
                     suggestion.description,
                     textAlign: TextAlign.justify,

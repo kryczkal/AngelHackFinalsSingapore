@@ -3,7 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
-import 'package:frontend/pages/events/joined_created_events_page.dart';
+import 'package:frontend/pages/events/create_event_page.dart';
+import 'package:frontend/pages/events/joined_events_page.dart';
 import 'package:provider/provider.dart';
 
 class YourEventsCard extends StatelessWidget {
@@ -77,38 +78,76 @@ class YourEventsCard extends StatelessWidget {
             );
           },
           child: Container(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 16),
             height: 80,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 2,
-                  blurRadius: 6,
+                  color: Colors.black.withOpacity(0.1),
+                  spreadRadius: 0.8,
+                  blurRadius: 3,
                   offset: const Offset(0, 2),
                 ),
               ],
             ),
-            child: Row(
-              children: [
-                if (myEvents.isEmpty)
-                  const SizedBox.shrink()
-                else
-                  ...myEvents.asMap().entries.take(4).map((entry) {
-                    int index = entry.key;
-                    Event event = entry.value;
-                    return Transform.translate(
-                      offset: Offset(-index * 6.5, 0),
-                      child: CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage(event.imageUrl),
+            child: Stack(children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    if (myEvents.isEmpty)
+                      const SizedBox.shrink()
+                    else
+                      ...myEvents.asMap().entries.take(4).map((entry) {
+                        int index = entry.key;
+                        Event event = entry.value;
+                        return Transform.translate(
+                          offset: Offset(-index * 9.5, 0),
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage(event.imageUrl),
+                          ),
+                        );
+                      }),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: Colors.green[400],
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 4,
+                        offset: const Offset(0, 2),
                       ),
-                    );
-                  }),
-              ],
-            ),
+                    ],
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const CreateEventPage()),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                    iconSize: 24,
+                    padding: EdgeInsets.zero,
+                  ),
+                ),
+              ),
+            ]),
           ),
         ),
       ],

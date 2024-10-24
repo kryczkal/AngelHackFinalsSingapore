@@ -3,16 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 
-class EventCategoryField extends StatelessWidget {
-  final EventCategory? selectedCategory;
+class EventCategoryField extends StatefulWidget {
+  EventCategory? selectedCategory;
   final Function(EventCategory?) onCategorySelected;
 
-  const EventCategoryField({
+  EventCategoryField({
     super.key,
     required this.selectedCategory,
     required this.onCategorySelected,
   });
 
+  @override
+  State<EventCategoryField> createState() => _EventCategoryFieldState();
+}
+
+class _EventCategoryFieldState extends State<EventCategoryField> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -63,9 +68,10 @@ class EventCategoryField extends StatelessWidget {
               fillColor: Colors.white,
             ),
             hint: const Text('Select a category'),
-            value: selectedCategory,
+            value: widget.selectedCategory,
             onChanged: (EventCategory? newValue) {
-              onCategorySelected(newValue);
+              widget.onCategorySelected(newValue);
+              widget.selectedCategory = newValue;
             },
             validator: (value) {
               if (value == null) {
@@ -78,8 +84,7 @@ class EventCategoryField extends StatelessWidget {
               return DropdownMenuItem<EventCategory>(
                 value: category,
                 child: Text(
-                  category.name[0].toUpperCase() +
-                      category.name.substring(1), // Capitalizing first letter
+                  category.name[0].toUpperCase() + category.name.substring(1),
                 ),
               );
             }).toList(),

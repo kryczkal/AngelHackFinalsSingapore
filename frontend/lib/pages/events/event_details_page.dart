@@ -3,6 +3,7 @@ import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/profile/user_profile_brief_page.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +34,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
       backgroundColor: Colors.white, // Light pink background color
       body: Stack(
         children: [
-          SingleChildScrollView(
+          SingleChildScrollViewWebExtended(
             child: Column(
               children: [
                 // Event Image
@@ -95,7 +96,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                             child: Row(
                               children: [
                                 CircleAvatar(
-                                  radius: 12, // Adjust the size as needed
+                                  radius: 12,
                                   backgroundImage: AssetImage(
                                       widget.eventDetails.organizer.profilePic),
                                 ),

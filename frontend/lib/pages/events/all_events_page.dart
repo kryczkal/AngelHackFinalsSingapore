@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/events/show_events_widget.dart';
-import 'package:frontend/widgets/misc/app_scroll_behavior_web_extended.dart';
-
-import '../../app_data/app_events.dart';
+import 'package:frontend/app_data/app_events.dart';
+import 'package:frontend/widgets/events/show_events_widget.dart';
+import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class AllEventsPage extends StatefulWidget {
   const AllEventsPage({Key? key}) : super(key: key);
-
   @override
   _AllEventsPageState createState() => _AllEventsPageState();
 }
@@ -17,7 +16,7 @@ class _AllEventsPageState extends State<AllEventsPage>
   static int _enterCount = 0;
   bool _showHint = false;
   late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
+  late Animation<double> _fadeAnimation;
 
   @override
   void initState() {
@@ -25,15 +24,17 @@ class _AllEventsPageState extends State<AllEventsPage>
     _pageController = PageController(initialPage: 0);
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    )..repeat(reverse: true);
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0.0, 0.0),
-      end: const Offset(-0.2, 0.0),
+      duration: const Duration(milliseconds: 300),
+    );
+
+    _fadeAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
     ).animate(CurvedAnimation(
       parent: _animationController,
-      curve: Curves.easeInOut,
+      curve: Curves.easeOut,
     ));
+
     _checkAndShowHint();
   }
 
@@ -42,14 +43,19 @@ class _AllEventsPageState extends State<AllEventsPage>
       _enterCount++;
       setState(() {
         _showHint = true;
+        _animationController.forward();
       });
     }
   }
 
   void _hideHint() {
-    setState(() {
-      _showHint = false;
-    });
+    if (_showHint) {
+      _animationController.reverse().then((_) {
+        setState(() {
+          _showHint = false;
+        });
+      });
+    }
   }
 
   @override
@@ -71,7 +77,8 @@ class _AllEventsPageState extends State<AllEventsPage>
         child: Stack(
           children: [
             PageView(
-              scrollBehavior: ScrollBehaviorWebExtended(),
+              scrollBehavior:
+                  ScrollBehaviorWebExtended().copyWith(scrollbars: false),
               controller: _pageController,
               onPageChanged: (_) => _hideHint(),
               children: [
@@ -82,36 +89,83 @@ class _AllEventsPageState extends State<AllEventsPage>
               ],
             ),
             if (_showHint)
-              Center(
+              FadeTransition(
+                opacity: _fadeAnimation,
                 child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.7),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        'Swipe left for',
-                        style: TextStyle(color: Colors.white, fontSize: 32),
+                  color: Colors.black45,
+                  child: Center(
+                    child: Container(
+                      padding: const EdgeInsets.all(24),
+                      constraints: const BoxConstraints(maxWidth: 300),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 12),
-                      const Text(
-                        'hotel events',
-                        style: TextStyle(color: Colors.white, fontSize: 32),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Row(
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.hotel,
+                                size: 20,
+                              ),
+                              SizedBox(width: 12),
+                              Text(
+                                'Discover Hotel Events',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+                          Row(
+                            children: [
+                              const FaIcon(
+                                FontAwesomeIcons.arrowLeft,
+                                size: 16,
+                                color: Colors.black54,
+                              ),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Swipe left to discover',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black.withOpacity(0.6),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          const Row(
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.circleXmark,
+                                size: 14,
+                                color: Colors.black38,
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Tap anywhere to dismiss',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black38,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      const SizedBox(height: 12),
-                      SlideTransition(
-                        position: _slideAnimation,
-                        child: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                          size: 64,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ),

@@ -12,6 +12,7 @@ import 'package:frontend/widgets/events/creation_form/event_category_field.dart'
 import 'package:frontend/widgets/events/creation_form/event_date_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_location_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_time_field.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:intl/intl.dart';
 
 class CreateEventPage extends StatefulWidget {
@@ -70,7 +71,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
         selectedCategory: _selectedCategory,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: SingleChildScrollView(
+      body: SingleChildScrollViewWebExtended(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -116,14 +117,9 @@ class _CreateEventPageState extends State<CreateEventPage> {
                 const SizedBox(height: 16.0),
                 EventLocationField(
                   locationController: _locationController,
-                  locationFocusNode: _locationFocusNode,
-                  showLocationSuggestions: _showLocationSuggestions,
                   selectedLocation: _selectedLocation,
                   onLocationSelected: (location) {
                     setState(() => _selectedLocation = location);
-                  },
-                  onSuggestionsVisibilityChanged: (visible) {
-                    setState(() => _showLocationSuggestions = visible);
                   },
                 ),
                 const SizedBox(height: 16.0),

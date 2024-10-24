@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
@@ -92,7 +93,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           elevation: 0,
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
+          child: SingleChildScrollViewWebExtended(
             padding: const EdgeInsets.all(24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

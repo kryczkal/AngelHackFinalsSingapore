@@ -3,35 +3,49 @@ import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/events/event_details_page.dart';
 import 'package:intl/intl.dart';
 
+enum EventCardType { maxInfo, lessInfo, minInfo }
+
 class EventCard extends StatefulWidget {
   final Event event;
-  final bool less; // Add the optional parameter
+  final EventCardType type;
+  final bool rightPadding;
 
-  const EventCard({Key? key, required this.event, this.less = false})
-      : super(key: key);
+  const EventCard({
+    super.key,
+    required this.event,
+    this.type = EventCardType.maxInfo,
+    this.rightPadding = true,
+  });
 
   @override
-  _EventCardState createState() => _EventCardState();
+  EventCardState createState() => EventCardState();
 }
 
-class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
-  @override
+class EventCardState extends State<EventCard> with TickerProviderStateMixin {
   Widget _getRoundedText(BuildContext context, String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Text(
-        text,
-        style: const TextStyle(color: Colors.black),
-        overflow: TextOverflow.ellipsis,
-        maxLines: 1,
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Container(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 4,
+          ),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.black),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
+        );
+      },
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
@@ -42,71 +56,101 @@ class _EventCardState extends State<EventCard> with TickerProviderStateMixin {
           ),
         );
       },
-      child: Container(
-        //margin: const EdgeInsets.symmetric(vertical: 16), //TODO: idk maybe leave it like this
-        decoration: BoxDecoration(
-          color: Color(int.parse(
-              widget.event.backgroundColor.replaceFirst('#', '0xff'))),
-          borderRadius: BorderRadius.circular(16),
-          image: DecorationImage(
-            image: AssetImage(widget.event.imageUrl),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.4),
-              BlendMode.darken,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final double horizontalPadding =
+              constraints.maxWidth < 200 ? 8.0 : 16.0;
+          final double verticalPadding =
+              constraints.maxHeight < 150 ? 8.0 : 16.0;
+
+          return Container(
+            width: constraints.maxWidth,
+            decoration: BoxDecoration(
+              color: Color(int.parse(
+                  widget.event.backgroundColor.replaceFirst('#', '0xff'))),
+              borderRadius: BorderRadius.circular(16),
+              image: DecorationImage(
+                image: AssetImage(widget.event.imageUrl),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.black.withOpacity(0.4),
+                  BlendMode.darken,
+                ),
+              ),
             ),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Wrap(
-            spacing: 8,
-            direction: Axis.vertical,
-            crossAxisAlignment: WrapCrossAlignment.start,
-            alignment: WrapAlignment.end,
-            children: [
-              if (!widget.less) ...[
-                Icon(
-                  widget.event.isHotelOrganized
-                      ? Icons.hotel // Hotel icon
-                      : Icons.person, // Person icon
-                  color: Colors.white,
-                  size: 24,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(
+                    top: verticalPadding,
+                    left: horizontalPadding,
+                    right: horizontalPadding,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (widget.type == EventCardType.maxInfo) ...[
+                        Icon(
+                          widget.event.isHotelOrganized
+                              ? Icons.hotel
+                              : Icons.person,
+                          color: Colors.white,
+                          size: constraints.maxWidth < 200 ? 16 : 24,
+                        ),
+                        const SizedBox(height: 4),
+                      ],
+                      Text(
+                        widget.event.title,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: constraints.maxWidth < 200 ? 14 : 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-              Text(
-                widget.event.title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Transform.translate(
-                offset: const Offset(-4, 0),
-                child: SizedBox(
-                  height: 30,
-                  child: Wrap(spacing: 8, children: [
-                    _getRoundedText(context,
-                        DateFormat('EEEE, MMM d').format(widget.event.date)),
-                  ]),
-                ),
-              ),
-              if (!widget.less) ...[
-                Transform.translate(
-                  offset: const Offset(-4, 0),
-                  child: SizedBox(
-                    height: 30,
-                    child: Wrap(spacing: 8, children: [
-                      _getRoundedText(context, widget.event.hotel.name),
-                      _getRoundedText(context, widget.event.localization),
-                    ]),
+                Padding(
+                  padding: EdgeInsets.only(
+                    bottom: verticalPadding,
+                    left: horizontalPadding,
+                    right: horizontalPadding,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (widget.type != EventCardType.minInfo) ...[
+                        _getRoundedText(
+                          context,
+                          DateFormat('EEEE, MMM d').format(widget.event.date),
+                        ),
+                      ],
+                      if (widget.type == EventCardType.maxInfo) ...[
+                        const SizedBox(height: 4),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              _getRoundedText(context, widget.event.hotel.name),
+                              const SizedBox(width: 8),
+                              _getRoundedText(
+                                  context, widget.event.localization),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ],
                   ),
                 ),
               ],
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

@@ -35,7 +35,7 @@ class EventsHeader extends StatelessWidget {
                   return SlideTransition(
                       position: offsetAnimation, child: child);
                 },
-                transitionDuration: const Duration(milliseconds: 1000),
+                transitionDuration: const Duration(milliseconds: 250),
               ),
             );
           },

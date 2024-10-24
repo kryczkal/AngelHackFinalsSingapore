@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/user_data.dart';
 import 'package:frontend/pages/profile/user_profile_menu_page.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:frontend/widgets/user/user_preferences_wrap_widget.dart';
 
 class UserProfileBrief extends StatefulWidget {
@@ -52,9 +53,9 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        child: SingleChildScrollView(
-          physics: ClampingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: SingleChildScrollViewWebExtended(
+          physics: const ClampingScrollPhysics(),
           child: Column(
             children: [
               // Profile Image with background circle

@@ -72,16 +72,16 @@ class CreateEventButton extends StatelessWidget {
               badges: [selectedBadge!],
             );
 
-            // Handle event creation logic (e.g., save event, navigate to another screen)
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Event created successfully!')),
             );
 
-            // update data
             AppEventsSingleton().addEvent(newEvent);
             AppEventsSingleton().toggleUserRegistration(
                 newEvent, AppUserSingleton().currentUser);
             AppUserSingleton().addCreatedEvent(newEvent);
+
+            Navigator.pop(context);
           }
         },
         backgroundColor: Colors.green,
