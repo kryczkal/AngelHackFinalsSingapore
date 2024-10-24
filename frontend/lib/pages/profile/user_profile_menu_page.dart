@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/pages/profile/user_profile_edit_page.dart';
-import 'package:frontend/pages/events/user_update_preferences_page.dart';
 import 'package:frontend/widgets/common/minimum_app_bar.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
@@ -29,13 +27,7 @@ class UserProfileMenu extends StatelessWidget {
                       context,
                       icon: Icons.person_outline_rounded,
                       title: 'Edit Profile',
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const EditProfilePage(),
-                          ),
-                        );
-                      }, // Changed to do nothing
+                      onTap: () {}, // Changed to do nothing
                     ),
                     _buildListTile(
                       context,
