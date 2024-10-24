@@ -12,16 +12,18 @@ class AppPage extends StatelessWidget {
     bool isManager = AppUserSingleton().currentUser.isManager;
 
     return Scaffold(
-      body: PageView(
-        scrollBehavior: ScrollBehaviorWebExtended(),
-        children: isManager
-            ? const [
-                UserPage(),
-                ManagerDashboardPage(),
-              ]
-            : const [
-                UserPage(),
-              ],
+      body: SafeArea(
+        child: PageView(
+          scrollBehavior: ScrollBehaviorWebExtended(),
+          children: isManager
+              ? const [
+                  UserPage(),
+                  ManagerDashboardPage(),
+                ]
+              : const [
+                  UserPage(),
+                ],
+        ),
       ),
       backgroundColor: Colors.white,
     );

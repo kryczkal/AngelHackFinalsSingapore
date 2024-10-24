@@ -24,47 +24,37 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        child: SingleChildScrollView(
           child: Column(
             children: [
-              const SizedBox(height: 21),
               const ProfileHeader(hasNotification: true),
               const SizedBox(height: 16),
-              Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ManagerHeaderWidget(
-                          reportData: _reportData,
-                          onTimelineChanged: (timeline) {
-                            setState(() {
-                              _selectedTimeline = timeline;
-                            });
-                          },
-                          startingTimeline: ReportTimeline.week),
-                      const SizedBox(height: 16),
-                      EventSuggestionCard(
-                          suggestions:
-                              _reportData[_selectedTimeline]!.suggestionData,
-                          onAddEvent: (suggestion) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const BlankPage(),
-                              ),
-                            );
-                          }),
-                      ..._reportData[_selectedTimeline]!.cardData.map((data) =>
-                          Container(
-                              margin: const EdgeInsets.only(bottom: 16),
-                              child: DashboardCardWidget(data: data))),
-                      const SizedBox(height: 64),
-                    ],
-                  ),
-                ),
-              ),
+              ManagerHeaderWidget(
+                  reportData: _reportData,
+                  onTimelineChanged: (timeline) {
+                    setState(() {
+                      _selectedTimeline = timeline;
+                    });
+                  },
+                  startingTimeline: ReportTimeline.week),
+              const SizedBox(height: 16),
+              EventSuggestionCard(
+                  suggestions: _reportData[_selectedTimeline]!.suggestionData,
+                  onAddEvent: (suggestion) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BlankPage(),
+                      ),
+                    );
+                  }),
+              ..._reportData[_selectedTimeline]!.cardData.map((data) =>
+                  Container(
+                      margin: const EdgeInsets.only(bottom: 16),
+                      child: DashboardCardWidget(data: data))),
+              const SizedBox(height: 64),
             ],
           ),
         ),

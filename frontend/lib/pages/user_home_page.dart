@@ -15,84 +15,73 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Container(
-              color: Colors.white,
-            ),
-          ),
-          // Main Content
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 37),
-                  const ProfileHeader(hasNotification: true),
-                  const SizedBox(height: 12),
-                  const EventsDashboardHeader(),
-                  const SizedBox(height: 24),
-                  const EventsHeader(title: 'Might\ninterest you'),
-                  const SizedBox(height: 16),
-                  IgnorePaddingWidget(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 250,
-                      child: PageView.builder(
-                        scrollBehavior: ScrollBehaviorWebExtended(),
-                        controller: PageController(viewportFraction: 0.80),
-                        itemCount: AppEventsSingleton().events.length,
-                        itemBuilder: (context, index) {
-                          return _buildEventCard(
-                              AppEventsSingleton().events[index]);
-                        },
-                      ),
-                    ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const ProfileHeader(hasNotification: true),
+              const SizedBox(height: 12),
+              const EventsDashboardHeader(),
+              const SizedBox(height: 24),
+              const EventsHeader(title: 'Might\ninterest you'),
+              const SizedBox(height: 16),
+              IgnorePaddingWidget(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  child: PageView.builder(
+                    scrollBehavior: ScrollBehaviorWebExtended(),
+                    controller: PageController(viewportFraction: 0.80),
+                    itemCount: AppEventsSingleton().events.length,
+                    itemBuilder: (context, index) {
+                      return _buildEventCard(
+                          AppEventsSingleton().events[index]);
+                    },
                   ),
-                  const SizedBox(height: 32),
-                  const EventsHeader(title: 'Last\nMinute'),
-                  const SizedBox(height: 16),
-                  IgnorePaddingWidget(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 250,
-                      child: PageView.builder(
-                        scrollBehavior: ScrollBehaviorWebExtended(),
-                        controller: PageController(viewportFraction: 0.80),
-                        itemCount: AppEventsSingleton().events.length,
-                        itemBuilder: (context, index) {
-                          return _buildEventCard(
-                              AppEventsSingleton().events[index]);
-                        },
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-                  const EventsHeader(title: 'Best\nglobally'),
-                  const SizedBox(height: 16),
-                  IgnorePaddingWidget(
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 250,
-                      child: PageView.builder(
-                        scrollBehavior: ScrollBehaviorWebExtended(),
-                        controller: PageController(viewportFraction: 0.80),
-                        itemCount: AppEventsSingleton().events.length,
-                        itemBuilder: (context, index) {
-                          return _buildEventCard(
-                              AppEventsSingleton().events[index]);
-                        },
-                      ),
-                    ),
-                  ),
-                  // CustomBottomNavigationBar(),
-                ],
+                ),
               ),
-            ),
+              const SizedBox(height: 32),
+              const EventsHeader(title: 'Last\nMinute'),
+              const SizedBox(height: 16),
+              IgnorePaddingWidget(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  child: PageView.builder(
+                    scrollBehavior: ScrollBehaviorWebExtended(),
+                    controller: PageController(viewportFraction: 0.80),
+                    itemCount: AppEventsSingleton().events.length,
+                    itemBuilder: (context, index) {
+                      return _buildEventCard(
+                          AppEventsSingleton().events[index]);
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32),
+              const EventsHeader(title: 'Best\nglobally'),
+              const SizedBox(height: 16),
+              IgnorePaddingWidget(
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 250,
+                  child: PageView.builder(
+                    scrollBehavior: ScrollBehaviorWebExtended(),
+                    controller: PageController(viewportFraction: 0.80),
+                    itemCount: AppEventsSingleton().events.length,
+                    itemBuilder: (context, index) {
+                      return _buildEventCard(
+                          AppEventsSingleton().events[index]);
+                    },
+                  ),
+                ),
+              ),
+              // CustomBottomNavigationBar(),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
