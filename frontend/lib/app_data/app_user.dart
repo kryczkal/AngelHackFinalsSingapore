@@ -9,8 +9,12 @@ class AppUserSingleton extends ChangeNotifier {
 
   AppUserSingleton._internal();
 
-  final User _currentUser =
-      User(firstName: 'Łukasz', lastName: 'Kryczka', age: 20, userBadges: [EventBadge(name: 'Yoga Lover')]);
+  final User _currentUser = User(
+      firstName: 'Łukasz',
+      lastName: 'Kryczka',
+      age: 20,
+      userBadges: [EventBadge(name: 'Yoga Lover')],
+      isManager: true);
   static const String _currentLocation = 'Singapore';
   static const String _profileImagePath = 'images/profile/profile.jpg';
 

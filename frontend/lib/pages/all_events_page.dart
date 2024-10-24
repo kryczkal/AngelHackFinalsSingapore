@@ -62,6 +62,9 @@ class _AllEventsPageState extends State<AllEventsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       body: GestureDetector(
         onTap: _hideHint,
         child: Stack(

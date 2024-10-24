@@ -49,61 +49,9 @@ class AppManagerSingleton {
   * - most frequently used places (bar chart / pie chart)
   * */
 
-  static final List<DashboardCardData> _cardDataMon = [
-    DashboardCardData(
-      title: 'Total Students',
-      mainValue: '25.345',
-      subtitle: '60% Increase than last month',
-      graphFactory: () => const SimpleBarChart(
-          color: Colors.green, pattern: BarChartPattern.increasing),
-    ),
-    DashboardCardData(
-      title: 'Total Income',
-      mainValue: '\$30.789',
-      subtitle: '70% Increase than last month',
-      graphFactory: () => const SimpleBarChart(
-          color: Colors.green, pattern: BarChartPattern.random),
-    ),
-    DashboardCardData(
-      title: 'Total Working Hours',
-      mainValue: '120h 15m',
-      subtitle: '50% Increase than last month',
-      graphFactory: () => const LineChartWidget(
-        color: Colors.green,
-        pattern: LineChartPattern.volatile,
-        height: 60,
-        width: 100,
-      ),
-    ),
-  ];
+  static final List<DashboardCardData> _cardDataMon = [];
 
-  static final List<DashboardCardData> _cardDataHalfYear = [
-    DashboardCardData(
-      title: 'Total Students',
-      mainValue: '150.234',
-      subtitle: '30% Increase in 6 Months',
-      graphFactory: () => const SimpleBarChart(
-          color: Colors.green, pattern: BarChartPattern.random),
-    ),
-    DashboardCardData(
-      title: 'Total Income',
-      mainValue: '\$120.654',
-      subtitle: '40% Increase in 6 Months',
-      graphFactory: () => const SimpleBarChart(
-          color: Colors.green, pattern: BarChartPattern.normal),
-    ),
-    DashboardCardData(
-      title: 'Total Working Hours',
-      mainValue: '650h 20m',
-      subtitle: '35% Increase in 6 Months',
-      graphFactory: () => const LineChartWidget(
-        color: Colors.green,
-        pattern: LineChartPattern.downward,
-        height: 60,
-        width: 100,
-      ),
-    ),
-  ];
+  static final List<DashboardCardData> _cardDataHalfYear = [];
 
   static final Map<ReportTimeline, ReportData> _reportData = {
     ReportTimeline.week: ReportData(
