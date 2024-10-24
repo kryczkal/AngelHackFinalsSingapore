@@ -17,7 +17,8 @@ class _AllEventsPageState extends State<AllEventsPage>
   static int _enterCount = 0;
   bool _showHint = false;
   late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
+  // late Animation<Offset> _slideAnimation;
+  late Animation<double> _fadeAnimation;
   final TextEditingController _codeController = TextEditingController();
   String? _errorMessage;
   bool _isCodeEntryVisible = false;
@@ -199,9 +200,9 @@ class _AllEventsPageState extends State<AllEventsPage>
                     onPageChanged: (_) => _hideHint(),
                     children: [
                       ShowEventsWidget(
-                          eventsLoader: () => AppEventsSingleton().getHotelEvents()),
+                           eventsLoader: () => AppEventsSingleton().getPublicPeopleEvents()),
                       ShowEventsWidget(
-                          eventsLoader: () => AppEventsSingleton().getPublicPeopleEvents()),
+                          eventsLoader: () => AppEventsSingleton().getHotelEvents()),
                     ],
                   ),
                 ),

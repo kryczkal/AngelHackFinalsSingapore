@@ -289,11 +289,11 @@ class AppEventsSingleton extends ChangeNotifier {
   }
 
   List<Event> getPublicPeopleEvents() {
-    return events.where((event) => !event.isPrivate).toList();
+    return events.where((event) => !event.isPrivate && !event.isHotelOrganized).toList();
   }
 
   List<Event> getHotelEvents() {
-    return events.where((event) => event.isHotelOrganized).toList();
+    return events.where((event) => event.isHotelOrganized && !event.isPrivate).toList();
   }
 
   List<Event> getPrivatePeopleEvents(User user) {

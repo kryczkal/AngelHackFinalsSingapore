@@ -36,10 +36,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().events.length,
+                      itemCount: AppEventsSingleton().getPublicPeopleEvents().take(5).length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                            AppEventsSingleton().events[index]);
+                            AppEventsSingleton().getPublicPeopleEvents().take(5).elementAt(index));
                       },
                     ),
                   ),
@@ -54,10 +54,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().events.length,
+                      itemCount: AppEventsSingleton().getPublicPeopleEvents().take(5).length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                            AppEventsSingleton().events[index]);
+                             AppEventsSingleton().getPublicPeopleEvents().take(5).elementAt(index));
                       },
                     ),
                   ),
@@ -72,10 +72,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().events.length,
+                      itemCount: AppEventsSingleton().getPublicPeopleEvents().take(5).length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                            AppEventsSingleton().events[index]);
+                            AppEventsSingleton().getPublicPeopleEvents().take(5).elementAt(index));
                       },
                     ),
                   ),
