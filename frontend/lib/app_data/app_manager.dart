@@ -1,4 +1,5 @@
 import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/event_suggestion_data.dart';
 import 'package:frontend/models/report_card_fixed_data.dart';
 import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
@@ -63,24 +64,42 @@ class AppManagerSingleton {
     averageInterestSubTitle: "Interest went up",
   );
 
+  static final List<EventSuggestionData> _suggestions = [
+    EventSuggestionData(
+        category: EventCategory.art,
+        description: "Description",
+        arguments: {"arg1": "desc1", "arg2": "desc2"}),
+    EventSuggestionData(
+        category: EventCategory.sports,
+        description: "Description",
+        arguments: {"arg1": "desc1", "arg2": "desc2"}),
+    EventSuggestionData(
+        category: EventCategory.networking,
+        description: "Description",
+        arguments: {"arg1": "desc1", "arg2": "desc2"}),
+  ];
+
   static final Map<ReportTimeline, ReportData> _reportData = {
     ReportTimeline.week: ReportData(
       cpv: 0.3,
-      totalEvents: 312,
+      totalEvents: 210,
       averageScore: 3.1,
       cardData: _reportCardFixedDataWeek.convertToCardData(),
+      suggestionData: _suggestions,
     ),
     ReportTimeline.month: ReportData(
       cpv: 0.9,
       totalEvents: 1525,
       averageScore: 4.7,
       cardData: _reportCardFixedDataMon.convertToCardData(),
+      suggestionData: _suggestions,
     ),
     ReportTimeline.sixMonths: ReportData(
       cpv: 0.7,
       totalEvents: 9821,
       averageScore: 4.4,
       cardData: _reportCardFixedDataHalfYear.convertToCardData(),
+      suggestionData: _suggestions,
     ),
   };
 

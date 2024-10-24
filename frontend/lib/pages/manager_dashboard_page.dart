@@ -4,6 +4,7 @@ import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
 import 'package:frontend/pages/blank_page.dart';
 import 'package:frontend/widgets/dashboard_card_widget.dart';
+import 'package:frontend/widgets/event_suggestion_card.dart';
 import 'package:frontend/widgets/manager_header_widget.dart';
 import 'package:frontend/widgets/profile_header.dart';
 
@@ -44,6 +45,17 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      EventSuggestionCard(
+                          suggestions:
+                              _reportData[_selectedTimeline]!.suggestionData,
+                          onAddEvent: (suggestion) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const BlankPage(),
+                              ),
+                            );
+                          }),
                       ..._reportData[_selectedTimeline]!.cardData.map((data) =>
                           Container(
                               margin: const EdgeInsets.only(bottom: 16),
