@@ -70,7 +70,7 @@ class EventFeedbackDialogState extends State<EventFeedbackDialog> {
                 return IconButton(
                   icon: Icon(
                     index < _rating ? Icons.star : Icons.star_border,
-                    color: index < _rating ? Colors.yellow : Colors.blue,
+                    color: index < _rating ? Colors.yellow : Colors.green,
                     size: 30,
                   ),
                   onPressed: () {
