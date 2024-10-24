@@ -104,6 +104,10 @@ class AppUserSingleton extends ChangeNotifier {
     return _currentUser;
   }
 
+  User getUserByFirstNameAndLastName(String firstName, String lastName) {
+    return users.firstWhere((user) => user.firstName == firstName && user.lastName == lastName);
+  }
+
   String get currentLocation {
     return _currentUser.location;
   }

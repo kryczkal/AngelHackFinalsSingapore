@@ -31,10 +31,9 @@ class Event {
     required this.registeredUsers,
     required this.badges,
     required this.category,
-    this.isHotelOrganized = false,
     this.isPrivate = false,
     this.password = '',
-  });
+  }) : isHotelOrganized = organizer.isManager;
 
   DateTime? get dateTime => null;
 }

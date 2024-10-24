@@ -192,9 +192,9 @@ class _AllEventsPageState extends State<AllEventsPage>
                     onPageChanged: (_) => _hideHint(),
                     children: [
                       ShowEventsWidget(
-                          eventsLoader: () => AppEventsSingleton().getEvents().where((event) => !event.isHotelOrganized && !event.isPrivate).toList()),
+                          eventsLoader: () => AppEventsSingleton().getHotelEvents()),
                       ShowEventsWidget(
-                          eventsLoader: () => AppEventsSingleton().getEvents().where((event) => event.isHotelOrganized && !event.isPrivate).toList()),
+                          eventsLoader: () => AppEventsSingleton().getPublicPeopleEvents()),
                     ],
                   ),
                 ),

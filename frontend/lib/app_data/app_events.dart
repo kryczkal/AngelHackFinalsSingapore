@@ -24,8 +24,7 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'This event is exclusive to members of company ABC. Join us for an important meeting at Lyf Funan Singapore Hotel to discuss the upcoming fusion of our companies. This event will outline key strategies and opportunities for collaboration as we move forward together.',
-        organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Piotr' && user.lastName == 'Tyrakowski'),
-      isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Piotr' && user.lastName == 'Tyrakowski').isManager,
+      organizer: AppUserSingleton().getUserByFirstNameAndLastName("Piotr", "Tyrakowski"),
       registeredUsers: [],
       category: EventCategory.business,
       badges: [],
@@ -42,7 +41,7 @@ class AppEventsSingleton extends ChangeNotifier {
       description:
           'Hey everyone! Looking for a fun way to unwind and meet new friends? Join me at Lyf Funan Singapore Hotel for a refreshing yoga class! Whether you’re a seasoned yogi or just starting out, all levels are welcome!',
       organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Paul' && user.lastName == 'Done'),
-      isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Paul' && user.lastName == 'Done').isManager,
+      //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Paul' && user.lastName == 'Done').isManager,
       registeredUsers: [],
       category: EventCategory.health,
       badges: [EventBadge(name: 'Yoga lover')],
@@ -58,7 +57,7 @@ class AppEventsSingleton extends ChangeNotifier {
       description:
           'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
       organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Michael' && user.lastName == 'Brown'),
-      isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Michael' && user.lastName == 'Brown').isManager,
+      //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Michael' && user.lastName == 'Brown').isManager,
       registeredUsers: [],
       category: EventCategory.food,
       badges: [EventBadge(name: 'Cooking Enthusiast')],
@@ -74,7 +73,7 @@ class AppEventsSingleton extends ChangeNotifier {
       description:
           'Enjoy a cozy movie night under the stars with popcorn and blankets. Bring your friends or meet new ones!',
       organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Sophia' && user.lastName == 'Davis'),
-      isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Sophia' && user.lastName == 'Davis').isManager,
+      //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Sophia' && user.lastName == 'Davis').isManager,
       registeredUsers: [],
       category: EventCategory.networking,
       badges: [EventBadge(name: 'Movie Buff')],
@@ -90,7 +89,7 @@ class AppEventsSingleton extends ChangeNotifier {
       description:
           'Unleash your creativity in our art and craft workshop! All materials provided, just bring your enthusiasm!',
       organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'James' && user.lastName == 'Wilson'),
-      isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'James' && user.lastName == 'Wilson').isManager,
+      //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'James' && user.lastName == 'Wilson').isManager,
       registeredUsers: [],
       category: EventCategory.art,
       badges: [EventBadge(name: 'Crafty Creator')],
@@ -106,7 +105,7 @@ class AppEventsSingleton extends ChangeNotifier {
       description:
           'Join us for a fun social run! All fitness levels are welcome. Let’s enjoy the fresh air and make new friends!',
       organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Olivia' && user.lastName == 'Martinez'),
-      isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Olivia' && user.lastName == 'Martinez').isManager,
+      //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Olivia' && user.lastName == 'Martinez').isManager,
       registeredUsers: [],
       category: EventCategory.sports,
       badges: [EventBadge(name: 'Running Enthusiast')],
@@ -202,74 +201,74 @@ class AppEventsSingleton extends ChangeNotifier {
   ];
 
 
-  List<Event> hotelEvents = [
-    Event(
-      title: 'Exclusive Wine Tasting',
-      date: DateTime(2021, 11, 10),
-      imageUrl: 'images/events/cooking.jpeg',
-      backgroundColor: '#d32f2f',
-      localization: 'Wine Lounge',
-      hotel: LyfHotels.Funan,
-      description:
-          'Join us for an exclusive wine tasting event hosted by Lyf Funan. Sample a curated selection of wines from around the world.',
-      organizer: User(
-        firstName: 'Hotel',
-        lastName: 'Staff',
-        age: 35,
-        userBadges: [],
-        location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
-      ),
-      isHotelOrganized: true,
-      registeredUsers: [],
-      category: EventCategory.alcohol,
-      badges: [EventBadge(name: 'Wine Connoisseur')],
-    ),
-    Event(
-      title: 'Hotel Mixer: Meet & Greet',
-      date: DateTime(2021, 11, 15),
-      imageUrl: 'images/events/cooking.jpeg',
-      backgroundColor: '#5d4037',
-      localization: 'Lobby',
-      hotel: LyfHotels.Funan,
-      description:
-          'Come mingle with other hotel guests and meet the friendly hotel staff. Drinks and snacks are on us!',
-      organizer: User(
-        firstName: 'Hotel',
-        lastName: 'Staff',
-        age: 35, // Set age for organizer
-        userBadges: [], // Empty list of badges
-        location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
-      ),
-      isHotelOrganized: true,
-      registeredUsers: [],
-      category: EventCategory.networking,
-      badges: [EventBadge(name: 'Social Butterfly')],
-    ),
-    Event(
-      title: 'Poolside BBQ Party',
-      date: DateTime(2021, 11, 20),
-      imageUrl: 'images/events/cooking.jpeg',
-      backgroundColor: '#f57c00',
-      localization: 'Poolside',
-      hotel: LyfHotels.Funan,
-      description:
-          'Enjoy a BBQ by the pool, hosted by Lyf Funan. Come for the food, stay for the vibes!',
-      organizer: User(
-        firstName: 'Hotel',
-        lastName: 'Staff',
-        age: 35, // Set age for organizer
-        userBadges: [], // Empty list of badges
-        location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
-      ),
-      isHotelOrganized: true,
-      registeredUsers: [],
-      category: EventCategory.food,
-      badges: [EventBadge(name: 'BBQ Lover')],
-    ),
-  ];
+  // List<Event> hotelEvents = [
+  //   Event(
+  //     title: 'Exclusive Wine Tasting',
+  //     date: DateTime(2021, 11, 10),
+  //     imageUrl: 'images/events/cooking.jpeg',
+  //     backgroundColor: '#d32f2f',
+  //     localization: 'Wine Lounge',
+  //     hotel: LyfHotels.Funan,
+  //     description:
+  //         'Join us for an exclusive wine tasting event hosted by Lyf Funan. Sample a curated selection of wines from around the world.',
+  //     organizer: User(
+  //       firstName: 'Hotel',
+  //       lastName: 'Staff',
+  //       age: 35,
+  //       userBadges: [],
+  //       location: 'Singapore',
+  //       profilePic: 'images/profile/profile.jpg',
+  //     ),
+  //     isHotelOrganized: true,
+  //     registeredUsers: [],
+  //     category: EventCategory.alcohol,
+  //     badges: [EventBadge(name: 'Wine Connoisseur')],
+  //   ),
+  //   Event(
+  //     title: 'Hotel Mixer: Meet & Greet',
+  //     date: DateTime(2021, 11, 15),
+  //     imageUrl: 'images/events/cooking.jpeg',
+  //     backgroundColor: '#5d4037',
+  //     localization: 'Lobby',
+  //     hotel: LyfHotels.Funan,
+  //     description:
+  //         'Come mingle with other hotel guests and meet the friendly hotel staff. Drinks and snacks are on us!',
+  //     organizer: User(
+  //       firstName: 'Hotel',
+  //       lastName: 'Staff',
+  //       age: 35, // Set age for organizer
+  //       userBadges: [], // Empty list of badges
+  //       location: 'Singapore',
+  //       profilePic: 'images/profile/profile.jpg',
+  //     ),
+  //     isHotelOrganized: true,
+  //     registeredUsers: [],
+  //     category: EventCategory.networking,
+  //     badges: [EventBadge(name: 'Social Butterfly')],
+  //   ),
+  //   Event(
+  //     title: 'Poolside BBQ Party',
+  //     date: DateTime(2021, 11, 20),
+  //     imageUrl: 'images/events/cooking.jpeg',
+  //     backgroundColor: '#f57c00',
+  //     localization: 'Poolside',
+  //     hotel: LyfHotels.Funan,
+  //     description:
+  //         'Enjoy a BBQ by the pool, hosted by Lyf Funan. Come for the food, stay for the vibes!',
+  //     organizer: User(
+  //       firstName: 'Hotel',
+  //       lastName: 'Staff',
+  //       age: 35, // Set age for organizer
+  //       userBadges: [], // Empty list of badges
+  //       location: 'Singapore',
+  //       profilePic: 'images/profile/profile.jpg',
+  //     ),
+  //     isHotelOrganized: true,
+  //     registeredUsers: [],
+  //     category: EventCategory.food,
+  //     badges: [EventBadge(name: 'BBQ Lover')],
+  //   ),
+  // ];
 
   List<Event> getEvents() {
     return events;
@@ -283,8 +282,21 @@ class AppEventsSingleton extends ChangeNotifier {
     return currentUser.createdEvents;
   }
 
+
+  List<Event> getAllPublicEvents() {
+    return events.where((event) => !event.isPrivate).toList();
+  }
+
+  List<Event> getPublicPeopleEvents() {
+    return events.where((event) => !event.isPrivate).toList();
+  }
+
   List<Event> getHotelEvents() {
-    return hotelEvents;
+    return events.where((event) => event.isHotelOrganized).toList();
+  }
+
+  List<Event> getPrivatePeopleEvents(User user) {
+    return events.where((event) => event.isPrivate && event.organizer != user).toList();
   }
 
   void addEvent(Event event) {
