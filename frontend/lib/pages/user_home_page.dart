@@ -78,7 +78,7 @@ class UserPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  const EventsHeader(title: 'Events on\nThis month'),
+                  const EventsHeader(title: 'Events you\nmight like'),
                   const SizedBox(height: 16),
                   IgnorePaddingWidget(
                     child: SizedBox(
@@ -86,31 +86,48 @@ class UserPage extends StatelessWidget {
                       height: 250,
                       child: PageView.builder(
                         controller: PageController(viewportFraction: 0.80),
-                        itemCount: AppEventsSingleton().events.length,
+                        itemCount: AppEventsSingleton().events.where((event) => !event.isPrivate).take(5).length,
                         itemBuilder: (context, index) {
                           return _buildEventCard(
-                              AppEventsSingleton().events[index]);
+                              AppEventsSingleton().events.where((event) => !event.isPrivate).toList()[index]);
                         },
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const EventsHeader(title: 'Events\nAround you'),
+                  const EventsHeader(title: 'Events \nlast minute'),
                   IgnorePaddingWidget(
                     child: SizedBox(
                       width: MediaQuery.of(context).size.width,
                       height: 250,
                       child: PageView.builder(
                         controller: PageController(viewportFraction: 0.80),
-                        itemCount: AppEventsSingleton().events.length,
+                        itemCount: AppEventsSingleton().events.where((event) => !event.isPrivate).take(5).length,
                         itemBuilder: (context, index) {
                           return _buildEventCard(
-                              AppEventsSingleton().events[index]);
+                              AppEventsSingleton().events.where((event) => !event.isPrivate).toList()[index]);
                         },
                       ),
                     ),
                   ),
-                  // CustomBottomNavigationBar(),
+
+                  const SizedBox(height: 16),
+                  const EventsHeader(title: 'The best \nAscott Events'),
+                  IgnorePaddingWidget(
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 250,
+                      child: PageView.builder(
+                        controller: PageController(viewportFraction: 0.80),
+                        itemCount: AppEventsSingleton().events.where((event) => !event.isPrivate).take(5).length,
+                        itemBuilder: (context, index) {
+                          return _buildEventCard(
+                              AppEventsSingleton().events.where((event) => !event.isPrivate).toList()[index]);
+                        },
+                      ),
+                    ),
+                  ),
+                  
                 ],
               ),
             ),

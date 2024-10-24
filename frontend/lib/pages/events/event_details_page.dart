@@ -6,6 +6,7 @@ import 'package:frontend/pages/profile/user_profile_brief_page.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+
 class EventDetailsPage extends StatefulWidget {
   final Event eventDetails;
 
