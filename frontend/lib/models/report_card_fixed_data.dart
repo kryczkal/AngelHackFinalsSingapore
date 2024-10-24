@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_categories_enum.dart';
-import 'package:frontend/pages/blank_page.dart';
+import 'package:frontend/pages/misc/blank_page.dart';
 import 'package:frontend/widgets/manager/charts/bar_chart_widget.dart';
 import 'package:frontend/widgets/manager/charts/line_chart_widget.dart';
 import 'package:frontend/widgets/manager/charts/pie_chart_preview_widget.dart';
