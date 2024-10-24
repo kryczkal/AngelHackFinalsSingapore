@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
+import 'package:frontend/widgets/common/minimum_app_bar.dart';
 import 'package:frontend/widgets/events/show_events_widget.dart';
 import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,6 +18,7 @@ class _AllEventsPageState extends State<AllEventsPage>
   bool _showHint = false;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
+  bool _isHotelEvents = true;
 
   @override
   void initState() {
@@ -69,8 +71,9 @@ class _AllEventsPageState extends State<AllEventsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
+      appBar: MinimumAppBar(
+        title:
+            Text(_isHotelEvents ? 'Lyf Organized Events' : 'Community Events'),
       ),
       body: GestureDetector(
         onTap: _hideHint,
@@ -80,12 +83,17 @@ class _AllEventsPageState extends State<AllEventsPage>
               scrollBehavior:
                   ScrollBehaviorWebExtended().copyWith(scrollbars: false),
               controller: _pageController,
-              onPageChanged: (_) => _hideHint(),
+              onPageChanged: (_) {
+                _hideHint();
+                setState(() {
+                  _isHotelEvents = !_isHotelEvents;
+                });
+              },
               children: [
                 ShowEventsWidget(
-                    eventsLoader: () => AppEventsSingleton().getEvents()),
-                ShowEventsWidget(
                     eventsLoader: () => AppEventsSingleton().getHotelEvents()),
+                ShowEventsWidget(
+                    eventsLoader: () => AppEventsSingleton().getEvents()),
               ],
             ),
             if (_showHint)
@@ -119,7 +127,7 @@ class _AllEventsPageState extends State<AllEventsPage>
                               ),
                               SizedBox(width: 12),
                               Text(
-                                'Discover Hotel Events',
+                                'Discover Community\n Events',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w600,

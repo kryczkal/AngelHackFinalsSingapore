@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/user_data.dart';
 import 'package:frontend/pages/profile/user_profile_menu_page.dart';
+import 'package:frontend/widgets/common/minimum_app_bar.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:frontend/widgets/user/user_preferences_wrap_widget.dart';
 
@@ -29,15 +30,7 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+      appBar: MinimumAppBar(
         actions: [
           if (widget.user == AppUserSingleton().currentUser)
             IconButton(
