@@ -16,7 +16,24 @@ import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart
 import 'package:intl/intl.dart';
 
 class CreateEventPage extends StatefulWidget {
-  const CreateEventPage({Key? key}) : super(key: key);
+  final DateTime? initialDate;
+  final TimeOfDay? initialTime;
+  final String? initialLocation;
+  final String? initialEventTitle;
+  final String? initialEventDescription;
+  final EventBadge? initialBadge;
+  final EventCategory? initialCategory;
+
+  const CreateEventPage({
+    super.key,
+    this.initialDate,
+    this.initialTime,
+    this.initialLocation,
+    this.initialEventTitle,
+    this.initialEventDescription,
+    this.initialBadge,
+    this.initialCategory,
+  });
 
   @override
   State<CreateEventPage> createState() => _CreateEventPageState();
@@ -37,7 +54,25 @@ class _CreateEventPageState extends State<CreateEventPage> {
   final TextEditingController _locationController = TextEditingController();
 
   final FocusNode _locationFocusNode = FocusNode();
-  bool _showLocationSuggestions = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedDate = widget.initialDate;
+    _selectedTime = widget.initialTime;
+    _selectedLocation = widget.initialLocation ?? '';
+    _eventTitle = widget.initialEventTitle ?? '';
+    _eventDescription = widget.initialEventDescription ?? '';
+    _selectedBadge = widget.initialBadge;
+    _selectedCategory = widget.initialCategory;
+
+    _dateController.text = _selectedDate != null
+        ? DateFormat('yyyy-MM-dd').format(_selectedDate!)
+        : '';
+    _timeController.text =
+        _selectedTime != null ? _selectedTime!.format(context) : '';
+    _locationController.text = _selectedLocation;
+  }
 
   @override
   void dispose() {
