@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/events/show_events_widget.dart';
+import 'package:frontend/widgets/misc/app_scroll_behavior_web_extended.dart';
 
 import '../../app_data/app_events.dart';
 
@@ -70,6 +71,7 @@ class _AllEventsPageState extends State<AllEventsPage>
         child: Stack(
           children: [
             PageView(
+              scrollBehavior: ScrollBehaviorWebExtended(),
               controller: _pageController,
               onPageChanged: (_) => _hideHint(),
               children: [

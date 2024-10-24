@@ -9,5 +9,6 @@ class ScrollBehaviorWebExtended extends MaterialScrollBehavior {
         PointerDeviceKind.mouse,
         PointerDeviceKind.stylus,
         PointerDeviceKind.trackpad,
+        PointerDeviceKind.unknown,
       };
 }
