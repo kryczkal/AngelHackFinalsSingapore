@@ -31,9 +31,7 @@ class MyApp extends StatelessWidget {
       onTertiary: Color(0xFF272727),
       error: Color(0xFFff5963),
       onError: Color(0xFFFFFFFF),
-      background: Color(0xFFFFFFFF),
-      onBackground: Color(0xFF272727),
-      surface: Color(0xFFf2f2f2),
+      surface: Colors.white,
       onSurface: Color(0xFF272727),
     );
 
@@ -48,6 +46,6 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           primarySwatch: Colors.blue,
         ),
-        home: AdaptivePhoneMockup(childWidget: AppPage()));
+        home: AdaptivePhoneMockup(childWidget: const AppPage()));
   }
 }

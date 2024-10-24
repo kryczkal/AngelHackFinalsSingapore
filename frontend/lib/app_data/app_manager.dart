@@ -12,6 +12,10 @@ class AppManagerSingleton {
 
   AppManagerSingleton._internal();
 
+  static TimeAnalysisData weeklyData = TimeAnalysisMock.generateWeekData();
+  static TimeAnalysisData montlyData = TimeAnalysisMock.generateMonthData();
+  static TimeAnalysisData sixMonthData = TimeAnalysisMock.generateSixMonthData();
+
   static final ReportCardFixedData _reportCardFixedDataWeek = 
       ReportCardFixedData(
           categoryRatingTable: [
@@ -25,13 +29,13 @@ class AppManagerSingleton {
         (3.5, EventCategory.beauty),  // Beauty services in the spa or salon
       ],
           ratingSubtitle: "Food is new favorite!",
-          timeAllocationMainValue: "12:00",
-          timeAllocationSubTitle: "Most frequent day: Sunday",
+          timeAllocationMainValue: TimeAnalysisMock.convertHourToTimeFormat(TimeAnalysisMock.findBusiestTime(weeklyData).$1),
+          timeAllocationSubTitle: "Most frequent day: ${TimeAnalysisMock.getDayOfWeek(TimeAnalysisMock.findBusiestTime(weeklyData).$1)}",
           bestPlaceMainValue: "Kitchen area",
           bestPlaceSubTitle: "Food events strikes!",
           averageInterestMainValue: "Score: 3.1",
           averageInterestSubTitle: "Interest went slightly down",
-          timeAnalysisData: TimeAnalysisMock.generateWeekData());
+          timeAnalysisData: weeklyData);
 
 static final ReportCardFixedData _reportCardFixedDataMon =
       ReportCardFixedData(

@@ -21,6 +21,28 @@ class TimeAnalysisMock {
     return _generateData(24.0);
   }
 
+  static (int weekDay, int hour) findBusiestTime(TimeAnalysisData data) {
+    int maxPeople = 0;
+    int busiestDay = 0;
+    int busiestHour = 0;
+
+    // Iterate through each day and hour to find the maximum
+    for (int day = 0; day < data.peoplePerHourPerWeekDay.length; day++) {
+      for (int hour = 0;
+          hour < data.peoplePerHourPerWeekDay[day].length;
+          hour++) {
+        int currentPeople = data.peoplePerHourPerWeekDay[day][hour];
+        if (currentPeople > maxPeople) {
+          maxPeople = currentPeople;
+          busiestDay = day;
+          busiestHour = hour;
+        }
+      }
+    }
+
+    return (busiestDay, busiestHour);
+  }
+
   static TimeAnalysisData _generateData(double multiplier) {
     final random = Random();
     final List<List<int>> data =
@@ -72,5 +94,36 @@ class TimeAnalysisMock {
     }
 
     return TimeAnalysisData(peoplePerHourPerWeekDay: data);
+  }
+
+  static String getDayOfWeek(int dayNumber) {
+    switch (dayNumber) {
+      case 1:
+        return "Monday";
+      case 2:
+        return "Tuesday";
+      case 3:
+        return "Wednesday";
+      case 4:
+        return "Thursday";
+      case 5:
+        return "Friday";
+      case 6:
+        return "Saturday";
+      case 7:
+        return "Sunday";
+      default:
+        return "Invalid day";
+    }
+  }
+
+
+  static String convertHourToTimeFormat(int hour) {
+    if (hour < 1 || hour > 24) return "Invalid hour";
+
+    int twelveHourFormat = hour % 12 == 0 ? 12 : hour % 12;
+    String period = hour >= 12 ? "PM" : "AM";
+
+    return "$twelveHourFormat:00 $period";
   }
 }

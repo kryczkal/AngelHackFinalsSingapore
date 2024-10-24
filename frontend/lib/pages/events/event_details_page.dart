@@ -3,6 +3,7 @@ import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/profile/user_profile_brief_page.dart';
+import 'package:frontend/widgets/common/minimum_app_bar.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Light pink background color
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           SingleChildScrollViewWebExtended(
