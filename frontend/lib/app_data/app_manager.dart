@@ -106,21 +106,119 @@ class AppManagerSingleton {
           timeAnalysisData: TimeAnalysisMock.generateSixMonthData());
 
   static final List<EventSuggestionData> _suggestions = [
+    // TODO: Modify the data to match the actual LYF hotel data
     EventSuggestionData(
-        category: EventCategory.art,
+        category: EventCategory.technology,
         description:
-            "This is an example description for a sports event. It provides a detailed overview of the event, limited to 200 characters for clarity and completeness, ensuring all key points are covered.",
-        arguments: {"arg1": "desc1", "arg2": "desc2"}),
+            "AI & Machine Learning Workshop focused on practical applications in hospitality. This hands-on session will cover emerging trends, real-world case studies, and networking opportunities with industry experts.",
+        matchScore: 0.94,
+        keyPoints: [
+          "High concentration of tech-savvy guests (45% increase)",
+          "Recent surge in AI-related inquiries",
+          "Perfect alignment with Innovation Week",
+          "Similar workshops had 92% engagement rate"
+        ],
+        metrics: {
+          "Expected Attendance": "75-100",
+          "Duration": "4 hours",
+          "Previous Success Rate": "92%"
+        },
+        guestDemographics: {
+          "Tech Professionals": "45%",
+          "Business Leaders": "30%",
+          "Students": "25%"
+        },
+        amenityUsage: {"Innovation Lab": 0.88, "Conference Room A": 0.75},
+        seasonalTrend: "Peak in Q4",
+        arguments: {
+          "venue": "Innovation Lab",
+          "capacity": "100",
+          "equipment": "High-speed internet, Display screens"
+        }),
     EventSuggestionData(
-        category: EventCategory.sports,
+        category: EventCategory.waterSports,
         description:
-            "This is an example description for a sports event. It provides a detailed overview of the event, limited to 200 characters for clarity and completeness, ensuring all key points are covered.",
-        arguments: {"arg1": "desc1", "arg2": "desc2"}),
+            "Sunset Beach Yoga & Surf Session combining wellness and water sports. Perfect for beginners and intermediate surfers, includes professional instructors and all necessary equipment.",
+        matchScore: 0.89,
+        keyPoints: [
+          "Beach facilities currently underutilized in evenings",
+          "Growing wellness trend among guests",
+          "Positive feedback from pilot sessions",
+          "Ideal weather conditions predicted"
+        ],
+        metrics: {
+          "Expected Attendance": "20-25",
+          "Duration": "2.5 hours",
+          "Equipment Utilization": "85%"
+        },
+        guestDemographics: {
+          "Wellness Enthusiasts": "40%",
+          "Adventure Seekers": "35%",
+          "Beginners": "25%"
+        },
+        amenityUsage: {"Private Beach": 0.92, "Surf Equipment": 0.78},
+        seasonalTrend: "Summer Peak",
+        arguments: {
+          "venue": "Private Beach",
+          "capacity": "25",
+          "equipment": "Surfboards, Yoga mats"
+        }),
+    EventSuggestionData(
+        category: EventCategory.food,
+        description:
+            "Farm-to-Table Cooking Masterclass featuring local ingredients and traditional techniques. Participants will learn sustainable cooking practices and enjoy their creations in a communal dining experience.",
+        matchScore: 0.91,
+        keyPoints: [
+          "Local produce partnership opportunity",
+          "Aligns with sustainability initiatives",
+          "High demand for culinary experiences",
+          "Instagram-worthy content potential"
+        ],
+        metrics: {
+          "Expected Attendance": "15-20",
+          "Duration": "3 hours",
+          "Satisfaction Rate": "95%"
+        },
+        guestDemographics: {
+          "Food Enthusiasts": "50%",
+          "Sustainability Advocates": "30%",
+          "Photography Enthusiasts": "20%"
+        },
+        amenityUsage: {"Culinary Studio": 0.95, "Herb Garden": 0.85},
+        seasonalTrend: "Year-round",
+        arguments: {
+          "venue": "Culinary Studio",
+          "capacity": "20",
+          "requirements": "Fresh ingredients, Cooking stations"
+        }),
     EventSuggestionData(
         category: EventCategory.networking,
         description:
-            "This is an example description for a sports event. It provides a detailed overview of the event, limited to 200 characters for clarity and completeness, ensuring all key points are covered.",
-        arguments: {"arg1": "desc1", "arg2": "desc2"}),
+            "Global Entrepreneurs Mixer connecting international business leaders with local startups. Features speed networking, pitch sessions, and interactive panel discussions.",
+        matchScore: 0.87,
+        keyPoints: [
+          "High concentration of business travelers",
+          "Partner with local startup hub",
+          "Previous networking events sold out",
+          "Multiple sponsorship opportunities"
+        ],
+        metrics: {
+          "Expected Attendance": "100-120",
+          "Duration": "3 hours",
+          "Connection Rate": "85%"
+        },
+        guestDemographics: {
+          "Entrepreneurs": "40%",
+          "Investors": "30%",
+          "Industry Experts": "30%"
+        },
+        amenityUsage: {"Grand Ballroom": 0.90, "Business Lounge": 0.82},
+        seasonalTrend: "Business Season",
+        arguments: {
+          "venue": "Grand Ballroom",
+          "capacity": "120",
+          "setup": "Round tables, Presentation equipment"
+        })
   ];
 
   static final Map<ReportTimeline, ReportData> _reportData = {

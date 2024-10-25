@@ -6,8 +6,6 @@ import 'package:frontend/models/user_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/app_data/app_user.dart';
 
-import '../models/event_categories_enum.dart';
-
 class AppEventsSingleton extends ChangeNotifier {
   static final AppEventsSingleton _instance = AppEventsSingleton._internal();
 
@@ -25,7 +23,8 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'This event is exclusive to members of company ABC. Join us for an important meeting at Lyf Funan Singapore Hotel to discuss the upcoming fusion of our companies. This event will outline key strategies and opportunities for collaboration as we move forward together.',
-      organizer: AppUserSingleton().getUserByFirstNameAndLastName("Piotr", "Tyrakowski"),
+      organizer: AppUserSingleton()
+          .getUserByFirstNameAndLastName("Piotr", "Tyrakowski"),
       registeredUsers: [],
       category: EventCategory.business,
       badges: [],
@@ -41,13 +40,13 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'Hey everyone! Looking for a fun way to unwind and meet new friends? Join me at Lyf Funan Singapore Hotel for a refreshing yoga class! Whether you’re a seasoned yogi or just starting out, all levels are welcome!',
-      organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Paul' && user.lastName == 'Done'),
+      organizer: AppUserSingleton().users.firstWhere(
+          (user) => user.firstName == 'Paul' && user.lastName == 'Done'),
       //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Paul' && user.lastName == 'Done').isManager,
       registeredUsers: [],
       category: EventCategory.health,
       badges: [EventBadge(name: 'Yoga lover')],
     ),
-
     Event(
       title: 'Community Cooking Class',
       date: DateTime(2021, 10, 24),
@@ -57,13 +56,13 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'Come learn new recipes and cooking techniques in our community cooking class! Share a meal and make new friends!',
-      organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Michael' && user.lastName == 'Brown'),
+      organizer: AppUserSingleton().users.firstWhere(
+          (user) => user.firstName == 'Michael' && user.lastName == 'Brown'),
       //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Michael' && user.lastName == 'Brown').isManager,
       registeredUsers: [],
       category: EventCategory.food,
       badges: [EventBadge(name: 'Cooking Enthusiast')],
     ),
-
     Event(
       title: 'Movie Night Under the Stars',
       date: DateTime(2021, 10, 25),
@@ -73,14 +72,14 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'Enjoy a cozy movie night under the stars with popcorn and blankets. Bring your friends or meet new ones!',
-      organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Sophia' && user.lastName == 'Davis'),
+      organizer: AppUserSingleton().users.firstWhere(
+          (user) => user.firstName == 'Sophia' && user.lastName == 'Davis'),
       //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Sophia' && user.lastName == 'Davis').isManager,
       registeredUsers: [],
       category: EventCategory.networking,
       badges: [EventBadge(name: 'Movie Buff')],
     ),
-
-   Event(
+    Event(
       title: 'Art & Craft Workshop',
       date: DateTime(2021, 10, 26),
       imageUrl: 'images/events/yoga.jpg',
@@ -89,13 +88,13 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'Unleash your creativity in our art and craft workshop! All materials provided, just bring your enthusiasm!',
-      organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'James' && user.lastName == 'Wilson'),
+      organizer: AppUserSingleton().users.firstWhere(
+          (user) => user.firstName == 'James' && user.lastName == 'Wilson'),
       //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'James' && user.lastName == 'Wilson').isManager,
       registeredUsers: [],
       category: EventCategory.art,
       badges: [EventBadge(name: 'Crafty Creator')],
     ),
-
     Event(
       title: 'Social Run at the Park',
       date: DateTime(2021, 10, 27),
@@ -105,7 +104,8 @@ class AppEventsSingleton extends ChangeNotifier {
       hotel: LyfHotels.Funan,
       description:
           'Join us for a fun social run! All fitness levels are welcome. Let’s enjoy the fresh air and make new friends!',
-      organizer: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Olivia' && user.lastName == 'Martinez'),
+      organizer: AppUserSingleton().users.firstWhere(
+          (user) => user.firstName == 'Olivia' && user.lastName == 'Martinez'),
       //isHotelOrganized: AppUserSingleton().users.firstWhere((user) => user.firstName == 'Olivia' && user.lastName == 'Martinez').isManager,
       registeredUsers: [],
       category: EventCategory.sports,
@@ -113,7 +113,6 @@ class AppEventsSingleton extends ChangeNotifier {
     ),
   ];
 
-  
   List<Event> myEvents = [
     Event(
       title: 'Yoga event',
@@ -201,7 +200,6 @@ class AppEventsSingleton extends ChangeNotifier {
     ),
   ];
 
-
   // List<Event> hotelEvents = [
   //   Event(
   //     title: 'Exclusive Wine Tasting',
@@ -283,21 +281,26 @@ class AppEventsSingleton extends ChangeNotifier {
     return currentUser.createdEvents;
   }
 
-
   List<Event> getAllPublicEvents() {
     return events.where((event) => !event.isPrivate).toList();
   }
 
   List<Event> getPublicPeopleEvents() {
-    return events.where((event) => !event.isPrivate && !event.isHotelOrganized).toList();
+    return events
+        .where((event) => !event.isPrivate && !event.isHotelOrganized)
+        .toList();
   }
 
   List<Event> getHotelEvents() {
-    return events.where((event) => event.isHotelOrganized && !event.isPrivate).toList();
+    return events
+        .where((event) => event.isHotelOrganized && !event.isPrivate)
+        .toList();
   }
 
   List<Event> getPrivatePeopleEvents(User user) {
-    return events.where((event) => event.isPrivate && event.organizer != user).toList();
+    return events
+        .where((event) => event.isPrivate && event.organizer != user)
+        .toList();
   }
 
   void addEvent(Event event) {
