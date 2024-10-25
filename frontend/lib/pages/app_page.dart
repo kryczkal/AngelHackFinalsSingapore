@@ -58,7 +58,9 @@ class _AppPageState extends State<AppPage> {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 24),
               child:  EventFeedbackDialog(
-                  event: AppEventsSingleton().events[0],
+                  event: AppEventsSingleton().getMyRegisteredEvents(AppUserSingleton().currentUser).isNotEmpty 
+                      ? AppEventsSingleton().getMyRegisteredEvents(AppUserSingleton().currentUser).first 
+                      : AppEventsSingleton().events.first, // Get the first event from all public events if no registered events
                   onClose: _hideDialog,
               ),
             ),
