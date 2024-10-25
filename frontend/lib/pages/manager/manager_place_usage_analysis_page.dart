@@ -4,6 +4,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_location_enum.dart';
 import 'package:frontend/models/place_usage_analysis_data.dart';
+import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 
 class PlaceUsageAnalysisPage extends StatefulWidget {
   final List<PlaceUsageData> data;
@@ -80,50 +81,85 @@ class _PlaceUsageAnalysisPageState extends State<PlaceUsageAnalysisPage>
         backgroundColor: Colors.white,
         elevation: 0,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          _buildChartCard(
-            title: 'Place Usage Overview',
-            child: Column(
-              children: [
-                _buildToggleSwitch(),
-                const SizedBox(height: 16),
-                SizedBox(
-                  height: 350,
-                  child: AnimatedBuilder(
-                    animation: _animation,
-                    builder: (context, child) {
-                      return _buildBarChart(widget.data, primaryColor);
-                    },
+      body: ScrollConfiguration(
+        behavior: ScrollBehaviorWebExtended().copyWith(scrollbars: false),
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: [
+            _buildChartCard(
+              title: 'Place Usage Overview',
+              child: Column(
+                children: [
+                  _buildToggleSwitch(),
+                  const SizedBox(height: 16),
+                  SizedBox(
+                    height: 350,
+                    child: AnimatedBuilder(
+                      animation: _animation,
+                      builder: (context, child) {
+                        return _buildBarChart(widget.data, primaryColor);
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          _buildChartCard(
-            title: 'Occupancy Rates',
-            child: SizedBox(
-              height: 250,
-              child: _buildLineChart(widget.data, secondaryColor),
+            const SizedBox(height: 20),
+            _buildChartCard(
+              title: 'Occupancy Rates',
+              child: SizedBox(
+                height: 250,
+                child: _buildLineChart(widget.data, secondaryColor),
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          _buildChartCard(
-            title: 'Attendance Distribution',
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 300,
-                  child: _buildEnhancedPieChart(widget.data, primaryColor),
-                ),
-              ],
+            const SizedBox(height: 20),
+            _buildChartCard(
+              title: 'Attendance Distribution',
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 300,
+                    child: _buildEnhancedPieChart(widget.data, primaryColor),
+                  ),
+                  const SizedBox(height: 20),
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1E88E5).withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                            color: const Color(0xFF1E88E5).withOpacity(0.3)),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.touch_app_rounded,
+                              color: Color(0xFF1E88E5), size: 20),
+                          SizedBox(width: 8),
+                          Text(
+                            'Tap pie chart sections to view details',
+                            style: TextStyle(
+                              color: Color(0xFF212121),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          ...widget.data.map((item) => _buildLocationCard(item, primaryColor)),
-        ],
+            const SizedBox(height: 20),
+            ...widget.data
+                .map((item) => _buildLocationCard(item, primaryColor)),
+          ],
+        ),
       ),
     );
   }

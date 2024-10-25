@@ -33,7 +33,7 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   children: [
                     const ProfileHeader(hasNotification: true),
@@ -63,14 +63,18 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => CreateEventPage(
-                            initialEventTitle: suggestion.eventTemplate.prefilledTitle,
-                            initialEventDescription: suggestion.eventTemplate.prefilledDescription,
-                            initialCategory: suggestion.eventTemplate.category,
-                            initialBadge: suggestion.eventTemplate.defaultBadge,
-                            imageUrl: suggestion.eventTemplate.imageUrl,
-                            organizer: AppUserSingleton().currentUser,
-                            hotel: LyfHotels.Funan,
-                          ),
+                              initialEventTitle:
+                                  suggestion.eventTemplate.prefilledTitle,
+                              initialEventDescription:
+                                  suggestion.eventTemplate.prefilledDescription,
+                              initialCategory:
+                                  suggestion.eventTemplate.category,
+                              initialBadge:
+                                  suggestion.eventTemplate.defaultBadge,
+                              imageUrl: suggestion.eventTemplate.imageUrl,
+                              organizer: AppUserSingleton().currentUser,
+                              hotel: LyfHotels.Funan,
+                            ),
                           ),
                         );
                       },
