@@ -23,10 +23,7 @@ class AdaptivePhoneMockup extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         body: Stack(
           children: [
-            InkSplatterBackground(
-              x: screenW / 8,
-              y: screenH / 8,
-            ),
+            InkSplatterBackground(),
             Center(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 55.0),
