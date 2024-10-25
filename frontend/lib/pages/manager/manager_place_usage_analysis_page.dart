@@ -78,7 +78,7 @@ class _PlaceUsageAnalysisPageState extends State<PlaceUsageAnalysisPage>
           ),
         ),
         backgroundColor: Colors.white,
-        elevation: 2,
+        elevation: 0,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -281,6 +281,10 @@ class _PlaceUsageAnalysisPageState extends State<PlaceUsageAnalysisPage>
               showTitles: true,
               reservedSize: 40,
               getTitlesWidget: (value, meta) {
+                // Only show the value if it's a multiple of the interval
+                if (value % interval != 0) return const Text('');
+                // Don't show the value if it exceeds our maxY
+                if (value > currentMaxValue * 1.2) return const Text('');
                 return Text(
                   value.toInt().toString(),
                   style: const TextStyle(fontSize: 11, color: Colors.black87),
@@ -545,6 +549,7 @@ class _PlaceUsageAnalysisPageState extends State<PlaceUsageAnalysisPage>
 
   Widget _buildPieChartDetails(PlaceUsageData data, Color color) {
     return Container(
+      margin: const EdgeInsets.only(top: 32),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: color.withOpacity(0.1),

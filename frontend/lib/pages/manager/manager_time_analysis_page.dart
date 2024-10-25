@@ -23,12 +23,10 @@ typedef DayStats = Map<String, num>;
 class _ManagerTimeAnalysisPageState extends State<ManagerTimeAnalysisPage> {
   final List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-  // Theme colors
   static const primaryBlue = Color(0xFF1E88E5);
   static const primaryGreen = Color(0xFF2E7D32);
   static const lightBlue = Color(0xFF90CAF9);
   static const lightGreen = Color(0xFF81C784);
-  static const backgroundColor = Color(0xFFFAFAFA);
   static const textBlack = Color(0xFF212121);
 
   @override
@@ -36,10 +34,10 @@ class _ManagerTimeAnalysisPageState extends State<ManagerTimeAnalysisPage> {
     final stats = _calculateStatistics();
 
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 2,
+        elevation: 0,
         title: const Text(
           'Time Analysis',
           style: TextStyle(

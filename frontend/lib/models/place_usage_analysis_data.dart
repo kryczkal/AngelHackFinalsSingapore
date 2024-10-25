@@ -21,10 +21,8 @@ class PlaceUsageData {
 }
 
 class PlaceUsageMockDataGenerator {
-  // Static cache to store generated data
   static final Map<ReportTimeline, List<PlaceUsageData>> _cache = {};
 
-  // Location capacities
   static const Map<EventLocationEnum, int> _locationCapacities = {
     EventLocationEnum.yogaRoom: 20,
     EventLocationEnum.gym: 40,
@@ -35,7 +33,6 @@ class PlaceUsageMockDataGenerator {
     EventLocationEnum.outdoorArea: 50,
   };
 
-  // Base ratings for locations (out of 5.0)
   static const Map<EventLocationEnum, double> _baseRatings = {
     EventLocationEnum.yogaRoom: 4.7,
     EventLocationEnum.gym: 4.5,
@@ -71,25 +68,23 @@ class PlaceUsageMockDataGenerator {
       final capacity = _locationCapacities[location]!;
       final baseRating = _baseRatings[location]!;
 
-      // Calculate weekly participants based on time analysis data
       final weeklyParticipants = _calculateWeeklyParticipants(
         timeData,
         capacity,
         location,
       );
 
-      // Calculate total participants and events based on timeline
       final (totalParticipants, totalEvents) = _calculateTotals(
         weeklyParticipants,
         timeline,
         location,
       );
 
-      // Calculate occupancy rate
       final occupancyRate = _calculateOccupancyRate(
         totalParticipants,
         totalEvents,
         capacity,
+        timeline,
       );
 
       placeData.add(PlaceUsageData(
@@ -112,18 +107,14 @@ class PlaceUsageMockDataGenerator {
   ) {
     final List<int> weeklyParticipants = List.filled(7, 0);
 
-    // Calculate daily participants based on time analysis peak hours
     for (int day = 0; day < 7; day++) {
-      // Get peak hours for this location based on its type
       final peakHours = _getLocationPeakHours(location);
 
-      // Sum up participants during peak hours
       int dailyTotal = 0;
       for (final hour in peakHours) {
         dailyTotal += timeData.peoplePerHourPerWeekDay[day][hour];
       }
 
-      // Adjust based on capacity and location type
       final adjustedParticipants =
           (dailyTotal * _getLocationUsageFactor(location))
               .round()
@@ -146,14 +137,18 @@ class PlaceUsageMockDataGenerator {
       ReportTimeline.sixMonths => 24,
     };
 
-    // Calculate base weekly values
     final weeklyTotal = weeklyParticipants.reduce((a, b) => a + b);
     final weeklyEvents = _getWeeklyEventsCount(location);
 
-    // Scale up based on timeline
+    final diminishingFactor = switch (timeline) {
+      ReportTimeline.week => 1.0,
+      ReportTimeline.month => 0.85,
+      ReportTimeline.sixMonths => 0.65,
+    };
+
     return (
-      (weeklyTotal * weeksInPeriod).round(),
-      (weeklyEvents * weeksInPeriod).round(),
+      (weeklyTotal * weeksInPeriod * diminishingFactor).round(),
+      (weeklyEvents * weeksInPeriod * diminishingFactor).round(),
     );
   }
 
@@ -161,14 +156,23 @@ class PlaceUsageMockDataGenerator {
     int totalParticipants,
     int totalEvents,
     int capacity,
+    ReportTimeline timeline,
   ) {
     if (totalEvents == 0) return 0.0;
-    return (totalParticipants / (totalEvents * capacity)).clamp(0.0, 1.0);
+
+    final variabilityFactor = switch (timeline) {
+      ReportTimeline.week => 1.0,
+      ReportTimeline.month => 1.3,
+      ReportTimeline.sixMonths => 4.2,
+    };
+
+    final baseOccupancy = (totalParticipants /
+        (totalEvents * capacity * timeline.periodInDays / 7));
+    return (baseOccupancy * variabilityFactor).clamp(0.0, 0.95);
   }
 
   static double _adjustRating(double baseRating, double occupancyRate) {
-    // Slightly adjust rating based on occupancy (busy places tend to be rated better)
-    final adjustment = (occupancyRate - 0.75) * 0.2;
+    final adjustment = (occupancyRate - 0.6) * 0.1;
     return (baseRating + adjustment).clamp(1.0, 5.0);
   }
 

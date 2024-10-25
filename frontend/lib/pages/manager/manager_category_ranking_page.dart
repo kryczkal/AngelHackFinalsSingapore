@@ -38,6 +38,13 @@ class ManagerCategoryRankingPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
+        title: const Center(
+          child: Text(
+            'Category Ranking',
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24),
+          ),
+        ),
       ),
       body: ScrollConfiguration(
         behavior: ScrollBehaviorWebExtended().copyWith(scrollbars: false),

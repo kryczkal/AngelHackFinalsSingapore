@@ -6,9 +6,7 @@ import 'package:frontend/models/time_analysis_data.dart';
 import 'package:frontend/pages/manager/manager_category_ranking_page.dart';
 import 'package:frontend/pages/manager/manager_place_usage_analysis_page.dart';
 import 'package:frontend/pages/manager/manager_time_analysis_page.dart';
-import 'package:frontend/pages/misc/blank_page.dart';
 import 'package:frontend/widgets/manager/charts/bar_chart_widget.dart';
-import 'package:frontend/widgets/manager/charts/line_chart_widget.dart';
 import 'package:frontend/widgets/manager/charts/pie_chart_preview_widget.dart';
 import 'package:frontend/widgets/manager/table_preview_widget.dart';
 
@@ -70,16 +68,6 @@ class ReportCardFixedData {
         pageFactory: () => PlaceUsageAnalysisPage(
             data: PlaceUsageMockDataGenerator.getData(timeline), period: "a"),
       ),
-      DashboardCardData(
-          title: "Average interest",
-          mainValue: averageInterestMainValue,
-          subtitle: averageInterestSubTitle,
-          graphFactory: () => const LineChartWidget(
-              color: Colors.green,
-              pattern: LineChartPattern.volatile,
-              width: 100,
-              height: 80),
-          pageFactory: () => const BlankPage())
     ];
   }
 }
