@@ -58,22 +58,40 @@ class _CreateEventPageState extends State<CreateEventPage> {
   void initState() {
     super.initState();
 
+    _selectedDate = widget.initialDate;
+    _selectedTime = widget.initialTime;
     _eventTitle = widget.initialEventTitle ?? '';
     _eventDescription = widget.initialEventDescription ?? '';
     _selectedLocation = widget.initialLocation ?? '';
-    _selectedDate = widget.initialDate;
-    _selectedTime = widget.initialTime;
     _selectedBadge = widget.initialBadge;
     _selectedCategory = widget.initialCategory;
 
     _titleController.text = _eventTitle;
     _descriptionController.text = _eventDescription;
     _locationController.text = _selectedLocation;
-    _dateController.text = _selectedDate != null
-        ? DateFormat('yyyy-MM-dd').format(_selectedDate!)
-        : '';
-    _timeController.text =
-        _selectedTime != null ? _selectedTime!.format(context) : '';
+
+    if (_selectedDate != null) {
+      _dateController.text = DateFormat('yyyy-MM-dd').format(_selectedDate!);
+    }
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (_selectedTime != null) {
+      _timeController.text = _selectedTime!.format(context);
+    }
+
+    if (_selectedDate == null) {
+      _selectedDate = DateTime.now();
+      _dateController.text = DateFormat('yyyy-MM-dd').format(_selectedDate!);
+    }
+
+    if (_selectedTime == null) {
+      _selectedTime = TimeOfDay.now();
+      _timeController.text = _selectedTime!.format(context);
+    }
   }
 
   @override
