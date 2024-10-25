@@ -73,9 +73,8 @@ class _AllEventsPageState extends State<AllEventsPage>
       setState(() {
         _errorMessage = null;
       });
-    
 
-     Navigator.push(
+      Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => EventDetailsPage(eventDetails: event),
@@ -87,7 +86,7 @@ class _AllEventsPageState extends State<AllEventsPage>
       });
 
       Future.delayed(const Duration(seconds: 3), () {
-        if (mounted) {  
+        if (mounted) {
           setState(() {
             _errorMessage = null;
           });
@@ -95,7 +94,6 @@ class _AllEventsPageState extends State<AllEventsPage>
       });
     }
   }
-
 
   @override
   void dispose() {
@@ -109,9 +107,6 @@ class _AllEventsPageState extends State<AllEventsPage>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: MinimumAppBar(
-        title: Text(_isHotelEvents ? 'Lyf Hotel Events' : 'Community Events'),
-      ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -129,8 +124,7 @@ class _AllEventsPageState extends State<AllEventsPage>
                   ),
                 ],
               ),
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -146,8 +140,7 @@ class _AllEventsPageState extends State<AllEventsPage>
                         ),
                         errorText: _errorMessage,
                         border: InputBorder.none,
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 8),
+                        contentPadding: const EdgeInsets.symmetric(vertical: 8),
                       ),
                       style: const TextStyle(fontSize: 14),
                     ),
@@ -192,26 +185,46 @@ class _AllEventsPageState extends State<AllEventsPage>
             Column(
               children: [
                 Expanded(
-                  child: PageView(
-                    scrollBehavior:
-                        ScrollBehaviorWebExtended().copyWith(scrollbars: false),
-                    controller: _pageController,
-                    onPageChanged: (_) {
-                      _hideHint();
-                      setState(() {
-                        _isHotelEvents = !_isHotelEvents;
-                      });
-                    },
-                    children: [
-                      ShowEventsWidget(
-                        eventsLoader: () =>
-                            AppEventsSingleton().getHotelEvents(),
+                  child: ScrollConfiguration(
+                    behavior: ScrollBehaviorWebExtended().copyWith(
+                      scrollbars: false,
+                    ),
+                    child: NestedScrollView(
+                      headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                        SliverAppBar(
+                          floating: true,
+                          snap: true,
+                          title: Text(
+                            _isHotelEvents
+                                ? 'Lyf Hotel Events'
+                                : 'Community Events',
+                          ),
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                          elevation: 0,
+                          centerTitle: true,
+                        ),
+                      ],
+                      body: PageView(
+                        controller: _pageController,
+                        onPageChanged: (_) {
+                          _hideHint();
+                          setState(() {
+                            _isHotelEvents = !_isHotelEvents;
+                          });
+                        },
+                        children: [
+                          ShowEventsWidget(
+                            eventsLoader: () =>
+                                AppEventsSingleton().getHotelEvents(),
+                          ),
+                          ShowEventsWidget(
+                            eventsLoader: () =>
+                                AppEventsSingleton().getPublicPeopleEvents(),
+                          ),
+                        ],
                       ),
-                      ShowEventsWidget(
-                        eventsLoader: () =>
-                            AppEventsSingleton().getPublicPeopleEvents(),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
               ],

@@ -3,6 +3,7 @@ import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events/events_vertical_list_widget.dart';
 import 'package:frontend/widgets/events/event_search_bar_widget.dart';
+import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 class ShowEventsWidget extends StatefulWidget {
   final List<Event> Function() eventsLoader;
@@ -54,22 +55,26 @@ class _ShowEventsWidgetState extends State<ShowEventsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            child: EventSearchBarWidget(
-              onSearchChanged: _onSearchChanged,
-              onFilterChanged: _onFilterChanged,
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  child: EventSearchBarWidget(
+                    onSearchChanged: _onSearchChanged,
+                    onFilterChanged: _onFilterChanged,
+                  ),
+                ),
+                EventsVerticalListWidget(events: _filteredEvents),
+              ],
             ),
           ),
-          Expanded(
-            child: EventsVerticalListWidget(events: _filteredEvents),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
