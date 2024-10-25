@@ -51,7 +51,6 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
           physics: const ClampingScrollPhysics(),
           child: Column(
             children: [
-              // Profile Image with background circle
               Stack(
                 alignment: Alignment.center,
                 children: [
@@ -70,10 +69,7 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
                   ),
                 ],
               ),
-
               const SizedBox(height: 10),
-
-              // Name and Age Text
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -95,9 +91,43 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
                   ),
                 ],
               ),
-
+              const SizedBox(height: 16),
+              if (widget.user.bio != null && widget.user.bio!.isNotEmpty)
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[50],
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(
+                      color: Colors.grey[200]!,
+                      width: 1,
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'About',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        widget.user.bio!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black54,
+                          height: 1.4,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               const SizedBox(height: 30),
-
               const Text(
                 'User\'s badges:',
                 style: TextStyle(
@@ -111,7 +141,6 @@ class _UserProfileBriefState extends State<UserProfileBrief> {
                 runSpacing: 8,
                 children: getBadges(),
               ),
-
               const SizedBox(height: 30),
               const Text(
                 'User\'s preferences:',

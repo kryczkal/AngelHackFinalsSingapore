@@ -9,9 +9,10 @@ class User {
   final String lastName;
   final int age;
   final LyfHotels hotel = LyfHotels.Funan;
-  final String profilePic;// = 'images/profile/default_profile_pic.png';
+  final String profilePic; // = 'images/profile/default_profile_pic.png';
   final String location;
   final bool isManager;
+  String? bio;
   List<EventBadge> userBadges;
   Set<EventCategory> preferences = {};
   List<Event> createdEvents = [];
@@ -25,6 +26,7 @@ class User {
     required this.profilePic,
     required this.userBadges,
     this.isManager = false,
+    this.bio,
     Set<EventCategory>? preferences,
   }) : preferences = preferences ?? {};
 }
