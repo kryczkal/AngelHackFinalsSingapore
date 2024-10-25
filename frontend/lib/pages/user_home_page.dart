@@ -3,8 +3,10 @@ import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events/event_card.dart';
+import 'package:frontend/widgets/events/event_recommendation_hint.dart';
 import 'package:frontend/widgets/events/events_dashboard_header_widget.dart';
 import 'package:frontend/widgets/events/events_header.dart';
+import 'package:frontend/widgets/events/interesting_events_section.dart';
 import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 import 'package:frontend/widgets/misc/ignore_padding_widget.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
@@ -31,21 +33,12 @@ class UserPage extends StatelessWidget {
                 const EventsHeader(title: 'Might\ninterest you'),
                 const SizedBox(height: 16),
                 IgnorePaddingWidget(
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: 250,
-                    child: PageView.builder(
-                      scrollBehavior: ScrollBehaviorWebExtended(),
-                      controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().getInterestingEvents(AppUserSingleton().currentUser).length,
-                      itemBuilder: (context, index) {
-                        return _buildEventCard(
-                            AppEventsSingleton().getInterestingEvents(AppUserSingleton().currentUser).elementAt(index));
-                      },
-                    ),
+                  child: InterestingEventsSection(
+                    events: AppEventsSingleton()
+                        .getInterestingEvents(AppUserSingleton().currentUser),
                   ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 16),
                 const EventsHeader(title: 'Last\nMinute'),
                 const SizedBox(height: 16),
                 IgnorePaddingWidget(
@@ -55,10 +48,12 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().getLastMinuteEvents().length,
+                      itemCount:
+                          AppEventsSingleton().getLastMinuteEvents().length,
                       itemBuilder: (context, index) {
-                        return _buildEventCard(
-                             AppEventsSingleton().getLastMinuteEvents().elementAt(index));
+                        return _buildEventCard(AppEventsSingleton()
+                            .getLastMinuteEvents()
+                            .elementAt(index));
                       },
                     ),
                   ),
@@ -75,13 +70,13 @@ class UserPage extends StatelessWidget {
                       controller: PageController(viewportFraction: 0.80),
                       itemCount: AppEventsSingleton().getBestEvents().length,
                       itemBuilder: (context, index) {
-                        return _buildEventCard(
-                            AppEventsSingleton().getBestEvents().elementAt(index));
+                        return _buildEventCard(AppEventsSingleton()
+                            .getBestEvents()
+                            .elementAt(index));
                       },
                     ),
                   ),
                 ),
-                
               ],
             ),
           ),
