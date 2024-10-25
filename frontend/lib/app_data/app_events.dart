@@ -185,7 +185,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'A Walk with lyf - Bubble Planet',
       date: DateTime(2024, 11, 22, 14, 45),
-      imageUrl: 'images/events/hotel/lyf_bubble_planet.png',
+      imageUrl: 'images/events/hotel/lyf_bubble_planet.webp',
       backgroundColor: '#4caf50',
       localization: 'Hall 8B Singapore Expo, 9 Somapah Road',
       hotel: LyfHotels.Funan,
@@ -204,7 +204,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'lyf Sustainival',
       date: DateTime(2024, 10, 26, 11, 00),
-      imageUrl: 'images/events/hotel/lyf_sustainival.png',
+      imageUrl: 'images/events/hotel/lyf_sustainival.webp',
       backgroundColor: '#4caf50',
       localization: 'lyf Hotel',
       hotel: LyfHotels.Funan,
@@ -242,7 +242,7 @@ class AppEventsSingleton extends ChangeNotifier {
     Event(
       title: 'lyf x This.Connect - Pay it Forward Movement',
       date: DateTime(2024, 11, 15, 14, 00),
-      imageUrl: 'images/events/hotel/lyf_pay_it_forward.png',
+      imageUrl: 'images/events/hotel/lyf_pay_it_forward.webp',
       backgroundColor: '#4caf50',
       localization: 'lyf Hotel',
       hotel: LyfHotels.Funan,
