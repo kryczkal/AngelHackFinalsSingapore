@@ -67,29 +67,27 @@ class _AllEventsPageState extends State<AllEventsPage>
 
   void _checkPrivateEvent() {
     final code = _codeController.text.trim();
-    try {
-      final event = AppEventsSingleton().getEvents().firstWhere(
-            (event) => event.isPrivate && event.password == code,
-            orElse: () => throw Exception('Event not found'),
-          );
+    final event = AppEventsSingleton().getPrivatePeopleEvent(code);
 
+    if (event != null) {
       setState(() {
         _errorMessage = null;
       });
+    
 
-      Navigator.push(
+     Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => EventDetailsPage(eventDetails: event),
         ),
       );
-    } catch (e) {
+    } else {
       setState(() {
         _errorMessage = 'Event does not exists';
       });
 
       Future.delayed(const Duration(seconds: 3), () {
-        if (mounted) {
+        if (mounted) {  
           setState(() {
             _errorMessage = null;
           });
@@ -97,6 +95,7 @@ class _AllEventsPageState extends State<AllEventsPage>
       });
     }
   }
+
 
   @override
   void dispose() {
@@ -117,61 +116,58 @@ class _AllEventsPageState extends State<AllEventsPage>
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           if (_isCodeEntryVisible)
-            Positioned(
-              right: 72,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 2,
-                      blurRadius: 8,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SizedBox(
-                      width: 200,
-                      child: TextField(
-                        controller: _codeController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter private event code',
-                          hintStyle: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 14,
-                          ),
-                          errorText: _errorMessage,
-                          border: InputBorder.none,
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 8),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 2,
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: TextField(
+                      controller: _codeController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter private event code',
+                        hintStyle: TextStyle(
+                          color: Colors.grey[600],
+                          fontSize: 14,
                         ),
-                        style: const TextStyle(fontSize: 14),
+                        errorText: _errorMessage,
+                        border: InputBorder.none,
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 8),
+                      ),
+                      style: const TextStyle(fontSize: 14),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  ElevatedButton(
+                    onPressed: _checkPrivateEvent,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      foregroundColor: Colors.white,
+                      elevation: 0,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    ElevatedButton(
-                      onPressed: _checkPrivateEvent,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        foregroundColor: Colors.white,
-                        elevation: 0,
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 20),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      child: const Text('Join', style: TextStyle(fontSize: 12)),
-                    ),
-                  ],
-                ),
+                    child: const Text('Join', style: TextStyle(fontSize: 12)),
+                  ),
+                ],
               ),
             ),
           const SizedBox(width: 16),
