@@ -94,6 +94,7 @@ class EventTemplatePage extends StatelessWidget {
                       initialEventDescription: template.prefilledDescription,
                       initialCategory: template.category,
                       initialBadge: template.defaultBadge,
+                      imageUrl: template.imageUrl,
                     ),
                   ),
                 );

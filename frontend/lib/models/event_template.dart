@@ -11,6 +11,7 @@ class EventTemplate {
   final String? prefilledDescription;
   final EventBadge? defaultBadge;
   final bool isPersonalized;
+  final String? imageUrl;
 
   EventTemplate({
     required this.name,
@@ -21,6 +22,7 @@ class EventTemplate {
     this.prefilledDescription,
     this.defaultBadge,
     this.isPersonalized = false,
+    this.imageUrl,
   });
 
   EventTemplate copyWith({

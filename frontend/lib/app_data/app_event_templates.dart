@@ -28,6 +28,7 @@ class EventTemplatesSingleton extends ChangeNotifier {
       prefilledDescription:
           'Join us for an engaging tech meetup where we\'ll discuss the latest developments in technology. Share your insights and connect with fellow tech enthusiasts.',
       defaultBadge: AppBadgesSingleton().possibleBadges[0],
+      imageUrl: 'images/events/templates/tech-meetup.jpg',
     ),
     EventTemplate(
       name: 'Networking Dinner',
@@ -37,6 +38,7 @@ class EventTemplatesSingleton extends ChangeNotifier {
       prefilledTitle: 'Networking Dinner: ',
       prefilledDescription:
           'Connect with professionals over dinner in a relaxed atmosphere. Expand your network while enjoying good food and meaningful conversations.',
+      imageUrl: 'images/events/templates/networking-dinner.jpeg',
     ),
     EventTemplate(
       name: 'AI Workshop',
@@ -46,6 +48,7 @@ class EventTemplatesSingleton extends ChangeNotifier {
       prefilledTitle: 'AI Workshop: ',
       prefilledDescription:
           'Deep dive into artificial intelligence concepts and applications. Learn about the latest AI trends and practical implementations.',
+      imageUrl: 'images/events/templates/ai-workshop.webp',
     ),
     EventTemplate(
       name: 'Sports Match',
@@ -55,6 +58,7 @@ class EventTemplatesSingleton extends ChangeNotifier {
       prefilledTitle: 'Sports Match: ',
       prefilledDescription:
           'Join us for an exciting sports match. Whether you\'re a player or spectator, come enjoy the game and meet fellow sports enthusiasts.',
+      imageUrl: 'images/events/templates/sports-match.webp',
     ),
     EventTemplate(
       name: 'Art Exhibition',
@@ -64,6 +68,7 @@ class EventTemplatesSingleton extends ChangeNotifier {
       prefilledTitle: 'Art Exhibition: ',
       prefilledDescription:
           'Experience amazing artworks and meet local artists. Immerse yourself in creativity and artistic expression.',
+      imageUrl: 'images/events/templates/art-exhibition.jpg',
     ),
   ];
 

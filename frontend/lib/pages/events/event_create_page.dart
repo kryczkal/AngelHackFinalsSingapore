@@ -20,6 +20,7 @@ class CreateEventPage extends StatefulWidget {
   final String? initialEventDescription;
   final EventBadge? initialBadge;
   final EventCategory? initialCategory;
+  final String? imageUrl;
 
   const CreateEventPage({
     super.key,
@@ -30,6 +31,7 @@ class CreateEventPage extends StatefulWidget {
     this.initialEventDescription,
     this.initialBadge,
     this.initialCategory,
+    this.imageUrl,
   });
 
   @override
@@ -45,6 +47,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
   String _eventDescription = '';
   EventBadge? _selectedBadge;
   EventCategory? _selectedCategory;
+  String? _imageUrl;
 
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _timeController = TextEditingController();
@@ -65,6 +68,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
     _selectedLocation = widget.initialLocation ?? '';
     _selectedBadge = widget.initialBadge;
     _selectedCategory = widget.initialCategory;
+    _imageUrl = widget.imageUrl;
 
     _titleController.text = _eventTitle;
     _descriptionController.text = _eventDescription;
@@ -229,6 +233,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   eventDescription: _eventDescription,
                   selectedBadge: _selectedBadge,
                   selectedCategory: _selectedCategory,
+                  imageUrl: _imageUrl,
                 ),
               ],
             ),

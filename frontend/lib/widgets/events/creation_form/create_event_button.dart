@@ -16,6 +16,7 @@ class CreateEventButton extends StatelessWidget {
   final String eventDescription;
   final EventBadge? selectedBadge;
   final EventCategory? selectedCategory;
+  final String? imageUrl;
 
   const CreateEventButton({
     Key? key,
@@ -27,6 +28,7 @@ class CreateEventButton extends StatelessWidget {
     required this.eventDescription,
     required this.selectedBadge,
     required this.selectedCategory,
+    this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -61,7 +63,7 @@ class CreateEventButton extends StatelessWidget {
             final Event newEvent = Event(
               title: eventTitle,
               date: eventDateTime,
-              imageUrl: 'images/events/cooking.jpeg',
+              imageUrl: imageUrl ?? '',
               backgroundColor: '#42a5f5',
               localization: selectedLocation,
               hotel: AppUserSingleton().currentUser.hotel,
