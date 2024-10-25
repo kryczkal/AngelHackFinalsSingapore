@@ -28,6 +28,7 @@ enum EventCategory {
   mainEvent,
   sustainability,
   wellness,
+  pool,
 }
 
 /* map of icons for each category */

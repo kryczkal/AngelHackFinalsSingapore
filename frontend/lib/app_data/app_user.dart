@@ -25,7 +25,10 @@ class AppUserSingleton extends ChangeNotifier {
         profilePic: 'images/profile/lukasz_kryczka.jpg',
         userBadges: [EventBadge(name: 'Yoga Lover')],
         bio: 'I am a yoga enthusiast and I love to travel around the world.',
-        isManager: true),
+        isManager: true,
+        preferences: {EventCategory.wellness, EventCategory.sports, EventCategory.art, EventCategory.pool},
+        ),
+        
     User(
         firstName: 'Piotr',
         lastName: 'Tyrakowski',

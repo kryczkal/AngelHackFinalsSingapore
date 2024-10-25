@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events/event_card.dart';
 import 'package:frontend/widgets/events/events_dashboard_header_widget.dart';
@@ -36,10 +37,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().getAllPublicEvents().take(5).length,
+                      itemCount: AppEventsSingleton().getInterestingEvents(AppUserSingleton().currentUser).length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                            AppEventsSingleton().getAllPublicEvents().take(5).elementAt(index));
+                            AppEventsSingleton().getInterestingEvents(AppUserSingleton().currentUser).elementAt(index));
                       },
                     ),
                   ),
@@ -54,10 +55,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().getPublicPeopleEvents().take(5).length,
+                      itemCount: AppEventsSingleton().getLastMinuteEvents().length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                             AppEventsSingleton().getPublicPeopleEvents().take(5).elementAt(index));
+                             AppEventsSingleton().getLastMinuteEvents().elementAt(index));
                       },
                     ),
                   ),
@@ -72,10 +73,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().getPublicPeopleEvents().take(5).length,
+                      itemCount: AppEventsSingleton().getBestEvents().length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                            AppEventsSingleton().getPublicPeopleEvents().take(5).elementAt(index));
+                            AppEventsSingleton().getBestEvents().elementAt(index));
                       },
                     ),
                   ),

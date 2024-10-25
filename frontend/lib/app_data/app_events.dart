@@ -421,6 +421,27 @@ class AppEventsSingleton extends ChangeNotifier {
     notifyListeners();
   }
 
+  List<Event> getInterestingEvents(User user) {
+    //event category preferences
+    //take 5 events
+    List<Event> interestingEvents = events.where((event) => user.preferences.contains(event.category)).toList();
+    interestingEvents.sort((a, b) => a.date.compareTo(b.date));
+    return interestingEvents.take(5).toList();
+  }
+
+  List<Event> getLastMinuteEvents() {
+    List<Event> publicEvents = getAllPublicEvents();
+    publicEvents.sort((a, b) => a.date.compareTo(b.date));
+    return publicEvents.take(5).toList();
+  }
+
+  List<Event> getBestEvents() {
+    // take 5 events
+    List<Event> bestEvents = events.where((event) => event.organizer.lastName == "Staff").toList();
+    bestEvents.sort((a, b) => a.date.compareTo(b.date));
+    return bestEvents.take(5).toList();
+  }
+
   void toggleUserRegistration(Event event, User user) {
     if (event.registeredUsers.contains(user)) {
       user.registeredEvents.remove(event);
