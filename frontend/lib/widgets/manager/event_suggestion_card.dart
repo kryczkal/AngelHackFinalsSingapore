@@ -394,7 +394,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                 'Create Event',
                 style: TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

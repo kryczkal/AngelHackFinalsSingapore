@@ -3,7 +3,7 @@ import 'package:frontend/app_data/app_manager.dart';
 import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
 import 'package:frontend/pages/misc/blank_page.dart';
-import 'package:frontend/widgets/event_suggestion_card.dart';
+import 'package:frontend/widgets/manager/event_suggestion_card.dart';
 import 'package:frontend/widgets/manager/dashboard_card_widget.dart';
 import 'package:frontend/widgets/manager/manager_header_widget.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
