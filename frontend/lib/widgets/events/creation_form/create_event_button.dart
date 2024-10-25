@@ -6,6 +6,8 @@ import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
+import 'package:frontend/models/lyf_hotels_enum.dart';
+import 'package:frontend/models/user_data.dart';
 
 class CreateEventButton extends StatelessWidget {
   final GlobalKey<FormState> formKey;
@@ -17,6 +19,8 @@ class CreateEventButton extends StatelessWidget {
   final BadgeData? selectedBadge;
   final EventCategory? selectedCategory;
   final String? imageUrl;
+  final User organizer;
+  final LyfHotels hotel;
 
   const CreateEventButton({
     Key? key,
@@ -28,6 +32,8 @@ class CreateEventButton extends StatelessWidget {
     required this.eventDescription,
     required this.selectedBadge,
     required this.selectedCategory,
+    required this.organizer,
+    required this.hotel,
     this.imageUrl,
   }) : super(key: key);
 
@@ -66,9 +72,9 @@ class CreateEventButton extends StatelessWidget {
               imageUrl: imageUrl ?? '',
               backgroundColor: '#42a5f5',
               localization: selectedLocation,
-              hotel: AppUserSingleton().currentUser.hotel,
+              hotel: hotel,
               description: eventDescription,
-              organizer: AppUserSingleton().currentUser,
+              organizer: organizer,
               category: selectedCategory!,
               registeredUsers: [],
               badges: [selectedBadge!],
@@ -83,8 +89,7 @@ class CreateEventButton extends StatelessWidget {
                 newEvent, AppUserSingleton().currentUser);
             AppUserSingleton().addCreatedEvent(newEvent);
 
-            Navigator.pop(context);
-            Navigator.pop(context);
+            Navigator.popUntil(context, (Route<dynamic> route) => route.isFirst);
           }
         },
         backgroundColor: Colors.green,

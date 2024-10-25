@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/lyf_hotels_enum.dart';
+import 'package:frontend/models/user_data.dart';
 import 'package:frontend/widgets/events/creation_form/create_event_button.dart';
 import 'package:frontend/widgets/events/creation_form/event_badge_field.dart';
 import 'package:frontend/widgets/events/creation_form/event_category_field.dart';
@@ -20,6 +22,8 @@ class CreateEventPage extends StatefulWidget {
   final BadgeData? initialBadge;
   final EventCategory? initialCategory;
   final String? imageUrl;
+  final User organizer;
+  final LyfHotels hotel;
 
   const CreateEventPage({
     super.key,
@@ -31,6 +35,8 @@ class CreateEventPage extends StatefulWidget {
     this.initialBadge,
     this.initialCategory,
     this.imageUrl,
+    required this.organizer,
+    required this.hotel
   });
 
   @override
@@ -233,6 +239,8 @@ class _CreateEventPageState extends State<CreateEventPage> {
                   selectedBadge: _selectedBadge,
                   selectedCategory: _selectedCategory,
                   imageUrl: _imageUrl,
+                  organizer: widget.organizer,
+                  hotel: widget.hotel,
                 ),
               ],
             ),

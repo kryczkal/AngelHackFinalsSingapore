@@ -1,5 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/event_data.dart';
 import 'package:frontend/models/event_suggestion_data.dart';
+import 'package:frontend/models/event_template.dart';
+import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/models/report_card_fixed_data.dart';
 import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
@@ -107,7 +112,18 @@ class AppManagerSingleton {
           "venue": "Innovation Lab",
           "capacity": "100",
           "equipment": "High-speed internet, Display screens"
-        }),
+        },
+        eventTemplate: EventTemplate(
+          name: "AI & Machine Learning Workshop",
+          icon: Icons.computer, // For a tech-focused event
+          description: "Hands-on session covering AI trends in hospitality with networking opportunities.",
+          category: EventCategory.technology,
+          prefilledTitle: "AI & Machine Learning Workshop",
+          prefilledDescription: "Learn practical AI applications in the industry.",
+          isPersonalized: true,
+          imageUrl: "https://example.com/ai_workshop.jpg",
+        ),
+    ),
     EventSuggestionData(
         category: EventCategory.waterSports,
         description:
@@ -135,7 +151,17 @@ class AppManagerSingleton {
           "venue": "Private Beach",
           "capacity": "25",
           "equipment": "Surfboards, Yoga mats"
-        }),
+        },
+        eventTemplate: EventTemplate(
+          name: "Sunset Beach Yoga",
+          icon: Icons.sports, // Symbolizes water sports and wellness
+          description: "A combined yoga and surf session for wellness enthusiasts.",
+          category: EventCategory.health,
+          prefilledTitle: "Sunset Beach Yoga",
+          prefilledDescription: "A blend of beach yoga and surfing with professional instructors.",
+          isPersonalized: true,
+          imageUrl: "https://example.com/beach_yoga.jpg",
+        )),
     EventSuggestionData(
         category: EventCategory.food,
         description:
@@ -163,7 +189,18 @@ class AppManagerSingleton {
           "venue": "Culinary Studio",
           "capacity": "20",
           "requirements": "Fresh ingredients, Cooking stations"
-        }),
+        },
+        eventTemplate: EventTemplate(
+  name: "Farm-to-Table Cooking",
+  icon: Icons.restaurant, // Represents culinary events
+  description: "Masterclass using local ingredients with sustainable cooking techniques.",
+  category: EventCategory.food,
+  prefilledTitle: "Farm-to-Table Cooking Masterclass",
+  prefilledDescription: "Engage in a hands-on culinary experience with fresh ingredients.",
+  isPersonalized: true,
+  imageUrl: "https://example.com/cooking_masterclass.jpg",
+),
+),
     EventSuggestionData(
         category: EventCategory.networking,
         description:
@@ -191,7 +228,18 @@ class AppManagerSingleton {
           "venue": "Grand Ballroom",
           "capacity": "120",
           "setup": "Round tables, Presentation equipment"
-        })
+        },
+        eventTemplate: EventTemplate(
+  name: "Global Entrepreneurs Mixer",
+  icon: Icons.business_center, // Signifies a business networking theme
+  description: "Networking mixer with panels, speed networking, and pitch sessions.",
+  category: EventCategory.networking,
+  prefilledTitle: "Global Entrepreneurs Mixer",
+  prefilledDescription: "An interactive event connecting startups and business leaders.",
+  isPersonalized: false,
+  imageUrl: "https://example.com/entrepreneur_mixer.jpg",
+),
+)
   ];
 
   static final Map<ReportTimeline, ReportData> _reportData = {

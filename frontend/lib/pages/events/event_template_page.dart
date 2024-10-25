@@ -4,6 +4,7 @@ import 'package:frontend/app_data/app_animations.dart';
 import 'package:frontend/app_data/app_event_templates.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_template.dart';
+import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/pages/events/event_create_page.dart';
 import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 
@@ -95,6 +96,8 @@ class EventTemplatePage extends StatelessWidget {
                       initialCategory: template.category,
                       initialBadge: template.defaultBadge,
                       imageUrl: template.imageUrl,
+                      organizer: AppUserSingleton().currentUser,
+                      hotel: LyfHotels.Funan,
                     ),
                   ),
                 );

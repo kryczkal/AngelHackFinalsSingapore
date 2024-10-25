@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_manager.dart';
+import 'package:frontend/app_data/app_user.dart';
+import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
+import 'package:frontend/pages/events/event_create_page.dart';
 import 'package:frontend/pages/misc/blank_page.dart';
 import 'package:frontend/widgets/manager/event_suggestion_card.dart';
 import 'package:frontend/widgets/manager/dashboard_card_widget.dart';
@@ -59,7 +62,15 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const BlankPage(),
+                            builder: (context) => CreateEventPage(
+                            initialEventTitle: suggestion.eventTemplate.prefilledTitle,
+                            initialEventDescription: suggestion.eventTemplate.prefilledDescription,
+                            initialCategory: suggestion.eventTemplate.category,
+                            initialBadge: suggestion.eventTemplate.defaultBadge,
+                            imageUrl: suggestion.eventTemplate.imageUrl,
+                            organizer: AppUserSingleton().currentUser,
+                            hotel: LyfHotels.Funan,
+                          ),
                           ),
                         );
                       },
@@ -83,7 +94,12 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const BlankPage()),
+            MaterialPageRoute(
+              builder: (context) => CreateEventPage(
+                organizer: AppUserSingleton().currentUser,
+                hotel: LyfHotels.Funan,
+              ),
+            ),
           );
         },
         backgroundColor: Colors.green,

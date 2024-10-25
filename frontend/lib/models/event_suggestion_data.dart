@@ -1,4 +1,6 @@
 import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/event_data.dart';
+import 'package:frontend/models/event_template.dart';
 
 class EventSuggestionData {
   final EventCategory category;
@@ -10,6 +12,7 @@ class EventSuggestionData {
   final Map<String, double> amenityUsage;
   final String seasonalTrend;
   final Map<String, String> arguments;
+  final EventTemplate eventTemplate;
 
   EventSuggestionData({
     required this.category,
@@ -21,6 +24,7 @@ class EventSuggestionData {
     required this.amenityUsage,
     required this.seasonalTrend,
     required this.arguments,
+    required this.eventTemplate
   });
 
   String get formattedMatchScore => '${(matchScore * 100).toStringAsFixed(0)}%';
