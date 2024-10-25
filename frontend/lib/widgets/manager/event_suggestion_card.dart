@@ -24,7 +24,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
   bool isExpanded = false;
 
   static const double collapsedHeight = 380.0;
-  static const double expandedHeight = 720.0;
+  static const double expandedHeight = 765.0;
 
   @override
   void initState() {
@@ -79,11 +79,12 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                         duration: const Duration(milliseconds: 300),
                         child: isExpanded
                             ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 key: const ValueKey('expanded'),
                                 children: [
                                   const SizedBox(height: 16),
                                   _buildMetrics(widget.suggestions[index]),
-                                  const SizedBox(height: 16),
+                                  const SizedBox(height: 32),
                                   _buildDemographics(widget.suggestions[index]),
                                 ],
                               )
@@ -185,24 +186,6 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSuggestionCard(EventSuggestionData suggestion) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildCategoryHeader(suggestion),
-          const SizedBox(height: 16),
-          _buildDescription(suggestion),
-          const SizedBox(height: 16),
-          _buildMetrics(suggestion),
-          const SizedBox(height: 16),
-          _buildDemographics(suggestion),
         ],
       ),
     );
@@ -310,10 +293,10 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 16),
         Wrap(
-          spacing: 8,
-          runSpacing: 8,
+          spacing: 16,
+          runSpacing: 16,
           children: [
             _buildMetricChip(
               'Seasonal Trend',
@@ -385,7 +368,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 16),
         Wrap(
           spacing: 8,
           runSpacing: 8,
