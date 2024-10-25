@@ -36,10 +36,10 @@ class UserPage extends StatelessWidget {
                     child: PageView.builder(
                       scrollBehavior: ScrollBehaviorWebExtended(),
                       controller: PageController(viewportFraction: 0.80),
-                      itemCount: AppEventsSingleton().getPublicPeopleEvents().take(5).length,
+                      itemCount: AppEventsSingleton().getAllPublicEvents().take(5).length,
                       itemBuilder: (context, index) {
                         return _buildEventCard(
-                            AppEventsSingleton().getPublicPeopleEvents().take(5).elementAt(index));
+                            AppEventsSingleton().getAllPublicEvents().take(5).elementAt(index));
                       },
                     ),
                   ),

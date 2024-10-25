@@ -12,11 +12,11 @@ class AppUserSingleton extends ChangeNotifier {
   late User _currentUser;
 
   AppUserSingleton._internal() {
-    // Initialize the current user immediately
     _currentUser = users[0];
   }
 
   final List<User> users = [
+    // current user
     User(
       firstName: 'Łukasz',
       lastName: 'Kryczka',
@@ -25,7 +25,7 @@ class AppUserSingleton extends ChangeNotifier {
       profilePic: 'images/profile/lukasz_kryczka.jpg',
       userBadges: [EventBadge(name: 'Yoga Lover')],
       isManager: true),
-    // Add more users here
+    // other users
     User(
       firstName: 'Piotr',
       lastName: 'Tyrakowski',
@@ -57,7 +57,7 @@ class AppUserSingleton extends ChangeNotifier {
         lastName: 'Done',
         age: 30,
         location: 'Singapore',
-        profilePic: 'images/profile/paul_done.png',
+        profilePic: 'images/profile/paul_done.jpg',
         userBadges: [EventBadge(name: 'Example Badge')],
         preferences: {EventCategory.artificialIntelligence},
         isManager: true,
@@ -69,6 +69,7 @@ class AppUserSingleton extends ChangeNotifier {
         location: 'Singapore',
         profilePic: 'images/profile/michael_brown.jpg',
         userBadges: [],
+        isManager: true,
     ),
 
     User(
@@ -84,7 +85,7 @@ class AppUserSingleton extends ChangeNotifier {
         lastName: 'Wilson',
         age: 32,
         location: 'Singapore',
-        profilePic: 'images/profile/profile.jpg',
+        profilePic: 'images/profile/james_wilson.jpg',
         userBadges: [],
       ),
     
@@ -96,6 +97,16 @@ class AppUserSingleton extends ChangeNotifier {
         profilePic: 'images/profile/olivia_martinez.jpg',
         userBadges: [],
       ),
+
+      User(
+        firstName: 'Hotel',
+        lastName: 'Staff',
+        age: 0,
+        location: 'Singapore',
+        profilePic: 'images/profile/hotel_staff.jpg',
+        userBadges: [],
+        isManager: true,
+      )
   ];
 
   

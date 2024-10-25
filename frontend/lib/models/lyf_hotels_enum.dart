@@ -1,5 +1,6 @@
 enum LyfHotels {
   Funan,
+  Sukhumvit,
 }
 
 

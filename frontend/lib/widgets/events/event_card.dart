@@ -123,13 +123,18 @@ class EventCardState extends State<EventCard> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      if (widget.type != EventCardType.minInfo) ...[
+                      if (widget.type == EventCardType.lessInfo) ...[
                         _getRoundedText(
                           context,
-                          DateFormat('EEEE, MMM d').format(widget.event.date),
+                          DateFormat('EEEE hh:mm a').format(widget.event.date),
+                          
                         ),
                       ],
                       if (widget.type == EventCardType.maxInfo) ...[
+                        _getRoundedText(
+                          context,
+                          DateFormat('EEEE hh:mm a, MMM d').format(widget.event.date),
+                        ),
                         const SizedBox(height: 4),
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
