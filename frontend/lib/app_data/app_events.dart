@@ -7,6 +7,8 @@ import 'package:frontend/models/event_data.dart';
 import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/models/user_data.dart';
 
+// small check
+
 class AppEventsSingleton extends ChangeNotifier {
   static final AppEventsSingleton _instance = AppEventsSingleton._internal();
 
