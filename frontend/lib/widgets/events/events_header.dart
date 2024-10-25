@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_animations.dart';
 
 import '../../pages/events/all_events_page.dart';
 
@@ -37,7 +38,8 @@ class EventsHeader extends StatelessWidget {
                   return SlideTransition(
                       position: offsetAnimation, child: child);
                 },
-                transitionDuration: const Duration(milliseconds: 250),
+                transitionDuration: const Duration(
+                    milliseconds: AppAnimations.defaultDurationMs),
               ),
             );
           },

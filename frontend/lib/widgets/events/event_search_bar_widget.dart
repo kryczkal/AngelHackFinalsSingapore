@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_animations.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 
 import '../../models/event_categories_enum.dart';
@@ -32,7 +33,7 @@ class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 150),
+      duration: const Duration(milliseconds: AppAnimations.defaultDurationMs),
     );
     _animation = CurvedAnimation(
       parent: _animationController,
@@ -144,7 +145,8 @@ class _EventSearchBarWidgetState extends State<EventSearchBarWidget>
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           child: AnimatedRotation(
                             turns: _animation.value * 0.5,
-                            duration: const Duration(milliseconds: 300),
+                            duration: const Duration(
+                                milliseconds: AppAnimations.defaultDurationMs),
                             child: const Icon(
                               Icons.keyboard_arrow_down,
                               size: 20,

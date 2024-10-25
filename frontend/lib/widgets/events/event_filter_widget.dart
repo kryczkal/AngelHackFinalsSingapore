@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_animations.dart';
 
 import '../../models/event_categories_enum.dart';
 
@@ -32,7 +33,7 @@ class _EventFilterWidgetState extends State<EventFilterWidget>
     _selectedDateRange = widget.selectedDateRange;
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: AppAnimations.defaultDurationMs),
     );
     _animation = CurvedAnimation(
       parent: _animationController,

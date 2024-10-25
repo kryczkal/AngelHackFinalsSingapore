@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/app_data/app_animations.dart';
 import 'package:frontend/pages/events/event_details_page.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/widgets/common/minimum_app_bar.dart';
@@ -30,7 +31,7 @@ class _AllEventsPageState extends State<AllEventsPage>
     _pageController = PageController(initialPage: 0);
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: AppAnimations.defaultDurationMs),
     );
 
     _fadeAnimation = Tween<double>(
