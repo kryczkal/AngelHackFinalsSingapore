@@ -21,6 +21,10 @@ class EventSuggestionCard extends StatefulWidget {
 class _EventSuggestionCardState extends State<EventSuggestionCard> {
   late PageController _pageController;
   int currentIndex = 0;
+  bool isExpanded = false;
+
+  static const double collapsedHeight = 380.0;
+  static const double expandedHeight = 720.0;
 
   @override
   void initState() {
@@ -52,8 +56,10 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
         mainAxisSize: MainAxisSize.min,
         children: [
           _buildHeader(),
-          SizedBox(
-            height: 380,
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+            height: isExpanded ? expandedHeight : collapsedHeight,
             child: PageView.builder(
               scrollBehavior: ScrollBehaviorWebExtended(),
               controller: _pageController,
@@ -69,18 +75,72 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                       _buildCategoryHeader(widget.suggestions[index]),
                       const SizedBox(height: 16),
                       _buildDescription(widget.suggestions[index]),
-                      const SizedBox(height: 16),
-                      _buildMetrics(widget.suggestions[index]),
-                      const SizedBox(height: 16),
-                      _buildDemographics(widget.suggestions[index]),
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child: isExpanded
+                            ? Column(
+                                key: const ValueKey('expanded'),
+                                children: [
+                                  const SizedBox(height: 16),
+                                  _buildMetrics(widget.suggestions[index]),
+                                  const SizedBox(height: 16),
+                                  _buildDemographics(widget.suggestions[index]),
+                                ],
+                              )
+                            : const SizedBox.shrink(key: ValueKey('collapsed')),
+                      ),
                     ],
                   ),
                 );
               },
             ),
           ),
+          const SizedBox(height: 16),
           _buildPaginationDots(),
           _buildActionButtons(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildActionButtons() {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () =>
+                  widget.onAddEvent(widget.suggestions[currentIndex]),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: const Text(
+                'Create Event',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ),
+          ),
+          Expanded(
+            child: TextButton.icon(
+              onPressed: () => setState(() => isExpanded = !isExpanded),
+              icon: Icon(isExpanded ? Icons.expand_less : Icons.expand_more),
+              label: Text(isExpanded ? 'Show Less' : 'View Details'),
+              style: TextButton.styleFrom(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
         ],
       ),
     );
@@ -369,37 +429,6 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                 : Colors.grey.withOpacity(0.3),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildActionButtons() {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        children: [
-          Expanded(
-            child: ElevatedButton(
-              onPressed: () =>
-                  widget.onAddEvent(widget.suggestions[currentIndex]),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
-              child: const Text(
-                'Create Event',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
