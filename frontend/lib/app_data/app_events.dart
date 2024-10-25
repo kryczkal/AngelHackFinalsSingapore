@@ -140,7 +140,7 @@ class AppEventsSingleton extends ChangeNotifier {
           "Enjoy a pool party at the nearby pool. Bring your friends or meet new ones!",
       organizer: AppUserSingleton().getUserByFirstNameAndLastName("James", "Wilson"),
       registeredUsers: [],
-      category: EventCategory.food,
+      category: EventCategory.pool,
       badges: [EventBadge(name: 'Pool Party Lover')],
     ),
 
@@ -385,11 +385,15 @@ class AppEventsSingleton extends ChangeNotifier {
   }
 
   List<Event> getMyRegisteredEvents(User currentUser) {
-    return currentUser.registeredEvents;
+    List<Event> myEvents = currentUser.registeredEvents;
+    myEvents.sort((a, b) => a.date.compareTo(b.date));
+    return myEvents;
   }
 
   List<Event> getMyCreatedEvents(User currentUser) {
-    return currentUser.createdEvents;
+    List<Event> myEvents = currentUser.createdEvents;
+    myEvents.sort((a, b) => a.date.compareTo(b.date));
+    return myEvents;
   }
 
   List<Event> getAllPublicEvents() {
