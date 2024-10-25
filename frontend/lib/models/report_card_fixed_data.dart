@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/event_categories_enum.dart';
+import 'package:frontend/models/place_usage_analysis_data.dart';
+import 'package:frontend/models/report_timeline_enum.dart';
 import 'package:frontend/models/time_analysis_data.dart';
 import 'package:frontend/pages/manager/manager_category_ranking_page.dart';
+import 'package:frontend/pages/manager/manager_place_usage_analysis_page.dart';
 import 'package:frontend/pages/manager/manager_time_analysis_page.dart';
 import 'package:frontend/pages/misc/blank_page.dart';
 import 'package:frontend/widgets/manager/charts/bar_chart_widget.dart';
@@ -20,7 +23,7 @@ class ReportCardFixedData {
   String bestPlaceSubTitle;
   String averageInterestMainValue;
   String averageInterestSubTitle;
-  TimeAnalysisData timeAnalysisData;
+  ReportTimeline timeline;
 
   ReportCardFixedData({
     required this.categoryRatingTable,
@@ -31,7 +34,7 @@ class ReportCardFixedData {
     required this.bestPlaceSubTitle,
     required this.averageInterestMainValue,
     required this.averageInterestSubTitle,
-    required this.timeAnalysisData,
+    required this.timeline,
   });
 
   List<DashboardCardData> convertToCardData() {
@@ -56,14 +59,16 @@ class ReportCardFixedData {
           subtitle: timeAllocationSubTitle,
           graphFactory: () => const SimpleBarChart(
               color: Colors.green, pattern: BarChartPattern.normal),
-          pageFactory: () => ManagerTimeAnalysisPage(data: timeAnalysisData)),
+          pageFactory: () => ManagerTimeAnalysisPage(
+              data: TimeAnalysisMock.getData(timeline))),
       DashboardCardData(
         title: "Place usage analysis",
         mainValue: bestPlaceMainValue,
         subtitle: bestPlaceSubTitle,
         graphFactory: () =>
             PieChartPreviewWidget(data: PieChartPreviewData.fromVariant(2)),
-        pageFactory: () => const BlankPage(),
+        pageFactory: () => PlaceUsageAnalysisPage(
+            data: PlaceUsageMockDataGenerator.getData(timeline), period: "a"),
       ),
       DashboardCardData(
           title: "Average interest",

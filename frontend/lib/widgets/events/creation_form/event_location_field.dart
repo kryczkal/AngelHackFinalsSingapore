@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/models/event_location_enum.dart';
 
 class EventLocationField extends StatefulWidget {
   final TextEditingController locationController;
@@ -17,16 +18,8 @@ class EventLocationField extends StatefulWidget {
 }
 
 class _EventLocationFieldState extends State<EventLocationField> {
-  final List<String> _predefinedLocations = [
-    'Other',
-    'Yoga Room',
-    'Gym',
-    'Conference Room A',
-    'Conference Room B',
-    'Main Hall',
-    'Training Room',
-    'Outdoor Area',
-  ];
+  final List<String> _predefinedLocations =
+      EventLocationEnumExtension.toDisplayList();
 
   String? _selectedLocation;
   final TextEditingController _otherLocationController =

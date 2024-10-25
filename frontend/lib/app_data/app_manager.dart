@@ -12,11 +12,6 @@ class AppManagerSingleton {
 
   AppManagerSingleton._internal();
 
-  static TimeAnalysisData weeklyData = TimeAnalysisMock.generateWeekData();
-  static TimeAnalysisData montlyData = TimeAnalysisMock.generateMonthData();
-  static TimeAnalysisData sixMonthData =
-      TimeAnalysisMock.generateSixMonthData();
-
   static final ReportCardFixedData _reportCardFixedDataWeek = ReportCardFixedData(
       categoryRatingTable: [
         (
@@ -39,14 +34,16 @@ class AppManagerSingleton {
       ],
       ratingSubtitle: "Food is new favorite!",
       timeAllocationMainValue: TimeAnalysisMock.convertHourToTimeFormat(
-          TimeAnalysisMock.findBusiestTime(weeklyData).$1),
+          TimeAnalysisMock.findBusiestTime(
+                  TimeAnalysisMock.getData(ReportTimeline.week))
+              .$1),
       timeAllocationSubTitle:
-          "Most frequent day: ${TimeAnalysisMock.getDayOfWeek(TimeAnalysisMock.findBusiestTime(weeklyData).$1)}",
+          "Most frequent day: ${TimeAnalysisMock.getDayOfWeek(TimeAnalysisMock.findBusiestTime(TimeAnalysisMock.getData(ReportTimeline.week)).$1)}",
       bestPlaceMainValue: "Kitchen area",
       bestPlaceSubTitle: "Food events strikes!",
       averageInterestMainValue: "Score: 3.1",
       averageInterestSubTitle: "Interest went slightly down",
-      timeAnalysisData: weeklyData);
+      timeline: ReportTimeline.week);
 
   static final ReportCardFixedData _reportCardFixedDataMon =
       ReportCardFixedData(
@@ -70,7 +67,7 @@ class AppManagerSingleton {
           bestPlaceSubTitle: "Sports events strikes!",
           averageInterestMainValue: "Score: 4.7",
           averageInterestSubTitle: "Interest went up",
-          timeAnalysisData: TimeAnalysisMock.generateMonthData());
+          timeline: ReportTimeline.month);
 
   static final ReportCardFixedData _reportCardFixedDataHalfYear =
       ReportCardFixedData(
@@ -103,7 +100,7 @@ class AppManagerSingleton {
           bestPlaceSubTitle: "AI events strikes!",
           averageInterestMainValue: "Score: 4.4",
           averageInterestSubTitle: "Interest went up",
-          timeAnalysisData: TimeAnalysisMock.generateSixMonthData());
+          timeline: ReportTimeline.sixMonths);
 
   static final List<EventSuggestionData> _suggestions = [
     // TODO: Modify the data to match the actual LYF hotel data
