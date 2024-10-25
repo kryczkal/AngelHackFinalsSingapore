@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/pages/events/event_details_page.dart';
 import 'package:intl/intl.dart';
@@ -94,7 +95,7 @@ class EventCardState extends State<EventCard> with TickerProviderStateMixin {
                       if (widget.type == EventCardType.maxInfo) ...[
                         Icon(
                           widget.event.isHotelOrganized
-                              ? Icons.hotel
+                              ? FontAwesomeIcons.hotel
                               : Icons.person,
                           color: Colors.white,
                           size: constraints.maxWidth < 200 ? 16 : 24,
