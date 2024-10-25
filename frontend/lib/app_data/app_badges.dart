@@ -1,4 +1,4 @@
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 
 class AppBadgesSingleton {
   static final AppBadgesSingleton _instance = AppBadgesSingleton._internal();
@@ -7,9 +7,10 @@ class AppBadgesSingleton {
 
   AppBadgesSingleton._internal();
 
-  final List<EventBadge> possibleBadges = [EventBadge(name: 'Yoga Lover'), EventBadge(name: 'MasterChef')];
+  final List<BadgeData> possibleBadges =
+      BadgeEnum.values.map((badge) => badge.badge).toList();
 
-  List<EventBadge> get definedBadges {
+  List<BadgeData> get definedBadges {
     return possibleBadges;
   }
 }

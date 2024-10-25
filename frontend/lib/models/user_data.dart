@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/models/lyf_hotels_enum.dart';
@@ -13,7 +12,7 @@ class User {
   final String location;
   final bool isManager;
   String? bio;
-  List<EventBadge> userBadges;
+  List<BadgeData> userBadges;
   Set<EventCategory> preferences = {};
   List<Event> createdEvents = [];
   List<Event> registeredEvents = [];

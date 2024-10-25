@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
 
@@ -14,7 +14,7 @@ class CreateEventButton extends StatelessWidget {
   final String selectedLocation;
   final String eventTitle;
   final String eventDescription;
-  final EventBadge? selectedBadge;
+  final BadgeData? selectedBadge;
   final EventCategory? selectedCategory;
   final String? imageUrl;
 

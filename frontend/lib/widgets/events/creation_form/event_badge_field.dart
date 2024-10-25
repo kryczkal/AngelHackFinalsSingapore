@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_badges.dart';
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 
 class EventBadgeField extends StatelessWidget {
-  final EventBadge? selectedBadge;
-  final Function(EventBadge?) onBadgeSelected;
+  final BadgeData? selectedBadge;
+  final Function(BadgeData?) onBadgeSelected;
 
   const EventBadgeField({
     Key? key,
@@ -34,7 +34,7 @@ class EventBadgeField extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.0),
             border: Border.all(color: Colors.black),
           ),
-          child: DropdownButtonFormField<EventBadge>(
+          child: DropdownButtonFormField<BadgeData>(
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(
                 horizontal: 12,
@@ -65,7 +65,7 @@ class EventBadgeField extends StatelessWidget {
             ),
             hint: const Text('Select a badge'),
             value: selectedBadge,
-            onChanged: (EventBadge? newValue) {
+            onChanged: (BadgeData? newValue) {
               onBadgeSelected(newValue);
             },
             validator: (value) {
@@ -76,8 +76,8 @@ class EventBadgeField extends StatelessWidget {
             },
             items: AppBadgesSingleton()
                 .definedBadges
-                .map<DropdownMenuItem<EventBadge>>((EventBadge badge) {
-              return DropdownMenuItem<EventBadge>(
+                .map<DropdownMenuItem<BadgeData>>((BadgeData badge) {
+              return DropdownMenuItem<BadgeData>(
                 value: badge,
                 child: Text(badge.name),
               );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 
 class EventTemplate {
@@ -9,7 +9,7 @@ class EventTemplate {
   final EventCategory category;
   final String? prefilledTitle;
   final String? prefilledDescription;
-  final EventBadge? defaultBadge;
+  final BadgeData? defaultBadge;
   final bool isPersonalized;
   final String? imageUrl;
 
@@ -32,7 +32,7 @@ class EventTemplate {
     EventCategory? category,
     String? prefilledTitle,
     String? prefilledDescription,
-    EventBadge? defaultBadge,
+    BadgeData? defaultBadge,
     bool? isPersonalized,
   }) {
     return EventTemplate(

@@ -1,7 +1,6 @@
 // create_event_screen.dart
 import 'package:flutter/material.dart';
-
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/widgets/events/creation_form/create_event_button.dart';
 import 'package:frontend/widgets/events/creation_form/event_badge_field.dart';
@@ -12,14 +11,13 @@ import 'package:frontend/widgets/events/creation_form/event_time_field.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:intl/intl.dart';
 
-
 class CreateEventPage extends StatefulWidget {
   final DateTime? initialDate;
   final TimeOfDay? initialTime;
   final String? initialLocation;
   final String? initialEventTitle;
   final String? initialEventDescription;
-  final EventBadge? initialBadge;
+  final BadgeData? initialBadge;
   final EventCategory? initialCategory;
   final String? imageUrl;
 
@@ -46,7 +44,7 @@ class _CreateEventPageState extends State<CreateEventPage> {
   String _selectedLocation = '';
   String _eventTitle = '';
   String _eventDescription = '';
-  EventBadge? _selectedBadge;
+  BadgeData? _selectedBadge;
   EventCategory? _selectedCategory;
   String? _imageUrl;
 

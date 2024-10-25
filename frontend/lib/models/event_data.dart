@@ -1,4 +1,4 @@
-import 'package:frontend/models/event_badge.dart';
+import 'package:frontend/models/badge_data.dart';
 import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/models/user_data.dart';
@@ -17,7 +17,7 @@ class Event {
   final User organizer;
   final EventCategory category;
   List<User> registeredUsers;
-  List<EventBadge> badges;
+  List<BadgeData> badges;
 
   Event({
     required this.title,
