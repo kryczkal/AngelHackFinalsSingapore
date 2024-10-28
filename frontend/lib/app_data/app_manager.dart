@@ -89,13 +89,13 @@ class AppManagerSingleton {
     EventSuggestionData(
       category: EventCategory.technology,
       description:
-          "AI & Machine Learning Workshop focused on practical applications in hospitality. This hands-on session will cover emerging trends, real-world case studies, and networking opportunities with industry experts.",
-      matchScore: 0.94,
+          "Join us for a casual gaming event at the hotel, where guests can enjoy playing popular video games in a relaxed atmosphere. This event will feature a variety of game genres, friendly competitions, and opportunities to socialize with fellow gaming fans.",
+      matchScore: 0.95,
       keyPoints: [
-        "High concentration of tech-savvy guests (45% increase)",
-        "Recent surge in AI-related inquiries",
-        "Perfect alignment with Innovation Week",
-        "Similar workshops had 92% engagement rate"
+        "High interest in gaming among guests (50% increase)",
+        "Partnership with local gaming influencers",
+        "Engaging activities for all skill levels",
+        "Previous tournaments had 90% participation rate"
       ],
       metrics: {
         "Expected Attendance": "75-100",
@@ -130,12 +130,12 @@ class AppManagerSingleton {
     EventSuggestionData(
         category: EventCategory.waterSports,
         description:
-            "Sunset Beach Yoga & Surf Session combining wellness and water sports. Perfect for beginners and intermediate surfers, includes professional instructors and all necessary equipment.",
+            "Casual Beach Volleyball Session that everyone can join. Enjoy a fun and relaxed game of beach volleyball with fellow guests. All skill levels are welcome, and equipment is provided.",
         matchScore: 0.89,
         keyPoints: [
           "Beach facilities currently underutilized in evenings",
-          "Growing wellness trend among guests",
-          "Positive feedback from pilot sessions",
+          "Growing interest in casual sports among guests",
+          "Positive feedback from previous sessions",
           "Ideal weather conditions predicted"
         ],
         metrics: {
@@ -170,12 +170,12 @@ class AppManagerSingleton {
     EventSuggestionData(
       category: EventCategory.food,
       description:
-          "Farm-to-Table Cooking Masterclass featuring local ingredients and traditional techniques. Participants will learn sustainable cooking practices and enjoy their creations in a communal dining experience.",
+          "Guided Tour to Nearby Restaurants offering a variety of local and international cuisines. Participants will enjoy a curated dining experience with exclusive chef interactions and special menu tastings.",
       matchScore: 0.91,
       keyPoints: [
-        "Local produce partnership opportunity",
-        "Aligns with sustainability initiatives",
-        "High demand for culinary experiences",
+        "Partnership with top local restaurants",
+        "Exclusive chef interactions",
+        "High demand for unique dining experiences",
         "Instagram-worthy content potential"
       ],
       metrics: {
