@@ -13,6 +13,7 @@ import 'package:frontend/widgets/manager/manager_header_widget.dart';
 import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:frontend/widgets/user/user_profile_header.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class ManagerDashboardPage extends StatefulWidget {
@@ -34,16 +35,22 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
 
   @override
   void initState() {
+    _showcaseTest();
     super.initState();
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ShowCaseWidget.of(context).startShowCase([
-        timeLineKey,
-        suggestionKey,
-        biKey,
-        addHotelEvent
-      ]);
-    });
+  Future<void> _showcaseTest() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getBool('first_time_mgr') ?? true;
+
+    if (isFirstTime && mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ShowCaseWidget.of(context)
+            .startShowCase([timeLineKey, suggestionKey, biKey, addHotelEvent]);
+      });
+
+      prefs.setBool('first_time_mgr', false);
+    }
   }
 
   @override
@@ -71,7 +78,8 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
                       showcaseKey: timeLineKey,
                     ),
                     const SizedBox(height: 16),
-                    HotelDemographyCard(hotelDemography: AppManagerSingleton.hotelDemography),
+                    HotelDemographyCard(
+                        hotelDemography: AppManagerSingleton.hotelDemography),
                     const SizedBox(height: 16),
                   ],
                 ),

@@ -48,13 +48,14 @@ class ShowcaseWrapper extends StatelessWidget {
       key: showcaseKey,
       title: title,
       description: description,
-      targetShapeBorder: targetShapeBorder ?? const CircleBorder(),
+      targetShapeBorder: targetShapeBorder ?? const BeveledRectangleBorder(),
       tooltipBackgroundColor: tooltipBackgroundColor ?? Colors.blue,
       textColor: textColor ?? Colors.white,
       titleTextStyle: customTitleStyle ?? defaultTitleStyle,
       descTextStyle: customDescriptionStyle ?? defaultDescriptionStyle,
       showArrow: showArrow,
       overlayOpacity: tooltipOpacity ?? 0,
+      blurValue: 10,
       child: child,
     );
   }

@@ -62,6 +62,15 @@ class WelcomeModal extends StatelessWidget {
                               color: Colors.black87,
                             ),
                           ),
+                          const SizedBox(height: 16),
+                          const Text(
+                            'You can press ESC button to close all tutorials!',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.redAccent,
+                            ),
+                          ),
                         ],
                       ),
                     ),

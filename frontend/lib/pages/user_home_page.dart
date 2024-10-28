@@ -11,6 +11,7 @@ import 'package:frontend/widgets/misc/ignore_padding_widget.dart';
 import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:frontend/widgets/user/user_profile_header.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class UserPage extends StatefulWidget {
@@ -31,18 +32,28 @@ class UserPageState extends State<UserPage> {
 
   @override
   void initState() {
+    _checkFirstTimeUser();
     super.initState();
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ShowCaseWidget.of(context).startShowCase([
-        profileKey,
-        browseEventsKey,
-        seeAllKey,
-        eventScheduleKey,
-        createdEventsKey,
-        newEventKey
-      ]);
-    });
+  Future<void> _checkFirstTimeUser() async {
+    final prefs = await SharedPreferences.getInstance();
+    bool isFirstTime = prefs.getBool('first_time_user_home') ?? true;
+
+    if (isFirstTime && mounted) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ShowCaseWidget.of(context).startShowCase([
+          profileKey,
+          browseEventsKey,
+          seeAllKey,
+          eventScheduleKey,
+          createdEventsKey,
+          newEventKey
+        ]);
+
+        prefs.setBool('first_time_user_home', false);
+      });
+    }
   }
 
   Widget _buildEventCard(Event event) {

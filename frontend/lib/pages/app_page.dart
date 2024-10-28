@@ -8,6 +8,7 @@ import 'package:frontend/pages/user_home_page.dart';
 import 'package:frontend/widgets/events/event_feedback_dialog.dart';
 import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 import 'package:frontend/widgets/tutorials/welcome_modal.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
@@ -112,6 +113,10 @@ class _AppPageState extends State<AppPage> {
       if (event.logicalKey == LogicalKeyboardKey.escape && _isOverlayShowing) {
         _hideDialog();
         return KeyEventResult.handled;
+      }
+
+      if (event.logicalKey == LogicalKeyboardKey.escape) {
+        ShowCaseWidget.of(context).dismiss();
       }
 
       if (HardwareKeyboard.instance.isControlPressed &&
