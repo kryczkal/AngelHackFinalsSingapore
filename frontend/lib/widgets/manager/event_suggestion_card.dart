@@ -84,8 +84,6 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                                 children: [
                                   const SizedBox(height: 16),
                                   _buildMetrics(widget.suggestions[index]),
-                                  const SizedBox(height: 32),
-                                  _buildDemographics(widget.suggestions[index]),
                                 ],
                               )
                             : const SizedBox.shrink(key: ValueKey('collapsed')),

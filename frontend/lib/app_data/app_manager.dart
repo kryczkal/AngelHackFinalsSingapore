@@ -87,43 +87,45 @@ class AppManagerSingleton {
   static final List<EventSuggestionData> _suggestions = [
     // TODO: Modify the data to match the actual LYF hotel data
     EventSuggestionData(
-        category: EventCategory.technology,
+      category: EventCategory.technology,
+      description:
+          "AI & Machine Learning Workshop focused on practical applications in hospitality. This hands-on session will cover emerging trends, real-world case studies, and networking opportunities with industry experts.",
+      matchScore: 0.94,
+      keyPoints: [
+        "High concentration of tech-savvy guests (45% increase)",
+        "Recent surge in AI-related inquiries",
+        "Perfect alignment with Innovation Week",
+        "Similar workshops had 92% engagement rate"
+      ],
+      metrics: {
+        "Expected Attendance": "75-100",
+        "Duration": "4 hours",
+        "Previous Success Rate": "92%"
+      },
+      guestDemographics: {
+        "Tech Professionals": "45%",
+        "Business Leaders": "30%",
+        "Students": "25%"
+      },
+      amenityUsage: {"Innovation Lab": 0.88, "Conference Room A": 0.75},
+      seasonalTrend: "Peak in Q4",
+      arguments: {
+        "venue": "Innovation Lab",
+        "capacity": "100",
+        "equipment": "High-speed internet, Display screens"
+      },
+      eventTemplate: EventTemplate(
+        name: "AI & Machine Learning Workshop",
+        icon: Icons.computer, // For a tech-focused event
         description:
-            "AI & Machine Learning Workshop focused on practical applications in hospitality. This hands-on session will cover emerging trends, real-world case studies, and networking opportunities with industry experts.",
-        matchScore: 0.94,
-        keyPoints: [
-          "High concentration of tech-savvy guests (45% increase)",
-          "Recent surge in AI-related inquiries",
-          "Perfect alignment with Innovation Week",
-          "Similar workshops had 92% engagement rate"
-        ],
-        metrics: {
-          "Expected Attendance": "75-100",
-          "Duration": "4 hours",
-          "Previous Success Rate": "92%"
-        },
-        guestDemographics: {
-          "Tech Professionals": "45%",
-          "Business Leaders": "30%",
-          "Students": "25%"
-        },
-        amenityUsage: {"Innovation Lab": 0.88, "Conference Room A": 0.75},
-        seasonalTrend: "Peak in Q4",
-        arguments: {
-          "venue": "Innovation Lab",
-          "capacity": "100",
-          "equipment": "High-speed internet, Display screens"
-        },
-        eventTemplate: EventTemplate(
-          name: "AI & Machine Learning Workshop",
-          icon: Icons.computer, // For a tech-focused event
-          description: "Hands-on session covering AI trends in hospitality with networking opportunities.",
-          category: EventCategory.technology,
-          prefilledTitle: "AI & Machine Learning Workshop",
-          prefilledDescription: "Learn practical AI applications in the industry.",
-          isPersonalized: true,
-          imageUrl: "https://example.com/ai_workshop.jpg",
-        ),
+            "Hands-on session covering AI trends in hospitality with networking opportunities.",
+        category: EventCategory.technology,
+        prefilledTitle: "AI & Machine Learning Workshop",
+        prefilledDescription:
+            "Learn practical AI applications in the industry.",
+        isPersonalized: true,
+        imageUrl: "https://example.com/ai_workshop.jpg",
+      ),
     ),
     EventSuggestionData(
         category: EventCategory.waterSports,
@@ -156,91 +158,97 @@ class AppManagerSingleton {
         eventTemplate: EventTemplate(
           name: "Sunset Beach Yoga",
           icon: Icons.sports, // Symbolizes water sports and wellness
-          description: "A combined yoga and surf session for wellness enthusiasts.",
+          description:
+              "A combined yoga and surf session for wellness enthusiasts.",
           category: EventCategory.health,
           prefilledTitle: "Sunset Beach Yoga",
-          prefilledDescription: "A blend of beach yoga and surfing with professional instructors.",
+          prefilledDescription:
+              "A blend of beach yoga and surfing with professional instructors.",
           isPersonalized: true,
           imageUrl: "https://example.com/beach_yoga.jpg",
         )),
     EventSuggestionData(
+      category: EventCategory.food,
+      description:
+          "Farm-to-Table Cooking Masterclass featuring local ingredients and traditional techniques. Participants will learn sustainable cooking practices and enjoy their creations in a communal dining experience.",
+      matchScore: 0.91,
+      keyPoints: [
+        "Local produce partnership opportunity",
+        "Aligns with sustainability initiatives",
+        "High demand for culinary experiences",
+        "Instagram-worthy content potential"
+      ],
+      metrics: {
+        "Expected Attendance": "15-20",
+        "Duration": "3 hours",
+        "Satisfaction Rate": "95%"
+      },
+      guestDemographics: {
+        "Food Enthusiasts": "50%",
+        "Sustainability Advocates": "30%",
+        "Photography Enthusiasts": "20%"
+      },
+      amenityUsage: {"Culinary Studio": 0.95, "Herb Garden": 0.85},
+      seasonalTrend: "Year-round",
+      arguments: {
+        "venue": "Culinary Studio",
+        "capacity": "20",
+        "requirements": "Fresh ingredients, Cooking stations"
+      },
+      eventTemplate: EventTemplate(
+        name: "Farm-to-Table Cooking",
+        icon: Icons.restaurant, // Represents culinary events
+        description:
+            "Masterclass using local ingredients with sustainable cooking techniques.",
         category: EventCategory.food,
-        description:
-            "Farm-to-Table Cooking Masterclass featuring local ingredients and traditional techniques. Participants will learn sustainable cooking practices and enjoy their creations in a communal dining experience.",
-        matchScore: 0.91,
-        keyPoints: [
-          "Local produce partnership opportunity",
-          "Aligns with sustainability initiatives",
-          "High demand for culinary experiences",
-          "Instagram-worthy content potential"
-        ],
-        metrics: {
-          "Expected Attendance": "15-20",
-          "Duration": "3 hours",
-          "Satisfaction Rate": "95%"
-        },
-        guestDemographics: {
-          "Food Enthusiasts": "50%",
-          "Sustainability Advocates": "30%",
-          "Photography Enthusiasts": "20%"
-        },
-        amenityUsage: {"Culinary Studio": 0.95, "Herb Garden": 0.85},
-        seasonalTrend: "Year-round",
-        arguments: {
-          "venue": "Culinary Studio",
-          "capacity": "20",
-          "requirements": "Fresh ingredients, Cooking stations"
-        },
-        eventTemplate: EventTemplate(
-  name: "Farm-to-Table Cooking",
-  icon: Icons.restaurant, // Represents culinary events
-  description: "Masterclass using local ingredients with sustainable cooking techniques.",
-  category: EventCategory.food,
-  prefilledTitle: "Farm-to-Table Cooking Masterclass",
-  prefilledDescription: "Engage in a hands-on culinary experience with fresh ingredients.",
-  isPersonalized: true,
-  imageUrl: "https://example.com/cooking_masterclass.jpg",
-),
-),
+        prefilledTitle: "Farm-to-Table Cooking Masterclass",
+        prefilledDescription:
+            "Engage in a hands-on culinary experience with fresh ingredients.",
+        isPersonalized: true,
+        imageUrl: "https://example.com/cooking_masterclass.jpg",
+      ),
+    ),
     EventSuggestionData(
-        category: EventCategory.networking,
+      category: EventCategory.networking,
+      description:
+          "Global Entrepreneurs Mixer connecting international business leaders with local startups. Features speed networking, pitch sessions, and interactive panel discussions.",
+      matchScore: 0.87,
+      keyPoints: [
+        "High concentration of business travelers",
+        "Partner with local startup hub",
+        "Previous networking events sold out",
+        "Multiple sponsorship opportunities"
+      ],
+      metrics: {
+        "Expected Attendance": "100-120",
+        "Duration": "3 hours",
+        "Connection Rate": "85%"
+      },
+      guestDemographics: {
+        "Entrepreneurs": "40%",
+        "Investors": "30%",
+        "Industry Experts": "30%"
+      },
+      amenityUsage: {"Grand Ballroom": 0.90, "Business Lounge": 0.82},
+      seasonalTrend: "Business Season",
+      arguments: {
+        "venue": "Grand Ballroom",
+        "capacity": "120",
+        "setup": "Round tables, Presentation equipment"
+      },
+      eventTemplate: EventTemplate(
+        name: "Global Entrepreneurs Mixer",
+        icon: Icons.business_center, // Signifies a business networking theme
         description:
-            "Global Entrepreneurs Mixer connecting international business leaders with local startups. Features speed networking, pitch sessions, and interactive panel discussions.",
-        matchScore: 0.87,
-        keyPoints: [
-          "High concentration of business travelers",
-          "Partner with local startup hub",
-          "Previous networking events sold out",
-          "Multiple sponsorship opportunities"
-        ],
-        metrics: {
-          "Expected Attendance": "100-120",
-          "Duration": "3 hours",
-          "Connection Rate": "85%"
-        },
-        guestDemographics: {
-          "Entrepreneurs": "40%",
-          "Investors": "30%",
-          "Industry Experts": "30%"
-        },
-        amenityUsage: {"Grand Ballroom": 0.90, "Business Lounge": 0.82},
-        seasonalTrend: "Business Season",
-        arguments: {
-          "venue": "Grand Ballroom",
-          "capacity": "120",
-          "setup": "Round tables, Presentation equipment"
-        },
-        eventTemplate: EventTemplate(
-  name: "Global Entrepreneurs Mixer",
-  icon: Icons.business_center, // Signifies a business networking theme
-  description: "Networking mixer with panels, speed networking, and pitch sessions.",
-  category: EventCategory.networking,
-  prefilledTitle: "Global Entrepreneurs Mixer",
-  prefilledDescription: "An interactive event connecting startups and business leaders.",
-  isPersonalized: false,
-  imageUrl: "https://example.com/entrepreneur_mixer.jpg",
-),
-)
+            "Networking mixer with panels, speed networking, and pitch sessions.",
+        category: EventCategory.networking,
+        prefilledTitle: "Global Entrepreneurs Mixer",
+        prefilledDescription:
+            "An interactive event connecting startups and business leaders.",
+        isPersonalized: false,
+        imageUrl: "https://example.com/entrepreneur_mixer.jpg",
+      ),
+    )
   ];
 
   static final Map<ReportTimeline, ReportData> _reportData = {
@@ -293,6 +301,37 @@ class AppManagerSingleton {
     "56-65": 15,
     "66+": 8,
   };
-  
-  static HotelDemography hotelDemography = HotelDemography(nationalityCount, ageGroupCount);
+
+  static Map<EventCategory, int> eventInterestCount = {
+    EventCategory.technology: 60, // Tech-savvy and young crowd
+    EventCategory.finance: 15, // Some interest in finance-related events
+    EventCategory.waterSports:
+        12, // Limited interest in outdoor water activities
+    EventCategory.music: 50, // High interest in music events
+    EventCategory.food: 55, // High interest in food-related events
+    EventCategory.alcohol: 35, // Moderate interest in nightlife
+    EventCategory.sports: 20, // Interest in sports events
+    EventCategory.art: 18, // Some interest in art exhibits
+    EventCategory.fashion: 10, // Niche interest in fashion
+    EventCategory.health: 25, // Wellness-conscious crowd
+    EventCategory.beauty: 15, // Moderate interest in beauty-related events
+    EventCategory.travel: 30, // Interest in travel and adventure
+    EventCategory.networking: 50, // High interest in networking opportunities
+    EventCategory.education: 25, // Interest in learning and workshops
+    EventCategory.motorsports: 5, // Limited interest in motorsports
+    EventCategory.gaming: 30, // Significant interest in gaming events
+    EventCategory.artificialIntelligence: 22, // Growing interest in AI and tech
+    EventCategory.engineering: 10, // Niche interest in engineering topics
+    EventCategory.science: 18, // Interest in science-related events
+    EventCategory.environment: 20, // Environmentally conscious guests
+    EventCategory.politics: 8, // Low interest in politics-related events
+    EventCategory.business: 30, // Interest in business and entrepreneurship
+    EventCategory.entertainment: 45, // High interest in general entertainment
+    EventCategory.sustainability: 25, // Interest in sustainable practices
+    EventCategory.wellness: 40, // Strong focus on wellness
+    EventCategory.pool: 15, // Moderate interest in poolside activities
+  };
+
+  static HotelDemography hotelDemography =
+      HotelDemography(nationalityCount, ageGroupCount, eventInterestCount);
 }

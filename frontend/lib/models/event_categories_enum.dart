@@ -25,7 +25,6 @@ enum EventCategory {
   politics,
   business,
   entertainment,
-  mainEvent,
   sustainability,
   wellness,
   pool,
