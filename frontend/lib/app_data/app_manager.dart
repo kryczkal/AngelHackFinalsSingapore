@@ -85,170 +85,164 @@ class AppManagerSingleton {
           timeline: ReportTimeline.sixMonths);
 
   static final List<EventSuggestionData> _suggestions = [
-    // TODO: Modify the data to match the actual LYF hotel data
-    EventSuggestionData(
-      category: EventCategory.technology,
-      description:
-          "Join us for a casual gaming event at the hotel, where guests can enjoy playing popular video games in a relaxed atmosphere. This event will feature a variety of game genres, friendly competitions, and opportunities to socialize with fellow gaming fans.",
-      matchScore: 0.95,
-      keyPoints: [
-        "High interest in gaming among guests (50% increase)",
-        "Partnership with local gaming influencers",
-        "Engaging activities for all skill levels",
-        "Previous tournaments had 90% participation rate"
-      ],
-      metrics: {
-        "Expected Attendance": "75-100",
-        "Duration": "4 hours",
-        "Previous Success Rate": "92%"
-      },
-      guestDemographics: {
-        "Tech Professionals": "45%",
-        "Business Leaders": "30%",
-        "Students": "25%"
-      },
-      amenityUsage: {"Innovation Lab": 0.88, "Conference Room A": 0.75},
-      seasonalTrend: "Peak in Q4",
-      arguments: {
-        "venue": "Innovation Lab",
-        "capacity": "100",
-        "equipment": "High-speed internet, Display screens"
-      },
-      eventTemplate: EventTemplate(
-        name: "AI & Machine Learning Workshop",
-        icon: Icons.computer, // For a tech-focused event
-        description:
-            "Hands-on session covering AI trends in hospitality with networking opportunities.",
-        category: EventCategory.technology,
-        prefilledTitle: "AI & Machine Learning Workshop",
-        prefilledDescription:
-            "Learn practical AI applications in the industry.",
-        isPersonalized: true,
-        imageUrl: "https://example.com/ai_workshop.jpg",
-      ),
-    ),
-    EventSuggestionData(
-        category: EventCategory.waterSports,
-        description:
-            "Casual Beach Volleyball Session that everyone can join. Enjoy a fun and relaxed game of beach volleyball with fellow guests. All skill levels are welcome, and equipment is provided.",
-        matchScore: 0.89,
-        keyPoints: [
-          "Beach facilities currently underutilized in evenings",
-          "Growing interest in casual sports among guests",
-          "Positive feedback from previous sessions",
-          "Ideal weather conditions predicted"
-        ],
-        metrics: {
-          "Expected Attendance": "20-25",
-          "Duration": "2.5 hours",
-          "Equipment Utilization": "85%"
-        },
-        guestDemographics: {
-          "Wellness Enthusiasts": "40%",
-          "Adventure Seekers": "35%",
-          "Beginners": "25%"
-        },
-        amenityUsage: {"Private Beach": 0.92, "Surf Equipment": 0.78},
-        seasonalTrend: "Summer Peak",
-        arguments: {
-          "venue": "Private Beach",
-          "capacity": "25",
-          "equipment": "Surfboards, Yoga mats"
-        },
-        eventTemplate: EventTemplate(
-          name: "Sunset Beach Yoga",
-          icon: Icons.sports, // Symbolizes water sports and wellness
-          description:
-              "A combined yoga and surf session for wellness enthusiasts.",
-          category: EventCategory.health,
-          prefilledTitle: "Sunset Beach Yoga",
-          prefilledDescription:
-              "A blend of beach yoga and surfing with professional instructors.",
-          isPersonalized: true,
-          imageUrl: "https://example.com/beach_yoga.jpg",
-        )),
     EventSuggestionData(
       category: EventCategory.food,
       description:
-          "Guided Tour to Nearby Restaurants offering a variety of local and international cuisines. Participants will enjoy a curated dining experience with exclusive chef interactions and special menu tastings.",
-      matchScore: 0.91,
+          "Local Snack Tasting, featuring popular snacks from nearby vendors. Guests can sample authentic flavors and enjoy a casual, social evening.",
+      matchScore: 0.77,
       keyPoints: [
-        "Partnership with top local restaurants",
-        "Exclusive chef interactions",
-        "High demand for unique dining experiences",
-        "Instagram-worthy content potential"
+        "Growing interest in local cuisine",
+        "In collaboration with local small businesses",
+        "Provides an authentic taste of the city",
+        "Positive engagement from previous tasting events"
       ],
       metrics: {
         "Expected Attendance": "15-20",
-        "Duration": "3 hours",
-        "Satisfaction Rate": "95%"
+        "Duration": "1.5 hours",
+        "Satisfaction Rate": "93%"
       },
       guestDemographics: {
-        "Food Enthusiasts": "50%",
-        "Sustainability Advocates": "30%",
-        "Photography Enthusiasts": "20%"
+        "Food Lovers": "45%",
+        "Cultural Enthusiasts": "30%",
+        "Socializers": "25%"
       },
-      amenityUsage: {"Culinary Studio": 0.95, "Herb Garden": 0.85},
+      amenityUsage: {"Lounge Area": 0.75, "Dining Room": 0.70},
       seasonalTrend: "Year-round",
       arguments: {
-        "venue": "Culinary Studio",
+        "venue": "Lounge Area",
         "capacity": "20",
-        "requirements": "Fresh ingredients, Cooking stations"
+        "requirements": "Table setups for tastings"
       },
       eventTemplate: EventTemplate(
-        name: "Farm-to-Table Cooking",
-        icon: Icons.restaurant, // Represents culinary events
+        name: "Local Snack Tasting",
+        icon: Icons.fastfood,
         description:
-            "Masterclass using local ingredients with sustainable cooking techniques.",
+            "Sample a variety of local snacks, hosted in a relaxed social setting.",
         category: EventCategory.food,
-        prefilledTitle: "Farm-to-Table Cooking Masterclass",
-        prefilledDescription:
-            "Engage in a hands-on culinary experience with fresh ingredients.",
+        prefilledTitle: "Local Snack Tasting",
+        prefilledDescription: "Taste authentic local snacks with us!",
         isPersonalized: true,
-        imageUrl: "https://example.com/cooking_masterclass.jpg",
+        imageUrl: "https://example.com/local_snacks.jpg",
       ),
     ),
     EventSuggestionData(
-      category: EventCategory.networking,
+      category: EventCategory.gaming,
       description:
-          "Global Entrepreneurs Mixer connecting international business leaders with local startups. Features speed networking, pitch sessions, and interactive panel discussions.",
-      matchScore: 0.87,
+          "Game Night in the lounge! Unwind with classic board games, card games, and light refreshments. Suitable for groups or solo players looking to meet new people.",
+      matchScore: 0.80,
       keyPoints: [
-        "High concentration of business travelers",
-        "Partner with local startup hub",
-        "Previous networking events sold out",
-        "Multiple sponsorship opportunities"
+        "High interest in casual, social activities",
+        "Great for community-building",
+        "Easy-to-organize, low-maintenance setup",
+        "Consistently positive feedback from previous sessions"
       ],
       metrics: {
-        "Expected Attendance": "100-120",
-        "Duration": "3 hours",
-        "Connection Rate": "85%"
+        "Expected Attendance": "10-15",
+        "Duration": "2.5 hours",
+        "Repeat Rate": "85%"
       },
       guestDemographics: {
-        "Entrepreneurs": "40%",
-        "Investors": "30%",
-        "Industry Experts": "30%"
+        "Solo Travelers": "40%",
+        "Young Adults": "35%",
+        "Families": "25%"
       },
-      amenityUsage: {"Grand Ballroom": 0.90, "Business Lounge": 0.82},
-      seasonalTrend: "Business Season",
+      amenityUsage: {"Lounge": 0.90, "Refreshments Bar": 0.75},
+      seasonalTrend: "Popular in cooler months",
       arguments: {
-        "venue": "Grand Ballroom",
-        "capacity": "120",
-        "setup": "Round tables, Presentation equipment"
+        "venue": "Lounge",
+        "capacity": "20",
+        "equipment": "Board games, card games"
       },
       eventTemplate: EventTemplate(
-        name: "Global Entrepreneurs Mixer",
-        icon: Icons.business_center, // Signifies a business networking theme
+        name: "Game Night",
+        icon: Icons.casino,
         description:
-            "Networking mixer with panels, speed networking, and pitch sessions.",
-        category: EventCategory.networking,
-        prefilledTitle: "Global Entrepreneurs Mixer",
-        prefilledDescription:
-            "An interactive event connecting startups and business leaders.",
+            "Enjoy a cozy game night with classic board games and snacks.",
+        category: EventCategory.gaming,
+        prefilledTitle: "Game Night",
+        prefilledDescription: "Join us for a relaxed game night at the lounge.",
         isPersonalized: false,
-        imageUrl: "https://example.com/entrepreneur_mixer.jpg",
+        imageUrl: "https://example.com/game_night.jpg",
       ),
-    )
+    ),
+    EventSuggestionData(
+      category: EventCategory.technology,
+      description:
+          "Casual Coding Jam, where guests can gather to work on fun coding projects or explore new tech skills together. No prior experience needed; it's all about learning and sharing!",
+      matchScore: 0.82,
+      keyPoints: [
+        "Interest in tech among guests (notably young professionals)",
+        "Opportunity to collaborate with local coding communities",
+        "Low-pressure, hands-on activities",
+        "Feedback from similar events shows high engagement"
+      ],
+      metrics: {
+        "Expected Attendance": "10-15",
+        "Duration": "2 hours",
+        "Satisfaction Rate": "88%"
+      },
+      guestDemographics: {
+        "Young Professionals": "50%",
+        "Students": "30%",
+        "Tech Enthusiasts": "20%"
+      },
+      amenityUsage: {"Innovation Lab": 0.65, "Study Lounge": 0.60},
+      seasonalTrend: "Year-round interest",
+      arguments: {
+        "venue": "Innovation Lab",
+        "capacity": "20",
+        "equipment": "Whiteboards, Wi-Fi, Coffee station"
+      },
+      eventTemplate: EventTemplate(
+        name: "Casual Coding Jam",
+        icon: Icons.code,
+        description: "Collaborate and explore coding in a casual setting.",
+        category: EventCategory.technology,
+        prefilledTitle: "Casual Coding Jam",
+        prefilledDescription: "Join us for a relaxed evening of coding fun!",
+        isPersonalized: false,
+        imageUrl: "https://example.com/coding_jam.jpg",
+      ),
+    ),
+    EventSuggestionData(
+      category: EventCategory.health,
+      description:
+          "Sunrise Yoga Session on the rooftop, open to all skill levels. A gentle way to start the day with stretching and mindfulness, overlooking the city skyline.",
+      matchScore: 0.85,
+      keyPoints: [
+        "Popular among wellness-oriented guests",
+        "Accessible to all fitness levels",
+        "Minimal equipment required",
+        "Positive feedback from guests on relaxation benefits"
+      ],
+      metrics: {
+        "Expected Attendance": "8-12",
+        "Duration": "1 hour",
+        "Satisfaction Rate": "90%"
+      },
+      guestDemographics: {
+        "Wellness Enthusiasts": "60%",
+        "Beginners": "25%",
+        "Adventure Seekers": "15%"
+      },
+      amenityUsage: {"Rooftop Terrace": 0.85, "Yoga Mats": 0.80},
+      seasonalTrend: "Peak in warmer months",
+      arguments: {
+        "venue": "Rooftop Terrace",
+        "capacity": "15",
+        "equipment": "Yoga mats"
+      },
+      eventTemplate: EventTemplate(
+        name: "Sunrise Yoga",
+        icon: Icons.self_improvement,
+        description: "Start the day with rooftop yoga, open to all levels.",
+        category: EventCategory.health,
+        prefilledTitle: "Sunrise Yoga",
+        prefilledDescription: "An invigorating morning yoga session.",
+        isPersonalized: false,
+        imageUrl: "https://example.com/sunrise_yoga.jpg",
+      ),
+    ),
   ];
 
   static final Map<ReportTimeline, ReportData> _reportData = {
@@ -280,56 +274,56 @@ class AppManagerSingleton {
   }
 
   static Map<String, double> nationalityCount = {
-  "Singaporean": 25.1,
-  "Malaysian": 10.0,
-  "Australian": 7.5,
-  "American": 5.0,
-  "Chinese": 9.0,
-  "German": 4.0,
-  "Japanese": 6.0,
-  "Indonesian": 12.6,
-  "British": 2.5,
-  "Indian": 3.5,
-};
+    "Singaporean": 25.1,
+    "Malaysian": 10.0,
+    "Australian": 7.5,
+    "American": 5.0,
+    "Chinese": 9.0,
+    "German": 4.0,
+    "Japanese": 6.0,
+    "Indonesian": 12.6,
+    "British": 2.5,
+    "Indian": 3.5,
+  };
 
-static Map<String, double> ageGroupCount = {
-  "0-17": 7.1,
-  "18-25": 20.8,
-  "26-35": 26.8,
-  "36-45": 17.9,
-  "46-55": 14.9,
-  "56-65": 8.9,
-  "66+": 4.8,
-};
+  static Map<String, double> ageGroupCount = {
+    "0-17": 7.1,
+    "18-25": 20.8,
+    "26-35": 26.8,
+    "36-45": 17.9,
+    "46-55": 14.9,
+    "56-65": 8.9,
+    "66+": 4.8,
+  };
 
-static Map<EventCategory, double> eventInterestCount = {
-  EventCategory.technology: 10.7,
-  EventCategory.finance: 2.7,
-  EventCategory.waterSports: 2.1,
-  EventCategory.music: 8.9,
-  EventCategory.food: 9.8,
-  EventCategory.alcohol: 6.3,
-  EventCategory.sports: 3.6,
-  EventCategory.art: 3.2,
-  EventCategory.fashion: 1.8,
-  EventCategory.health: 4.5,
-  EventCategory.beauty: 2.7,
-  EventCategory.travel: 5.4,
-  EventCategory.networking: 8.9,
-  EventCategory.education: 4.5,
-  EventCategory.motorsports: 0.9,
-  EventCategory.gaming: 5.4,
-  EventCategory.artificialIntelligence: 3.9,
-  EventCategory.engineering: 1.8,
-  EventCategory.science: 3.2,
-  EventCategory.environment: 3.6,
-  EventCategory.politics: 1.4,
-  EventCategory.business: 5.4,
-  EventCategory.entertainment: 8.0,
-  EventCategory.sustainability: 4.5,
-  EventCategory.wellness: 7.1,
-  EventCategory.pool: 2.7,
-};
+  static Map<EventCategory, double> eventInterestCount = {
+    EventCategory.technology: 10.7,
+    EventCategory.finance: 2.7,
+    EventCategory.waterSports: 2.1,
+    EventCategory.music: 8.9,
+    EventCategory.food: 9.8,
+    EventCategory.alcohol: 6.3,
+    EventCategory.sports: 3.6,
+    EventCategory.art: 3.2,
+    EventCategory.fashion: 1.8,
+    EventCategory.health: 4.5,
+    EventCategory.beauty: 2.7,
+    EventCategory.travel: 5.4,
+    EventCategory.networking: 8.9,
+    EventCategory.education: 4.5,
+    EventCategory.motorsports: 0.9,
+    EventCategory.gaming: 5.4,
+    EventCategory.artificialIntelligence: 3.9,
+    EventCategory.engineering: 1.8,
+    EventCategory.science: 3.2,
+    EventCategory.environment: 3.6,
+    EventCategory.politics: 1.4,
+    EventCategory.business: 5.4,
+    EventCategory.entertainment: 8.0,
+    EventCategory.sustainability: 4.5,
+    EventCategory.wellness: 7.1,
+    EventCategory.pool: 2.7,
+  };
 
   static HotelDemography hotelDemography =
       HotelDemography(nationalityCount, ageGroupCount, eventInterestCount);
