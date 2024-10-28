@@ -85,6 +85,15 @@ class WelcomeContent extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 const Text(
+                  'Tutorial is provided to enhance jury experience',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                const Text(
                   'You can press ESC button to close all tutorials!',
                   textAlign: TextAlign.center,
                   style: TextStyle(
