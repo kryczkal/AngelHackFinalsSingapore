@@ -23,12 +23,12 @@ class EventsDashboardHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ShowcaseWrapper(
-          showcaseKey: eventScheduleKey,
-          title: "View your event schedule",
-          description: "Here you can view all the events you have joined."
-              "You can also view the events you have created.",
-          child: Expanded(
+        Expanded(
+          child: ShowcaseWrapper(
+            showcaseKey: eventScheduleKey,
+            title: "View your event schedule",
+            description: "Here you can view all the events you have joined."
+                "You can also view the events you have created.",
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
