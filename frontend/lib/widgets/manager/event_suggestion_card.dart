@@ -164,7 +164,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
                 ),
               ),
               Text(
-                'Based on current data',
+                'Based on current hotel demography',
                 style: TextStyle(
                   color: Colors.grey,
                   fontSize: 14,
