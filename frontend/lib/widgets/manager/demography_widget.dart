@@ -9,26 +9,14 @@ class HotelDemographyCard extends StatelessWidget {
     required this.hotelDemography,
   });
 
+  List<String> mapEntryToStringList(List<MapEntry<String, int>> entries) {
+    return entries
+        .map((entry) => '${entry.key}: ${entry.value} guests')
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final stats = [
-      {
-        'icon': Icons.public,
-        'label': 'Biggest guest nationality',
-        'value': hotelDemography.getTopNationality()?.key ?? 'N/A',
-      },
-      {
-        'icon': Icons.group,
-        'label': 'Top guest age group',
-        'value': hotelDemography.getTopAgeGroup()?.key ?? 'N/A',
-      },
-      {
-        'icon': Icons.event,
-        'label': 'Top event category',
-        'value': hotelDemography.getTopEventInterest()?.key.name ?? 'N/A',
-      },
-    ];
-
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -66,7 +54,7 @@ class HotelDemographyCard extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               const Text(
-                'Current hotel demography',
+                'Hotel demography',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -76,55 +64,170 @@ class HotelDemographyCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          
+
           // Stats
           Column(
-            children: stats.map((stat) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      stat['icon'] as IconData,
-                      color: Colors.white70,
-                      size: 20,
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            stat['label'] as String,
-                            style: TextStyle(
-                              color: Colors.white.withOpacity(0.7),
-                              fontSize: 13,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Row(
+                              children: [
+                                Icon(
+                                  Icons.public,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  'Biggest guest nationalities',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            stat['value'] as String,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
+                            const SizedBox(height: 4),
+                            _buildDemographics(mapEntryToStringList(
+                                hotelDemography.getTopNationalities()))
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            )).toList(),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Row(
+                              children: [
+                                Icon(
+                                  Icons.group,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  'Top guest age group',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            _buildDemographics(mapEntryToStringList(
+                                hotelDemography.getTopAgeGroups()))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Row(
+                              children: [
+                                Icon(
+                                  Icons.public,
+                                  color: Colors.white,
+                                  size: 20,
+                                ),
+                                SizedBox(width: 6),
+                                Text(
+                                  'Biggest guest nationalities',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 4),
+                            _buildDemographics(mapEntryToStringList(
+                                hotelDemography.getTopNationalities()))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildDemographics(List<String> topDemographics) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 4),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: topDemographics.map((demo) {
+            return Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 6,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                demo,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.blue,
+                ),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }

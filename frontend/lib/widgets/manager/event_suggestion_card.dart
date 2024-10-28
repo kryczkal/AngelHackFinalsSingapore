@@ -24,7 +24,7 @@ class _EventSuggestionCardState extends State<EventSuggestionCard> {
   bool isExpanded = false;
 
   static const double collapsedHeight = 380.0;
-  static const double expandedHeight = 765.0;
+  static const double expandedHeight = 665.0;
 
   @override
   void initState() {
