@@ -7,19 +7,19 @@ import 'package:showcaseview/showcaseview.dart';
 class ProfileHeader extends StatelessWidget {
   final bool hasNotification;
   final GlobalKey? showKey;
+  final bool showProfile;
 
-  const ProfileHeader({
-    super.key,
-    this.hasNotification = false,
-    this.showKey,
-  });
+  const ProfileHeader(
+      {super.key,
+      this.hasNotification = false,
+      this.showKey,
+      this.showProfile = true});
 
   Widget _buildUserIcon(BuildContext context) {
     return IconButton(
       icon: CircleAvatar(
         radius: 20.0,
-        backgroundImage:
-        AssetImage(AppUserSingleton().profileImagePath),
+        backgroundImage: AssetImage(AppUserSingleton().profileImagePath),
       ),
       onPressed: () {
         Navigator.of(context).push(
@@ -61,29 +61,33 @@ class ProfileHeader extends StatelessWidget {
             ),
           ],
         ),
-        Stack(
-          children: [
-            if (showKey != null) ShowcaseWrapper(
-                showcaseKey: showKey!,
-                title: "Check User Profile!",
-                description: "User may enter preferred categories and change settings!",
-                child: _buildUserIcon(context)
-            ) else _buildUserIcon(context),
-            if (hasNotification)
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  width: 10.0,
-                  height: 10.0,
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
+        if (showProfile)
+          Stack(
+            children: [
+              if (showKey != null)
+                ShowcaseWrapper(
+                    showcaseKey: showKey!,
+                    title: "Check User Profile!",
+                    description:
+                        "User may enter preferred categories and change settings!",
+                    child: _buildUserIcon(context))
+              else
+                _buildUserIcon(context),
+              if (hasNotification)
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  child: Container(
+                    width: 10.0,
+                    height: 10.0,
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
                   ),
                 ),
-              ),
-          ],
-        ),
+            ],
+          ),
       ],
     );
   }

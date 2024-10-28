@@ -11,7 +11,9 @@ import 'package:frontend/widgets/tutorials/welcome_modal.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 class AppPage extends StatefulWidget {
-  const AppPage({super.key});
+  final bool showModal;
+
+  const AppPage({super.key, required this.showModal});
 
   @override
   State<AppPage> createState() => _AppPageState();
@@ -22,15 +24,21 @@ class _AppPageState extends State<AppPage> {
   OverlayEntry? _overlayEntry;
   bool _isOverlayShowing = false;
   bool _hasShownWelcomeModal = false;
-  bool _showContent = false;
+  late bool _showContent;
 
   @override
   void initState() {
     super.initState();
     _focusNode = FocusNode();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _showWelcomeModal();
-    });
+    _showContent = !widget.showModal;
+
+    if (widget.showModal) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _showWelcomeModal();
+      });
+    } else {
+      _hideDialog();
+    }
   }
 
   @override
@@ -48,7 +56,6 @@ class _AppPageState extends State<AppPage> {
       _overlayEntry = null;
       _isOverlayShowing = false;
 
-      // Add a small delay before showing content for a smoother transition
       Future.delayed(const Duration(milliseconds: 100), () {
         setState(() {
           _showContent = true;
@@ -77,7 +84,7 @@ class _AppPageState extends State<AppPage> {
 
   void _showDialog() {
     if (_isOverlayShowing) {
-      return; // Don't show another dialog if one is already showing
+      return;
     }
 
     _overlayEntry = OverlayEntry(

@@ -14,6 +14,8 @@ class ShowcaseWrapper extends StatelessWidget {
   final TextStyle? customTitleStyle;
   final TextStyle? customDescriptionStyle;
   final ShapeBorder? targetShapeBorder;
+  final Color highlightColor;
+  final double highlightBorderWidth;
 
   const ShowcaseWrapper({
     super.key,
@@ -29,6 +31,8 @@ class ShowcaseWrapper extends StatelessWidget {
     this.customTitleStyle,
     this.customDescriptionStyle,
     this.targetShapeBorder,
+    this.highlightColor = Colors.blue,
+    this.highlightBorderWidth = 2.0,
   });
 
   @override
@@ -48,14 +52,20 @@ class ShowcaseWrapper extends StatelessWidget {
       key: showcaseKey,
       title: title,
       description: description,
-      targetShapeBorder: targetShapeBorder ?? const BeveledRectangleBorder(),
+      targetShapeBorder: ContinuousRectangleBorder(
+        side: BorderSide(
+          color: highlightColor,
+          width: highlightBorderWidth,
+        ),
+      ),
       tooltipBackgroundColor: tooltipBackgroundColor ?? Colors.blue,
       textColor: textColor ?? Colors.white,
       titleTextStyle: customTitleStyle ?? defaultTitleStyle,
       descTextStyle: customDescriptionStyle ?? defaultDescriptionStyle,
       showArrow: showArrow,
       overlayOpacity: tooltipOpacity ?? 0,
-      blurValue: 10,
+      onTargetClick: onTargetClick,
+      targetPadding: const EdgeInsets.all(8.0),
       child: child,
     );
   }

@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      home: ShowCaseWidget(builder: (context) => AdaptivePhoneMockup(childWidget: AppPage())),
+      home: ShowCaseWidget(builder: (context) => AdaptivePhoneMockup()),
     );
   }
 }
