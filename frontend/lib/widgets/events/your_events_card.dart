@@ -7,10 +7,13 @@ import 'package:frontend/models/event_template.dart';
 import 'package:frontend/pages/events/event_create_page.dart';
 import 'package:frontend/pages/events/event_template_page.dart';
 import 'package:frontend/pages/events/joined_events_page.dart';
+import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
 import 'package:provider/provider.dart';
 
 class YourEventsCard extends StatelessWidget {
-  const YourEventsCard({super.key});
+  final GlobalKey newEventKey;
+
+  const YourEventsCard({super.key, required this.newEventKey});
 
   @override
   Widget build(BuildContext context) {
@@ -132,20 +135,26 @@ class YourEventsCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => EventTemplatePage()),
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.add,
-                      color: Colors.white,
+                  child: ShowcaseWrapper(
+                    showcaseKey: newEventKey,
+                    title: "Create a new event",
+                    description:
+                        "Create a new event and gain discounts for your hotel stay!",
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EventTemplatePage()),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                      iconSize: 24,
+                      padding: EdgeInsets.zero,
                     ),
-                    iconSize: 24,
-                    padding: EdgeInsets.zero,
                   ),
                 ),
               ),

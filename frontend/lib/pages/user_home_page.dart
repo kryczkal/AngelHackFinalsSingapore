@@ -70,7 +70,11 @@ class UserPageState extends State<UserPage> {
                 const SizedBox(height: 12),
 
                 // Events Dashboard Header
-                const EventsDashboardHeader(),
+                EventsDashboardHeader(
+                  eventScheduleKey: eventScheduleKey,
+                  newEventKey: newEventKey,
+                  createdEventsKey: createdEventsKey,
+                ),
                 const SizedBox(height: 24),
 
                 EventsHeader(title: 'Might\ninterest you', showKey: seeAllKey),

@@ -26,9 +26,8 @@ class EventsDashboardHeader extends StatelessWidget {
         ShowcaseWrapper(
           showcaseKey: eventScheduleKey,
           title: "View your event schedule",
-          description:
-              "Here you can view all the events you have joined."
-                  "You can also view the events you have created.",
+          description: "Here you can view all the events you have joined."
+              "You can also view the events you have created.",
           child: Expanded(
             child: GestureDetector(
               onTap: () {
@@ -46,13 +45,21 @@ class EventsDashboardHeader extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 24),
-        const Expanded(
+        Expanded(
           child: Column(
             children: [
-              SizedBox(height: 46),
-              SizedBox(
-                height: 176,
-                child: YourEventsCard(),
+              const SizedBox(height: 46),
+              ShowcaseWrapper(
+                showcaseKey: createdEventsKey,
+                title: "View your created events",
+                description:
+                    "Here you can view all the events you have created.",
+                child: SizedBox(
+                  height: 176,
+                  child: YourEventsCard(
+                    newEventKey: newEventKey,
+                  ),
+                ),
               ),
             ],
           ),
