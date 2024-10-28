@@ -279,58 +279,57 @@ class AppManagerSingleton {
     return _reportData;
   }
 
-  static Map<String, int> nationalityCount = {
-    "Singaporean": 50,
-    "Malaysian": 20,
-    "Australian": 15,
-    "American": 10,
-    "Chinese": 18,
-    "German": 8,
-    "Japanese": 12,
-    "Indonesian": 25,
-    "British": 5,
-    "Indian": 7,
-  };
+  static Map<String, double> nationalityCount = {
+  "Singaporean": 25.1,
+  "Malaysian": 10.0,
+  "Australian": 7.5,
+  "American": 5.0,
+  "Chinese": 9.0,
+  "German": 4.0,
+  "Japanese": 6.0,
+  "Indonesian": 12.6,
+  "British": 2.5,
+  "Indian": 3.5,
+};
 
-  static Map<String, int> ageGroupCount = {
-    "0-17": 12,
-    "18-25": 35,
-    "26-35": 45,
-    "36-45": 30,
-    "46-55": 25,
-    "56-65": 15,
-    "66+": 8,
-  };
+static Map<String, double> ageGroupCount = {
+  "0-17": 7.1,
+  "18-25": 20.8,
+  "26-35": 26.8,
+  "36-45": 17.9,
+  "46-55": 14.9,
+  "56-65": 8.9,
+  "66+": 4.8,
+};
 
-  static Map<EventCategory, int> eventInterestCount = {
-    EventCategory.technology: 60, // Tech-savvy and young crowd
-    EventCategory.finance: 15, // Some interest in finance-related events
-    EventCategory.waterSports:
-        12, // Limited interest in outdoor water activities
-    EventCategory.music: 50, // High interest in music events
-    EventCategory.food: 55, // High interest in food-related events
-    EventCategory.alcohol: 35, // Moderate interest in nightlife
-    EventCategory.sports: 20, // Interest in sports events
-    EventCategory.art: 18, // Some interest in art exhibits
-    EventCategory.fashion: 10, // Niche interest in fashion
-    EventCategory.health: 25, // Wellness-conscious crowd
-    EventCategory.beauty: 15, // Moderate interest in beauty-related events
-    EventCategory.travel: 30, // Interest in travel and adventure
-    EventCategory.networking: 50, // High interest in networking opportunities
-    EventCategory.education: 25, // Interest in learning and workshops
-    EventCategory.motorsports: 5, // Limited interest in motorsports
-    EventCategory.gaming: 30, // Significant interest in gaming events
-    EventCategory.artificialIntelligence: 22, // Growing interest in AI and tech
-    EventCategory.engineering: 10, // Niche interest in engineering topics
-    EventCategory.science: 18, // Interest in science-related events
-    EventCategory.environment: 20, // Environmentally conscious guests
-    EventCategory.politics: 8, // Low interest in politics-related events
-    EventCategory.business: 30, // Interest in business and entrepreneurship
-    EventCategory.entertainment: 45, // High interest in general entertainment
-    EventCategory.sustainability: 25, // Interest in sustainable practices
-    EventCategory.wellness: 40, // Strong focus on wellness
-    EventCategory.pool: 15, // Moderate interest in poolside activities
-  };
+static Map<EventCategory, double> eventInterestCount = {
+  EventCategory.technology: 10.7,
+  EventCategory.finance: 2.7,
+  EventCategory.waterSports: 2.1,
+  EventCategory.music: 8.9,
+  EventCategory.food: 9.8,
+  EventCategory.alcohol: 6.3,
+  EventCategory.sports: 3.6,
+  EventCategory.art: 3.2,
+  EventCategory.fashion: 1.8,
+  EventCategory.health: 4.5,
+  EventCategory.beauty: 2.7,
+  EventCategory.travel: 5.4,
+  EventCategory.networking: 8.9,
+  EventCategory.education: 4.5,
+  EventCategory.motorsports: 0.9,
+  EventCategory.gaming: 5.4,
+  EventCategory.artificialIntelligence: 3.9,
+  EventCategory.engineering: 1.8,
+  EventCategory.science: 3.2,
+  EventCategory.environment: 3.6,
+  EventCategory.politics: 1.4,
+  EventCategory.business: 5.4,
+  EventCategory.entertainment: 8.0,
+  EventCategory.sustainability: 4.5,
+  EventCategory.wellness: 7.1,
+  EventCategory.pool: 2.7,
+};
 
   static HotelDemography hotelDemography =
       HotelDemography(nationalityCount, ageGroupCount, eventInterestCount);
