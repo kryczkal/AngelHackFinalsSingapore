@@ -1,13 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/pages/profile/user_profile_brief_page.dart';
+import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class ProfileHeader extends StatelessWidget {
   final bool hasNotification;
+  final GlobalKey? showKey;
+
   const ProfileHeader({
     super.key,
     this.hasNotification = false,
+    this.showKey,
   });
+
+  Widget _buildUserIcon(BuildContext context) {
+    return IconButton(
+      icon: CircleAvatar(
+        radius: 20.0,
+        backgroundImage:
+        AssetImage(AppUserSingleton().profileImagePath),
+      ),
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) =>
+                UserProfileBrief(user: AppUserSingleton().currentUser),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +63,12 @@ class ProfileHeader extends StatelessWidget {
         ),
         Stack(
           children: [
-            IconButton(
-              icon: CircleAvatar(
-                radius: 20.0,
-                backgroundImage:
-                    AssetImage(AppUserSingleton().profileImagePath),
-              ),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        UserProfileBrief(user: AppUserSingleton().currentUser),
-                  ),
-                );
-              },
-            ),
+            if (showKey != null) ShowcaseWrapper(
+                showcaseKey: showKey!,
+                title: "Check User Profile!",
+                description: "User may enter preferred categories and change settings!",
+                child: _buildUserIcon(context)
+            ) else _buildUserIcon(context),
             if (hasNotification)
               Positioned(
                 top: 0,

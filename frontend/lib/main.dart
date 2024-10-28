@@ -8,6 +8,7 @@ import 'package:frontend/widgets/misc/adaptive_phone_mockup.dart';
 import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -36,16 +37,17 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-        title: 'LyfTogether',
-        scrollBehavior: ScrollBehaviorWebExtended(),
-        theme: ThemeData(
-          colorScheme: customColorScheme,
-          textTheme: GoogleFonts.poppinsTextTheme(
-            Theme.of(context).textTheme,
-          ),
-          useMaterial3: true,
-          primarySwatch: Colors.blue,
+      title: 'LyfTogether',
+      scrollBehavior: ScrollBehaviorWebExtended(),
+      theme: ThemeData(
+        colorScheme: customColorScheme,
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
         ),
-        home: AdaptivePhoneMockup(childWidget: const AppPage()));
+        useMaterial3: true,
+        primarySwatch: Colors.blue,
+      ),
+      home: ShowCaseWidget(builder: (context) => AdaptivePhoneMockup(childWidget: AppPage())),
+    );
   }
 }

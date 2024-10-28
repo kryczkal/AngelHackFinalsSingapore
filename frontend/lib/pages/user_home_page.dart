@@ -3,17 +3,57 @@ import 'package:frontend/app_data/app_events.dart';
 import 'package:frontend/app_data/app_user.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/widgets/events/event_card.dart';
-import 'package:frontend/widgets/events/event_recommendation_hint.dart';
 import 'package:frontend/widgets/events/events_dashboard_header_widget.dart';
 import 'package:frontend/widgets/events/events_header.dart';
 import 'package:frontend/widgets/events/interesting_events_section.dart';
 import 'package:frontend/widgets/misc/scroll_behavior_web_extended.dart';
 import 'package:frontend/widgets/misc/ignore_padding_widget.dart';
+import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:frontend/widgets/user/user_profile_header.dart';
+import 'package:showcaseview/showcaseview.dart';
 
-class UserPage extends StatelessWidget {
-  const UserPage({Key? key}) : super(key: key);
+class UserPage extends StatefulWidget {
+  const UserPage({super.key});
+
+  @override
+  State<UserPage> createState() => UserPageState();
+}
+
+class UserPageState extends State<UserPage> {
+  final GlobalKey profileKey = GlobalKey();
+  final GlobalKey seeAllKey = GlobalKey();
+  final GlobalKey browseEventsKey = GlobalKey();
+
+  final GlobalKey eventScheduleKey = GlobalKey();
+  final GlobalKey createdEventsKey = GlobalKey();
+  final GlobalKey newEventKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ShowCaseWidget.of(context).startShowCase([
+        profileKey,
+        browseEventsKey,
+        seeAllKey,
+        eventScheduleKey,
+        createdEventsKey,
+        newEventKey
+      ]);
+    });
+  }
+
+  Widget _buildEventCard(Event event) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 16.0),
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 16),
+        child: EventCard(event: event),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,21 +66,32 @@ class UserPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ProfileHeader(hasNotification: true),
+                ProfileHeader(hasNotification: true, showKey: profileKey),
                 const SizedBox(height: 12),
+
+                // Events Dashboard Header
                 const EventsDashboardHeader(),
                 const SizedBox(height: 24),
-                const EventsHeader(title: 'Might\ninterest you'),
+
+                EventsHeader(title: 'Might\ninterest you', showKey: seeAllKey),
                 const SizedBox(height: 16),
-                IgnorePaddingWidget(
-                  child: InterestingEventsSection(
-                    events: AppEventsSingleton()
-                        .getInterestingEvents(AppUserSingleton().currentUser),
+
+                ShowcaseWrapper(
+                  showcaseKey: browseEventsKey,
+                  title: "Browse events suggestions",
+                  description: "Browse events grouped by suggestion criteria!",
+                  child: IgnorePaddingWidget(
+                    child: InterestingEventsSection(
+                      events: AppEventsSingleton()
+                          .getInterestingEvents(AppUserSingleton().currentUser),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
+
                 const EventsHeader(title: 'Last\nMinute'),
                 const SizedBox(height: 16),
+
                 IgnorePaddingWidget(
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -51,14 +102,17 @@ class UserPage extends StatelessWidget {
                       itemCount:
                           AppEventsSingleton().getLastMinuteEvents().length,
                       itemBuilder: (context, index) {
-                        return _buildEventCard(AppEventsSingleton()
-                            .getLastMinuteEvents()
-                            .elementAt(index));
+                        return _buildEventCard(
+                          AppEventsSingleton()
+                              .getLastMinuteEvents()
+                              .elementAt(index),
+                        );
                       },
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
+
                 const EventsHeader(title: 'Best\nglobally'),
                 const SizedBox(height: 16),
                 IgnorePaddingWidget(
@@ -70,9 +124,9 @@ class UserPage extends StatelessWidget {
                       controller: PageController(viewportFraction: 0.80),
                       itemCount: AppEventsSingleton().getBestEvents().length,
                       itemBuilder: (context, index) {
-                        return _buildEventCard(AppEventsSingleton()
-                            .getBestEvents()
-                            .elementAt(index));
+                        return _buildEventCard(
+                          AppEventsSingleton().getBestEvents().elementAt(index),
+                        );
                       },
                     ),
                   ),
@@ -81,16 +135,6 @@ class UserPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildEventCard(Event event) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16.0),
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
-        child: EventCard(event: event),
       ),
     );
   }
