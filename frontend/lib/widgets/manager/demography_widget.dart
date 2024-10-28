@@ -51,12 +51,43 @@ class _HotelDemographyCardState extends State<HotelDemographyCard> {
                   ),
                 ),
                 const SizedBox(height: 4),
-                const Text(
-                  'Biggest population',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
+                Row(
+                  children: [
+                    const Text(
+                      'Biggest guest nationality: ',
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                      ),
+                    ),
+                    Text(
+                      widget.hotelDemography.getTopNationality()!.key,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  children: [const Text(
+                    'Top guest age group: ',
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 14,
+                    ),
                   ),
+                  Text(
+                      widget.hotelDemography.getTopAgeGroup()!.key,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold
+                      ),
+                    ),
+                  ]
                 ),
               ],
             ),
