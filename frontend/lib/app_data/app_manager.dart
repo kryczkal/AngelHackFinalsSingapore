@@ -4,6 +4,7 @@ import 'package:frontend/models/event_categories_enum.dart';
 import 'package:frontend/models/event_data.dart';
 import 'package:frontend/models/event_suggestion_data.dart';
 import 'package:frontend/models/event_template.dart';
+import 'package:frontend/models/hotel_demography.dart';
 import 'package:frontend/models/lyf_hotels_enum.dart';
 import 'package:frontend/models/report_card_fixed_data.dart';
 import 'package:frontend/models/report_data.dart';
@@ -269,4 +270,29 @@ class AppManagerSingleton {
   Map<ReportTimeline, ReportData> get reportData {
     return _reportData;
   }
+
+  static Map<String, int> nationalityCount = {
+    "Singaporean": 50,
+    "Malaysian": 20,
+    "Australian": 15,
+    "American": 10,
+    "Chinese": 18,
+    "German": 8,
+    "Japanese": 12,
+    "Indonesian": 25,
+    "British": 5,
+    "Indian": 7,
+  };
+
+  static Map<String, int> ageGroupCount = {
+    "0-17": 12,
+    "18-25": 35,
+    "26-35": 45,
+    "36-45": 30,
+    "46-55": 25,
+    "56-65": 15,
+    "66+": 8,
+  };
+  
+  static HotelDemography hotelDemography = HotelDemography(nationalityCount, ageGroupCount);
 }
