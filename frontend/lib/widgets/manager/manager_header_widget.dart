@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/models/report_data.dart';
 import 'package:frontend/models/report_timeline_enum.dart';
+import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
 
 class ManagerHeaderWidget extends StatefulWidget {
   final Map<ReportTimeline, ReportData> reportData;
   final void Function(ReportTimeline) onTimelineChanged;
   final ReportTimeline startingTimeline;
+  final GlobalKey showcaseKey;
 
-  const ManagerHeaderWidget({
-    super.key,
-    required this.reportData,
-    required this.onTimelineChanged,
-    required this.startingTimeline,
-  });
+  const ManagerHeaderWidget(
+      {super.key,
+      required this.reportData,
+      required this.onTimelineChanged,
+      required this.startingTimeline,
+      required this.showcaseKey});
 
   @override
   State<ManagerHeaderWidget> createState() => _ManagerHeaderWidgetState();
@@ -88,18 +90,24 @@ class _ManagerHeaderWidgetState extends State<ManagerHeaderWidget> {
               activeTickMarkColor: Colors.white,
               inactiveTickMarkColor: Colors.white24,
             ),
-            child: Slider(
-              value:
-                  ReportTimeline.values.indexOf(_selectedTimeline).toDouble(),
-              min: 0,
-              max: ReportTimeline.values.length - 1,
-              divisions: ReportTimeline.values.length - 1,
-              onChanged: (value) {
-                setState(() {
-                  _selectedTimeline = ReportTimeline.values[value.toInt()];
-                  widget.onTimelineChanged(_selectedTimeline);
-                });
-              },
+            child: ShowcaseWrapper(
+              showcaseKey: widget.showcaseKey,
+              title: "Manage report interval!",
+              description:
+                  "You can change the report interval to view different data and see some simplistic preview",
+              child: Slider(
+                value:
+                    ReportTimeline.values.indexOf(_selectedTimeline).toDouble(),
+                min: 0,
+                max: ReportTimeline.values.length - 1,
+                divisions: ReportTimeline.values.length - 1,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedTimeline = ReportTimeline.values[value.toInt()];
+                    widget.onTimelineChanged(_selectedTimeline);
+                  });
+                },
+              ),
             ),
           ),
           const SizedBox(height: 24),

@@ -10,8 +10,10 @@ import 'package:frontend/widgets/manager/demography_widget.dart';
 import 'package:frontend/widgets/manager/event_suggestion_card.dart';
 import 'package:frontend/widgets/manager/dashboard_card_widget.dart';
 import 'package:frontend/widgets/manager/manager_header_widget.dart';
+import 'package:frontend/widgets/misc/show_case_wrapper_widget.dart';
 import 'package:frontend/widgets/misc/single_child_scroll_view_web_extended.dart';
 import 'package:frontend/widgets/user/user_profile_header.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 class ManagerDashboardPage extends StatefulWidget {
   const ManagerDashboardPage({super.key});
@@ -21,9 +23,28 @@ class ManagerDashboardPage extends StatefulWidget {
 }
 
 class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
+  final GlobalKey timeLineKey = GlobalKey();
+  final GlobalKey suggestionKey = GlobalKey();
+  final GlobalKey biKey = GlobalKey();
+  final GlobalKey addHotelEvent = GlobalKey();
+
   final Map<ReportTimeline, ReportData> _reportData =
       AppManagerSingleton().reportData;
   ReportTimeline _selectedTimeline = ReportTimeline.week;
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ShowCaseWidget.of(context).startShowCase([
+        timeLineKey,
+        suggestionKey,
+        biKey,
+        addHotelEvent
+      ]);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +68,7 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
                         });
                       },
                       startingTimeline: ReportTimeline.week,
+                      showcaseKey: timeLineKey,
                     ),
                     const SizedBox(height: 16),
                     HotelDemographyCard(hotelDemography: AppManagerSingleton.hotelDemography),
@@ -58,29 +80,44 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
                   children: [
-                    EventSuggestionCard(
-                      suggestions:
-                          _reportData[_selectedTimeline]!.suggestionData,
-                      onAddEvent: (suggestion) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CreateEventPage(
-                              initialEventTitle:
-                                  suggestion.eventTemplate.prefilledTitle,
-                              initialEventDescription:
-                                  suggestion.eventTemplate.prefilledDescription,
-                              initialCategory:
-                                  suggestion.eventTemplate.category,
-                              initialBadge:
-                                  suggestion.eventTemplate.defaultBadge,
-                              imageUrl: suggestion.eventTemplate.imageUrl,
-                              organizer: AppUserSingleton().currentUser,
-                              hotel: LyfHotels.Funan,
-                            ),
-                          ),
-                        );
-                      },
+                    ShowcaseWrapper(
+                      showcaseKey: suggestionKey,
+                      title: "Event Suggestions",
+                      description:
+                          "Here are some event suggestions based on the data we have collected",
+                      child: ShowcaseWrapper(
+                        showcaseKey: biKey,
+                        title: "Various data and insights",
+                        description:
+                            "Here are some data and insights we have collected:\n"
+                            "- time analysis\n"
+                            "- space analysis\n"
+                            "- event category analysis\n",
+                        child: EventSuggestionCard(
+                          suggestions:
+                              _reportData[_selectedTimeline]!.suggestionData,
+                          onAddEvent: (suggestion) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CreateEventPage(
+                                  initialEventTitle:
+                                      suggestion.eventTemplate.prefilledTitle,
+                                  initialEventDescription: suggestion
+                                      .eventTemplate.prefilledDescription,
+                                  initialCategory:
+                                      suggestion.eventTemplate.category,
+                                  initialBadge:
+                                      suggestion.eventTemplate.defaultBadge,
+                                  imageUrl: suggestion.eventTemplate.imageUrl,
+                                  organizer: AppUserSingleton().currentUser,
+                                  hotel: LyfHotels.Funan,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 16),
                     ..._reportData[_selectedTimeline]!.cardData.map(
@@ -110,7 +147,11 @@ class _ManagerDashboardPageState extends State<ManagerDashboardPage> {
           );
         },
         backgroundColor: Colors.green,
-        child: const Icon(Icons.add, size: 32),
+        child: ShowcaseWrapper(
+            showcaseKey: addHotelEvent,
+            title: "Create an event as manager",
+            description: "Click here to create a special event as a manager.",
+            child: const Icon(Icons.add, size: 32)),
       ),
     );
   }
