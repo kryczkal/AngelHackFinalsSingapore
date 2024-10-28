@@ -26,7 +26,7 @@ class AdaptivePhoneMockup extends StatelessWidget {
         body: Stack(
           children: [
             InkSplatterBackground(),
-            if (!showModal) Positioned(
+            if (!showModal && false) Positioned(
                 left: 100,
                 top: (screenH - 200) / 2,
                 child: const WelcomeContent(
